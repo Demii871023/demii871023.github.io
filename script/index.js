@@ -45,6 +45,9 @@ function modalClose()
     console.log("Don't eat");
     $("#cancel").click();
     subject_select = -1;
+    
+    $("#btn_modal").click();
+    $("#cancel").click();
 }
 
 
