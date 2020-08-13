@@ -130,23 +130,23 @@ const subjectSelect = {
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
-        if(keyboard.right.onDown)
+        if(!keyboard.right.onDown)
         {
             player.setVelocityX(160);
             console.log("右邊");
         }
       
-        if(keyboard.left.onDown)
+        if(!keyboard.left.onDown)
         {
             player.setVelocityX(-160);
             console.log("左邊");
         }
-        if(keyboard.up.onDown)
+        if(!keyboard.up.onDown)
         {
             player.setVelocityY(-160);
             console.log("上面");
         }
-        if(keyboard.down.onDown)
+        if(!keyboard.down.onDown)
         {
             player.setVelocityY(160);
             console.log("下面");
