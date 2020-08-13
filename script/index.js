@@ -166,13 +166,16 @@ const subjectSelect = {
         
         this.physics.add.overlap(player, beans, collectStar, null, this);
         
+        
         function collectStar (player, beans)
         {
             // 如果 player 座標與 beans 座標相差小於 5，且使用者按下空白鍵執行吃的動作，且此時沒有選擇的科目
             if(abs(player.x, beans.x) < 5 && abs(player.y, beans.y) < 5 && eat && subject_select == -1)
             {
-                // 該科目豆消失
-                beans.disableBody(true, true);
+                // 開啟 modal：你確定選擇_____(科目)?
+                modalOpen();
+//                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
+//                 beans.disableBody(true, true);
             }
         }
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
@@ -213,7 +216,7 @@ const subjectSelect = {
         if(keyboard.space.isDown)
         {
             console.log("空白鍵");
-            modalOpen();
+//             modalOpen();
             eat = true;
         }
         else
