@@ -132,23 +132,23 @@ const subjectSelect = {
         let keyboard = this.input.keyboard.createCursorKeys();
         if(keyboard.right.isDown)
         {
-            this.player.setVelocityX(160);
+            player.setVelocityX(160);
             console.log("右邊");
         }
       
         if(keyboard.left.isDown)
         {
-            this.player.setVelocityX(-160);
+            player.setVelocityX(-160);
             console.log("左邊");
         }
         if(keyboard.up.isDown)
         {
-            this.player.setVelocityY(-160);
+            player.setVelocityY(-160);
             console.log("上面");
         }
         if(keyboard.down.isDown)
         {
-            this.player.setVelocityY(160);
+            player.setVelocityY(160);
             console.log("下面");
         }
 //         if(keyboard.esc.isDown)
