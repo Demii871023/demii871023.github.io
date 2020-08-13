@@ -123,8 +123,8 @@ const subjectSelect = {
         //this.player.setBounce(1); //設定彈跳值
         player.setScale(playerScale);
       
-        beansGroup = this.add.group();
-        beansGroup.enableBody = true;
+//         beansGroup = this.add.group();
+//         beansGroup.enableBody = true;
         
         
 //         grouptest = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
@@ -139,7 +139,7 @@ const subjectSelect = {
 //             console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
             
             
-            beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[0]);
+//             beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[0]);
             
         }
         
