@@ -83,8 +83,10 @@ const subjectSelect = {
 
         this.player = this.physics.add.sprite(150, 150, 'player');
         // 角色落地的時候會彈跳
-        /*this.player.setCollideWorldBounds(true); //角色邊界限制
-        this.player.setBounce(1); //設定彈跳值*/
+        this.player.setCollideWorldBounds(true); //角色邊界限制
+        //this.player.setBounce(1); //設定彈跳值
+      
+      
         this.player.setScale(playerScale);
         
         //this.add.text(cw/2,ch/2, Subject[2], {color: "#123455", fontSize:'60px'});
