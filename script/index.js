@@ -36,8 +36,12 @@ const abs = (num1, num2) =>{
 
 function modalOpen()
 {
-    $("#tt").click();
-    console.log("Hello"); //$('#exampleModal').modal('show');
+//     $("#tt").click();
+//     console.log("Hello"); //$('#exampleModal').modal('show');
+    $(window).on('shown.bs.modal', function() { 
+        $('#exampleModal').modal('show');
+        //alert('shown');
+    });
     $("#subject_name").text(subject_name[1]);
 }
 
