@@ -145,8 +145,8 @@ const subjectSelect = {
         
         function collectStar (player, beans)
         {
-            // 如果 player 座標與 beans 座標相差小於 5，且使用者按下空白鍵執行吃的動作，且此時沒有選擇的科目
-            if(abs(player.x, beans.x) < 5 && abs(player.y, beans.y) < 5 && eat && subject_select == -1)
+            // 如果 player 座標與 beans 座標相差小於 10，且使用者按下空白鍵執行吃的動作，且此時沒有選擇的科目
+            if(abs(player.x, beans.x) < 10 && abs(player.y, beans.y) < 10 && eat && subject_select == -1)
             {
                 // 開啟 modal：你確定選擇_____(科目)?
                 subject_select = 1;
