@@ -109,7 +109,7 @@ const subjectSelect = {
         this.load.image('beans', 'image/ClassGroup/dna.png');
         
         
-//         this.load.image('grouptest', 'image/ClassGroup/profits.png');
+        this.load.image('grouptest', 'image/ClassGroup/profits.png');
     },
     create: function(){
 
