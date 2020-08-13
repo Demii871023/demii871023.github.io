@@ -123,8 +123,8 @@ const subjectSelect = {
         //this.player.setBounce(1); //設定彈跳值
         player.setScale(playerScale);
       
-//         beansGroup = this.add.group();
-//         beansGroup.enableBody = true;
+        beansGroup = this.add.group();
+        beansGroup.enableBody = true;
         
         
 //         grouptest = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
@@ -139,10 +139,16 @@ const subjectSelect = {
 //             console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
             
             
-//             beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[0]);
+            beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[0]);
             
         }
         
+        beansGroupChild = beansGroup.getChildren();
+        for(var i = 0 ; i < beansGroupChild.length ; i++)
+        {
+            console.log("嗨嗨嗨嗨");
+//             children[i].setScale(beansScale);
+        }
 //         beansGroup
         
         
@@ -171,24 +177,40 @@ const subjectSelect = {
         
         // player 上下左右移動
         if(keyboard.right.isDown)
+        {
             player.setVelocityX(160);
+        }
         else if(keyboard.left.isDown)
+        {
             player.setVelocityX(-160);
+        }
         else
+        {
             player.setVelocityX(0);
+        }
 
         if(keyboard.up.isDown)
+        {
             player.setVelocityY(-160);
+        }
         else if(keyboard.down.isDown)
+        {
             player.setVelocityY(160);
+        }
         else
+        {
             player.setVelocityY(0);
+        }
 
         // player 吃科目豆
         if(keyboard.space.isDown)
+        {
             eat = true;
+        }
         else
+        {
             eat = false;
+        }
         
         
 //         if(keyboard.right.isDown)
