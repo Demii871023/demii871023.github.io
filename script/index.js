@@ -58,33 +58,39 @@ const monsterScale = 0.7;
 const gameStart = {
     key: 'gameStart',
     preload: function(){
-        //this.load.image('bg4', '/img/bg4');
-
+      
+        // 預先載入需要資源
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
-
-
+        
         this.load.image('player', 'image/Character/afro-hair.png')
     },
     create: function(){
-        //this.bg4 = this.add.tileSprite(400, 225, cw, ch, 'bg4');
 
         this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
-
 
         this.player = this.add.sprite(150, 150, 'player');
         this.player.setScale(playerScale);
         
-
-        this.add.text(cw/2,ch/2, Subject[2], {color: "#123455", fontSize:'60px'});
+        //this.add.text(cw/2,ch/2, Subject[2], {color: "#123455", fontSize:'60px'});
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
-        if (keyboard.right.isDown) {
-        	console.log("右邊");
-            //this.player.setVelocityX(200);
-            this.player.setSize(144, 120, 0); //碰撞邊界
-            //this.player.anims.play('speed', true);
-            //this.player.flipX = false;
+        if(keyboard.right.isDown)
+        {
+            console.log("右邊");
+        }
+      
+        if(keyboard.left.isDown)
+        {
+            console.log("左邊");
+        }
+        if(keyboard.up.isDown)
+        {
+            console.log("上面");
+        }
+        if(keyboard.down.isDown)
+        {
+            console.log("下面");
         }
     }
 }
