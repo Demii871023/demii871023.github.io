@@ -139,7 +139,7 @@ const subjectSelect = {
             
             
             beansGroup.create(subject_xy[i].x, subject_xy[i].y, 'grouptest');
-            beansGroup.setScale(beansScale);
+            beansGroup[i].setScale(beansScale);
         }
         
         
