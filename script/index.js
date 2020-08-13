@@ -10,6 +10,7 @@ const monsterScale = 0.7;
 // 課目類別名稱及個數
 const subjectN = 8;
 const subject_name = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
+const subject_nameen = ['grouptest'];
 
 
 var eat = false;    // 偵測是否執行動作：吃
@@ -138,11 +139,11 @@ const subjectSelect = {
 //             console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
             
             
-            beansGroup.create(subject_xy[i].x, subject_xy[i].y, 'grouptest');
-            beansGroup[i].setScale(beansScale);
+            beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[0]);
+            
         }
         
-        
+//         beansGroup
         
         
         
