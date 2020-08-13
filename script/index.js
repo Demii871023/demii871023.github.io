@@ -126,6 +126,8 @@ const subjectSelect = {
         beansGroup.enableBody = true;
         
         
+//         grouptest = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
+        
         for(var i = 0 ; i < subjectN ; i++)
         {
             let tempX = getRandom(cw, 0-(cw / 2 ));
@@ -136,7 +138,7 @@ const subjectSelect = {
 //             console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
             
             
-            beansGroup.create(subject_xy[i].x, subject_xy[i].y, grouptest);
+            beansGroup.create(subject_xy[i].x, subject_xy[i].y, 'grouptest');
         }
         
         
