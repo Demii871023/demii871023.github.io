@@ -99,14 +99,17 @@ const subjectSelect = {
       
         if(keyboard.left.isDown)
         {
+            this.player.setVelocityX(-160);
             console.log("左邊");
         }
         if(keyboard.up.isDown)
         {
+            this.player.setVelocityY(20);
             console.log("上面");
         }
         if(keyboard.down.isDown)
         {
+            this.player.setVelocityY(-20);
             console.log("下面");
         }
     }
