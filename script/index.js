@@ -206,7 +206,7 @@ const subjectSelect = {
         // player 吃科目豆
         if(keyboard.space.isDown)
         {
-            cosole.log("空白鍵");
+            console.log("空白鍵");
             eat = true;
         }
         else
