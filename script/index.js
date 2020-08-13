@@ -149,6 +149,7 @@ const subjectSelect = {
             if(abs(player.x, beans.x) < 5 && abs(player.y, beans.y) < 5 && eat && subject_select == -1)
             {
                 // 開啟 modal：你確定選擇_____(科目)?
+                subject_select = 1;
                 modalOpen();
 //                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
 //                 beans.disableBody(true, true);
