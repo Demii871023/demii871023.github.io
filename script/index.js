@@ -40,6 +40,13 @@ function modalOpen()
     $("#subject_name").text(subject_name[1]);
 }
 
+function modalClose()
+{
+    console.log("Don't eat);
+    $("#cancel").click();
+    subject_select = -1;
+}
+
 
 
 
@@ -201,6 +208,15 @@ const subjectSelect = {
         else
         {
             eat = false;
+        }
+        if(keyboard.shift.isDown)
+        {
+            if(subject_select != -1)
+            {
+                modalClose();
+                console.log("shift);
+            }
+               
         }
         
         
