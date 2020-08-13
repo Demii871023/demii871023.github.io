@@ -214,7 +214,7 @@ const subjectSelect = {
             if(subject_select != -1)
             {
                 modalClose();
-                console.log("shift);
+                console.log("shift");
             }
                
         }
