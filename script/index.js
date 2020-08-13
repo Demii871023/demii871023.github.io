@@ -130,13 +130,13 @@ const subjectSelect = {
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
+        
+        
         if(keyboard.right.isDown)
         {
             player.setVelocityX(160);
             console.log("右邊");
         }
-        
-      
         else if(keyboard.left.isDown)
         {
             player.setVelocityX(-160);
@@ -147,6 +147,7 @@ const subjectSelect = {
             player.setVelocityX(0);
             console.log("暫停");
         }
+        
         
         if(keyboard.up.isDown)
         {
