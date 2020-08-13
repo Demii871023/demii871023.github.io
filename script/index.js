@@ -134,7 +134,7 @@ const subjectSelect = {
         function collectStar (player, beans) {
 //             console.log(player.x);
 //             console.log(beans.x);
-            if(abs(player.x, beans.x) > 5)
+            if(abs(player.x, beans.x) < 5)
             {
                 console.log(abs(player.x - beans.x));
                 beans.disableBody(true, true);
