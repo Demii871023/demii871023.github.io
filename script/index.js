@@ -90,7 +90,7 @@ const subjectSelect = {
         let keyboard = this.input.keyboard.createCursorKeys();
         if(keyboard.right.isDown)
         {
-            player.setVelocityX(160);
+            this.player.setVelocityX(160);
             console.log("右邊");
         }
       
