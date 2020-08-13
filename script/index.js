@@ -106,6 +106,9 @@ const subjectSelect = {
         
         this.load.image('player', 'image/Character/afro-hair.png');
         this.load.image('beans', 'image/ClassGroup/dna.png');
+        
+        
+        this.load.image('grouptest', 'image/ClassGroup/profits.png');
     },
     create: function(){
 
@@ -119,7 +122,10 @@ const subjectSelect = {
         //this.player.setBounce(1); //設定彈跳值
         player.setScale(playerScale);
       
-      
+        beansGroup = this.add.group();
+        beansGroup.enableBody = true;
+        
+        
         for(var i = 0 ; i < subjectN ; i++)
         {
             let tempX = getRandom(cw, 0-(cw / 2 ));
@@ -128,7 +134,14 @@ const subjectSelect = {
             subject_xy[i].x = tempX;
             subject_xy[i].y = tempY;
 //             console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
+            
+            
+            beansGroup.create(subject_xy[i].x, subject_xy[i].y, grouptest);
         }
+        
+        
+        
+        
         
         beans = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
         beans.setCollideWorldBounds(true);
