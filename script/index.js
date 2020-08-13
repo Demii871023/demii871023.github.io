@@ -27,7 +27,6 @@ const getRandom = (range, start) =>{
 
 // 取絕對值
 const abs = (num1, num2) =>{
-    console.log(num1 - num2);
     if(num1 - num2 > 0)
         return num1 - num2;
     else
@@ -79,7 +78,7 @@ window.addEventListener('keypress', function(e) {
   if (keyID == 'KeyQ')
   {
 //       console.log("Enter");
-//       // $("#tt").click();
+      $("#tt").click();
 //       //$('#myModal').modal('show');
 //       $("#myModal").modal();
 //       console.log("Hello"); //$('#exampleModal').modal('show');
@@ -160,7 +159,7 @@ const subjectSelect = {
         for(var i = 0 ; i < beansGroupChild.length ; i++)
         {
             beansGroupChild[i].setScale(beansScale);
-            console.log("嗨嗨嗨嗨");
+            
 //             children[i].setScale(beansScale);
         }
 //         beansGroup
