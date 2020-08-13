@@ -42,7 +42,7 @@ function modalOpen()
 
 function modalClose()
 {
-    console.log("Don't eat);
+    console.log("Don't eat");
     $("#cancel").click();
     subject_select = -1;
 }
