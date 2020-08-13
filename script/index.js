@@ -127,9 +127,7 @@ const subjectSelect = {
           
             subject_xy[i].x = tempX;
             subject_xy[i].y = tempY;
-            console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
-            
-            
+//             console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
         }
         
         beans = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
@@ -138,13 +136,12 @@ const subjectSelect = {
         
         this.physics.add.overlap(player, beans, collectStar, null, this);
         
-        function collectStar (player, beans) {
-//             console.log(player.x);
-//             console.log(beans.x);
+        function collectStar (player, beans)
+        {
+            // 如果 player 座標與 beans 座標相差小於 5，且使用者按下空白鍵執行吃的動作，且此時沒有選擇的科目
             if(abs(player.x, beans.x) < 5 && abs(player.y, beans.y) < 5 && eat && subject_select == -1)
             {
-                
-                console.log(abs(player.x - beans.x));
+                // 該科目豆消失
                 beans.disableBody(true, true);
             }
         }
@@ -152,52 +149,73 @@ const subjectSelect = {
     },
     update: function(){
         
-        //console.log(player.x);
-        
+        // 偵測按鍵事件
         let keyboard = this.input.keyboard.createCursorKeys();
         
-        
+        // player 上下左右移動
         if(keyboard.right.isDown)
-        {
             player.setVelocityX(160);
-            console.log("右邊");
-        }
         else if(keyboard.left.isDown)
-        {
             player.setVelocityX(-160);
-            console.log("左邊");
-        }
         else
-        {
             player.setVelocityX(0);
-            //console.log("暫停");
-        }
-        
-        
+
         if(keyboard.up.isDown)
-        {
             player.setVelocityY(-160);
-            console.log("上面");
-        }
         else if(keyboard.down.isDown)
-        {
             player.setVelocityY(160);
-            console.log("下面");
-        }
         else
-        {
             player.setVelocityY(0);
-            //console.log("暫停");
-        }
+
+        // player 吃科目豆
         if(keyboard.space.isDown)
-        {
             eat = true;
-            console.log("空白鍵");
-        }
         else
-        {
             eat = false;
-        }
+        
+        
+//         if(keyboard.right.isDown)
+//         {
+//             player.setVelocityX(160);
+
+//         }
+//         else if(keyboard.left.isDown)
+//         {
+//             player.setVelocityX(-160);
+            
+//         }
+//         else
+//         {
+//             player.setVelocityX(0);
+            
+//         }
+        
+        
+//         if(keyboard.up.isDown)
+//         {
+//             player.setVelocityY(-160);
+//         }
+//         else if(keyboard.down.isDown)
+//         {
+//             player.setVelocityY(160);
+            
+//         }
+//         else
+//         {
+//             player.setVelocityY(0);
+            
+//         }
+//         if(keyboard.space.isDown)
+//         {
+//             eat = true;
+            
+//         }
+//         else
+//         {
+//             eat = false;
+//         }
+        
+
 //         if(keyboard.esc.isDown)
 //         {
 //             this.player.setVelocityX(0);
