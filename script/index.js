@@ -47,16 +47,12 @@ function modalOpen()
 window.addEventListener('keypress', function(e) {
     var keyID = e.code;
 
-    if (keyID === 'KeyW')
-    if (keyID === 'KeyD')
-    if (keyID === 'KeyS')
-    if (keyID === 'KeyA')
-    if (keyID == 'Enter')
+ 
     
     // 按 Q 即丟棄已選擇科目
     if (keyID == 'KeyQ')
     {
-
+        console.log("Q");
         $("#btn_modal").click();
 
         $("#subject_name").text(subject_name[1]);
