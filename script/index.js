@@ -7,10 +7,13 @@ const beansScale = 0.2;
 const scale = 0.6;
 const monsterScale = 0.7;
 
-var subjectN = 8;
+// 課目類別名稱及個數
+const subjectN = 8;
+const subject_name = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
 
-// 課目類別名稱及生成座標
-var subject_name = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
+
+bool eat = false;
+var subject_select = -1;
 var subject_xy = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 
 // 取得亂數函式
@@ -134,8 +137,9 @@ const subjectSelect = {
         function collectStar (player, beans) {
 //             console.log(player.x);
 //             console.log(beans.x);
-            if(abs(player.x, beans.x) < 5 && abs(player.y, beans.y) < 5)
+            if(abs(player.x, beans.x) < 5 && abs(player.y, beans.y) < 5 && eat && subject_select == -1)
             {
+                
                 console.log(abs(player.x - beans.x));
                 beans.disableBody(true, true);
             }
@@ -183,7 +187,12 @@ const subjectSelect = {
         }
         if(keyboard.space.isDown)
         {
+            eat = true;
             console.log("空白鍵");
+        }
+        else
+        {
+            eat = false;
         }
 //         if(keyboard.esc.isDown)
 //         {
