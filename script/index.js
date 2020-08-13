@@ -106,12 +106,12 @@ const subjectSelect = {
         }
         if(keyboard.up.isDown)
         {
-            this.player.setVelocityY(20);
+            this.player.setVelocityY(-160);
             console.log("上面");
         }
         if(keyboard.down.isDown)
         {
-            this.player.setVelocityY(-20);
+            this.player.setVelocityY(160);
             console.log("下面");
         }
     }
