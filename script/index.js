@@ -114,12 +114,8 @@ const subjectSelect = {
         }
         
         this.beans = this.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
-            
         
-        
-      
-      
-      
+ 
         
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
     },
@@ -140,6 +136,11 @@ const subjectSelect = {
         {
             this.player.setVelocityY(-160);
             console.log("上面");
+        }
+        if(keyboard.down.isDown)
+        {
+            this.player.setVelocityY(0);
+            console.log("下面");
         }
 //         if(keyboard.esc.isDown)
 //         {
