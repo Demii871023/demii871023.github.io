@@ -18,6 +18,13 @@ const getRandom = (range, start) =>{
     return Math.floor(Math.random() * (range - start + 1)) + start;
 };
 
+const abs = (num1, num2) =>{
+    if(num1 - num2 > 0)
+        return num1 - num2;
+    else
+        return (num1 - num2) * -1;
+};
+
 
 
 
@@ -126,9 +133,9 @@ const subjectSelect = {
         function collectStar (player, beans) {
             console.log(player.x);
             console.log(beans.x);
-            if(false)
+            if(abs(player.x - beans.x))
             {
-                
+                console.log(abs(player.x - beans.x));
                 beans.disableBody(true, true);
             }
         }
