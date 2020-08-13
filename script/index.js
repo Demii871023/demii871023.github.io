@@ -19,6 +19,7 @@ const getRandom = (range, start) =>{
 };
 
 const abs = (num1, num2) =>{
+    console.log(num1 - num2);
     if(num1 - num2 > 0)
         return num1 - num2;
     else
@@ -133,7 +134,7 @@ const subjectSelect = {
         function collectStar (player, beans) {
 //             console.log(player.x);
 //             console.log(beans.x);
-            if(abs(player.x - beans.x) > 5)
+            if(abs(player.x, beans.x) > 5)
             {
                 console.log(abs(player.x - beans.x));
                 beans.disableBody(true, true);
