@@ -130,26 +130,38 @@ const subjectSelect = {
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
-        if(!keyboard.right.onDown)
+        if(keyboard.right.isDown)
         {
             player.setVelocityX(160);
             console.log("右邊");
         }
+        
       
-        if(!keyboard.left.onDown)
+        else if(keyboard.left.isDown)
         {
             player.setVelocityX(-160);
             console.log("左邊");
         }
-        if(!keyboard.up.onDown)
+        else
+        {
+            player.setVelocityX(0);
+            console.log("暫停");
+        }
+        
+        if(keyboard.up.isDown)
         {
             player.setVelocityY(-160);
             console.log("上面");
         }
-        if(!keyboard.down.onDown)
+        else if(keyboard.down.isDown)
         {
             player.setVelocityY(160);
             console.log("下面");
+        }
+        else
+        {
+            player.setVelocityY(0);
+            console.log("暫停");
         }
 //         if(keyboard.esc.isDown)
 //         {
