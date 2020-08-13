@@ -117,7 +117,8 @@ const subjectSelect = {
             
         }
         
-        this.beans = this.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
+        this.beans = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
+        this.beans.setCollideWorldBounds(true);
         this.beans.setScale(beansScale);
         
         this.physics.add.overlap(player, beans, collectStar, null, this);
