@@ -181,6 +181,10 @@ const subjectSelect = {
             player.setVelocityY(0);
             //console.log("暫停");
         }
+        if(keyboard.space.isDown)
+        {
+            console.log("空白鍵");
+        }
 //         if(keyboard.esc.isDown)
 //         {
 //             this.player.setVelocityX(0);
