@@ -35,9 +35,8 @@ const abs = (num1, num2) =>{
 
 function modalOpen()
 {
-    $("#tt").click();
     console.log("eat");
-
+    $("#btn_modal").click();
     $("#subject_name").text(subject_name[1]);
 }
 
@@ -46,17 +45,15 @@ function modalOpen()
 
 window.addEventListener('keypress', function(e) {
     var keyID = e.code;
-
- 
     
     // 按 Q 即丟棄已選擇科目
     if (keyID == 'KeyQ')
     {
         console.log("Q");
-        $("#btn_modal").click();
-
+//         $("#btn_modal").click();
+        $('#modal_subjectSelect').modal('show');
         $("#subject_name").text(subject_name[1]);
-//         $('#ttt').modal('show');
+        
   }
 }, false);
 
