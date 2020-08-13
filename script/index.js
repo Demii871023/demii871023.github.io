@@ -1,5 +1,11 @@
-//select_subject.js
-
+// const.js
+//const cw = 800;
+//const ch = 450;
+const cw = $(window).width();
+const ch = $(window).height();
+const playerScale = 0.3;
+const scale = 0.6;
+const monsterScale = 0.7;
 var Subject = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
 
 
@@ -43,20 +49,27 @@ window.addEventListener('keypress', function(e) {
 
 
 
+// playerSelect.js 選取角色
+
+const playerSelect = {
+    key: 'playerSelect',
+    preload: function(){
+        
+    },
+    create: function(){
+    
+    },
+    update: function(){
+      
+      
+    }
+}
 
 
-// const.js
-//const cw = 800;
-//const ch = 450;
-const cw = $(window).width();
-const ch = $(window).height();
-const playerScale = 0.3;
-const scale = 0.6;
-const monsterScale = 0.7;
 
-// gameStart.js
-const gameStart = {
-    key: 'gameStart',
+// subjectSelect.js
+const subjectSelect = {
+    key: 'subjectSelect',
     preload: function(){
       
         // 預先載入需要資源
@@ -77,6 +90,7 @@ const gameStart = {
         let keyboard = this.input.keyboard.createCursorKeys();
         if(keyboard.right.isDown)
         {
+            player.setVelocityX(160);
             console.log("右邊");
         }
       
@@ -107,8 +121,17 @@ const config = {
     width: cw,
     height: ch,
     parent: 'app',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: {
+                y: 850
+            },
+            // debug: true,
+        },
+    },
     scene: [
-        gameStart,
+        subjectSelect,
     ]
 }
 
