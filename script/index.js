@@ -124,10 +124,11 @@ const subjectSelect = {
         this.physics.add.overlap(player, beans, collectStar, null, this);
         
         function collectStar (player, beans) {
+            console.log(player.x);
+            console.log(beans.x);
             if(false)
             {
-                console.log(player.x);
-                console.log(beans.x);
+                
                 beans.disableBody(true, true);
             }
         }
