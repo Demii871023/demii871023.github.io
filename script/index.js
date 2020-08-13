@@ -191,9 +191,11 @@ const subjectSelect = {
         // player 吃科目豆
         if(keyboard.space.isDown)
         {
-            console.log("空白鍵");
-//             modalOpen();
-            eat = true;
+            if(!eat)
+            {
+                console.log("空白鍵");
+                eat = true;
+            }
         }
         else
         {
