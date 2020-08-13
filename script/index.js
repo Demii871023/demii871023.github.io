@@ -12,8 +12,11 @@ const subjectN = 8;
 const subject_name = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
 
 
-bool eat = false;
+var eat = false;    // 偵測是否執行動作：吃
+
+// 使用者選擇科目
 var subject_select = -1;
+// 科目亂數座標
 var subject_xy = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 
 // 取得亂數函式
@@ -21,6 +24,7 @@ const getRandom = (range, start) =>{
     return Math.floor(Math.random() * (range - start + 1)) + start;
 };
 
+// 取絕對值
 const abs = (num1, num2) =>{
     console.log(num1 - num2);
     if(num1 - num2 > 0)
