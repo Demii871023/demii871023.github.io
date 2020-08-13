@@ -82,9 +82,12 @@ const subjectSelect = {
     preload: function(){
       
         // 預先載入需要資源
+        
+        
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
         
-        this.load.image('player', 'image/Character/afro-hair.png')
+        this.load.image('player', 'image/Character/afro-hair.png');
+        this.load.image('beans', 'image/ClassGroup/dna.png');
     },
     create: function(){
 
@@ -103,8 +106,17 @@ const subjectSelect = {
             let tempX = getRandom(cw, 0-(cw / 2 ));
             let tempY = getRandom(ch, 0-(ch / 2));
           
-            console.log(tempX, tempY);
+            subject_xy[i].x = tempX;
+            subject_xy[i].y = tempY;
+            console.log(subject_xy[i].x, subject_xy[i].y, tempX, tempY);
+            
+            
         }
+        
+        this.beans = this.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
+            
+        
+        
       
       
       
