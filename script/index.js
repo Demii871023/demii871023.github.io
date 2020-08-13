@@ -213,6 +213,7 @@ const subjectSelect = {
         if(keyboard.space.isDown)
         {
             console.log("空白鍵");
+            modalOpen();
             eat = true;
         }
         else
