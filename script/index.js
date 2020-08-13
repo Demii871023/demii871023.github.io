@@ -126,6 +126,8 @@ const subjectSelect = {
         function collectStar (player, beans) {
             if(false)
             {
+                console.log(player.x);
+                console.log(beans.x);
                 beans.disableBody(true, true);
             }
         }
@@ -133,7 +135,7 @@ const subjectSelect = {
     },
     update: function(){
         
-        console.log(player.x);
+        //console.log(player.x);
         
         let keyboard = this.input.keyboard.createCursorKeys();
         
@@ -151,7 +153,7 @@ const subjectSelect = {
         else
         {
             player.setVelocityX(0);
-            console.log("暫停");
+            //console.log("暫停");
         }
         
         
@@ -168,7 +170,7 @@ const subjectSelect = {
         else
         {
             player.setVelocityY(0);
-            console.log("暫停");
+            //console.log("暫停");
         }
 //         if(keyboard.esc.isDown)
 //         {
