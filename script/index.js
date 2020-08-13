@@ -124,7 +124,10 @@ const subjectSelect = {
         this.physics.add.overlap(player, beans, collectStar, null, this);
         
         function collectStar (player, beans) {
-            beans.disableBody(true, true);
+            if(false)
+            {
+                beans.disableBody(true, true);
+            }
         }
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
     },
