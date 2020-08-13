@@ -35,13 +35,9 @@ const abs = (num1, num2) =>{
 
 function modalOpen()
 {
-    $('#ttt').modal('show');
-//     $("#tt").click();
+    $("#tt").click();
     console.log("eat");
-//     $(window).on('shown.bs.modal', function() { 
-//         $('#exampleModal').modal('show');
-//         //alert('shown');
-//     });
+
     $("#subject_name").text(subject_name[1]);
 }
 
@@ -49,41 +45,22 @@ function modalOpen()
 
 
 window.addEventListener('keypress', function(e) {
-  var keyID = e.code;
+    var keyID = e.code;
 
-  if (keyID === 'KeyW') {
-   
+    if (keyID === 'KeyW')
+    if (keyID === 'KeyD')
+    if (keyID === 'KeyS')
+    if (keyID === 'KeyA')
+    if (keyID == 'Enter')
+    
+    // 按 Q 即丟棄已選擇科目
+    if (keyID == 'KeyQ')
+    {
 
-  }
-  if (keyID === 'KeyD') {
-    
-  }
-  if (keyID === 'KeyS') {
-    
-  }
-  if (keyID === 'KeyA') {
-    
-  }
-  
-  
-  if (keyID == 'Enter'){
-      // console.log("Enter");
-      // $("#tt").click();
-      // //$('#myModal').modal('show');
-      // console.log("Hello"); //$('#exampleModal').modal('show');
-      // $("#subject_name").text(subject_name[1]);
-  }
-    
-  // 按 Q 即丟棄已選擇科目
-  if (keyID == 'KeyQ')
-  {
-//       console.log("Enter");
-      $("#tt").click();
-//       //$('#myModal').modal('show');
-//       $("#myModal").modal();
-//       console.log("Hello"); //$('#exampleModal').modal('show');
-//       $("#subject_name").text(subject_name[1]);
-      $('#ttt').modal('show');
+        $("#btn_modal").click();
+
+        $("#subject_name").text(subject_name[1]);
+//         $('#ttt').modal('show');
   }
 }, false);
 
