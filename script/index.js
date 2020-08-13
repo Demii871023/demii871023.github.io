@@ -36,12 +36,13 @@ const abs = (num1, num2) =>{
 
 function modalOpen()
 {
+    $('#ttt').modal('show');
 //     $("#tt").click();
-//     console.log("Hello"); //$('#exampleModal').modal('show');
-    $(window).on('shown.bs.modal', function() { 
-        $('#exampleModal').modal('show');
-        //alert('shown');
-    });
+    console.log("eat");
+//     $(window).on('shown.bs.modal', function() { 
+//         $('#exampleModal').modal('show');
+//         //alert('shown');
+//     });
     $("#subject_name").text(subject_name[1]);
 }
 
@@ -77,11 +78,13 @@ window.addEventListener('keypress', function(e) {
   // 按 Q 即丟棄已選擇科目
   if (keyID == 'KeyQ')
   {
-        console.log("Enter");
-      $("#tt").click();
-      //$('#myModal').modal('show');
-      console.log("Hello"); //$('#exampleModal').modal('show');
-      $("#subject_name").text(subject_name[1]);
+//       console.log("Enter");
+//       // $("#tt").click();
+//       //$('#myModal').modal('show');
+//       $("#myModal").modal();
+//       console.log("Hello"); //$('#exampleModal').modal('show');
+//       $("#subject_name").text(subject_name[1]);
+      $('#ttt').modal('show');
   }
 }, false);
 
