@@ -3,6 +3,7 @@
 const cw = $(window).width();
 const ch = $(window).height();
 const playerScale = 0.3;
+const beansScale = 0.2;
 const scale = 0.6;
 const monsterScale = 0.7;
 
@@ -16,6 +17,8 @@ var subject_xy = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0,
 const getRandom = (range, start) =>{
     return Math.floor(Math.random() * (range - start + 1)) + start;
 };
+
+
 
 
 
@@ -115,8 +118,13 @@ const subjectSelect = {
         }
         
         this.beans = this.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
+        this.beans.setScale(beansScale);
         
+        this.physics.add.overlap(player, beans, collectStar, null, this);
         
+        function collectStar (player, star) {
+            beans.disableBody(true, true);
+        }
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
     },
     update: function(){
