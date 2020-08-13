@@ -99,7 +99,7 @@ const subjectSelect = {
         // 角色落地的時候會彈跳
         //this.player.setCollideWorldBounds(true); //角色邊界限制
         //this.player.setBounce(1); //設定彈跳值
-        //this.player.setScale(playerScale);
+        this.player.setScale(playerScale);
       
       
         for(var i = 0 ; i < subjectN ; i++)
