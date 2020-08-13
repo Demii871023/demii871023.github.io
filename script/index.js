@@ -94,11 +94,12 @@ const subjectSelect = {
         
         this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
 
-        this.player = this.physics.add.sprite(150, 150, 'player');
+        this.player = this.add.sprite(150, 150, 'player');
+        //this.player = this.physics.add.sprite(150, 150, 'player');
         // 角色落地的時候會彈跳
-        this.player.setCollideWorldBounds(true); //角色邊界限制
+        //this.player.setCollideWorldBounds(true); //角色邊界限制
         //this.player.setBounce(1); //設定彈跳值
-        this.player.setScale(playerScale);
+        //this.player.setScale(playerScale);
       
       
         for(var i = 0 ; i < subjectN ; i++)
@@ -115,7 +116,6 @@ const subjectSelect = {
         
         this.beans = this.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
         
- 
         
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
     },
@@ -139,7 +139,7 @@ const subjectSelect = {
         }
         if(keyboard.down.isDown)
         {
-            this.player.setVelocityY(0);
+            this.player.setVelocityY(160);
             console.log("下面");
         }
 //         if(keyboard.esc.isDown)
