@@ -109,9 +109,10 @@ const subjectSelect = {
             this.player.setVelocityY(-160);
             console.log("上面");
         }
-        if(keyboard.down.isDown)
+        if(keyboard.spacebar.isDown)
         {
-            this.player.setVelocityY(160);
+            this.player.setVelocityX(0);
+            this.player.setVelocityY(0);
             console.log("下面");
         }
     }
