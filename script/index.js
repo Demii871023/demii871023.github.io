@@ -100,8 +100,8 @@ const subjectSelect = {
       
         for(var i = 0 ; i < subjectN ; i++)
         {
-            let tempX = getRandom($(window).width, 0-($(window).width / 2 ));
-            let tempY = getRandom($(window).height, 0-($(window).height / 2));
+            let tempX = getRandom(cw, 0-(cw / 2 ));
+            let tempY = getRandom(ch, 0-(ch / 2));
           
             console.log(tempX, tempY);
         }
