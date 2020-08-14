@@ -70,7 +70,6 @@ window.addEventListener('keypress', function(e) {
 
 
 // playerSelect.js 選取角色
-
 const playerSelect = {
     key: 'playerSelect',
     preload: function(){
@@ -82,6 +81,24 @@ const playerSelect = {
     update: function(){
       
       
+    }
+}
+
+// gameSelect.js 選擇課業學科或課外活動
+const gameSelect = {
+    key: 'gameSelect',
+    preload: function(){
+        this.load.image('bg1', 'image/Background/jungle-clipart-background-6.jpg');
+        this.load.image('subject', 'image/Background/zoo.png');
+        this.load.image('activity', 'image/Background/sloth.png');
+    },
+    create: function(){
+        this.bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
+        this.subject = this.add.sprite(cw/2 - 70, ch/2, 'subject');
+        this.activity = this.add.sprite(cw/2 + 70, ch/2, 'activity');
+    },
+    update: function(){
+    
     }
 }
 
@@ -296,6 +313,7 @@ const config = {
         },
     },
     scene: [
+        gameSelect,
         gameSubject,
     ]
 }
