@@ -2,8 +2,10 @@
 
 const cw = $(window).width();
 const ch = $(window).height();
+const bg1Scale = 4;
 const playerScale = 0.3;
 const beansScale = 0.2;
+const classScale = 0.5;
 const scale = 0.6;
 const monsterScale = 0.7;
 
@@ -93,9 +95,13 @@ const gameSelect = {
         this.load.image('activity', 'image/Background/sloth.png');
     },
     create: function(){
-        this.bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
-        this.subject = this.add.sprite(cw/2 - 70, ch/2, 'subject');
-        this.activity = this.add.sprite(cw/2 + 70, ch/2, 'activity');
+        bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
+        bg1.setScale(bg1Scale);
+        subject = this.add.sprite(cw/2 - 70, ch/2, 'subject');
+        subject.setScale(classScale);
+        activity = this.add.sprite(cw/2 + 70, ch/2, 'activity');
+        activity.setScale(classScale);
+            
     },
     update: function(){
     
