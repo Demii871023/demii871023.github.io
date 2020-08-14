@@ -87,9 +87,9 @@ const playerSelect = {
 
 
 
-// subjectSelect.js
-const subjectSelect = {
-    key: 'subjectSelect',
+// gameSubject.js
+const gameSubject = {
+    key: 'gameSubject',
     preload: function(){
       
         // 預先載入需要資源
@@ -296,7 +296,7 @@ const config = {
         },
     },
     scene: [
-        subjectSelect,
+        gameSubject,
     ]
 }
 
