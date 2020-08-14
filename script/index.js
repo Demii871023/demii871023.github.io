@@ -97,9 +97,9 @@ const gameSelect = {
     create: function(){
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(bg1Scale);
-        subject = this.add.sprite(cw/2 - 70, ch/2, 'subject');
+        subject = this.add.sprite(cw/2 - cw/4, ch/2, 'subject');
         subject.setScale(classScale);
-        activity = this.add.sprite(cw/2 + 70, ch/2, 'activity');
+        activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
         activity.setScale(classScale);
             
     },
