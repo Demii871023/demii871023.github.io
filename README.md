@@ -20,15 +20,32 @@
 
 
 ## 目標
+### gameInit
+> 遊戲開始介面
+
+### playerSelect
+> 角色選擇與能力值設定
+
 ### gameSelect
+> 選擇課業學科或課外活動
+
 * 架設選擇要 課業學科(目前 gamePlay 場景) 或 課外活動 (計畫名為 gameActivity)
 * 開啟兩張選擇的圖片，並開啟互動事件後點選並跳轉頁面
 ```diff
 - (後期) 改變滑鼠指標樣式、hovor 時增加特效
 ```
-### gamePlay (待改名：gameSubject)
+### gameSubject
+> 課業學科
+
 * 基本吃科目豆
 * Bonus 門設置
 * 觸發突發事件
   - 先設立一個全域變數紀錄選擇 課業學科、課外活動分別的次數，目前因為還不完整，該變數先寫死，做為測試。
   - 呈現方式可能是 Bootstrap modal(?)
+  
+### gameActivity
+> 課外活動
+
+
+### gameBouns
+> 獎勵
