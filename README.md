@@ -54,8 +54,20 @@
 ## Resource
 * [Button hovor](https://www.html5gamedevs.com/topic/41697-handle-button-hover-in-phaser-3/)
 * [Button hover](https://snowbillr.github.io/blog//2018-07-03-buttons-in-phaser-3/)
+
 * [Transparent Background](https://www.html5gamedevs.com/topic/38540-transparent-background/)
+* [Sprite Alpha](https://phaser.io/examples/v3/view/game-objects/sprites/sprite-alpha)
+
 * [Note for Phaser 3 - Group](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/group/)
 * [Note for Phaser 3 - Timer](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/)
 * [Custom Bounds](https://phaser.io/examples/v3/view/physics/arcade/custom-bounds)
 * [Note for Phaser 3 - Chart](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/ui-chart/)
+* [Mask](https://phaser.io/examples/v2/sprites/mask)
+* [Note for Phaser 3 - Graphics](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/graphics/)
+* [Note for Phaser 3 - Chart](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/ui-chart/)
+* [NOte for Phaser 3 - DOM element](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/domelement/)
+
+* [Custom Bounds](https://phaser.io/examples/v3/view/physics/arcade/custom-bounds)
+
+###
+* [rexUI: Chart - radar](https://codepen.io/rexrainbow/pen/qwVBNy?editors=0010)
