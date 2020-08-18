@@ -14,6 +14,8 @@ const monsterScale = 0.7;
 const subjectN = 8;
 const subject_name = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
 const subject_nameen = ['Langugage', 'Science', 'Integrative', 'Math', 'Technology', 'Health', 'Social', 'Art'];
+const player_name = ['player1', 'player2', 'player3', 'player4', 'player5', 'player6'];
+const player_namezw = ['四神湯', '卍煞氣卍', '乂都都乂', '跑跑當家', '葡萄醣吳', '乂龘燚龘燚乂'];
 
 var eat = false;    // 偵測是否執行動作：吃
 var spaceCounter = 0;
@@ -89,9 +91,11 @@ const mainpScale = 0.5;
 const otherpScle = 0.3;
 
 // 縮小放大
-var shrinkScale = mainpScale, enlargeScale = otherpScle;
+var shrinkScale = otherpScle, enlargeScale = mainpScale;
 
 var now_select = 0;
+var player_select = -1;
+var player_confirm = false;
 
 const playerArr = new Array(6);
 // 判斷按鍵是否按下，並判斷角色是否目前處於移動狀態
@@ -121,128 +125,137 @@ const playerSelect = {
 
 
 
-        player1 = this.physics.add.sprite(cw/2, ch/2 - ch/4, 'player1');
+        player1 = this.physics.add.sprite(cw/2, ch/2, 'player1');
         player1.setScale(mainpScale);
         player1.alpha = 1;
         playerArr[0] = player1;
 
-        player2 = this.physics.add.sprite(cw/2 + cw/4, ch/2 - ch/4, 'player2');
+        player2 = this.physics.add.sprite(cw/2 + cw/4, ch/2, 'player2');
         player2.setScale(otherpScle);
         player2.alpha = 0.5;
         playerArr[1] = player2;
 
 
-        player3 = this.physics.add.sprite(cw/2 + 2 * cw/4, ch/2 - ch/4, 'player3');
+        player3 = this.physics.add.sprite(cw/2 + 2 * cw/4, ch/2, 'player3');
         player3.setScale(otherpScle);
         player3.alpha = 0.5;
         playerArr[2] = player3;
 
-        player4 = this.physics.add.sprite(cw/2 + 3 * cw/4, ch/2 - ch/4, 'player4');
+        player4 = this.physics.add.sprite(cw/2 + 3 * cw/4, ch/2, 'player4');
         player4.setScale(otherpScle);
         player4.alpha = 0.5;
         playerArr[3] = player4;
 
-        player5 = this.physics.add.sprite(cw/2 + 4 * cw/4, ch/2 - ch/4, 'player5');
+        player5 = this.physics.add.sprite(cw/2 + 4 * cw/4, ch/2, 'player5');
         player5.setScale(otherpScle);
         player5.alpha = 0.5;
         playerArr[4] = player5;
 
-        player6 = this.physics.add.sprite(cw/2 + 5 * cw/4, ch/2 - ch/4, 'player6');
+        player6 = this.physics.add.sprite(cw/2 + 5 * cw/4, ch/2, 'player6');
         player6.setScale(otherpScle);
         player6.alpha = 0.5;
         playerArr[5] = player6;
 
-        this.add.graphics().lineStyle(5, 0x00ffff, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/20,  player1.width * mainpScale, player1.height * mainpScale));
+        graphics = this.add.graphics()
+        graphics.lineStyle(5, 0x00ffff, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
 
 
         var chart = this.rexUI.add.chart(cw/2, ch/2 + ch/4, 200, 200, config);
+
+        playerName = this.add.text(cw/2-cw/11, ch/2 + 150, "ID：" + player_namezw[0], {color: "#FFFFFF", fontSize:"30px"});
+        this.add.text(cw - 200, ch - 50, '請按下空白鍵確定角色', {color: "#FFFFFF", fontSize:'14px'});
+
 
 
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
     
-        if(keyboard.left.isDown)
+        if(!player_confirm)
         {
-            if(!keydwon)
+            if(keyboard.left.isDown)
             {
-                if(now_select == 0)
-                    console.log("無法再往左邊");
-                else
+                if(!keydwon)
                 {
-                    console.log("左邊");
-                    shrinkScale = mainpScale, enlargeScale = otherpScle;
-                    keydwon = true;
-                    now_select = now_select - 1;
-                    for(var i = 0 ; i < 6 ; i++)
+                    if(now_select == 0)
+                        console.log("無法再往左邊");
+                    else
                     {
-                        if(i == now_select)
-                            playerArr[i].alpha = 1;
-                        else
-                            playerArr[i].alpha = 0.5;
-                    }
-                    timer = this.time.addEvent({
-                        delay: 100,           
-                        callback: () => {
-                            shrinkScale = shrinkScale - 0.04;
-                            enlargeScale = enlargeScale + 0.04;
-                            for(var i = 0 ; i < 6 ; i++)
-                            {
-                                playerArr[i].x = playerArr[i].x + 70;
-                            }
-                            playerArr[now_select].setScale(enlargeScale);
-                            playerArr[now_select + 1].setScale(shrinkScale);
-                        },
-                        loop: false,
-                        repeat: 4
-                    });
+                        console.log("左邊");
+                        shrinkScale = mainpScale, enlargeScale = otherpScle;
+                        keydwon = true;
+                        now_select = now_select - 1;
+                        for(var i = 0 ; i < 6 ; i++)
+                        {
+                            if(i == now_select)
+                                playerArr[i].alpha = 1;
+                            else
+                                playerArr[i].alpha = 0.5;
+                        }
+                        playerName.setText("ID：" + player_namezw[now_select]);
+                        timer = this.time.addEvent({
+                            delay: 100,           
+                            callback: () => {
+                                shrinkScale = shrinkScale - 0.04;
+                                enlargeScale = enlargeScale + 0.04;
+                                for(var i = 0 ; i < 6 ; i++)
+                                {
+                                    playerArr[i].x = playerArr[i].x + 70;
+                                }
+                                playerArr[now_select].setScale(enlargeScale);
+                                playerArr[now_select + 1].setScale(shrinkScale);
+                            },
+                            loop: false,
+                            repeat: 4
+                        });
 
-                    // for(var i = 0 ; i < 6 ; i++)
-                    //     playerArr[i].setVelocityX(880);
+                        // for(var i = 0 ; i < 6 ; i++)
+                        //     playerArr[i].setVelocityX(880);
+                    }
                 }
             }
-        }
 
-        if(keyboard.right.isDown)
-        {
-            if(!keydwon)
+            if(keyboard.right.isDown)
             {
-                if(now_select == 5)
-                    console.log("無法再往右邊");
-                else
+                if(!keydwon)
                 {
-                    console.log("右邊");
-                    shrinkScale = mainpScale, enlargeScale = otherpScle;
-                    keydwon = true;
-                    now_select = now_select + 1;
-                    for(var i = 0 ; i < 6 ; i++)
+                    if(now_select == 5)
+                        console.log("無法再往右邊");
+                    else
                     {
-                        if(i == now_select)
-                            playerArr[i].alpha = 1;
-                        else
-                            playerArr[i].alpha = 0.5;
+                        console.log("右邊");
+                        shrinkScale = mainpScale, enlargeScale = otherpScle;
+                        keydwon = true;
+                        now_select = now_select + 1;
+                        for(var i = 0 ; i < 6 ; i++)
+                        {
+                            if(i == now_select)
+                                playerArr[i].alpha = 1;
+                            else
+                                playerArr[i].alpha = 0.5;
+                        }
+                        playerName.setText("ID：" + player_namezw[now_select]);
+                        timer = this.time.addEvent({
+                            delay: 100,           
+                            callback: () => {
+                                shrinkScale = shrinkScale - 0.04;
+                                enlargeScale = enlargeScale + 0.04;
+                                for(var i = 0 ; i < 6 ; i++)
+                                {
+                                    playerArr[i].x = playerArr[i].x - 70;
+                                }
+                                playerArr[now_select].setScale(enlargeScale);
+                                playerArr[now_select - 1].setScale(shrinkScale);
+                            },
+                            loop: false,
+                            repeat: 4
+                        });
                     }
-                    timer = this.time.addEvent({
-                        delay: 100,           
-                        callback: () => {
-                            shrinkScale = shrinkScale - 0.04;
-                            enlargeScale = enlargeScale + 0.04;
-                            for(var i = 0 ; i < 6 ; i++)
-                            {
-                                playerArr[i].x = playerArr[i].x - 70;
-                            }
-                            playerArr[now_select].setScale(enlargeScale);
-                            playerArr[now_select - 1].setScale(shrinkScale);
-                        },
-                        loop: false,
-                        repeat: 4
-                    });
-                    // for(var i = 0 ; i < 6 ; i++)
-                    //     playerArr[i].setVelocityX(-880);
                 }
             }
-        }
 
+  
+        }
         if(shrinkScale.toFixed(1) == otherpScle)
         {
             // console.log("相同");
@@ -253,8 +266,18 @@ const playerSelect = {
                 playerArr[i].setVelocityX(0);
             }
 
-            // console.log(playerArr[now_select].x);
-            // console.log(playerArr[now_select].y);
+            if(keyboard.space.isDown)
+            {
+                // 按下空白鍵的時候，若此時沒有選取角色，即確定角色
+                if(player_select == -1)
+                {
+                    player_select = now_select;
+                    graphics.lineStyle(5, 0x00ff00, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
+                    player_confirm = true;
+                    // document.getElementById('confirmBtn').style.display = 'block';
+                    // this.scene.start('gameSelect');
+                }
+            }
         }
     },
 }
@@ -338,7 +361,16 @@ const gameSubject = {
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
         
-        this.load.image('player', 'image/Character/afro-hair.png');
+        // 載入玩家圖片
+        this.load.image('player1', 'image/Character/player1');
+        this.load.image('player2', 'image/Character/player2');
+        this.load.image('player3', 'image/Character/player3');
+        this.load.image('player4', 'image/Character/player4');
+        this.load.image('player5', 'image/Character/player5');
+        this.load.image('player6', 'image/Character/player6');
+
+
+
         this.load.image('beans', 'image/ClassGroup/dna.png');
         
         // 8 個課業學科
@@ -364,7 +396,7 @@ const gameSubject = {
         
 
         //this.player = this.add.sprite(150, 150, 'player');
-        player = this.physics.add.sprite(150, 150, 'player');
+        player = this.physics.add.sprite(150, 150, player_name[player_select]);
         
         // 開啟角色邊界限制，並自訂矩形邊界（以矩形左上角頂點為主）
         player.setCollideWorldBounds(true);
@@ -412,9 +444,9 @@ const gameSubject = {
 
         
         
-        beans = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
-        beans.setCollideWorldBounds(true);
-        beans.setScale(beansScale);
+        // beans = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
+        // beans.setCollideWorldBounds(true);
+        // beans.setScale(beansScale);
         
         // this.physics.add.overlap(player, beans, collectStar, null, this);
         this.physics.add.overlap(player, beansGroupChild, collectStar, null, this);
