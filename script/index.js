@@ -514,7 +514,7 @@ const gameSubject = {
         function inBonuse(player, bonuse)
         {
             console.log("進入加分關卡");
-             this.scene.start('gameBouns');
+             this.scene.start('gameBonus');
         }
         
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
@@ -582,9 +582,36 @@ const gameSubject = {
 }
 
 
-// gameBouns.js
-const gameBouns = {
-    key: 'gameBouns',
+// gameBonus.js
+
+const percentN = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
+const bonus_name = ['lazyB', 'pressureB', 'socialB', 'strengthB'];
+
+var bonusStart = false;
+var bonusStop = false;
+
+var bonus_xy = [
+    // 惰性 lazyNum
+    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    // 壓力 pressureNum
+    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    // 體力 strengthNum
+    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    // 人際 socialNum
+    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, Velocity: 0}
+];
+
+
+const gameBonus = {
+    key: 'gameBonus',
     preload: function(){
         // 載入背景圖片
         this.load.image('gamebg2', 'image/Background/gamebg.jpg');
@@ -600,35 +627,130 @@ const gameBouns = {
         this.load.image('pressureB', 'image/Bonus/pressure.png');
         this.load.image('socialB', 'image/Bonus/social.png');
         this.load.image('strengthB', 'image/Bonus/strength.png');
+
+        document.getElementById('gmChatCard').style.display = 'none';
+        document.getElementById('bonusTimer').style.display = 'block';
+
+        // 遊戲開始的倒數計時
+        startInt = 3;
+
+        // bonus 時間共 10s，因為還有遊戲倒數 3 秒，因此為 13 秒，只是前 3 秒改變不顯示出來
+        timeInt = 13;
     },
     create: function(){
+
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg2');
         
         player = this.physics.add.sprite(cw/2, ch/2, player_name[player_select]);
         player.setScale(playerScale);
-        player.body.gravity.y = 200;
-        player.setCollideWorldBounds(true);        
-        player.setBounce(1); //設定彈跳值
         
         lazyB = this.physics.add.sprite(cw/2-20, ch/2, 'lazyB');
         lazyB.setScale(beansScale);
-        lazyB.body.gravity.y = 150;
-        lazyB.setVelocityX(20)
-        lazyB.setCollideWorldBounds(true);        
-        lazyB.setBounce(1); //設定彈跳值
         
         pressureB = this.physics.add.sprite(cw/2+20, ch/2, 'pressureB');
         pressureB.setScale(beansScale);
-        pressureB.body.gravity.y = 50;
-        pressureB.setVelocityX(-80)
-        pressureB.setCollideWorldBounds(true);        
-        pressureB.setBounce(1); //設定彈跳值
+
+
+        bonusGroup = this.physics.add.group();
+
+        for(var i = 0 ; i < 4 ; i++)
+        {
+            tempX = getRandom(cw, 1);
+            tempY = getRandom(ch, 1);
+            tempGravity = getRandom(1, 500);
+            tempVelocityX = getRandom(400, -200);
+
+            bonus_xy[i].x = tempX;
+            bonus_xy[i].y = tempY;
+            bonus_xy[i].gravity = tempGravity;
+            bonus_xy[i].VelocityX = tempVelocityX;
+            
+            
+            console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
+
+            // for(var j = 0 ; j < 3 ; j++)
+            // {
+            //     bonusGroup.create(bonus_xy[i*4+j].x, bonus_xy[i*4+j].y, bonus_name[i]); 
+
+            //     const config = {
+            //         key: bonus_name[i],
+            //         setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
+            //     }
+            //     beansGroup.create(config);
+            // }
+            
+            
+        }
+        // bonusGroupChild = bonusGroup.getChildren();
+        // for(var i = 0 ; i < beansGroupChild.length ; i++)
+        // {
+        //     bonusGroupChild[i].setScale(beansScale);           
+        // }
+
+
+        // 遊戲說明及倒數遮罩
+        mask = this.add.graphics()
+        mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+        startdecrText = this.add.text(cw/2-525, ch/2 - 50, '有 10 秒鐘的時間，請按左右鍵控制人物吃到加分豆，於完成指令後方可得分。', {color: "#FFFFFF", fontSize:'30px'});
         
+        // 倒數 3 秒
+        startTimerText = this.add.text(cw/2, ch/2, '3', {color: "#FFFFFF", fontSize:'45px'})
+        var StartTImer = setInterval(() => {
+            startInt = startInt - 1;
+            startTimerText.setText(startInt.toString());
+
+            // 倒數計時完畢，遊戲開始
+            if(startInt <= 0)
+            {
+                bonusStart = true;
+                mask.clear();
+                startdecrText.destroy();
+                startTimerText.destroy();
+                clearInterval(StartTImer);
+            }
+        }, 1000);
+
         
-        
+        var gbonusTimer = setInterval(() => {
+            timeInt = timeInt - 1;
+            if(timeInt <= 10)
+            {
+                document.getElementById('bonusBar').innerHTML = timeInt.toString() + " 秒";
+                document.getElementById('bonusBar').style.width = percentN[timeInt];
+            }
+            // 倒數計時結束
+            if(timeInt <= 0)
+            {
+                bonusStop = true;
+                clearInterval(gbonusTimer);
+            }
+        }, 1000);
     },
     update: function(){
-        
+
+        if(bonusStart)
+        {
+            player.body.gravity.y = 200;
+            player.setCollideWorldBounds(true);        
+            player.setBounce(1); //設定彈跳值
+
+            lazyB.body.gravity.y = 150;
+            lazyB.setVelocityX(20);
+            lazyB.setCollideWorldBounds(true);        
+            lazyB.setBounce(1); //設定彈跳值
+
+            pressureB.body.gravity.y = 50;
+            pressureB.setVelocityX(-80);
+            pressureB.setCollideWorldBounds(true);        
+            pressureB.setBounce(1); //設定彈跳值
+        }
+
+        // 計時到，畫面靜止
+        if(bonusStop)
+        {
+            player.body.gravity.y = 0;
+            player.setVelocityY(0);
+        }
     }
 }
 
@@ -659,7 +781,7 @@ const config = {
         playerSelect,
         gameSelect,
         gameSubject,
-        gameBouns,
+        gameBonus,
     ]
 }
 

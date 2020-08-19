@@ -58,3 +58,8 @@ canvas{
     display: block;
 /*     z-index:100; */
 }
+
+
+#bonusTimer{
+    z-index: 100;
+}
