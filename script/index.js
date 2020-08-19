@@ -270,7 +270,7 @@ const playerSelect = {
                     graphics.lineStyle(5, 0x00ff00, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
                     player_confirm = true;
                     // document.getElementById('confirmBtn').style.display = 'block';
-                    // this.scene.start('gameSelect');
+                    this.scene.start('gameSelect');
                 }
             }
         }
@@ -314,7 +314,7 @@ const gameSelect = {
         subject.on('pointerdown', function(){
             gsCounter = gsCounter + 1;
             this.scene.start('gameSubject');
-        });
+        }, this);
 
         // 課外活動按鈕
         activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
@@ -332,7 +332,7 @@ const gameSelect = {
         activity.on('pointerdown', function(){
             gaCounter = gaCounter + 1;
             this.scene.start('gameActivity');
-        });
+        }, this);
 
         // 嘗試點擊後隱藏 phaser canvas
         // activity.on('pointerdown', function(){
