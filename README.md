@@ -75,5 +75,8 @@
 
 * [Custom Bounds](https://phaser.io/examples/v3/view/physics/arcade/custom-bounds)
 
+### 設置不同的重力值
+* [Gravity Example](https://phaser.io/examples/v2/arcade-physics/gravity)
+
 ### Radar Chart
 * [rexUI: Chart - radar](https://codepen.io/rexrainbow/pen/qwVBNy?editors=0010)
