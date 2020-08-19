@@ -112,7 +112,6 @@ const playerSelect = {
     key: 'playerSelect',
     preload: function(){
         
-        
         // for 雷達圖
         this.load.script('chartjs', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js');
         this.load.scenePlugin('rexuiplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js', 'rexUI', 'rexUI');
@@ -431,7 +430,7 @@ const gameSubject = {
         gamebg.setScale(0.7);
         gamebg.setCollideWorldBounds(true);
         
-        bonusedoor = this.physics.add.sprite(cw/2 - gamebg.width * 0.7 / 2, ch/2, 'bonusedoor');
+        bonusedoor = this.physics.add.sprite(cw/2 - gamebg.width * 0.8 / 2, ch/2, 'bonusedoor');
         bonusedoor.setScale(0.3);
 
         //this.player = this.add.sprite(150, 150, 'player');
