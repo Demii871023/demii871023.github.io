@@ -603,8 +603,7 @@ const config = {
     scene: [
         playerSelect,
         gameSelect,
-        gameSubject,
-        gameActivity
+        gameSubject
     ]
 }
 
