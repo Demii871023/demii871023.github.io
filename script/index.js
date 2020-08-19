@@ -458,6 +458,9 @@ const gameSubject = {
             subject_xy[i].x = tempX;
             subject_xy[i].y = tempY;
             
+            
+            console.log(suject_name[i], subject_xy[i].x, subject_xy[i].j);
+            
             beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[i]); 
 
             const config = {
