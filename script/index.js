@@ -22,6 +22,9 @@ var spaceCounter = 0;
 
 var donteat = false;
 
+// 防呆機制：如果 modal 視窗打開，則角色不能再移動
+var dontMove = false;
+
 var beansTmp;
 
 // 使用者選擇科目
@@ -47,6 +50,7 @@ function modalOpen(index)
     console.log("eat");
     $("#btn_modal").click();
     $("#subject_name").text(subject_name[index]);
+    dontMove = true;
 }
 
 function cancelModalClose()
@@ -364,7 +368,6 @@ const gameActivity = {
 
 // gameSubject.js
 
-
 // 玩家擁有數值
 var lazyNum = 100;      // 惰性
 var pressureNum = 100;  // 壓力
@@ -419,9 +422,6 @@ const gameSubject = {
 
     },
     create: function(){
-
-        console.log(gsCounter);
-
         
         this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg');
@@ -443,10 +443,10 @@ const gameSubject = {
         beansGroup = this.add.group();
         beansGroup.enableBody = true;
         
-//         grouptest = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
+//         console.log(gamebg.width * gamebgScale, gamebg.height * gamebgScale, cw/2 - gamebg.width * gamebgScale / 2, 0 - ch/2 - gamebg.height * gamebgScale / 2);
         
-        console.log(gamebg.width * gamebgScale, gamebg.height * gamebgScale, cw/2 - gamebg.width * gamebgScale / 2, 0 - ch/2 - gamebg.height * gamebgScale / 2);
-
+        console.log(gsCounter);
+        
         beansGroup = this.physics.add.group();
         for(var i = 0 ; i < subjectN ; i++)
         {
@@ -455,9 +455,7 @@ const gameSubject = {
 
             subject_xy[i].x = tempX;
             subject_xy[i].y = tempY;
-
             
-            console.log(subject_xy[i].x, subject_xy[i].y);
             beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[i]); 
 
             const config = {
@@ -502,7 +500,6 @@ const gameSubject = {
             else if(abs(player.x, beans.x) < 10 && abs(player.y, beans.y) < 10 && donteat && subject_select != -1)
             {
                 console.log("吐出來");
-                // beans.disableBody(false, false);
                 subject_select = -1;
                 beans.setVisible(true);
             }
@@ -514,58 +511,62 @@ const gameSubject = {
         // 偵測按鍵事件
         let keyboard = this.input.keyboard.createCursorKeys();
         
-        // player 上下左右移動
-        if(keyboard.right.isDown)
-            player.setVelocityX(160);
-        else if(keyboard.left.isDown)
-            player.setVelocityX(-160);
-        else
-            player.setVelocityX(0);
-
-        if(keyboard.up.isDown)
-            player.setVelocityY(-160);
-        else if(keyboard.down.isDown)
-            player.setVelocityY(160);
-        else
-            player.setVelocityY(0);
-
-        // player 吃科目豆
-        if(keyboard.space.isDown)
+        
+        if(!dontMove)
         {
-            
-            if(!eat)
+            // player 上下左右移動
+            if(keyboard.right.isDown)
+                player.setVelocityX(160);
+            else if(keyboard.left.isDown)
+                player.setVelocityX(-160);
+            else
+                player.setVelocityX(0);
+
+            if(keyboard.up.isDown)
+                player.setVelocityY(-160);
+            else if(keyboard.down.isDown)
+                player.setVelocityY(160);
+            else
+                player.setVelocityY(0);
+
+            // player 吃科目豆
+            if(keyboard.space.isDown)
             {
-                // 已經按過一次了又再按一次，代表他確定要選擇
-                if(spaceCounter == 1 && subject_select != -1)
+
+                if(!eat)
                 {
-                    sureModalClose();
+                    // 已經按過一次了又再按一次，代表他確定要選擇
+                    if(spaceCounter == 1 && subject_select != -1)
+                    {
+                        sureModalClose();
+                        spaceCounter = spaceCounter + 1;
+                    }
+                    console.log("空白鍵");
+                    eat = true;
                     spaceCounter = spaceCounter + 1;
                 }
-                console.log("空白鍵");
-                eat = true;
-                spaceCounter = spaceCounter + 1;
-            }
 
-        }
-        else
-            eat = false;
-        
-        if(keyboard.shift.isDown)
-        {
-            // 決定不吃該科目豆，因此將 spaceCounter 歸零，等待下次再吃
-            if(!donteat)
-            {
-                if(subject_select != -1)
-                {
-                    cancelModalClose();
-                    console.log("shift");
-                    spaceCounter = 0;
-                }
-                donteat = true;
             }
+            else
+                eat = false;
+
+            if(keyboard.shift.isDown)
+            {
+                // 決定不吃該科目豆，因此將 spaceCounter 歸零，等待下次再吃
+                if(!donteat)
+                {
+                    if(subject_select != -1)
+                    {
+                        cancelModalClose();
+                        console.log("shift");
+                        spaceCounter = 0;
+                    }
+                    donteat = true;
+                }
+            }
+            else
+                donteat = false
         }
-        else
-            donteat = false
     }
 }
 
