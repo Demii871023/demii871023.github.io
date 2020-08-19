@@ -69,19 +69,19 @@ function sureModalClose()
 }
 
 
-window.addEventListener('keypress', function(e) {
-    var keyID = e.code;
+// window.addEventListener('keypress', function(e) {
+//     var keyID = e.code;
     
-    // 按 Q 即丟棄已選擇科目
-    if (keyID == 'KeyQ')
-    {
-        console.log("Q");
-//         $("#btn_modal").click();
-        $('#modal_subjectSelect').modal('show');
-        $("#subject_name").text(subject_name[1]);
+//     // 按 Q 即丟棄已選擇科目
+//     if (keyID == 'KeyQ')
+//     {
+//         console.log("Q");
+// //         $("#btn_modal").click();
+//         $('#modal_subjectSelect').modal('show');
+//         $("#subject_name").text(subject_name[1]);
         
-  }
-}, false);
+//   }
+// }, false);
 
 
 
@@ -102,10 +102,6 @@ const playerArr = new Array(6);
 var keydwon = false;
 var playerMove = false;
 
-var timeCount = 1;
-
-
-
 const playerSelect = {
     key: 'playerSelect',
     preload: function(){
@@ -122,8 +118,6 @@ const playerSelect = {
         this.load.image('player6', 'image/Character/player6.png');
     },
     create: function(){
-
-
 
         player1 = this.physics.add.sprite(cw/2, ch/2, 'player1');
         player1.setScale(mainpScale);
@@ -352,6 +346,28 @@ const gameActivity = {
 
 
 // gameSubject.js
+
+// 玩家擁有數值
+var lazyNum = 100;      // 惰性
+var pressureNum = 100;  // 壓力
+var strengthNum = 100;  // 體力
+var socialNum = 100;    // 人際
+var time = 20;          // 時間
+
+// 門檻值
+var threshold_value = [
+    {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 語文
+    {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 自然科學
+    {lazy: 0, pressure: 80, strength: 2.5, social: 0, time:1.5}, // 綜合活動
+    {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 數學
+    {lazy: 0, pressure: 80, strength: 2.5, social: 0, time:1.5}, // 科技
+    {lazy: 0, pressure: 80, strength: 2.5, social: 0, time:1.5}, // 健康與體育
+    {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 社會
+    {lazy: 0, pressure: 80, strength: 1.5, social: 0, time:1.5}, // 藝術
+];
+var threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'];
+
+
 const gameSubject = {
     key: 'gameSubject',
     preload: function(){
