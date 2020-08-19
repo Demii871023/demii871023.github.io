@@ -278,6 +278,11 @@ const playerSelect = {
 }
 
 // gameSelect.js 選擇課業學科或課外活動
+
+// 用於計算 gameSubject 與 gameAcitvity 被選擇了幾次
+var gsCounter = 0;
+var gaCounter = 0;
+
 const gameSelect = {
     key: 'gameSelect',
     preload: function(){
@@ -303,20 +308,31 @@ const gameSelect = {
             subject.setTint(0x5d5d2d);
         });
         subject.on('pointerout', function(){
-
             subject.setScale(classScale);
             subject.setTint(0xffffff);
         });
-        subject.on('pointerdown', () => this.scene.start('gameSubject'));
+        subject.on('pointerdown', function(){
+            gsCounter = gsCounter + 1;
+            this.scene.start('gameSubject');
+        });
 
         // 課外活動按鈕
         activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
         activity.setScale(classScale);
 
         activity.setInteractive({ useHandCursor: true });
-        activity.on('pointerover', () => activity.setScale(0.55));
-        activity.on('pointerout', () => activity.setScale(classScale));
-        activity.on('pointerdown', () => this.scene.start('gameActivity'));
+        activity.on('pointerover', function(){
+            activity.setScale(0.55);
+            activity.setTint(0x5d5d2d);
+        });
+        activity.on('pointerout', function(){
+            activity.setScale(classScale);
+            activity.setTint(0xffffff);
+        });
+        activity.on('pointerdown', function(){
+            gaCounter = gaCounter + 1;
+            this.scene.start('gameActivity');
+        });
 
         // 嘗試點擊後隱藏 phaser canvas
         // activity.on('pointerdown', function(){
@@ -347,6 +363,7 @@ const gameActivity = {
 
 
 // gameSubject.js
+
 
 // 玩家擁有數值
 var lazyNum = 100;      // 惰性
@@ -403,7 +420,7 @@ const gameSubject = {
     },
     create: function(){
 
-        
+        console.log(gsCounter);
 
         
         this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
@@ -425,7 +442,6 @@ const gameSubject = {
       
         beansGroup = this.add.group();
         beansGroup.enableBody = true;
-        
         
 //         grouptest = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
         
@@ -451,8 +467,6 @@ const gameSubject = {
             beansGroup.create(config);
             
         }
-   
-        
         beansGroupChild = beansGroup.getChildren();
         for(var i = 0 ; i < beansGroupChild.length ; i++)
         {
@@ -579,9 +593,9 @@ const config = {
         },
     },
     scene: [
+        gameSelect,
         gameSubject,
         playerSelect,
-        gameSelect,
         gameActivity
     ]
 }
