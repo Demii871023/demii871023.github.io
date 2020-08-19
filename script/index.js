@@ -514,6 +514,7 @@ const gameSubject = {
         function inBonuse(player, bonuse)
         {
             console.log("進入加分關卡");
+             this.scene.start('gameBouns');
         }
         
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
