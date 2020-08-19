@@ -34,8 +34,8 @@ canvas{
 
 #playerConfirmBtn {
     position: absolute; 
-    top: 0px; 
-    right: 0px; 
+    top: 100%; 
+    right: 50%; 
     display: block;
     z-index: 100;
 }
