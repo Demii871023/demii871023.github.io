@@ -417,7 +417,7 @@ const gameSubject = {
         
         
         document.getElementById('gmChatCard').style.width = '50%';
-        document.getElementById('gmChatCard').style.height = '110px';
+        document.getElementById('gmChatCard').style.height = '90px';
         document.getElementById('gmChatCardText').innerHTML = "高中三年，有好多的事情想嘗試，可能想要加強課業，也可能想參加許多活動。挑選一個有興趣的事件嘗試看看吧！";
 
     },
