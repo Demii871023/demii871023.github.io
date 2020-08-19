@@ -452,7 +452,7 @@ const gameSubject = {
         beansGroup = this.physics.add.group();
         for(var i = 0 ; i < subjectN ; i++)
         {
-            let tempX = getRandom(gamebg.width * gamebgScale, cw/2 - gamebg.width * gamebgScale / 2 - 20);
+            let tempX = getRandom(gamebg.width * gamebgScale + 20, cw/2 - gamebg.width * gamebgScale / 2 - 40);
             let tempY = getRandom(gamebg.height * gamebgScale, ch/2 - gamebg.height * gamebgScale / 2 + 20);
 
             subject_xy[i].x = tempX;
