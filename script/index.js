@@ -586,22 +586,44 @@ const gameSubject = {
 const gameBouns = {
     key: 'gameBouns',
     preload: function(){
+        // 載入背景圖片
         this.load.image('gamebg2', 'image/Background/gamebg.jpg');
+        // 載入角色圖片
         this.load.image('player1', 'image/Character/player1');
         this.load.image('player2', 'image/Character/player2');
         this.load.image('player3', 'image/Character/player3');
         this.load.image('player4', 'image/Character/player4');
         this.load.image('player5', 'image/Character/player5');
         this.load.image('player6', 'image/Character/player6');
+        // 載入加分豆圖片
+        this.load.image('lazyB', 'image/Bonuse/lazy.png');
+        this.load.image('pressureB', 'image/Bonuse/pressure.png');
+        this.load.image('socialB', 'image/Bonuse/social.png');
+        this.load.image('strengthB', 'image/Bonuse/strength.png');
     },
     create: function(){
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg2');
+        
         player = this.physics.add.sprite(cw/2, ch/2, player_name[player_select]);
         player.setScale(playerScale);
         player.body.gravity.y = 200;
-        
         player.setCollideWorldBounds(true);        
         player.setBounce(1); //設定彈跳值
+        
+        lazyB = this.physics.add.sprite(cw/2-20, ch/2, lazyB);
+        lazyB.setScale(beansScale);
+        lazyB.body.gravity.y = 300;
+        lazyB.setCollideWorldBounds(true);        
+        lazyB.setBounce(2); //設定彈跳值
+        
+        pressureB = this.physics.add.sprite(cw/2+20, ch/2, pressureB);
+        pressureB.setScale(beansScale);
+        pressureB.body.gravity.y = 150;
+        pressureB.setCollideWorldBounds(true);        
+        pressureB.setBounce(5); //設定彈跳值
+        
+        
+        
     },
     update: function(){
         
