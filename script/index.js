@@ -414,10 +414,14 @@ const gameSubject = {
         this.load.image('Health', 'image/18College/4.png');
         this.load.image('Social', 'image/18College/12.png');
         this.load.image('Art', 'image/18College/9.png');
+        
+        
+        document.getElementById('gmChatCard').style.width = '50%';
+        document.getElementById('gmChatCard').style.height = '110px';
+        document.getElementById('gmChatCardText').innerHTML = "高中三年，有好多的事情想嘗試，可能想要加強課業，也可能想參加許多活動。挑選一個有興趣的事件嘗試看看吧！";
 
     },
     create: function(){
-        
         
         this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg');
@@ -518,7 +522,6 @@ const gameSubject = {
         
         // 偵測按鍵事件
         let keyboard = this.input.keyboard.createCursorKeys();
-        
         
         if(!dontMove)
         {
