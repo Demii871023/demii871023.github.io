@@ -1,9 +1,6 @@
 /*
 scene：gameBouns.js
 decribe：當玩家進入 bouns 門時，進入獎勵頁面
-
-
-
 */
 
 
