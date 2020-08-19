@@ -397,8 +397,8 @@ const gameSubject = {
       
         // 預先載入需要資源
         
-        this.load.image('gamebg', 'image/Background/gamebg.jpg');
         this.load.image('bonusedoor', 'image/door.jpg');
+        this.load.image('gamebg', 'image/Background/gamebg.jpg');
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
         
         // 載入玩家圖片
