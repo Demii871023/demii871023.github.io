@@ -49,3 +49,12 @@ canvas{
     display: block;
     z-index: 100;
 }
+
+
+#playerStatusPlane{
+    position:absolute;
+    top:5px;
+    right:90%;
+    display: block;
+    z-index:100;
+}
