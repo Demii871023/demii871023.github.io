@@ -596,10 +596,10 @@ const gameBouns = {
         this.load.image('player5', 'image/Character/player5');
         this.load.image('player6', 'image/Character/player6');
         // 載入加分豆圖片
-        this.load.image('lazyB', 'image/Bonuse/lazy.png');
-        this.load.image('pressureB', 'image/Bonuse/pressure.png');
-        this.load.image('socialB', 'image/Bonuse/social.png');
-        this.load.image('strengthB', 'image/Bonuse/strength.png');
+        this.load.image('lazyB', 'image/Bonus/lazy.png');
+        this.load.image('pressureB', 'image/Bonus/pressure.png');
+        this.load.image('socialB', 'image/Bonus/social.png');
+        this.load.image('strengthB', 'image/Bonus/strength.png');
     },
     create: function(){
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg2');
