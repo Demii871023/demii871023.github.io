@@ -106,6 +106,9 @@ const playerSelect = {
     key: 'playerSelect',
     preload: function(){
 
+        this.load.html('tmp', 'assets/tmp.html');
+        
+        
         // for 雷達圖
         this.load.script('chartjs', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js');
         this.load.scenePlugin('rexuiplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js', 'rexUI', 'rexUI');
@@ -119,6 +122,10 @@ const playerSelect = {
     },
     create: function(){
 
+        var element = this.add.dom(400, 0).createFromCache('tmp');
+        
+        var button = this.getChildByName('test');
+        
         player1 = this.physics.add.sprite(cw/2, ch/2, 'player1');
         player1.setScale(mainpScale);
         player1.alpha = 1;
