@@ -613,12 +613,14 @@ const gameBouns = {
         lazyB = this.physics.add.sprite(cw/2-20, ch/2, 'lazyB');
         lazyB.setScale(beansScale);
         lazyB.body.gravity.y = 150;
+        lazyB.setVelocityX(20)
         lazyB.setCollideWorldBounds(true);        
         lazyB.setBounce(1); //設定彈跳值
         
         pressureB = this.physics.add.sprite(cw/2+20, ch/2, 'pressureB');
         pressureB.setScale(beansScale);
-        pressureB.body.gravity.y = 150;
+        pressureB.body.gravity.y = 50;
+        pressureB.setVelocityX(-80)
         pressureB.setCollideWorldBounds(true);        
         pressureB.setBounce(1); //設定彈跳值
         
