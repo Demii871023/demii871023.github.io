@@ -599,6 +599,9 @@ const gameBouns = {
         player = this.physics.add.sprite(cw/2, ch/2, player_name[player_select]);
         player.setScale(playerScale);
         player.body.gravity.y = 200;
+        
+        player.setCollideWorldBounds(true);        
+        player.setBounce(1); //設定彈跳值
     },
     update: function(){
         
