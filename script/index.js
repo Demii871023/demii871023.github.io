@@ -361,21 +361,6 @@ const gameSelect = {
 }
 
 
-// gameActivity.js
-const gameActivity = {
-    key: 'gameActivity',
-    preload: function(){
-
-    },
-    create: function(){
-
-    },
-    update: function(){
-        
-    }
-}
-
-
 // gameSubject.js
 
 // 玩家擁有數值
