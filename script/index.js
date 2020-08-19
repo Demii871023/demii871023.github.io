@@ -581,6 +581,21 @@ const gameSubject = {
 }
 
 
+// gameBouns.js
+const gameBouns = {
+    key: 'gameBouns',
+    preload: function(){
+        this.load.image('gamebg2', 'image/Background/gamebg.jpg');
+    },
+    create: function(){
+        gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg2');
+    },
+    update: function(){
+        
+    }
+}
+
+
 
 
 // index.js
@@ -604,6 +619,7 @@ const config = {
         },
     },
     scene: [
+        gameBouns,
         playerSelect,
         gameSelect,
         gameSubject
