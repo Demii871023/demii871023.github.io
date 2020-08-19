@@ -1,36 +1,41 @@
-
-
-
 html{
     height:100%;
-  }
-  
-  body {
+}
+
+body {
     width:100%;
     height:100%;
     background-image:url('/image/Background/jungle-background-clipart.jpg');
     position: relative;
     /*background-repeat:no-repeat;*/
     background-size:cover;
-  }
-  
-  body #header{
+}
+
+body #header{
     height:20%;
-  }
+}
   
-  body #app{
+body #app{
     width: 100%;
     height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  body #footer{
+body #footer{
     height:20%;
-  }
+}
 
 canvas{
     z-index: 90;
 }
-  
+
+
+#playerConfirmBtn {
+    position: absolute; 
+    top: 0px; 
+    right: 0px; 
+    display: block;
+    z-index: 100;
+}
