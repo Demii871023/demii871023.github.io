@@ -42,8 +42,8 @@ canvas{
 
 #gmChatCard {
     position: absolute; 
-    top: 0px; 
-    right: 40%; 
+    top: 5px; 
+    right: 0px; 
     display: block;
     z-index: 100;
 }
