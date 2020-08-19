@@ -39,3 +39,11 @@ canvas{
     display: block;
     z-index: 100;
 }
+
+#gmChatCard {
+    position: absolute; 
+    top: 0px; 
+    right: 40%; 
+    display: block;
+    z-index: 100;
+}
