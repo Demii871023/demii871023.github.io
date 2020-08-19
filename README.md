@@ -46,6 +46,9 @@
   - 先設立一個全域變數紀錄選擇 課業學科、課外活動分別的次數，目前因為還不完整，該變數先寫死，做為測試。
   - 呈現方式可能是 Bootstrap modal(?)
   
+* 能力值
+  - 試做 [codePen](https://codepen.io/demi871023/pen/bGpwepj?editors=1100)
+  
 ### gameActivity
 > 課外活動
 
