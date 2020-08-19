@@ -101,7 +101,7 @@ const otherpScle = 0.3;
 var shrinkScale = otherpScle, enlargeScale = mainpScale;
 
 var now_select = 0;
-var player_select = -1;
+var player_select = 2;
 var player_confirm = false;
 
 const playerArr = new Array(6);
@@ -586,9 +586,17 @@ const gameBouns = {
     key: 'gameBouns',
     preload: function(){
         this.load.image('gamebg2', 'image/Background/gamebg.jpg');
+        this.load.image('player1', 'image/Character/player1');
+        this.load.image('player2', 'image/Character/player2');
+        this.load.image('player3', 'image/Character/player3');
+        this.load.image('player4', 'image/Character/player4');
+        this.load.image('player5', 'image/Character/player5');
+        this.load.image('player6', 'image/Character/player6'); 
     },
     create: function(){
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg2');
+        player = this.bounusarcade.add.sprite(cw/2, ch/2, player_name[player_select]);
+        player.setScale(playerScale);
     },
     update: function(){
         
@@ -616,6 +624,12 @@ const config = {
                 y: 0
             },
             // debug: true,
+        },
+        bounusarcade: {
+            debug: true,
+            gravity: {
+                y: 40 
+            }
         },
     },
     scene: [
