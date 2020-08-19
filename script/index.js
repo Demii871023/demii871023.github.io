@@ -105,8 +105,6 @@ var playerMove = false;
 const playerSelect = {
     key: 'playerSelect',
     preload: function(){
-
-        this.load.html('tmp', 'assets/tmp.html');
         
         
         // for 雷達圖
@@ -121,10 +119,6 @@ const playerSelect = {
         this.load.image('player6', 'image/Character/player6.png');
     },
     create: function(){
-
-        var element = this.add.dom(400, 0).createFromCache('tmp');
-        
-        var button = this.getChildByName('test');
         
         player1 = this.physics.add.sprite(cw/2, ch/2, 'player1');
         player1.setScale(mainpScale);
