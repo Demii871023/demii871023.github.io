@@ -591,7 +591,7 @@ const gameBouns = {
         this.load.image('player3', 'image/Character/player3');
         this.load.image('player4', 'image/Character/player4');
         this.load.image('player5', 'image/Character/player5');
-        this.load.image('player6', 'image/Character/player6'); 
+        this.load.image('player6', 'image/Character/player6');
     },
     create: function(){
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg2');
