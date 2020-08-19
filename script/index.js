@@ -124,7 +124,7 @@ const playerSelect = {
         this.load.image('player5', 'image/Character/player5.png');
         this.load.image('player6', 'image/Character/player6.png');
         
-        document.getelementbyid('gmChatCardText').innerHTML = "請選擇一名角色";
+        document.getElementById('gmChatCardText').innerHTML = "請選擇一名角色";
         
         
     },
