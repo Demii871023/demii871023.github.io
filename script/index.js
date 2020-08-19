@@ -398,6 +398,7 @@ const gameSubject = {
         // 預先載入需要資源
         
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
+        this.load.image('bonusedoor', 'image/door.jpg');
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
         
         // 載入玩家圖片
@@ -430,6 +431,8 @@ const gameSubject = {
         gamebg.setScale(0.7);
         gamebg.setCollideWorldBounds(true);
         
+        bonusedoor = this.physics.add.sprite(cw/2 - gamebg.width * 0.7 / 2, ch/2);
+        bonusedoor.setScale(0.3);
 
         //this.player = this.add.sprite(150, 150, 'player');
         player = this.physics.add.sprite(150, 150, player_name[player_select]);
