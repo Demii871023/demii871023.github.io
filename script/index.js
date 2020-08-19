@@ -452,14 +452,14 @@ const gameSubject = {
         beansGroup = this.physics.add.group();
         for(var i = 0 ; i < subjectN ; i++)
         {
-            let tempX = getRandom(gamebg.width * gamebgScale + 20, cw/2 - gamebg.width * gamebgScale / 2 - 40);
-            let tempY = getRandom(gamebg.height * gamebgScale, ch/2 - gamebg.height * gamebgScale / 2 + 20);
+            let tempX = getRandom(gamebg.width * gamebgScale + 80, cw/2 - gamebg.width * gamebgScale / 2 - 40);
+            let tempY = getRandom(gamebg.height * gamebgScale + 80, ch/2 - gamebg.height * gamebgScale / 2 - 40);
 
             subject_xy[i].x = tempX;
             subject_xy[i].y = tempY;
             
             
-            console.log(subject_name[i], subject_xy[i].x, subject_xy[i].j);
+            console.log(subject_name[i], subject_xy[i].x, subject_xy[i].y);
             
             beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[i]); 
 
