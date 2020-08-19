@@ -593,9 +593,9 @@ const config = {
         },
     },
     scene: [
+        playerSelect,
         gameSelect,
         gameSubject,
-        playerSelect,
         gameActivity
     ]
 }
