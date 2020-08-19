@@ -101,7 +101,7 @@ const otherpScle = 0.3;
 var shrinkScale = otherpScle, enlargeScale = mainpScale;
 
 var now_select = 0;
-var player_select = 2;
+var player_select = -1;
 var player_confirm = false;
 
 const playerArr = new Array(6);
@@ -629,10 +629,10 @@ const config = {
         },
     },
     scene: [
-        gameBouns,
         playerSelect,
         gameSelect,
-        gameSubject
+        gameSubject,
+        gameBouns,
     ]
 }
 
