@@ -427,15 +427,13 @@ const gameSubject = {
     create: function(){
         
         
-        bonusedoor = this.physics.add.sprite(cw/2 - gamebg.width * 0.7 / 2, ch/2);
-        bonusedoor.setScale(0.3);
-        
         this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg');
         gamebg.setScale(0.7);
         gamebg.setCollideWorldBounds(true);
         
-        
+        bonusedoor = this.physics.add.sprite(100, ch/2);
+        bonusedoor.setScale(0.3);
 
         //this.player = this.add.sprite(150, 150, 'player');
         player = this.physics.add.sprite(150, 150, player_name[player_select]);
