@@ -60,6 +60,7 @@ function cancelModalClose()
     
     $("#btn_modal").click();
     $("#cancel").click();
+    dontMove = false;
 }
 
 function sureModalClose()
@@ -70,6 +71,7 @@ function sureModalClose()
 
     $("#btn_modal").click();
     $("#cancel").click();
+    dontMove = false;
 }
 
 
@@ -528,45 +530,44 @@ const gameSubject = {
                 player.setVelocityY(160);
             else
                 player.setVelocityY(0);
-
-            // player 吃科目豆
-            if(keyboard.space.isDown)
+        }
+        
+        // player 吃科目豆
+        if(keyboard.space.isDown)
+        {
+            if(!eat)
             {
-
-                if(!eat)
+                // 已經按過一次了又再按一次，代表他確定要選擇
+                if(spaceCounter == 1 && subject_select != -1)
                 {
-                    // 已經按過一次了又再按一次，代表他確定要選擇
-                    if(spaceCounter == 1 && subject_select != -1)
-                    {
-                        sureModalClose();
-                        spaceCounter = spaceCounter + 1;
-                    }
-                    console.log("空白鍵");
-                    eat = true;
+                    sureModalClose();
                     spaceCounter = spaceCounter + 1;
                 }
-
+                console.log("空白鍵");
+                eat = true;
+                spaceCounter = spaceCounter + 1;
             }
-            else
-                eat = false;
 
-            if(keyboard.shift.isDown)
-            {
-                // 決定不吃該科目豆，因此將 spaceCounter 歸零，等待下次再吃
-                if(!donteat)
-                {
-                    if(subject_select != -1)
-                    {
-                        cancelModalClose();
-                        console.log("shift");
-                        spaceCounter = 0;
-                    }
-                    donteat = true;
-                }
-            }
-            else
-                donteat = false
         }
+        else
+            eat = false;
+
+        if(keyboard.shift.isDown)
+        {
+            // 決定不吃該科目豆，因此將 spaceCounter 歸零，等待下次再吃
+            if(!donteat)
+            {
+                if(subject_select != -1)
+                {
+                    cancelModalClose();
+                    console.log("shift");
+                    spaceCounter = 0;
+                }
+                donteat = true;
+            }
+        }
+        else
+            donteat = false
     }
 }
 
