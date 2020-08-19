@@ -1,5 +1,9 @@
 // const.js
 
+chatCardText = document.getelementbyid('gmChatCardText');
+
+
+
 const cw = $(window).width();
 const ch = $(window).height();
 const bg1Scale = 4;
@@ -122,6 +126,10 @@ const playerSelect = {
         this.load.image('player4', 'image/Character/player4.png');
         this.load.image('player5', 'image/Character/player5.png');
         this.load.image('player6', 'image/Character/player6.png');
+        
+        chatCardText.innerHTML = "請選擇一名角色";
+        
+        
     },
     create: function(){
         
