@@ -595,7 +595,7 @@ const gameBouns = {
     },
     create: function(){
         gamebg = this.physics.add.sprite(cw/2, ch/2, 'gamebg2');
-        player = this.bounusarcade.add.sprite(cw/2, ch/2, player_name[player_select]);
+        player = this.physics.bounusarcade.add.sprite(cw/2, ch/2, player_name[player_select]);
         player.setScale(playerScale);
     },
     update: function(){
