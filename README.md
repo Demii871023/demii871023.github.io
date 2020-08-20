@@ -18,6 +18,19 @@
   - 目前儲存玩家所決定的科目豆為變數 subject_select，計畫使用 index 來記錄，但因為生成時搭配 group 使用，因此方法可能要再研究，若不行就要把 group 拔掉，改用較髒寫法。
 
 
+### 2020 / 8 / 19（三）
+* Bonus 使用吃豆豆的形式進行四種分數的加分，但是在吃到之後要先完成指令（e.g. 唯舞獨尊 上下左右按鍵）才真的加到分！
+* Bonus 限制時間為 10 秒，想採用 bootstrap progress 呈現
+* 玩家的狀態能力值目前先寫死，等待自定義參數部分完成，在讀取數值
+```diff
+// index.js gameBonus.js
+// 玩家擁有數值 ->
+ - var lazyNum = 100;      // 惰性
+ - var pressureNum = 100;  // 壓力
+ - var strengthNum = 100;  // 體力
+ - var socialNum = 100;    // 人際
+```
+
 
 ## 目標
 ### gameInit
