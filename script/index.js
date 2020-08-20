@@ -609,7 +609,7 @@ var bonus_xy = [
     {x: 0, y: 0, gravity: 0, velocity: 0}
 ];
 
-var rebounce = [false, false, false, false, false, false, false, false, false, false, false, false]
+var rebounce = [false, false, false, false, false, false, false, false, false, false, false, false];
 
 const gameBonus = {
     key: 'gameBonus',
