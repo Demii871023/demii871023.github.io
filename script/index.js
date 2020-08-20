@@ -675,7 +675,7 @@ const gameBonus = {
                         key: bonus_name[i],
                         setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
                 }
-                beansGroup.create(config);
+                bonusGroup.create(config);
             }
         }
         bonusGroupChild = bonusGroup.getChildren();
