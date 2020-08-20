@@ -749,7 +749,7 @@ const gameBonus = {
                 bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
                 
                 console.log(bonusGroupChild[i].x);
-                if(bonusGroupChild[i].x <= 120 || bonusGroupChild[i].x >= cw - 120)
+                if(bonusGroupChild[i].x <= 52 || bonusGroupChild[i].x >= cw - 52)
                 {
                     console.log(bonusGroupChild[i].x);
                     console.log("反彈");
