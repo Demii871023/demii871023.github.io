@@ -609,6 +609,9 @@ var bonus_xy = [
     {x: 0, y: 0, gravity: 0, velocity: 0}
 ];
 
+var command_name = ['upCommand', 'downCommand', 'leftCommand', 'rightCommand'];
+var command_command = [];
+
 
 const gameBonus = {
     key: 'gameBonus',
@@ -805,15 +808,40 @@ const gameBonus = {
                 mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
                 maskCounter = maskCounter + 1;
                 
-                console.log("產生指令");
-                upCommand = this.physics.add.sprite(cw/2 - 45, ch/2, 'upCommand');
-                upCommand.setScale(0.4);
-                downCommand = this.physics.add.sprite(cw/2 - 15, ch/2, 'downCommand');
-                downCommand.setScale(0.4);
-                leftCommand = this.physics.add.sprite(cw/2 + 15, ch/2, 'leftCommand');
-                leftCommand.setScale(0.4);
-                rightCommand = this.physics.add.sprite(cw/2 + 45, ch/2, 'rightCommand');
-                rightCommand.setScale(0.4);
+                
+                commandGroup = this.physics.add.group();
+                commandGroup.enableBody = true;
+                
+                
+                // 產生指令數量
+                commandNum = getRandom(7, 3);
+                
+                // 依據指令數量隨機產生指令 id 1:up 2:down 3:left 4:right
+                for(var i = 0 ; i < commandNum ; i++)
+                {
+                    commandid = getRandom(3,1);
+                    commandGroup.create(cw/2 - 100 * i, ch/2, command_name[commanid]);
+                }
+                
+                
+                commandGroupChild = commandGroup.getChildren();
+                for(var i = 0 ; i < commandGroupChild.length ; i++)
+                {
+                 
+                    commandGroupChild[i].setScale(0.4);
+                }
+                
+                
+                
+                
+//                 upCommand = this.physics.add.sprite(cw/2 - 45, ch/2, 'upCommand');
+//                 upCommand.setScale(0.4);
+//                 downCommand = this.physics.add.sprite(cw/2 - 15, ch/2, 'downCommand');
+//                 downCommand.setScale(0.4);
+//                 leftCommand = this.physics.add.sprite(cw/2 + 15, ch/2, 'leftCommand');
+//                 leftCommand.setScale(0.4);
+//                 rightCommand = this.physics.add.sprite(cw/2 + 45, ch/2, 'rightCommand');
+//                 rightCommand.setScale(0.4);
             }
             
             player.body.gravity.y = 0;
