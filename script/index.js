@@ -755,9 +755,14 @@ const gameBonus = {
                     console.log(bonusGroupChild[i].x);
                     console.log("反彈");
                     if(!rebounce[i])
-                    {   console.log(bonus_xy[i].velocity);
+                    {   
+                        console.log("=========================================");
+                        console.log(bonus_xy[i].velocity);
                         bonusGroupChild[i].setVelocityX(-1 * bonus_xy[i].velocity);
-                        console.log(-1 * bonus_xy[i].velocity);
+                        var k = (-bonus_xy[i].velocity);
+                        console.log(k)
+                        console.log(-bonus_xy[i].velocity);
+                        console.log("=========================================");
                     }
                     rebounce[i] = true;
                 }
