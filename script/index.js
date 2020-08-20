@@ -921,27 +921,31 @@ const gameBonus = {
                 if(addKey == 0)        // 惰性
                 {
                     console.log("lazy ++");
-                    lazyNum = lazyNum + 5;
+                    lazyNum = lazyNum + 20;
                     document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
                 }
                 if(addKey == 1)    // 壓力
                 {
                     console.log("pressure ++");
-                    pressureNum = pressureNum + 5;
+                    pressureNum = pressureNum + 20;
                     document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
                 }
                 if(addKey == 2)      // 人際
                 {
                     console.log("social ++");
-                    socialNum = socialNum + 5;
-                    document.getElementById('strengthProgress').style.width = ((strengthNum / strengthMAX) * 100).toString() + "%";
+                    socialNum = socialNum + 20;
+                    document.getElementById('strengthProgress').style.width = ((socialNum / strengthMAX) * 100).toString() + "%";
                 }
                 if(addKey == 3)    // 體力
                 {
                     console.log("strength ++");
-                    strengthNum = strengthNum + 5;
-                    document.getElementById('socialProgress').style.width = ((socialNum / socialMAX) * 100).toString() + "%";
+                    strengthNum = strengthNum + 20;
+                    document.getElementById('socialProgress').style.width = ((strengthNum / socialMAX) * 100).toString() + "%";
                 }
+                
+                mask.clear();
+                bonusStop = false;
+                bonusStart = true;
             }
         }
     }
