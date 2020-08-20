@@ -636,6 +636,7 @@ var commandInput = false;
 var command_index = 0;
 // 使用者輸入
 var input_id = -1;
+var input_now = false;
 var input_correct = 0;
 
 const gameBonus = {
@@ -881,27 +882,32 @@ const gameBonus = {
                 {
                     if(keyboard.right.isDown)
                     {
+                        input_now = true;
                         input_id = 3;
-                        console.log("右邊");
                     }
                     else if(keyboard.left.isDown)
                     {
+                        input_now = true;
                         input_id = 2;
-                        console.log("左邊");
+
                     }
                     else if(keyboard.up.isDown)
                     {
+                        input_now = true;
                         input_id = 0;
-                        console.log("上面");
                     }
                     else if(keyboard.down.isDown)
                     {
+                        input_now = true;
                         input_id = 1;
-                        console.log("下面");
+                    }
+                    else
+                    {
+                        input_now = false;
                     }
                 }
 
-                if(input_id == command_command[command_index])
+                if(input_id == command_command[command_index] && !input_now)
                 {
                     console.log(command_index + "正確");
                     input_correct = input_correct + 1;
@@ -917,10 +923,6 @@ const gameBonus = {
             if(input_correct == commandNum && commandInput)
             {
                 commandInput = false;
-                mask.clear();
-                bonusStop = false;
-                bonusStart = true;
-                
 
                 if(addKey == 0)        // 惰性
                 {
