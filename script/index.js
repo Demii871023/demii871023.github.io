@@ -686,6 +686,9 @@ const gameBonus = {
         
         for(var i = 0 ; i < 12 ; i++)
             rebounce[i] = 'false';
+        
+        for(var i = 0 ; i < 12 ; i++)
+            console.log(rebounce[i]);
 
 
         // 遊戲說明及倒數遮罩
@@ -758,15 +761,11 @@ const gameBonus = {
                     console.log(rebounce[i]);
                     if(rebounce[i] == 'false')
                     {   
-                        console.log("=========================================");
-                        console.log(bonus_xy[i].velocity);
-                        bonusGroupChild[i].setVelocityX(-1 * bonus_xy[i].velocity);
-                        var k = (-bonus_xy[i].velocity);
-                        console.log(k)
-                        console.log(-bonus_xy[i].velocity);
-                        console.log("=========================================");
+                        
+                        bonusGroupChild[i].setVelocityX(-bonus_xy[i].velocity);
+                        rebounce[i] = 'true';
                     }
-                    rebounce[i] = 'true';
+                    
                 }
                 
                 bonusGroupChild[i].setCollideWorldBounds(true);
