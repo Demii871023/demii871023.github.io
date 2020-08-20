@@ -586,7 +586,7 @@ const gameSubject = {
 
 const percentN = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
 const bonus_name = ['lazyB', 'pressureB', 'socialB', 'strengthB'];
-
+var rebounce = ['false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false'];
 var bonusStart = false;
 var bonusStop = false;
 
@@ -609,7 +609,6 @@ var bonus_xy = [
     {x: 0, y: 0, gravity: 0, velocity: 0}
 ];
 
-var rebounce = [false, false, false, false, false, false, false, false, false, false, false, false];
 
 const gameBonus = {
     key: 'gameBonus',
@@ -754,7 +753,7 @@ const gameBonus = {
                 {
                     console.log(bonusGroupChild[i].x);
                     console.log("反彈");
-                    if(!rebounce[i])
+                    if(rebounce[i] == 'false')
                     {   
                         console.log("=========================================");
                         console.log(bonus_xy[i].velocity);
@@ -764,7 +763,7 @@ const gameBonus = {
                         console.log(-bonus_xy[i].velocity);
                         console.log("=========================================");
                     }
-                    rebounce[i] = true;
+                    rebounce[i] = 'true';
                 }
                 
                 bonusGroupChild[i].setCollideWorldBounds(true);
