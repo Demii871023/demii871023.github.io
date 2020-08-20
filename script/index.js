@@ -871,14 +871,18 @@ const gameBonus = {
                         input_id = 0;
                     else if(keyboard.down.isDown)
                         input_id = 1;
-                    else
-                        input_id = -1;
                 }
 
                 if(input_id = command_command[command_index])
                 {
-                    command_index = command_index + 1;
                     console.log(command_index + "正確");
+                    command_index = command_index + 1;
+                    input_id = -1;
+                }
+                else
+                {
+                    console.log("錯誤");
+                    input_id = -1;
                 }
             }
             
