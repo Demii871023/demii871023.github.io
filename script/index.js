@@ -789,9 +789,6 @@ const gameBonus = {
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
                 if(bonusGroupChild[i].x <= 70 || bonusGroupChild[i].x >= cw - 70)
                 {
-                    console.log(bonusGroupChild[i].x);
-                    console.log("反彈");
-                    console.log(rebounce[i]);
                     if(rebounce[i] == 'false')
                     {   
                         bonus_xy[i].velocity = bonus_xy[i].velocity * -1;
@@ -923,21 +920,25 @@ const gameBonus = {
 
                 if(addKey == 0)        // 惰性
                 {
+                    console.log("lazy ++");
                     lazyNum = lazyNum + 5;
                     document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
                 }
                 if(addKey == 1)    // 壓力
                 {
+                    console.log("pressure ++");
                     pressureNum = pressureNum + 5;
                     document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
                 }
                 if(addKey == 2)      // 人際
                 {
+                    console.log("social ++");
                     socialNum = socialNum + 5;
                     document.getElementById('strengthProgress').style.width = ((strengthNum / strengthMAX) * 100).toString() + "%";
                 }
                 if(addKey == 3)    // 體力
                 {
+                    console.log("strength ++");
                     strengthNum = strengthNum + 5;
                     document.getElementById('socialProgress').style.width = ((socialNum / socialMAX) * 100).toString() + "%";
                 }
