@@ -75,6 +75,8 @@
 
 
 ## Resource
+
+### Phaser
 * [Button hovor](https://www.html5gamedevs.com/topic/41697-handle-button-hover-in-phaser-3/)
 * [Button hover](https://snowbillr.github.io/blog//2018-07-03-buttons-in-phaser-3/)
 
@@ -92,11 +94,22 @@
 
 * [Custom Bounds](https://phaser.io/examples/v3/view/physics/arcade/custom-bounds)
 
-### 設置不同的重力值
+#### 設置不同的重力值
 * [Gravity Example](https://phaser.io/examples/v2/arcade-physics/gravity)
 
-### 在 Phaser Canvas 前顯示 HTML5 物件
+#### 在 Phaser Canvas 前顯示 HTML5 物件
 * [z-index](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)
 
-### Radar Chart
+#### Radar Chart
 * [rexUI: Chart - radar](https://codepen.io/rexrainbow/pen/qwVBNy?editors=0010)
+
+
+### Bootstrap
+* [對齊 Float](https://getbootstrap.com/docs/4.0/utilities/float/)
+* [響應式的佈局系統 col](https://medium.com/@realdennis/40%E8%A1%8C%E5%AF%A6%E4%BD%9C%E9%9F%BF%E6%87%89%E5%BC%8F%E7%9A%84%E4%BD%88%E5%B1%80%E7%B3%BB%E7%B5%B1-%E5%91%8A%E8%A8%B4%E4%BD%A0col-sm-12-col-md-6-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AF%A6%E7%8F%BE-4490a65b1a0)
+
+#### visibility v.s. display
+* [CSS visibility Property](https://www.w3schools.com/cssref/pr_class_visibility.asp)
+* [display:none和visibility:hidden的差別](https://dotblogs.com.tw/kirkchen/2009/12/22/12603)
+
+
