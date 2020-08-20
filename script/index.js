@@ -860,7 +860,7 @@ const gameBonus = {
                     commandid = getRandom(3,0);
                     command_command.push(commandid);
                     console.log(commandid);
-                    commandGroup.create(cw/2 - i*70, ch/2, command_name[commandid]);
+                    commandGroup.create(cw/2 - i*90, ch/2, command_name[commandid]);
                 }
                 
                 
@@ -914,11 +914,14 @@ const gameBonus = {
                 }
             }
             
-            if(input_correct == commandNum)
+            if(input_correct == commandNum && commandInput)
             {
                 commandInput = false;
+                mask.clear();
+                bonusStop = false;
+                bonusStart = true;
                 
-                
+
                 if(addKey == 0)        // 惰性
                 {
                     lazyNum = lazyNum + 5;
