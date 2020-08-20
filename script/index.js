@@ -1,6 +1,5 @@
 // const.js
 
-
 const cw = $(window).width();
 const ch = $(window).height();
 const bg1Scale = 4;
@@ -10,6 +9,12 @@ const beansScale = 0.2;
 const classScale = 0.5;
 const scale = 0.6;
 const monsterScale = 0.7;
+
+// 其他參數的最大值
+const lazyMAX = 100;      // 惰性
+const pressureMAX = 100;  // 壓力
+const strengthMAX = 100;  // 體力
+const socialMAX = 100;    // 人際
 
 // 課目類別名稱及個數
 const subjectN = 8;
@@ -263,7 +268,6 @@ const playerSelect = {
         }
         if(shrinkScale.toFixed(1) == otherpScle)
         {
-            // console.log("相同");
             keydwon = false;
             playerMove = false
             for(var i = 0 ; i < 6 ; i++)
@@ -388,10 +392,22 @@ const gameSubject = {
     key: 'gameSubject',
     preload: function(){
         
+        // 依照選取的角色顯現出角色圖片於角色狀態
         document.getElementById('playerStatusCard').style.visibility = 'visible';
         var tmpID = 'player'+ (player_select + 1).toString() + 'IMG';
         document.getElementById(tmpID).style.display = 'block';
       
+        // 角色狀態的四個其他參數玩家擁有數值呈現
+        
+        var lazyPercent = ((lazyNum / lazyMax) * 100).toString() + "%";
+        var pressurePercent = (pressureNum / pressureMAX) * 100;
+        var strengthPercent = (strengthNum / strengthMAX) * 100;
+        var socialPercent = (socialNum / socialMAX) * 100;
+        
+        
+        document.getElementById('lazyProgress').style.width = lazyPercent;
+        document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
+        
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
@@ -404,8 +420,6 @@ const gameSubject = {
         this.load.image('player4', 'image/Character/player4');
         this.load.image('player5', 'image/Character/player5');
         this.load.image('player6', 'image/Character/player6');
-
-
 
         this.load.image('beans', 'image/ClassGroup/dna.png');
         
