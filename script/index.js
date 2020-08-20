@@ -512,7 +512,7 @@ const gameSubject = {
         function inBonuse(player, bonuse)
         {
             console.log("進入加分關卡");
-             this.scene.start('gameBonus');
+            this.scene.start('gameBonus');
         }
         
         //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
@@ -739,10 +739,23 @@ const gameBonus = {
         }, 1000);
         
         
+        this.load.image('upCommand', 'image/Bonus/up-arrow.png');
+        this.load.image('downCommand', 'image/Bonus/down-arrow.png');
+        this.load.image('leftCommand', 'image/Bonus/left-arrow.png');
+        this.load.image('rightCommand', 'image/Bonus/right-arrow.png');
         
         function commandCreate()
         {
             console.log("產生指令");
+            upCommand = this.add.sprite(cw/2 - 45, ch/2, 'upCommand');
+            upCommand.setScale(0.4);
+            downCommand = this.add.sprite(cw/2 - 15, ch/2, 'downCommand');
+            downCommand.setScale(0.4);
+            leftCommand = this.add.sprite(cw/2 + 15, ch/2, 'leftCommand');
+            leftCommand.setScale(0.4);
+            rightCommand = this.add.sprite(cw/2 + 45, ch/2, 'rightCommand');
+            rightCommand.setScale(0.4);
+            
         }
     },
     update: function(){
@@ -806,8 +819,6 @@ const gameBonus = {
             {
                 mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
                 maskCounter = maskCounter + 1;
-                
-                commandCreate();
             }
             
             player.body.gravity.y = 0;
