@@ -649,8 +649,8 @@ const gameBonus = {
         {
             for(var j = 0 ; j < 4 ; j++)
             {
-                tempX = getRandom(cw, 1);
-                tempY = getRandom(ch, 1);
+                tempX = getRandom(cw/2, 1);
+                tempY = getRandom(ch/2, 1);
                 tempGravity = getRandom(1, 500);
                 tempVelocityX = getRandom(400, -200);
 
