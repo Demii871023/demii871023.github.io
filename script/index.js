@@ -641,14 +641,7 @@ const gameBonus = {
         
         player = this.physics.add.sprite(cw/2, ch/2, player_name[player_select]);
         player.setScale(playerScale);
-        
-        lazyB = this.physics.add.sprite(cw/2-20, ch/2, 'lazyB');
-        lazyB.setScale(beansScale);
-        
-        pressureB = this.physics.add.sprite(cw/2+20, ch/2, 'pressureB');
-        pressureB.setScale(beansScale);
-        
-        
+
         bonusGroup = this.physics.add.group();
         bonusGroup.enableBody = true;
 
@@ -665,15 +658,8 @@ const gameBonus = {
                 bonus_xy[i * 4 + j].y = tempY;
                 bonus_xy[i * 4 + j].gravity = tempGravity;
                 bonus_xy[i * 4 + j].velocity = tempVelocityX;
-//                 console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
-//                 console.log((i * 4) + j);
+
                 bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[j]);
-                
-//                 const config = {
-//                         key: bonus_name[i],
-//                         setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
-//                 }
-//                 bonusGroup.create(config);
             }
         }
         bonusGroupChild = bonusGroup.getChildren();
@@ -691,6 +677,17 @@ const gameBonus = {
             console.log(rebounce[i]);
 
 
+        this.physics.add.overlap(player, bonusGroup, addStatusValue, null, this);
+        
+        function addStatusValue(player, bonus)
+        {
+            console.log("暫停遊戲")
+            bonusStart = false;
+            bonusStop = true;
+            
+        }
+        
+        
         // 遊戲說明及倒數遮罩
         mask = this.add.graphics()
         mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
@@ -725,6 +722,7 @@ const gameBonus = {
             if(timeInt <= 0)
             {
                 bonusStop = true;
+                bonusStart = false;
                 clearInterval(gbonusTimer);
             }
         }, 1000);
@@ -762,7 +760,7 @@ const gameBonus = {
             }
         }
 
-        // 計時到，畫面靜止
+        // 計時到，畫面靜止 || 玩家吃到加分豆，先完成任務才加分
         if(bonusStop)
         {
             player.body.gravity.y = 0;
