@@ -656,37 +656,30 @@ const gameBonus = {
 
         for(var i = 0 ; i < 4 ; i++)
         {
-            tempX = getRandom(cw, 1);
-            tempY = getRandom(ch, 1);
-            tempGravity = getRandom(1, 500);
-            tempVelocityX = getRandom(400, -200);
 
-            bonus_xy[i].x = tempX;
-            bonus_xy[i].y = tempY;
-            bonus_xy[i].gravity = tempGravity;
-            bonus_xy[i].VelocityX = tempVelocityX;
-            
-            
-            console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
+           
             
             for(var j = 0 ; j < 3 ; j++)
             {
-                console.log((i * 4) + j);
-                bonusGroup.create(bonus_xy[j].x, bonus_xy[j].y, bonus_name[i]);
+                tempX = getRandom(cw, 1);
+                tempY = getRandom(ch, 1);
+                tempGravity = getRandom(1, 500);
+                tempVelocityX = getRandom(400, -200);
+
+                bonus_xy[i * 4 + j].x = tempX;
+                bonus_xy[i * 4 + j].y = tempY;
+                bonus_xy[i * 4 + j].gravity = tempGravity;
+                bonus_xy[i * 4 + j].VelocityX = tempVelocityX;
+//                 console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
+//                 console.log((i * 4) + j);
+                bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[i]);
+                
+                const config = {
+                        key: bonus_name[i],
+                        setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
+                }
+                beansGroup.create(config);
             }
-
-//             for(var j = 0 ; j < 3 ; j++)
-//             {
-//                 bonusGroup.create(bonus_xy[i*4+j].x, bonus_xy[i*4+j].y, bonus_name[i]); 
-
-//                 const config = {
-//                     key: bonus_name[i],
-//                     setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
-//                 }
-//                 beansGroup.create(config);
-//             }
-            
-            
         }
         bonusGroupChild = bonusGroup.getChildren();
         for(var i = 0 ; i < beansGroupChild.length ; i++)
