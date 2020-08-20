@@ -820,28 +820,16 @@ const gameBonus = {
                 for(var i = 0 ; i < commandNum ; i++)
                 {
                     commandid = getRandom(3,1);
-                    commandGroup.create(cw/2 - 100 * i, ch/2, command_name[commandid]);
+                    commandGroup.create(cw/2 - i*150, ch/2, command_name[commandid]);
                 }
                 
                 
                 commandGroupChild = commandGroup.getChildren();
                 for(var i = 0 ; i < commandGroupChild.length ; i++)
                 {
-                 
-                    commandGroupChild[i].setScale(0.4);
+                    commandGroupChild[i].setScale(0.2);
                 }
-                
-                
-                
-                
-//                 upCommand = this.physics.add.sprite(cw/2 - 45, ch/2, 'upCommand');
-//                 upCommand.setScale(0.4);
-//                 downCommand = this.physics.add.sprite(cw/2 - 15, ch/2, 'downCommand');
-//                 downCommand.setScale(0.4);
-//                 leftCommand = this.physics.add.sprite(cw/2 + 15, ch/2, 'leftCommand');
-//                 leftCommand.setScale(0.4);
-//                 rightCommand = this.physics.add.sprite(cw/2 + 45, ch/2, 'rightCommand');
-//                 rightCommand.setScale(0.4);
+
             }
             
             player.body.gravity.y = 0;
