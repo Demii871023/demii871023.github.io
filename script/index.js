@@ -748,6 +748,8 @@ const gameBonus = {
                 console.log("Test")
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
                 bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
+                bonusGroupChild[i].setCollideWorldBounds(true);
+                bonusGroupChild[i].setBounce(1);
             }
         }
 
