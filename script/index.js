@@ -674,11 +674,11 @@ const gameBonus = {
 //                 console.log((i * 4) + j);
                 bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[i]);
                 
-                const config = {
-                        key: bonus_name[i],
-                        setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
-                }
-                beansGroup.create(config);
+//                 const config = {
+//                         key: bonus_name[i],
+//                         setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
+//                 }
+//                 beansGroup.create(config);
             }
         }
         bonusGroupChild = bonusGroup.getChildren();
