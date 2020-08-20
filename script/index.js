@@ -885,7 +885,7 @@ const gameBonus = {
                     {
                         console.log("右");
                         input_now = true;
-                        input_input true;
+                        input_input = true;
                         input_id = 3;
                     }
                     else if(keyboard.left.isDown)
