@@ -669,26 +669,29 @@ const gameBonus = {
             
             console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
             
-            bonusGroup.create(bonus_xy[i].x, bonus_xy[i].y, bonus_name[i]);
+            for(var j = 0 ; j < 3 ; j++)
+            {
+                bonusGroup.create(bonus_xy[i*4+j].x, bonus_xy[i*4+j].y, bonus_name[i]);
+            }
 
-            // for(var j = 0 ; j < 3 ; j++)
-            // {
-            //     bonusGroup.create(bonus_xy[i*4+j].x, bonus_xy[i*4+j].y, bonus_name[i]); 
+//             for(var j = 0 ; j < 3 ; j++)
+//             {
+//                 bonusGroup.create(bonus_xy[i*4+j].x, bonus_xy[i*4+j].y, bonus_name[i]); 
 
-            //     const config = {
-            //         key: bonus_name[i],
-            //         setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
-            //     }
-            //     beansGroup.create(config);
-            // }
+//                 const config = {
+//                     key: bonus_name[i],
+//                     setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
+//                 }
+//                 beansGroup.create(config);
+//             }
             
             
         }
-        // bonusGroupChild = bonusGroup.getChildren();
-        // for(var i = 0 ; i < beansGroupChild.length ; i++)
-        // {
-        //     bonusGroupChild[i].setScale(beansScale);           
-        // }
+        bonusGroupChild = bonusGroup.getChildren();
+        for(var i = 0 ; i < beansGroupChild.length ; i++)
+        {
+            bonusGroupChild[i].setScale(beansScale);           
+        }
 
 
         // 遊戲說明及倒數遮罩
