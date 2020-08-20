@@ -63,3 +63,8 @@ canvas{
 #bonusTimer{
     z-index: 100;
 }
+
+#playerStatusCard{
+    z-index: 100;
+    position:absolute;
+}
