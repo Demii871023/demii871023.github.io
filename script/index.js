@@ -390,7 +390,7 @@ const gameSubject = {
         
         document.getElementById('playerStatusCard').style.visibility = 'visible';
         var tmpID = 'player'+ (player_select + 1).toString() + 'IMG';
-        document.getElementById(tmpID).display = 'block';
+        document.getElementById(tmpID).style.display = 'block';
       
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
