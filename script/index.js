@@ -706,8 +706,10 @@ const gameBonus = {
         
         function addStatusValue(player, bonus)
         {
-            if(abs(player.x, bonus.x) < 10 && abs(player.y, bonus.y) < 10)
+            if(abs(player.x, bonus.x) < 20 && abs(player.y, bonus.y) < 20)
             {
+                console.log(bonus.texture.key);
+                console.log(bonus_name.indexOf(bonus.texture.key));
                 console.log("暫停遊戲");
                 bonusStart = false;
                 bonusStop = true;
