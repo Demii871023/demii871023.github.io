@@ -900,7 +900,7 @@ const gameBonus = {
                     }
                 }
 
-                if(input_id = command_command[command_index])
+                if(input_id == command_command[command_index])
                 {
                     console.log(command_index + "正確");
                     input_correct = input_correct + 1;
@@ -909,7 +909,6 @@ const gameBonus = {
                 }
                 else
                 {
-//                     console.log("錯誤");
                     input_id = -1;
                 }
             }
