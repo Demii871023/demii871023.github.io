@@ -825,10 +825,10 @@ const gameBonus = {
                 // 依據指令數量隨機產生指令 id 1:up 2:down 3:left 4:right
                 for(var i = 0 ; i < commandNum ; i++)
                 {
-                    commandid = getRandom(4,1);
+                    commandid = getRandom(3,0);
                     command_command.push(commandid);
                     console.log(commandid);
-                    commandGroup.create(cw/2 - i*150, ch/2, command_name[commandid]);
+                    commandGroup.create(cw/2 - i*30, ch/2, command_name[commandid]);
                 }
                 
                 
