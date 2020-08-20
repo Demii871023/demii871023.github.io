@@ -694,8 +694,6 @@ const gameBonus = {
                 console.log("暫停遊戲");
                 bonusStart = false;
                 bonusStop = true;
-                
-                commandCreate();
             }
         }
         
@@ -744,18 +742,6 @@ const gameBonus = {
         this.load.image('leftCommand', 'image/Bonus/left-arrow.png');
         this.load.image('rightCommand', 'image/Bonus/right-arrow.png');
         
-        function commandCreate()
-        {
-            console.log("產生指令");
-            upCommand = add.sprite(cw/2 - 45, ch/2, 'upCommand');
-            upCommand.setScale(0.4);
-            downCommand = add.sprite(cw/2 - 15, ch/2, 'downCommand');
-            downCommand.setScale(0.4);
-            leftCommand = add.sprite(cw/2 + 15, ch/2, 'leftCommand');
-            leftCommand.setScale(0.4);
-            rightCommand = add.sprite(cw/2 + 45, ch/2, 'rightCommand');
-            rightCommand.setScale(0.4);
-        }
     },
     update: function(){
 
@@ -818,6 +804,16 @@ const gameBonus = {
             {
                 mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
                 maskCounter = maskCounter + 1;
+                
+                console.log("產生指令");
+                upCommand = this.physics.add.sprite(cw/2 - 45, ch/2, 'upCommand');
+                upCommand.setScale(0.4);
+                downCommand = this.physics.add.sprite(cw/2 - 15, ch/2, 'downCommand');
+                downCommand.setScale(0.4);
+                leftCommand = this.physics.add.sprite(cw/2 + 15, ch/2, 'leftCommand');
+                leftCommand.setScale(0.4);
+                rightCommand = this.physics.add.sprite(cw/2 + 45, ch/2, 'rightCommand');
+                rightCommand.setScale(0.4);
             }
             
             player.body.gravity.y = 0;
