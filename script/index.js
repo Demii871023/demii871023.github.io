@@ -622,8 +622,13 @@ var bonus_xy = [
     {x: 0, y: 0, gravity: 0, velocity: 0}
 ];
 
+// 為了完成指令
 var command_name = ['upCommand', 'downCommand', 'leftCommand', 'rightCommand'];
 var command_command = [];
+var commandInput = false;
+var command_index = 0;
+// 使用者輸入
+var input_id = -1;
 
 const gameBonus = {
     key: 'gameBonus',
@@ -809,6 +814,18 @@ const gameBonus = {
         // 計時到，畫面靜止 || 玩家吃到加分豆，先完成任務才加分
         if(bonusStop)
         {
+            // 所有加分豆與玩家靜止
+            player.body.gravity.y = 0;
+            player.setVelocityX(0);
+            player.setVelocityY(0);
+            
+            for(var i = 0 ; i < bonusGroupChild.length ; i++)
+            {
+                bonusGroupChild[i].body.gravity.y = 0;
+                bonusGroupChild[i].setVelocityX(0);
+                bonusGroupChild[i].setVelocityY(0);
+            }
+            
             // 蓋上遮罩
             if(maskCounter == 0)
             {
@@ -828,28 +845,47 @@ const gameBonus = {
                     commandid = getRandom(3,0);
                     command_command.push(commandid);
                     console.log(commandid);
-                    commandGroup.create(cw/2 - i*30, ch/2, command_name[commandid]);
+                    commandGroup.create(cw/2 - i*70, ch/2, command_name[commandid]);
                 }
                 
                 
                 commandGroupChild = commandGroup.getChildren();
                 for(var i = 0 ; i < commandGroupChild.length ; i++)
-                {
                     commandGroupChild[i].setScale(0.2);
-                }
-
+                
+                commandInput = true;
             }
             
-            player.body.gravity.y = 0;
-            player.setVelocityX(0);
-            player.setVelocityY(0);
-
-            for(var i = 0 ; i < bonusGroupChild.length ; i++)
+            if(commandInput)
             {
-                bonusGroupChild[i].body.gravity.y = 0;
-                bonusGroupChild[i].setVelocityX(0);
-                bonusGroupChild[i].setVelocityY(0);
+                let keyboard = this.input.keyboard.createCursorKeys();
+                
+                // command 0：up 1：down 2：left 3：right
+                if(input_id == -1)
+                {
+                    if(keyboard.right.isDown)
+                        input_id = 3;
+                    else if(keyboard.left.isDown)
+                        input_id = 2;
+                    else if(keyboard.up.isDown)
+                        input_id = 0;
+                    else if(keyboard.down.isDown)
+                        input_id = 1;
+                    else
+                        input_id = -1;
+                }
+
+                if(input_id = command_command[command_index])
+                {
+                    command_index = command_index + 1;
+                    console.log(command_index + "正確");
+                }
             }
+            
+
+            
+            
+            
         }
         
         
