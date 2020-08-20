@@ -751,9 +751,6 @@ const gameBonus = {
             for(var i = 0 ; i < bonusGroupChild.length ; i++)
             {
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
-                bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
-                
-                console.log(bonusGroupChild[i].x);
                 if(bonusGroupChild[i].x <= 70 || bonusGroupChild[i].x >= cw - 70)
                 {
                     console.log(bonusGroupChild[i].x);
@@ -761,13 +758,16 @@ const gameBonus = {
                     console.log(rebounce[i]);
                     if(rebounce[i] == 'false')
                     {   
-                        
-                        bonusGroupChild[i].setVelocityX(-bonus_xy[i].velocity);
+                        bonus_xy[i].velocity = bonus_xy[i].velocity * -1;
+                        bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
                         rebounce[i] = 'true';
                     }
-                    
                 }
-                
+                else
+                {
+                    bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
+                    rebounce[i] = 'false';
+                }
                 bonusGroupChild[i].setCollideWorldBounds(true);
                 bonusGroupChild[i].setBounce(1);
             }
