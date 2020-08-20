@@ -859,10 +859,10 @@ const gameBonus = {
                 {
                     commandid = getRandom(3,0);
                     command_command.push(commandid);
-                    console.log(commandid);
+//                     console.log(commandid);
                     commandGroup.create(cw/2 - i*90, ch/2, command_name[commandid]);
                 }
-                
+                console.log(command_command);
                 
                 commandGroupChild = commandGroup.getChildren();
                 for(var i = 0 ; i < commandGroupChild.length ; i++)
