@@ -731,6 +731,7 @@ const gameBonus = {
 
         if(bonusStart)
         {
+            
             player.body.gravity.y = 200;
             player.setCollideWorldBounds(true);        
             player.setBounce(1); //設定彈跳值
@@ -758,6 +759,23 @@ const gameBonus = {
                 bonusGroupChild[i].setCollideWorldBounds(true);
                 bonusGroupChild[i].setBounce(1);
             }
+       
+            let keyboard = this.input.keyboard.createCursorKeys();
+        
+            // player 上下左右移動
+            if(keyboard.right.isDown)
+                player.setVelocityX(160);
+            else if(keyboard.left.isDown)
+                player.setVelocityX(-160);
+            else
+                player.setVelocityX(0);
+
+            if(keyboard.up.isDown)
+                player.setVelocityY(-160);
+            else if(keyboard.down.isDown)
+                player.setVelocityY(160);
+            else
+                player.setVelocityY(0);
         }
 
         // 計時到，畫面靜止 || 玩家吃到加分豆，先完成任務才加分
@@ -774,6 +792,9 @@ const gameBonus = {
                 bonusGroupChild[i].setVelocityY(0);
             }
         }
+        
+        
+        
     }
 }
 
