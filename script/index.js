@@ -627,9 +627,15 @@ const gameBonus = {
         this.load.image('pressureB', 'image/Bonus/pressure.png');
         this.load.image('socialB', 'image/Bonus/social.png');
         this.load.image('strengthB', 'image/Bonus/strength.png');
-
+        // GM 對話框消失 開啟倒數計時器
         document.getElementById('gmChatCard').style.display = 'none';
         document.getElementById('bonusTimer').style.display = 'block';
+        
+        // 載入指令上下左右鍵圖示
+        this.load.image('upCommand', 'image/Bonus/up-arrow.png');
+        this.load.image('downCommand', 'image/Bonus/down-arrow.png');
+        this.load.image('leftCommand', 'image/Bonus/left-arrow.png');
+        this.load.image('rightCommand', 'image/Bonus/right-arrow.png');
 
         // 遊戲開始的倒數計時
         startInt = 3;
@@ -729,6 +735,13 @@ const gameBonus = {
                 clearInterval(gbonusTimer);
             }
         }, 1000);
+        
+        
+        
+        function commandCreate()
+        {
+            console.log("產生指令");
+        }
     },
     update: function(){
 
@@ -791,6 +804,8 @@ const gameBonus = {
             {
                 mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
                 maskCounter = maskCounter + 1;
+                
+                commandCreate();
             }
             
             player.body.gravity.y = 0;
