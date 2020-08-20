@@ -679,8 +679,9 @@ const gameBonus = {
             }
         }
         bonusGroupChild = bonusGroup.getChildren();
-        for(var i = 0 ; i < beansGroupChild.length ; i++)
+        for(var i = 0 ; i < bonusGroupChild.length ; i++)
         {
+            console.log("安安安");
             bonusGroupChild[i].setScale(beansScale);           
         }
 
