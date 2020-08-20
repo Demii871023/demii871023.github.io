@@ -609,6 +609,7 @@ var bonus_xy = [
     {x: 0, y: 0, gravity: 0, velocity: 0}
 ];
 
+var rebounce = [false, false, false, false, false, false, false, false, false, false, false, false]
 
 const gameBonus = {
     key: 'gameBonus',
@@ -749,11 +750,13 @@ const gameBonus = {
                 bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
                 
                 console.log(bonusGroupChild[i].x);
-                if(bonusGroupChild[i].x <= 52 || bonusGroupChild[i].x >= cw - 52)
+                if(bonusGroupChild[i].x <= 70 || bonusGroupChild[i].x >= cw - 70)
                 {
                     console.log(bonusGroupChild[i].x);
                     console.log("反彈");
-                    bonusGroupChild[i].setVelocityX(-1 * bonus_xy[i].velocity);
+                    if(!rebounce[i])
+                        bonusGroupChild[i].setVelocityX(-1 * bonus_xy[i].velocity);
+                    rebounce[i] = true;
                 }
                 
                 bonusGroupChild[i].setCollideWorldBounds(true);
