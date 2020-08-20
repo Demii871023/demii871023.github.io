@@ -588,6 +588,8 @@ var rebounce = ['false', 'false', 'false', 'false', 'false', 'false', 'false', '
 var bonusStart = false;
 var bonusStop = false;
 
+var maskCounter = 0;
+
 var bonus_xy = [
     // 惰性 lazyNum
     {x: 0, y: 0, gravity: 0, velocity: 0}, 
@@ -785,7 +787,11 @@ const gameBonus = {
         if(bonusStop)
         {
             // 蓋上遮罩
-            mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+            if(maskCounter == 0)
+            {
+                mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+                maskCounter = maskCounter + 1;
+            }
             
             player.body.gravity.y = 0;
             player.setVelocityX(0);
