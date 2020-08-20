@@ -866,13 +866,25 @@ const gameBonus = {
                 if(input_id == -1)
                 {
                     if(keyboard.right.isDown)
+                    {
                         input_id = 3;
+                        console.log("右邊");
+                    }
                     else if(keyboard.left.isDown)
+                    {
                         input_id = 2;
+                        console.log("左邊");
+                    }
                     else if(keyboard.up.isDown)
+                    {
                         input_id = 0;
+                        console.log("上面");
+                    }
                     else if(keyboard.down.isDown)
+                    {
                         input_id = 1;
+                        console.log("下面");
+                    }
                 }
 
                 if(input_id = command_command[command_index])
@@ -883,7 +895,7 @@ const gameBonus = {
                 }
                 else
                 {
-                    console.log("錯誤");
+//                     console.log("錯誤");
                     input_id = -1;
                 }
             }
