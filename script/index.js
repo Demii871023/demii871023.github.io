@@ -476,8 +476,6 @@ const gameSubject = {
             beansGroupChild[i].setScale(beansScale);           
         }
 
-        
-        
         // beans = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
         // beans.setCollideWorldBounds(true);
         // beans.setScale(beansScale);
@@ -684,6 +682,10 @@ const gameBonus = {
             console.log("安安安");
             bonusGroupChild[i].setScale(beansScale);
         }
+        
+        
+        for(var i = 0 ; i < 12 ; i++)
+            rebounce[i] = 'false';
 
 
         // 遊戲說明及倒數遮罩
