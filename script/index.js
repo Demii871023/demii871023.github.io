@@ -737,17 +737,6 @@ const gameBonus = {
             player.setCollideWorldBounds(true);        
             player.setBounce(1); //設定彈跳值
 
-//             lazyB.body.gravity.y = 150;
-//             lazyB.setVelocityX(20);
-//             lazyB.setCollideWorldBounds(true);        
-//             lazyB.setBounce(1); //設定彈跳值
-
-//             pressureB.body.gravity.y = 50;
-//             pressureB.setVelocityX(-80);
-//             pressureB.setCollideWorldBounds(true);        
-//             pressureB.setBounce(1); //設定彈跳值
-            
-            
             for(var i = 0 ; i < bonusGroupChild.length ; i++)
             {
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
@@ -777,7 +766,15 @@ const gameBonus = {
         if(bonusStop)
         {
             player.body.gravity.y = 0;
+            player.setVelocityX(0);
             player.setVelocityY(0);
+
+            for(var i = 0 ; i < bonusGroupChild.length ; i++)
+            {
+                bonusGroupChild[i].body.gravity.y = 0;
+                bonusGroupChild[i].setVelocityX(0);
+                bonusGroupChild[i].setVelocityY(0);
+            }
         }
     }
 }
