@@ -669,13 +669,13 @@ const gameBonus = {
                 bonus_xy[i * 4 + j].velocityX = tempVelocityX;
 //                 console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
 //                 console.log((i * 4) + j);
-//                 bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[j]);
+                bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[j]);
                 
-                const config = {
-                        key: bonus_name[i],
-                        setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
-                }
-                bonusGroup.create(config);
+//                 const config = {
+//                         key: bonus_name[i],
+//                         setXY: {x: bonus_xy[i*4+j].x, y: bonus_xy[i*4+j].y},
+//                 }
+//                 bonusGroup.create(config);
             }
         }
         bonusGroupChild = bonusGroup.getChildren();
