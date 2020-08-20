@@ -367,11 +367,11 @@ const gameSelect = {
 
 // gameSubject.js
 
-// 玩家擁有數值
-var lazyNum = 100;      // 惰性
-var pressureNum = 100;  // 壓力
-var strengthNum = 100;  // 體力
-var socialNum = 100;    // 人際
+// 玩家擁有數值 -> 目前先寫死，等待自定義參數部分完成，在讀取數值
+var lazyNum = 17;      // 惰性
+var pressureNum = 50;  // 壓力
+var strengthNum = 35;  // 體力
+var socialNum = 80;    // 人際
 var time = 20;          // 時間
 
 // 門檻值
@@ -398,13 +398,7 @@ const gameSubject = {
         document.getElementById(tmpID).style.display = 'block';
       
         // 角色狀態的四個其他參數玩家擁有數值呈現
-        
-        var lazyPercent = ((lazyNum / lazyMAX) * 100).toString() + "%";
-        var pressurePercent = (pressureNum / pressureMAX) * 100;
-        var strengthPercent = (strengthNum / strengthMAX) * 100;
-        var socialPercent = (socialNum / socialMAX) * 100;
-
-        document.getElementById('lazyProgress').style.width = lazyPercent;
+        document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
         document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
         document.getElementById('strengthProgress').style.width = ((strengthNum / strengthMAX) * 100).toString() + "%";
         document.getElementById('socialProgress').style.width = ((socialNum / socialMAX) * 100).toString() + "%";
