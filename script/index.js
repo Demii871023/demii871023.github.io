@@ -399,12 +399,11 @@ const gameSubject = {
       
         // 角色狀態的四個其他參數玩家擁有數值呈現
         
-        var lazyPercent = ((lazyNum / lazyMax) * 100).toString() + "%";
+        var lazyPercent = ((lazyNum / lazyMAX) * 100).toString() + "%";
         var pressurePercent = (pressureNum / pressureMAX) * 100;
         var strengthPercent = (strengthNum / strengthMAX) * 100;
         var socialPercent = (socialNum / socialMAX) * 100;
-        
-        
+
         document.getElementById('lazyProgress').style.width = lazyPercent;
         document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
         document.getElementById('strengthProgress').style.width = ((strengthNum / strengthMAX) * 100).toString() + "%";
