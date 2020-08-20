@@ -892,7 +892,7 @@ const gameBonus = {
                     {
                         console.log("左");
                         input_now = true;
-                        input_input true;
+                        input_input = true;
                         input_id = 2;
 
                     }
