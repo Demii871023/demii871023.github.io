@@ -368,6 +368,7 @@ const gameSelect = {
 // gameSubject.js
 
 // 玩家擁有數值 -> 目前先寫死，等待自定義參數部分完成，在讀取數值
+
 var lazyNum = 17;      // 惰性
 var pressureNum = 50;  // 壓力
 var strengthNum = 35;  // 體力
@@ -597,9 +598,11 @@ const gameSubject = {
 
 const percentN = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
 const bonus_name = ['lazyB', 'pressureB', 'socialB', 'strengthB'];
+const progressHTMLID = ['lazyProgress', 'pressureProgress', 'socialProgress', 'strengthProgress'];
 var rebounce = ['false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false'];
 var bonusStart = false;
 var bonusStop = false;
+var addKey = '';
 
 var maskCounter = 0;
 
@@ -629,6 +632,7 @@ var commandInput = false;
 var command_index = 0;
 // 使用者輸入
 var input_id = -1;
+var input_correct = 0;
 
 const gameBonus = {
     key: 'gameBonus',
@@ -708,9 +712,18 @@ const gameBonus = {
         {
             if(abs(player.x, bonus.x) < 20 && abs(player.y, bonus.y) < 20)
             {
-                console.log(bonus.texture.key);
-                console.log(bonus_name.indexOf(bonus.texture.key));
-                console.log("暫停遊戲");
+//                 console.log(bonus.texture.key);
+//                 console.log(bonus_name.indexOf(bonus.texture.key));
+                
+                if(bonus.texture.key == 'lazyB')        // 惰性
+                    addKey = 0;
+                if(bonus.texture.key == 'pressureB')    // 壓力
+                    addKey = 1;
+                if(bonus.texture.key == 'socialB')      // 人際
+                    addKey = 2;
+                if(bonus.texture.key == 'strengthB')    // 體力
+                    addKey = 3;
+
                 bonusStart = false;
                 bonusStop = true;
             }
@@ -890,6 +903,7 @@ const gameBonus = {
                 if(input_id = command_command[command_index])
                 {
                     console.log(command_index + "正確");
+                    input_correct = input_correct + 1;
                     command_index = command_index + 1;
                     input_id = -1;
                 }
@@ -900,14 +914,33 @@ const gameBonus = {
                 }
             }
             
-
-            
-            
-            
+            if(input_correct == commandNum)
+            {
+                commandInput = false;
+                
+                
+                if(addKey == 0)        // 惰性
+                {
+                    lazyNum = lazyNum + 5;
+                    document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
+                }
+                if(addKey == 1)    // 壓力
+                {
+                    pressureNum = pressureNum + 5;
+                    document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
+                }
+                if(addKey == 2)      // 人際
+                {
+                    socialNum = socialNum + 5;
+                    document.getElementById('strengthProgress').style.width = ((strengthNum / strengthMAX) * 100).toString() + "%";
+                }
+                if(addKey == 3)    // 體力
+                {
+                    strengthNum = strengthNum + 5;
+                    document.getElementById('socialProgress').style.width = ((socialNum / socialMAX) * 100).toString() + "%";
+                }
+            }
         }
-        
-        
-        
     }
 }
 
