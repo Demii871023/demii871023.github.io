@@ -625,7 +625,6 @@ var bonus_xy = [
 var command_name = ['upCommand', 'downCommand', 'leftCommand', 'rightCommand'];
 var command_command = [];
 
-
 const gameBonus = {
     key: 'gameBonus',
     preload: function(){
@@ -689,17 +688,14 @@ const gameBonus = {
         bonusGroupChild = bonusGroup.getChildren();
         for(var i = 0 ; i < bonusGroupChild.length ; i++)
         {
-            console.log("安安安");
             bonusGroupChild[i].setScale(beansScale);
         }
-        
         
         for(var i = 0 ; i < 12 ; i++)
             rebounce[i] = 'false';
         
         for(var i = 0 ; i < 12 ; i++)
             console.log(rebounce[i]);
-
 
         this.physics.add.overlap(player, bonusGroup, addStatusValue, null, this);
         
@@ -735,7 +731,6 @@ const gameBonus = {
             }
         }, 1000);
 
-        
         var gbonusTimer = setInterval(() => {
             timeInt = timeInt - 1;
             if(timeInt <= 10)
@@ -751,7 +746,6 @@ const gameBonus = {
                 clearInterval(gbonusTimer);
             }
         }, 1000);
-        
         
         this.load.image('upCommand', 'image/Bonus/up-arrow.png');
         this.load.image('downCommand', 'image/Bonus/down-arrow.png');
@@ -825,14 +819,15 @@ const gameBonus = {
                 commandGroup = this.physics.add.group();
                 commandGroup.enableBody = true;
                 
-                
                 // 產生指令數量
                 commandNum = getRandom(7, 3);
                 
                 // 依據指令數量隨機產生指令 id 1:up 2:down 3:left 4:right
                 for(var i = 0 ; i < commandNum ; i++)
                 {
-                    commandid = getRandom(3,1);
+                    commandid = getRandom(4,1);
+                    command_command.push(commandid);
+                    console.log(commandid);
                     commandGroup.create(cw/2 - i*150, ch/2, command_name[commandid]);
                 }
                 
@@ -861,9 +856,6 @@ const gameBonus = {
         
     }
 }
-
-
-
 
 // index.js
 
