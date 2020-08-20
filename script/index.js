@@ -387,6 +387,9 @@ var threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'];
 const gameSubject = {
     key: 'gameSubject',
     preload: function(){
+        
+        document.getElementById('playerStatusCard').style.visibility = 'visible';
+        document.getElementById('player'+ (player_select + 1).toString() + 'IMG').display = 'block';
       
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
