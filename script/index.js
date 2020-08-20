@@ -748,8 +748,11 @@ const gameBonus = {
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
                 bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
                 
-                if(bonusGroupChild[i].x < 10 || bonusGroupChild[i].x > cw - 10)
+                console.log(bonusGroupChild[i].x);
+                if(bonusGroupChild[i].x < 50 || bonusGroupChild[i].x > cw - 50)
                 {
+                    console.log(bonusGroupChild[i].x);
+                    console.log("反彈");
                     bonusGroupChild[i].setVelocityX(-1 * bonus_xy[i].velocity);
                 }
                 
