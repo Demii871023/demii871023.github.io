@@ -746,7 +746,7 @@ const gameBonus = {
             for(var i = 0 ; i < bonusGroupChild.length ; i++)
             {
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
-                bonusGroupChild[i].setVelocityX(velocityX);
+                bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
             }
         }
 
