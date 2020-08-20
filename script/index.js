@@ -747,15 +747,14 @@ const gameBonus = {
         function commandCreate()
         {
             console.log("產生指令");
-            upCommand = this.add.sprite(cw/2 - 45, ch/2, 'upCommand');
+            upCommand = this.physics.add.sprite(cw/2 - 45, ch/2, 'upCommand');
             upCommand.setScale(0.4);
-            downCommand = this.add.sprite(cw/2 - 15, ch/2, 'downCommand');
+            downCommand = this.physics.add.sprite(cw/2 - 15, ch/2, 'downCommand');
             downCommand.setScale(0.4);
-            leftCommand = this.add.sprite(cw/2 + 15, ch/2, 'leftCommand');
+            leftCommand = this.physics.add.sprite(cw/2 + 15, ch/2, 'leftCommand');
             leftCommand.setScale(0.4);
-            rightCommand = this.add.sprite(cw/2 + 45, ch/2, 'rightCommand');
+            rightCommand = this.physics.add.sprite(cw/2 + 45, ch/2, 'rightCommand');
             rightCommand.setScale(0.4);
-            
         }
     },
     update: function(){
