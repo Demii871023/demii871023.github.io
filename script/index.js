@@ -820,7 +820,7 @@ const gameBonus = {
                 for(var i = 0 ; i < commandNum ; i++)
                 {
                     commandid = getRandom(3,1);
-                    commandGroup.create(cw/2 - 100 * i, ch/2, command_name[commanid]);
+                    commandGroup.create(cw/2 - 100 * i, ch/2, command_name[commandid]);
                 }
                 
                 
