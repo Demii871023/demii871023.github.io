@@ -654,12 +654,9 @@ const gameBonus = {
         bonusGroup = this.physics.add.group();
         bonusGroup.enableBody = true;
 
-        for(var i = 0 ; i < 4 ; i++)
+        for(var i = 0 ; i < 3 ; i++)
         {
-
-           
-            
-            for(var j = 0 ; j < 3 ; j++)
+            for(var j = 0 ; j < 4 ; j++)
             {
                 tempX = getRandom(cw, 1);
                 tempY = getRandom(ch, 1);
