@@ -649,9 +649,10 @@ const gameBonus = {
         
         pressureB = this.physics.add.sprite(cw/2+20, ch/2, 'pressureB');
         pressureB.setScale(beansScale);
-
-
+        
+        
         bonusGroup = this.physics.add.group();
+        bonusGroup.enableBody = true;
 
         for(var i = 0 ; i < 4 ; i++)
         {
@@ -667,6 +668,8 @@ const gameBonus = {
             
             
             console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
+            
+            bonusGroup.create(bonus_xy[i].x, bonus_xy[i].y, bonus_name[i]);
 
             // for(var j = 0 ; j < 3 ; j++)
             // {
