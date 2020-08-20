@@ -666,7 +666,7 @@ const gameBonus = {
                 bonus_xy[i * 4 + j].x = tempX;
                 bonus_xy[i * 4 + j].y = tempY;
                 bonus_xy[i * 4 + j].gravity = tempGravity;
-                bonus_xy[i * 4 + j].velocityX = tempVelocityX;
+                bonus_xy[i * 4 + j].velocity = tempVelocityX;
 //                 console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
 //                 console.log((i * 4) + j);
                 bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[j]);
@@ -745,6 +745,7 @@ const gameBonus = {
             
             for(var i = 0 ; i < bonusGroupChild.length ; i++)
             {
+                console.log("Test")
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
                 bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
             }
