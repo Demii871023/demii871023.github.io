@@ -745,13 +745,16 @@ const gameBonus = {
             
             for(var i = 0 ; i < bonusGroupChild.length ; i++)
             {
-                
                 bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
                 bonusGroupChild[i].setVelocityX(bonus_xy[i].velocity);
-//                 bonusGroupChild[i].body.velocity.setTo(200, 200);
+                
+                if(bonusGroupChild[i].x < 10 || bonusGroupChild[i].x > cw - 10)
+                {
+                    bonusGroupChild[i].setVelocityX(-1 * bonus_xy[i].velocity);
+                }
+                
                 bonusGroupChild[i].setCollideWorldBounds(true);
-                bonusGroupChild[i].setBounce(0.8);
-//                 bonusGroupChild[i].body.bounce.setTo(1, 1);
+                bonusGroupChild[i].setBounce(1);
             }
         }
 
