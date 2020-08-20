@@ -407,6 +407,8 @@ const gameSubject = {
         
         document.getElementById('lazyProgress').style.width = lazyPercent;
         document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
+        document.getElementById('strengthProgress').style.width = ((strengthNum / strengthMAX) * 100).toString() + "%";
+        document.getElementById('socialProgress').style.width = ((socialNum / socialMAX) * 100).toString() + "%";
         
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
