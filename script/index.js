@@ -681,10 +681,12 @@ const gameBonus = {
         
         function addStatusValue(player, bonus)
         {
-            console.log("暫停遊戲")
-            bonusStart = false;
-            bonusStop = true;
-            
+            if(abs(player.x, bonus.x) < 10 && abs(player.y, bonus.y) < 10)
+            {
+                console.log("暫停遊戲")
+                bonusStart = false;
+                bonusStop = true;
+            }
         }
         
         
