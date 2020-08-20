@@ -882,22 +882,26 @@ const gameBonus = {
                 {
                     if(keyboard.right.isDown)
                     {
+                        console.log("右");
                         input_now = true;
                         input_id = 3;
                     }
                     else if(keyboard.left.isDown)
                     {
+                        console.log("左");
                         input_now = true;
                         input_id = 2;
 
                     }
                     else if(keyboard.up.isDown)
                     {
+                        console.log("上");
                         input_now = true;
                         input_id = 0;
                     }
                     else if(keyboard.down.isDown)
                     {
+                        console.log("下");
                         input_now = true;
                         input_id = 1;
                     }
