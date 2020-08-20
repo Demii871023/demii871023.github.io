@@ -903,6 +903,7 @@ const gameBonus = {
                     }
                     else
                     {
+                        console.log("沒有按按鍵");
                         input_now = false;
                     }
                 }
