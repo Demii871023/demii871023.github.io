@@ -753,6 +753,7 @@ const gameBonus = {
                 {
                     console.log(bonusGroupChild[i].x);
                     console.log("反彈");
+                    console.log(rebounce[i]);
                     if(rebounce[i] == 'false')
                     {   
                         console.log("=========================================");
