@@ -637,6 +637,7 @@ var command_index = 0;
 // 使用者輸入
 var input_id = -1;
 var input_now = false;
+var input_input = false;
 var input_correct = 0;
 
 const gameBonus = {
@@ -861,7 +862,6 @@ const gameBonus = {
                 {
                     commandid = getRandom(3,0);
                     command_command.push(commandid);
-//                     console.log(commandid);
                     commandGroup.create(cw/2 - i*90, ch/2, command_name[commandid]);
                 }
                 console.log(command_command);
@@ -878,45 +878,53 @@ const gameBonus = {
                 let keyboard = this.input.keyboard.createCursorKeys();
                 
                 // command 0：up 1：down 2：left 3：right
+                if(input_id == -1)
+                {
+                    
+                    if(keyboard.right.isDown)
+                    {
+                        console.log("右");
+                        input_now = true;
+                        input_input true;
+                        input_id = 3;
+                    }
+                    else if(keyboard.left.isDown)
+                    {
+                        console.log("左");
+                        input_now = true;
+                        input_input true;
+                        input_id = 2;
 
-                if(keyboard.right.isDown)
-                {
-                    console.log("右");
-                    input_now = true;
-                    input_id = 3;
-                }
-                else if(keyboard.left.isDown)
-                {
-                    console.log("左");
-                    input_now = true;
-                    input_id = 2;
-
-                }
-                else if(keyboard.up.isDown)
-                {
-                    console.log("上");
-                    input_now = true;
-                    input_id = 0;
-                }
-                else if(keyboard.down.isDown)
-                {
-                    console.log("下");
-                    input_now = true;
-                    input_id = 1;
-                }
-                else
-                {
-                    console.log("沒有按按鍵");
-                    input_now = false;
+                    }
+                    else if(keyboard.up.isDown)
+                    {
+                        console.log("上");
+                        input_now = true;
+                        input_input true;
+                        input_id = 0;
+                    }
+                    else if(keyboard.down.isDown)
+                    {
+                        console.log("下");
+                        input_now = true;
+                        input_input true;
+                        input_id = 1;
+                    }
+                    else
+                    {
+                        console.log("沒有按按鍵");
+                        input_now = false;
+                    }
                 }
                
 
-                if(input_id == command_command[command_index] && !input_now)
+                if(input_id == command_command[command_index] && !input_now && !input_input)
                 {
                     console.log(command_index + "正確");
                     input_correct = input_correct + 1;
                     command_index = command_index + 1;
                     input_id = -1;
+                    input_input = false;
                 }
                 else
                 {
