@@ -705,7 +705,6 @@ const gameBonus = {
             if(startInt <= 0)
             {
                 bonusStart = true;
-                mask.clear();
                 startdecrText.destroy();
                 startTimerText.destroy();
                 clearInterval(StartTImer);
@@ -733,6 +732,8 @@ const gameBonus = {
 
         if(bonusStart)
         {
+            // 清除遮罩
+            mask.clear();
             
             player.body.gravity.y = 200;
             player.setCollideWorldBounds(true);        
@@ -783,6 +784,9 @@ const gameBonus = {
         // 計時到，畫面靜止 || 玩家吃到加分豆，先完成任務才加分
         if(bonusStop)
         {
+            // 蓋上遮罩
+            mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+            
             player.body.gravity.y = 0;
             player.setVelocityX(0);
             player.setVelocityY(0);
