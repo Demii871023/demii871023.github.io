@@ -400,9 +400,13 @@ const gameSubject = {
       
         // 角色狀態的四個其他參數玩家擁有數值呈現
         document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
+        document.getElementById('lazyProgress').innerHTML = lazyNum.toString();
         document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
+        document.getElementById('pressureProgress').innerHTML = pressureNum.toString();
         document.getElementById('strengthProgress').style.width = ((strengthNum / strengthMAX) * 100).toString() + "%";
+        document.getElementById('strengthProgress').innerHTML = strengthNum.toString();
         document.getElementById('socialProgress').style.width = ((socialNum / socialMAX) * 100).toString() + "%";
+        document.getElementById('socialProgress').innerHTML = socialNum.toString();
         
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
@@ -923,29 +927,34 @@ const gameBonus = {
                     console.log("lazy ++");
                     lazyNum = lazyNum + 20;
                     document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
+                    document.getElementById('lazyProgress').innerHTML = lazyNum.toString();
                 }
                 if(addKey == 1)    // 壓力
                 {
                     console.log("pressure ++");
                     pressureNum = pressureNum + 20;
                     document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
+                    document.getElementById('pressureProgress').innerHTML = pressureNum.toString();
                 }
                 if(addKey == 2)      // 人際
                 {
                     console.log("social ++");
                     socialNum = socialNum + 20;
                     document.getElementById('strengthProgress').style.width = ((socialNum / strengthMAX) * 100).toString() + "%";
+                    document.getElementById('strengthProgress').innerHTML = strengthNum.toString();
                 }
                 if(addKey == 3)    // 體力
                 {
                     console.log("strength ++");
                     strengthNum = strengthNum + 20;
                     document.getElementById('socialProgress').style.width = ((strengthNum / socialMAX) * 100).toString() + "%";
+                    document.getElementById('socialProgress').innerHTML = socialNum.toString();
                 }
                 
                 mask.clear();
                 bonusStop = false;
                 bonusStart = true;
+
             }
         }
     }
