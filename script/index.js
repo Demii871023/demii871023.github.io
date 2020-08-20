@@ -389,7 +389,8 @@ const gameSubject = {
     preload: function(){
         
         document.getElementById('playerStatusCard').style.visibility = 'visible';
-        document.getElementById('player'+ (player_select + 1).toString() + 'IMG').display = 'block';
+        var tmpID = 'player'+ (player_select + 1).toString() + 'IMG';
+        document.getElementById(tmpID).display = 'block';
       
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
