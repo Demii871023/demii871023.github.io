@@ -592,21 +592,21 @@ var bonusStop = false;
 
 var bonus_xy = [
     // 惰性 lazyNum
-    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
-    {x: 0, y: 0, gravity: 0, Velocity: 0},
-    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    {x: 0, y: 0, gravity: 0, velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, velocity: 0},
+    {x: 0, y: 0, gravity: 0, velocity: 0},
     // 壓力 pressureNum
-    {x: 0, y: 0, gravity: 0, Velocity: 0},
-    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
-    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    {x: 0, y: 0, gravity: 0, velocity: 0},
+    {x: 0, y: 0, gravity: 0, velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, velocity: 0},
     // 體力 strengthNum
-    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
-    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
-    {x: 0, y: 0, gravity: 0, Velocity: 0},
+    {x: 0, y: 0, gravity: 0, velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, velocity: 0},
     // 人際 socialNum
-    {x: 0, y: 0, gravity: 0, Velocity: 0},
-    {x: 0, y: 0, gravity: 0, Velocity: 0}, 
-    {x: 0, y: 0, gravity: 0, Velocity: 0}
+    {x: 0, y: 0, gravity: 0, velocity: 0},
+    {x: 0, y: 0, gravity: 0, velocity: 0}, 
+    {x: 0, y: 0, gravity: 0, velocity: 0}
 ];
 
 
@@ -666,10 +666,10 @@ const gameBonus = {
                 bonus_xy[i * 4 + j].x = tempX;
                 bonus_xy[i * 4 + j].y = tempY;
                 bonus_xy[i * 4 + j].gravity = tempGravity;
-                bonus_xy[i * 4 + j].VelocityX = tempVelocityX;
+                bonus_xy[i * 4 + j].velocityX = tempVelocityX;
 //                 console.log(bonus_xy[i].x, bonus_xy[i].y, bonus_xy[i].gravity, bonus_xy[i].VelocityX);
 //                 console.log((i * 4) + j);
-                bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[i]);
+//                 bonusGroup.create(bonus_xy[i * 4 + j].x, bonus_xy[i * 4 + j].y, bonus_name[j]);
                 
                 const config = {
                         key: bonus_name[i],
@@ -682,7 +682,7 @@ const gameBonus = {
         for(var i = 0 ; i < bonusGroupChild.length ; i++)
         {
             console.log("安安安");
-            bonusGroupChild[i].setScale(beansScale);           
+            bonusGroupChild[i].setScale(beansScale);
         }
 
 
@@ -732,15 +732,22 @@ const gameBonus = {
             player.setCollideWorldBounds(true);        
             player.setBounce(1); //設定彈跳值
 
-            lazyB.body.gravity.y = 150;
-            lazyB.setVelocityX(20);
-            lazyB.setCollideWorldBounds(true);        
-            lazyB.setBounce(1); //設定彈跳值
+//             lazyB.body.gravity.y = 150;
+//             lazyB.setVelocityX(20);
+//             lazyB.setCollideWorldBounds(true);        
+//             lazyB.setBounce(1); //設定彈跳值
 
-            pressureB.body.gravity.y = 50;
-            pressureB.setVelocityX(-80);
-            pressureB.setCollideWorldBounds(true);        
-            pressureB.setBounce(1); //設定彈跳值
+//             pressureB.body.gravity.y = 50;
+//             pressureB.setVelocityX(-80);
+//             pressureB.setCollideWorldBounds(true);        
+//             pressureB.setBounce(1); //設定彈跳值
+            
+            
+            for(var i = 0 ; i < bonusGroupChild.length ; i++)
+            {
+                bonusGroupChild[i].body.gravity.y = bonus_xy[i].gravity;
+                bonusGroupChild[i].setVelocityX(velocityX);
+            }
         }
 
         // 計時到，畫面靜止
