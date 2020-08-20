@@ -671,7 +671,8 @@ const gameBonus = {
             
             for(var j = 0 ; j < 3 ; j++)
             {
-                bonusGroup.create(bonus_xy[i*4+j].x, bonus_xy[i*4+j].y, bonus_name[i]);
+                console.log((i * 4) + j);
+                bonusGroup.create(bonus_xy[j].x, bonus_xy[j].y, bonus_name[i]);
             }
 
 //             for(var j = 0 ; j < 3 ; j++)
