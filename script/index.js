@@ -904,33 +904,53 @@ const gameBonus = {
                 let keyboard = this.input.keyboard.createCursorKeys();
                 
                 // command 0：up 1：down 2：left 3：right
-                if(input_id == -1)
+                
+                if(keyboard.right.isDown)
                 {
-                    if(keyboard.right.isDown)
+                    if(!input_now)
                     {
-                        console.log("右");
+                        // console.log("右");
                         input_id = 3;
+                        input_now = true;
                     }
-                    else if(keyboard.left.isDown)
+                    
+                }
+                else if(keyboard.left.isDown)
+                {
+                    if(!input_now)
                     {
-                        console.log("左");
+                        // console.log("左");
                         input_id = 2;
-                    }
-                    else if(keyboard.up.isDown)
-                    {
-                        console.log("上");
-                        input_id = 0;
-                    }
-                    else if(keyboard.down.isDown)
-                    {
-                        console.log("下");
-                        input_id = 1;
-                    }
-                    else
-                    {
-                        input_id = -1;
+                        input_now = true;
+
                     }
                 }
+                else if(keyboard.up.isDown)
+                {
+                    if(!input_now)
+                    {
+                        // console.log("上");
+                        input_id = 0;
+                        input_now = true;
+
+                    }
+                }
+                else if(keyboard.down.isDown)
+                {
+                    if(!input_now)
+                    {
+                        // console.log("下");
+                        input_id = 1;
+                        input_now = true;
+                    }
+                }
+                else
+                {
+                    // input_id = -1;
+                    input_now = false;
+                }
+
+                
 
                 if(input_id == command_command[command_index])
                 {
@@ -938,12 +958,12 @@ const gameBonus = {
                     tmpname = command_name[command_command[command_index]] + 'Correct';
                     commandGroupChild[command_index].setTexture(tmpname);
                     command_index = command_index - 1;
-                    // input_id = -1;
+                    input_id = -1;
                 }
                 else if(input_id != command_command[command_index] && command_index != -1)
                 {
-                    console.log("錯誤 ====");
-                    console.log(command_index);
+                    // console.log("錯誤 ====");
+                    // console.log(command_index);
                     tmpname = command_name[command_command[command_index]] + 'Wrong';
                     commandGroupChild[command_index].setTexture(tmpname);
                     input_id = -1;
