@@ -369,7 +369,7 @@ const gameSelect = {
 
 // 玩家擁有數值 -> 目前先寫死，等待自定義參數部分完成，在讀取數值
 
-var lazyNum = 17;      // 惰性
+var lazyNum = 22;      // 惰性
 var pressureNum = 50;  // 壓力
 var strengthNum = 35;  // 體力
 var socialNum = 80;    // 人際
@@ -511,8 +511,8 @@ const gameSubject = {
             {
                 console.log("吃掉");
                 // 開啟 modal：你確定選擇_____(科目)?
-                console.log(beans.texture.key);
-                console.log(subject_nameen.indexOf(beans.texture.key));
+                // console.log(beans.texture.key);
+                // console.log(subject_nameen.indexOf(beans.texture.key));
                 subject_select = subject_nameen.indexOf(beans.texture.key);
                 modalOpen(subject_nameen.indexOf(beans.texture.key));
                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
@@ -604,8 +604,11 @@ const percentN = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', 
 const bonus_name = ['lazyB', 'pressureB', 'socialB', 'strengthB'];
 const progressHTMLID = ['lazyProgress', 'pressureProgress', 'socialProgress', 'strengthProgress'];
 var rebounce = ['false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false'];
+
+// 加分遊戲進度控制 bonusStart：開始 / bonusStop：暫停 / bonuseOver：結束
 var bonusStart = false;
 var bonusStop = false;
+var bonusOver = false;
 var addKey = '';
 
 var maskCounter = 0;
@@ -630,7 +633,9 @@ var bonus_xy = [
 ];
 
 // 為了完成指令
-var command_name = ['upCommand', 'downCommand', 'leftCommand', 'rightCommand'];
+// var command_name_default = ['upDefault', 'downDefault', 'leftDefault', 'rightDefault'];
+// var command_name_correct = ['up'];
+var command_name = ['up', 'down', 'left', 'right'];
 var command_command = [];
 var commandInput = false;
 var command_index = 0;
@@ -661,11 +666,26 @@ const gameBonus = {
         document.getElementById('gmChatCard').style.display = 'none';
         document.getElementById('bonusTimer').style.display = 'block';
         
-        // 載入指令上下左右鍵圖示
-        this.load.image('upCommand', 'image/Bonus/up-arrow.png');
-        this.load.image('downCommand', 'image/Bonus/down-arrow.png');
-        this.load.image('leftCommand', 'image/Bonus/left-arrow.png');
-        this.load.image('rightCommand', 'image/Bonus/right-arrow.png');
+        // 載入指令上下左右鍵圖示 Default：還沒按 / Correct：正確 / Wrong：錯誤
+        this.load.image('upDefault', 'image/Bonus/Command/up-arrow.png');
+        this.load.image('downDefault', 'image/Bonus/Command/down-arrow.png');
+        this.load.image('leftDefault', 'image/Bonus/Command/left-arrow.png');
+        this.load.image('rightDefault', 'image/Bonus/Command/right-arrow.png');
+
+
+        this.load.image('upCorrect', 'image/Bonus/Command/up-arrow correct.png');
+        this.load.image('downCorrect', 'image/Bonus/Command/down-arrow correct.png');
+        this.load.image('leftCorrect', 'image/Bonus/Command/left-arrow correct.png');
+        this.load.image('rightCorrect', 'image/Bonus/Command/right-arrow correct.png');
+
+        this.load.image('upWrong', 'image/Bonus/Command/up-arrow wrong.png');
+        this.load.image('downWrong', 'image/Bonus/Command/down-arrow wrong.png');
+        this.load.image('leftWrong', 'image/Bonus/Command/left-arrow wrong.png');
+        this.load.image('rightWrong', 'image/Bonus/Command/right-arrow wrong.png');
+
+
+
+
 
         // 遊戲開始的倒數計時
         startInt = 3;
@@ -718,9 +738,7 @@ const gameBonus = {
         {
             if(abs(player.x, bonus.x) < 20 && abs(player.y, bonus.y) < 20)
             {
-//                 console.log(bonus.texture.key);
-//                 console.log(bonus_name.indexOf(bonus.texture.key));
-                
+                // console.log(bonus.texture.key);
                 if(bonus.texture.key == 'lazyB')        // 惰性
                     addKey = 0;
                 if(bonus.texture.key == 'pressureB')    // 壓力
@@ -730,6 +748,9 @@ const gameBonus = {
                 if(bonus.texture.key == 'strengthB')    // 體力
                     addKey = 3;
 
+                // 每吃到的瞬間將遊戲暫停，因此將 maskCounter 歸零
+                // maskCounter = 0;
+                bonus.disableBody(true, true);
                 bonusStart = false;
                 bonusStop = true;
             }
@@ -757,6 +778,7 @@ const gameBonus = {
             }
         }, 1000);
 
+        //  bonus 倒數 10 秒
         var gbonusTimer = setInterval(() => {
             timeInt = timeInt - 1;
             if(timeInt <= 10)
@@ -767,22 +789,24 @@ const gameBonus = {
             // 倒數計時結束
             if(timeInt <= 0)
             {
+                bonusOver = true;
                 bonusStop = true;
                 bonusStart = false;
                 clearInterval(gbonusTimer);
             }
         }, 1000);
         
-        this.load.image('upCommand', 'image/Bonus/up-arrow.png');
-        this.load.image('downCommand', 'image/Bonus/down-arrow.png');
-        this.load.image('leftCommand', 'image/Bonus/left-arrow.png');
-        this.load.image('rightCommand', 'image/Bonus/right-arrow.png');
+        this.load.image('upDefault', 'image/Bonus/up-arrow.png');
+        this.load.image('downDefault', 'image/Bonus/down-arrow.png');
+        this.load.image('leftDefault', 'image/Bonus/left-arrow.png');
+        this.load.image('rightDefault', 'image/Bonus/right-arrow.png');
         
     },
     update: function(){
 
-        if(bonusStart)
+        if(bonusStart && !bonusOver)
         {
+            console.log("遊戲起動");
             // 清除遮罩
             mask.clear();
             
@@ -830,7 +854,7 @@ const gameBonus = {
         }
 
         // 計時到，畫面靜止 || 玩家吃到加分豆，先完成任務才加分
-        if(bonusStop)
+        if(bonusStop && !bonusOver)
         {
             // 所有加分豆與玩家靜止
             player.body.gravity.y = 0;
@@ -847,24 +871,26 @@ const gameBonus = {
             // 蓋上遮罩
             if(maskCounter == 0)
             {
-                mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+                mask.fillStyle(0xFFFFFF, 0.5).fillRect(0, 0, cw, ch);
                 maskCounter = maskCounter + 1;
-                
                 
                 commandGroup = this.physics.add.group();
                 commandGroup.enableBody = true;
                 
                 // 產生指令數量
-                commandNum = getRandom(7, 3);
+                commandNum = getRandom(5, 3);
+                command_index = commandNum - 1;
+
+                // 清空存放指令序列的陣列
                 
                 // 依據指令數量隨機產生指令 id 1:up 2:down 3:left 4:right
                 for(var i = 0 ; i < commandNum ; i++)
                 {
                     commandid = getRandom(3,0);
                     command_command.push(commandid);
-                    commandGroup.create(cw/2 - i*90, ch/2, command_name[commandid]);
+                    nametmp = command_name[commandid] + 'Default';
+                    commandGroup.create(cw/2 + (commandNum*50) - i*100, ch/2, nametmp);
                 }
-                console.log(command_command);
                 
                 commandGroupChild = commandGroup.getChildren();
                 for(var i = 0 ; i < commandGroupChild.length ; i++)
@@ -880,96 +906,102 @@ const gameBonus = {
                 // command 0：up 1：down 2：left 3：right
                 if(input_id == -1)
                 {
-                    
                     if(keyboard.right.isDown)
                     {
                         console.log("右");
-                        input_now = true;
-                        input_input = true;
                         input_id = 3;
                     }
                     else if(keyboard.left.isDown)
                     {
                         console.log("左");
-                        input_now = true;
-                        input_input = true;
                         input_id = 2;
-
                     }
                     else if(keyboard.up.isDown)
                     {
                         console.log("上");
-                        input_now = true;
-                        input_input true;
                         input_id = 0;
                     }
                     else if(keyboard.down.isDown)
                     {
                         console.log("下");
-                        input_now = true;
-                        input_input true;
                         input_id = 1;
                     }
                     else
                     {
-                        console.log("沒有按按鍵");
-                        input_now = false;
+                        input_id = -1;
                     }
                 }
-               
 
-                if(input_id == command_command[command_index] && !input_now && !input_input)
+                if(input_id == command_command[command_index])
                 {
-                    console.log(command_index + "正確");
                     input_correct = input_correct + 1;
-                    command_index = command_index + 1;
-                    input_id = -1;
-                    input_input = false;
+                    tmpname = command_name[command_command[command_index]] + 'Correct';
+                    commandGroupChild[command_index].setTexture(tmpname);
+                    command_index = command_index - 1;
+                    // input_id = -1;
                 }
-                else
+                else if(input_id != command_command[command_index] && command_index != -1)
                 {
+                    console.log("錯誤 ====");
+                    console.log(command_index);
+                    tmpname = command_name[command_command[command_index]] + 'Wrong';
+                    commandGroupChild[command_index].setTexture(tmpname);
                     input_id = -1;
                 }
             }
             
+            // 指令全數回答正確
             if(input_correct == commandNum && commandInput)
             {
                 commandInput = false;
 
-                if(addKey == 0)        // 惰性
+                if(addKey == 0) // 惰性：黃色鳥
                 {
-                    console.log("lazy ++");
-                    lazyNum = lazyNum + 20;
+                    lazyNum = lazyNum - 20;
+                    // 數值可能被扣到變負的導致 progress 沒有變化，需要注意！
+                    // if(lazyNum < 0)
+                    //     lazyNum = 0;
                     document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
                     document.getElementById('lazyProgress').innerHTML = lazyNum.toString();
                 }
-                if(addKey == 1)    // 壓力
+                if(addKey == 1) // 壓力：彩色透明鳥
                 {
-                    console.log("pressure ++");
-                    pressureNum = pressureNum + 20;
+                    pressureNum = pressureNum - 20;
                     document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
                     document.getElementById('pressureProgress').innerHTML = pressureNum.toString();
                 }
-                if(addKey == 2)      // 人際
+                if(addKey == 2) // 人際：黑色鳥
                 {
-                    console.log("social ++");
                     socialNum = socialNum + 20;
-                    document.getElementById('strengthProgress').style.width = ((socialNum / strengthMAX) * 100).toString() + "%";
-                    document.getElementById('strengthProgress').innerHTML = strengthNum.toString();
-                }
-                if(addKey == 3)    // 體力
-                {
-                    console.log("strength ++");
-                    strengthNum = strengthNum + 20;
-                    document.getElementById('socialProgress').style.width = ((strengthNum / socialMAX) * 100).toString() + "%";
+                    document.getElementById('socialProgress').style.width = ((socialNum / strengthMAX) * 100).toString() + "%";
                     document.getElementById('socialProgress').innerHTML = socialNum.toString();
                 }
-                
+                if(addKey == 3) // 體力：透明黑鳥
+                {
+                    strengthNum = strengthNum + 20;
+                    document.getElementById('strengthProgress').style.width = ((strengthNum / socialMAX) * 100).toString() + "%";
+                    document.getElementById('strengthProgress').innerHTML = strengthNum.toString();
+                }
+
+                // 遮罩計數器歸零並將遮罩清空
+                maskCounter = 0;
                 mask.clear();
+
+                // 指令 sprite 存放 group、指令 id 存放 array、指令正確數清空
+                commandGroup.clear(true, true);
+                command_command.length = 0;
+                input_correct = 0;
+
                 bonusStop = false;
                 bonusStart = true;
 
             }
+        }
+
+        // bonus 遊戲結束
+        if(bonusOver)
+        {
+            this.scene.start('gameSubject');
         }
     }
 }
