@@ -116,5 +116,6 @@
 ### Chartjs
 #### basic radar chart
 * [Demo](https://www.chartjs.org/samples/latest/charts/radar.html)
+* [Radar Chart](https://www.chartjs.org/docs/latest/charts/radar.html)
 
 
