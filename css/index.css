@@ -50,13 +50,18 @@ canvas{
     z-index: 100;
 }
 
+#playerRadarChart{
+    width: auto;
+    height: auto;
+    z-index: 100;
+    position: absolute;
+    top: 25%;
+    right: 25%;
+}
 
-#playerStatusPlane{
-    position:absolute;
-    top:0px;
-    right:0px;
-    display: block;
-/*     z-index:100; */
+#RaderChartCanvas{
+    width: 600px;
+    height: 500px;
 }
 
 

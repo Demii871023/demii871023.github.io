@@ -1,5 +1,4 @@
 // const.js
-
 const cw = $(window).width();
 const ch = $(window).height();
 const bg1Scale = 4;
@@ -281,10 +280,35 @@ const playerSelect = {
                 if(player_select == -1)
                 {
                     player_select = now_select;
-                    graphics.lineStyle(5, 0x00ff00, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
                     player_confirm = true;
                     // document.getElementById('confirmBtn').style.display = 'block';
-                    this.scene.start('gameSelect');
+                    // this.scene.start('gameSelect');
+
+                    // // 選定人物後移動它
+                    // for(var i = 0 ; i < 6 ; i++)
+                    //     if(i != player_select)
+                    //         playerArr[i].alpha = 0;
+
+                    // // 繪製出雷達圖
+                    // tmpx = cw/2-cw/11;
+                    // player_move_value = 36;
+                    // timer = this.time.addEvent({
+                    //     delay: 70,           
+                    //     callback: () => {
+                    //         graphics.clear();
+                    //         playerArr[player_select].x = playerArr[player_select].x - player_move_value;
+                    //         playerName.x = playerName.x - player_move_value;
+                    //         tmpx = tmpx - player_move_value;
+                    //         player_move_value = player_move_value - 2;
+                    //         graphics.lineStyle(5, 0x00ff00, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(tmpx, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
+                    //         if(player_move_value == 0)
+                    //             playerConfirm();
+                    //     },
+                    //     loop: false,
+                    //     repeat: 18
+                    // });
+
+                    playerConfirm();
                 }
             }
         }

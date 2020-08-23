@@ -51,8 +51,15 @@
 
 
     <div id="app" style="display: block;">
-        <button id="playerConfirmBtn" type="button" class="btn btn-light">編輯角色能力值</button>
+        <button id="playerConfirmBtn" type="button" class="btn btn-light" onclick="updateData();">編輯角色能力值</button>
         
+        <!-- 玩家能力值雷達圖 -->
+       
+        <div id="playerRadarChart" class="card" style="background-color: rgba(255, 255, 255, 0); display: block;">
+            <div class="card-body">
+                <canvas id="RaderChartCanvas"></canvas>
+            </div>
+        </div>
         
         <!-- 玩家狀態與能力值 -->
         <div id="playerStatusCard" class="card" style="width: 40%; background-color: rgba(0, 0, 0, 0.4); visibility:hidden;">
@@ -150,12 +157,12 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
     <!-- coding -->
     <!--<script src="./script/Bootstrap/bootstrap.js></script>-->
     <script src="./script/index.js"></script>
-    <script src="./script/gameActivity.js></script>
+    <script src="./script/RadarChart.js"></script>
     
 </body>
 </html>
