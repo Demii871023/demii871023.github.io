@@ -282,7 +282,6 @@ const playerSelect = {
                     player_select = now_select;
                     player_confirm = true;
                     // document.getElementById('confirmBtn').style.display = 'block';
-                    // this.scene.start('gameSelect');
 
                     // // 選定人物後移動它
                     // for(var i = 0 ; i < 6 ; i++)
@@ -309,6 +308,7 @@ const playerSelect = {
                     // });
 
                     playerConfirm();
+                    this.scene.start('gameSelect');
                 }
             }
         }
