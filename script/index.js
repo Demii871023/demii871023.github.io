@@ -191,7 +191,7 @@ const playerSelect = {
                         console.log("無法再往左邊");
                     else
                     {
-                        console.log("左邊");
+                        // console.log("左邊");
                         shrinkScale = mainpScale, enlargeScale = otherpScle;
                         keydwon = true;
                         now_select = now_select - 1;
@@ -233,7 +233,7 @@ const playerSelect = {
                         console.log("無法再往右邊");
                     else
                     {
-                        console.log("右邊");
+                        // console.log("右邊");
                         shrinkScale = mainpScale, enlargeScale = otherpScle;
                         keydwon = true;
                         now_select = now_select + 1;
@@ -392,6 +392,10 @@ var threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'];
 const gameSubject = {
     key: 'gameSubject',
     preload: function(){
+
+        // 每次進入都要初始所選科目
+        subject_select = -1;
+        console.log("進入選擇科目");
         
         // 依照選取的角色顯現出角色圖片於角色狀態
         document.getElementById('playerStatusCard').style.visibility = 'visible';
@@ -407,6 +411,9 @@ const gameSubject = {
         document.getElementById('strengthProgress').innerHTML = strengthNum.toString();
         document.getElementById('socialProgress').style.width = ((socialNum / socialMAX) * 100).toString() + "%";
         document.getElementById('socialProgress').innerHTML = socialNum.toString();
+
+        // 倒數計時器隱藏
+        document.getElementById('bonusTimer').style.display = 'none';
         
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
@@ -501,8 +508,6 @@ const gameSubject = {
         // this.physics.add.overlap(player, beans, collectStar, null, this);
         this.physics.add.overlap(player, beansGroupChild, collectStar, null, this);
         this.physics.add.overlap(player, bonusedoor, inBonuse, null, this);
-
-        
         
         function collectStar (player, beans)
         {
@@ -648,6 +653,12 @@ var input_correct = 0;
 const gameBonus = {
     key: 'gameBonus',
     preload: function(){
+        bonusStart = false;
+        bonusStop = false;
+        bonusOver = false;
+
+        document.getElementById('bonusTimer').style.display = 'block';
+
         // 載入背景圖片
         this.load.image('gamebg2', 'image/Background/gamebg.jpg');
         // 載入角色圖片
@@ -667,24 +678,20 @@ const gameBonus = {
         document.getElementById('bonusTimer').style.display = 'block';
         
         // 載入指令上下左右鍵圖示 Default：還沒按 / Correct：正確 / Wrong：錯誤
-        this.load.image('upDefault', 'image/Bonus/Command/up-arrow.png');
-        this.load.image('downDefault', 'image/Bonus/Command/down-arrow.png');
-        this.load.image('leftDefault', 'image/Bonus/Command/left-arrow.png');
-        this.load.image('rightDefault', 'image/Bonus/Command/right-arrow.png');
+        this.load.image('upDefault', 'image/Bonus/Command/Command/up-arrow default.png');
+        this.load.image('downDefault', 'image/Bonus/Command/Command/down-arrow default.png');
+        this.load.image('leftDefault', 'image/Bonus/Command/Command/left-arrow default.png');
+        this.load.image('rightDefault', 'image/Bonus/Command/Command/right-arrow default.png');
 
+        this.load.image('upCorrect', 'image/Bonus/Command/Command/up-arrow correct.png');
+        this.load.image('downCorrect', 'image/Bonus/Command/Command/down-arrow correct.png');
+        this.load.image('leftCorrect', 'image/Bonus/Command/Command/left-arrow correct.png');
+        this.load.image('rightCorrect', 'image/Bonus/Command/Command/right-arrow correct.png');
 
-        this.load.image('upCorrect', 'image/Bonus/Command/up-arrow correct.png');
-        this.load.image('downCorrect', 'image/Bonus/Command/down-arrow correct.png');
-        this.load.image('leftCorrect', 'image/Bonus/Command/left-arrow correct.png');
-        this.load.image('rightCorrect', 'image/Bonus/Command/right-arrow correct.png');
-
-        this.load.image('upWrong', 'image/Bonus/Command/up-arrow wrong.png');
-        this.load.image('downWrong', 'image/Bonus/Command/down-arrow wrong.png');
-        this.load.image('leftWrong', 'image/Bonus/Command/left-arrow wrong.png');
-        this.load.image('rightWrong', 'image/Bonus/Command/right-arrow wrong.png');
-
-
-
+        this.load.image('upFocus', 'image/Bonus/Command/Command/up-arrow focus.png');
+        this.load.image('downFocus', 'image/Bonus/Command/Command/down-arrow focus.png');
+        this.load.image('leftFocus', 'image/Bonus/Command/Command/left-arrow focus.png');
+        this.load.image('rightFocus', 'image/Bonus/Command/Command/right-arrow focus.png');
 
 
         // 遊戲開始的倒數計時
@@ -729,13 +736,14 @@ const gameBonus = {
         for(var i = 0 ; i < 12 ; i++)
             rebounce[i] = 'false';
         
-        for(var i = 0 ; i < 12 ; i++)
-            console.log(rebounce[i]);
+        // for(var i = 0 ; i < 12 ; i++)
+        //     console.log(rebounce[i]);
 
         this.physics.add.overlap(player, bonusGroup, addStatusValue, null, this);
         
         function addStatusValue(player, bonus)
         {
+            // console.log("================ 吃到 ================");
             if(abs(player.x, bonus.x) < 20 && abs(player.y, bonus.y) < 20)
             {
                 // console.log(bonus.texture.key);
@@ -796,17 +804,17 @@ const gameBonus = {
             }
         }, 1000);
         
-        this.load.image('upDefault', 'image/Bonus/up-arrow.png');
-        this.load.image('downDefault', 'image/Bonus/down-arrow.png');
-        this.load.image('leftDefault', 'image/Bonus/left-arrow.png');
-        this.load.image('rightDefault', 'image/Bonus/right-arrow.png');
+        // this.load.image('upDefault', 'image/Bonus/up-arrow.png');
+        // this.load.image('downDefault', 'image/Bonus/down-arrow.png');
+        // this.load.image('leftDefault', 'image/Bonus/left-arrow.png');
+        // this.load.image('rightDefault', 'image/Bonus/right-arrow.png');
         
     },
     update: function(){
 
         if(bonusStart && !bonusOver)
         {
-            console.log("遊戲起動");
+            // console.log("遊戲起動");
             // 清除遮罩
             mask.clear();
             
@@ -880,8 +888,6 @@ const gameBonus = {
                 // 產生指令數量
                 commandNum = getRandom(5, 3);
                 command_index = commandNum - 1;
-
-                // 清空存放指令序列的陣列
                 
                 // 依據指令數量隨機產生指令 id 1:up 2:down 3:left 4:right
                 for(var i = 0 ; i < commandNum ; i++)
@@ -889,7 +895,7 @@ const gameBonus = {
                     commandid = getRandom(3,0);
                     command_command.push(commandid);
                     nametmp = command_name[commandid] + 'Default';
-                    commandGroup.create(cw/2 + (commandNum*50) - i*100, ch/2, nametmp);
+                    commandGroup.create(cw/2 + (commandNum*50) - i*110, ch/2, nametmp);
                 }
                 
                 commandGroupChild = commandGroup.getChildren();
@@ -904,53 +910,40 @@ const gameBonus = {
                 let keyboard = this.input.keyboard.createCursorKeys();
                 
                 // command 0：up 1：down 2：left 3：right
-                
                 if(keyboard.right.isDown)
                 {
                     if(!input_now)
                     {
-                        // console.log("右");
                         input_id = 3;
                         input_now = true;
-                    }
-                    
+                    }   
                 }
                 else if(keyboard.left.isDown)
                 {
                     if(!input_now)
                     {
-                        // console.log("左");
                         input_id = 2;
                         input_now = true;
-
                     }
                 }
                 else if(keyboard.up.isDown)
                 {
                     if(!input_now)
                     {
-                        // console.log("上");
                         input_id = 0;
                         input_now = true;
-
                     }
                 }
                 else if(keyboard.down.isDown)
                 {
                     if(!input_now)
                     {
-                        // console.log("下");
                         input_id = 1;
                         input_now = true;
                     }
                 }
                 else
-                {
-                    // input_id = -1;
                     input_now = false;
-                }
-
-                
 
                 if(input_id == command_command[command_index])
                 {
@@ -962,9 +955,7 @@ const gameBonus = {
                 }
                 else if(input_id != command_command[command_index] && command_index != -1)
                 {
-                    // console.log("錯誤 ====");
-                    // console.log(command_index);
-                    tmpname = command_name[command_command[command_index]] + 'Wrong';
+                    tmpname = command_name[command_command[command_index]] + 'Focus';
                     commandGroupChild[command_index].setTexture(tmpname);
                     input_id = -1;
                 }
@@ -1021,6 +1012,24 @@ const gameBonus = {
         // bonus 遊戲結束
         if(bonusOver)
         {
+            // 倒數計時器重新計時
+            startInt = 3;
+            timeInt = 13;
+            document.getElementById('bonusBar').innerHTML = " 10 秒";
+            document.getElementById('bonusBar').style.width = percentN[10];
+
+            // 遮罩計數器歸零並將遮罩清空
+            maskCounter = 0;
+            mask.clear();
+
+            // 指令 sprite 存放 group、指令 id 存放 array、指令正確數清空
+            commandGroup.clear(true, true);
+            command_command.length = 0;
+            input_correct = 0;
+
+            bonusStop = false;
+            bonusStart = true;
+
             this.scene.start('gameSubject');
         }
     }
