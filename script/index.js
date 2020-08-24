@@ -15,12 +15,20 @@ const pressureMAX = 100;  // 壓力
 const strengthMAX = 100;  // 體力
 const socialMAX = 100;    // 人際
 
+// 玩家擁有數值
+var lazyNum;      // 惰性
+var pressureNum;  // 壓力
+var strengthNum;  // 體力
+var socialNum;    // 人際
+var time;         // 時間
+
 // 課目類別名稱及個數
 const subjectN = 8;
 const subject_name = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
 const subject_nameen = ['Langugage', 'Science', 'Integrative', 'Math', 'Technology', 'Health', 'Social', 'Art'];
 const player_name = ['player1', 'player2', 'player3', 'player4', 'player5', 'player6'];
 const player_namezw = ['四神湯', '卍煞氣卍', '乂都都乂', '跑跑當家', '葡萄醣吳', '乂龘燚龘燚乂'];
+
 
 var eat = false;    // 偵測是否執行動作：吃
 var spaceCounter = 0;
@@ -112,6 +120,7 @@ const playerArr = new Array(6);
 // 判斷按鍵是否按下，並判斷角色是否目前處於移動狀態
 var keydwon = false;
 var playerMove = false;
+var playervalueMove = false;
 
 const playerSelect = {
     key: 'playerSelect',
@@ -172,7 +181,7 @@ const playerSelect = {
         var chart = this.rexUI.add.chart(cw/2, ch/2 + ch/4, 200, 200, config);
 
         playerName = this.add.text(cw/2-cw/11, ch/2 + 150, "ID：" + player_namezw[0], {color: "#FFFFFF", fontSize:"30px"});
-        this.add.text(cw - 200, ch - 50, '請按下空白鍵確定角色', {color: "#FFFFFF", fontSize:'14px'});
+        tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵確定角色', {color: "#FFFFFF", fontSize:'14px'});
 
 
 
@@ -283,33 +292,63 @@ const playerSelect = {
                     player_confirm = true;
                     // document.getElementById('confirmBtn').style.display = 'block';
 
-                    // // 選定人物後移動它
-                    // for(var i = 0 ; i < 6 ; i++)
-                    //     if(i != player_select)
-                    //         playerArr[i].alpha = 0;
+                    // 選定人物後移動它
+                    for(var i = 0 ; i < 6 ; i++)
+                        if(i != player_select)
+                            playerArr[i].alpha = 0;
 
-                    // // 繪製出雷達圖
-                    // tmpx = cw/2-cw/11;
-                    // player_move_value = 36;
-                    // timer = this.time.addEvent({
-                    //     delay: 70,           
-                    //     callback: () => {
-                    //         graphics.clear();
-                    //         playerArr[player_select].x = playerArr[player_select].x - player_move_value;
-                    //         playerName.x = playerName.x - player_move_value;
-                    //         tmpx = tmpx - player_move_value;
-                    //         player_move_value = player_move_value - 2;
-                    //         graphics.lineStyle(5, 0x00ff00, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(tmpx, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
-                    //         if(player_move_value == 0)
-                    //             playerConfirm();
-                    //     },
-                    //     loop: false,
-                    //     repeat: 18
-                    // });
+                    // 繪製出雷達圖
+                    tmpx = cw/2-cw/11;
+                    player_move_value = 36;
+                    timer = this.time.addEvent({
+                        delay: 70,           
+                        callback: () => {
+                            graphics.clear();
+                            playerArr[player_select].x = playerArr[player_select].x - player_move_value;
+                            playerName.x = playerName.x - player_move_value;
+                            tmpx = tmpx - player_move_value;
+                            player_move_value = player_move_value - 2;
+                            graphics.lineStyle(5, 0x00ff00, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(tmpx, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
+                            if(player_move_value == 0)
+                            {
+                                playerConfirm();
+                                document.getElementById('playerRangeBar').style.visibility = "visible";
+                                playervalueMove = true;
+                                tipsText.setText('請按下空白鍵確定角色能力值');
+                            }
+                        },
+                        loop: false,
+                        repeat: 18
+                    });
 
-                    playerConfirm();
-                    this.scene.start('gameSelect');
+                    // playerConfirm();
+                    // this.scene.start('gameSelect');
                 }
+            }
+        }
+        // 階段：選擇角色能力值
+        if(playervalueMove)
+        {
+            if(keyboard.space.isDown)
+            {
+                console.log("角色能力值決定完成");
+
+                // console.log("壓力 : " + document.getElementById('pressureRange').value);
+                // console.log("體力 : " + document.getElementById('strengthRange').value);
+                // console.log("慣性 : " + document.getElementById('lazyRange').value);
+                // console.log("人際支持 : " + document.getElementById('socialRange').value);
+
+                lazyNum = parseInt(document.getElementById('lazyRange').value);
+                pressureNum = parseInt(document.getElementById('pressureRange').value);
+                strengthNum = parseInt(document.getElementById('strengthRange').value);
+                socialNum = parseInt(document.getElementById('socialRange').value);
+
+                // console.log("=========================");
+                // console.log(lazyNum + " " + pressureNum + " " + strengthNum + " " + socialNum);
+
+                document.getElementById('playerRadarChart').style.visibility = 'hidden';
+                document.getElementById('playerRangeBar').style.visibility = 'hidden';
+                this.scene.start('gameSelect');
             }
         }
     },
@@ -391,13 +430,13 @@ const gameSelect = {
 
 // gameSubject.js
 
-// 玩家擁有數值 -> 目前先寫死，等待自定義參數部分完成，在讀取數值
+// // 玩家擁有數值 -> 目前先寫死，等待自定義參數部分完成，在讀取數值
 
-var lazyNum = 22;      // 惰性
-var pressureNum = 50;  // 壓力
-var strengthNum = 35;  // 體力
-var socialNum = 80;    // 人際
-var time = 20;          // 時間
+// var lazyNum = 22;      // 惰性
+// var pressureNum = 50;  // 壓力
+// var strengthNum = 35;  // 體力
+// var socialNum = 80;    // 人際
+// var time = 20;          // 時間
 
 // 門檻值
 var threshold_value = [
@@ -812,6 +851,8 @@ const gameBonus = {
 
         //  bonus 倒數 10 秒
         var gbonusTimer = setInterval(() => {
+            console.log("=========================");
+            console.log(lazyNum + " " + pressureNum + " " + strengthNum + " " + socialNum);
             timeInt = timeInt - 1;
             if(timeInt <= 10)
             {
@@ -993,27 +1034,34 @@ const gameBonus = {
                 if(addKey == 0) // 惰性：黃色鳥
                 {
                     lazyNum = lazyNum - 20;
+                    // console.log(lazyNum);
                     // 數值可能被扣到變負的導致 progress 沒有變化，需要注意！
-                    // if(lazyNum < 0)
-                    //     lazyNum = 0;
+                    if(lazyNum < 0)
+                        lazyNum = 0;
                     document.getElementById('lazyProgress').style.width = ((lazyNum / lazyMAX) * 100).toString() + "%";
                     document.getElementById('lazyProgress').innerHTML = lazyNum.toString();
                 }
                 if(addKey == 1) // 壓力：彩色透明鳥
                 {
                     pressureNum = pressureNum - 20;
+                    // 數值可能被扣到變負的導致 progress 沒有變化，需要注意！
+                    if(pressureNum < 0)
+                        pressureNum = 0;
+                    // console.log(pressureNum);
                     document.getElementById('pressureProgress').style.width = ((pressureNum / pressureMAX) * 100).toString() + "%";
                     document.getElementById('pressureProgress').innerHTML = pressureNum.toString();
                 }
                 if(addKey == 2) // 人際：黑色鳥
                 {
                     socialNum = socialNum + 20;
+                    // console.log(socialNum);
                     document.getElementById('socialProgress').style.width = ((socialNum / strengthMAX) * 100).toString() + "%";
                     document.getElementById('socialProgress').innerHTML = socialNum.toString();
                 }
                 if(addKey == 3) // 體力：透明黑鳥
                 {
                     strengthNum = strengthNum + 20;
+                    // console.log(strengthNum);
                     document.getElementById('strengthProgress').style.width = ((strengthNum / socialMAX) * 100).toString() + "%";
                     document.getElementById('strengthProgress').innerHTML = strengthNum.toString();
                 }

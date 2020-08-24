@@ -51,13 +51,50 @@
 
 
     <div id="app" style="display: block;">
-        <button id="playerConfirmBtn" type="button" class="btn btn-light" onclick="updateData();">編輯角色能力值</button>
+        <button id="playerConfirmBtn" type="button" class="btn btn-light">編輯角色能力值</button>
         
         <!-- 玩家能力值雷達圖 -->
-       
         <div id="playerRadarChart" class="card" style="background-color: rgba(255, 255, 255, 0); display: block;">
             <div class="card-body">
                 <canvas id="RaderChartCanvas"></canvas>
+            </div>
+        </div>
+
+        <!-- 玩家數值拉霸 -->
+        <div id="playerRangeBar" class="card" style="visibility: hidden;">
+            <div class="card-body align-items-center"></div>
+                <div id="pressureBar" class="row border border-light" style="width: 100%; background-color: rgba(255, 255, 255, 0.4);">
+                    <div class="col-md-1">
+                        <div id="pressureRangeLabel" class="badge badge-pill badge-light" style="padding-bottom:5px;">壓力</div>
+                    </div>
+                    <div class="col-md-12" style="padding-top: 3px;">
+                        <input id="pressureRange" type="range" class="form-control-range" id="formControlRange" value="0" min="0" max="100" step="0">
+                    </div>
+                </div>
+                <div id="strengthBar" class="row" style="width: 100%;">
+                    <div class="col-md-1">
+                        <div id="strengthRangeLabel" class="badge badge-pill badge-light" style="padding-bottom:5px;">體力</div>
+                    </div>
+                    <div class="col-md-12" style="padding-top: 3px;">
+                        <input id="strengthRange"type="range" class="form-control-range" id="formControlRange" value="0" min="0" max="100" step="1">
+                    </div>
+                </div>
+                <div id="lazyBar" class="row" style="width: 100%;">
+                    <div class="col-md-1">
+                        <div id="lazyRangeLabel" class="badge badge-pill badge-light" style="padding-bottom:5px;">惰性</div>
+                    </div>
+                    <div class="col-md-12" style="padding-top: 3px;">
+                        <input id="lazyRange" type="range" class="form-control-range" id="formControlRange" value="0" min="0" max="100" step="1">
+                    </div>
+                </div>
+                <div id="socialBar" class="row" style="width: 100%;">
+                    <div class="col-md-1">
+                        <div id="socialRangeLabel" class="badge badge-pill badge-light" style="padding-bottom:5px;">人際支持</div>
+                    </div>
+                    <div class="col-md-12" style="padding-top: 3px;">
+                        <input id="socialRange" type="range" class="form-control-range" id="formControlRange" value="0" min="0" max="100" step="1">
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -120,7 +157,7 @@
         
 
         <!-- GM 對話框 -->
-        <div id="gmChatCard" class="card" style="none">
+        <div id="gmChatCard" class="card" style="">
             <div id="gmChatCardText" class="card-body">
                 使用上下左右鍵按鍵控制角色，空白鍵吃掉科目，shift鍵吐出科目。
             </div>
@@ -157,6 +194,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
+    <!-- Chartjs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
     <!-- coding -->

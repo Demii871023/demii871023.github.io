@@ -50,6 +50,16 @@ canvas{
     z-index: 100;
 }
 
+#playerRangeBar{
+    width: 30%;
+    height: auto;
+    z-index: 100;
+    position: absolute;
+    top: 25%;
+    right: 3%;
+    background-color: rgba(255, 255, 255, 0);
+}
+
 #playerRadarChart{
     width: auto;
     height: auto;
@@ -72,4 +82,6 @@ canvas{
 #playerStatusCard{
     z-index: 100;
     position:absolute;
+    top: 0%;
+    left: 0%;
 }
