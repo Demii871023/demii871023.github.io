@@ -145,13 +145,7 @@ const doSubject = {
 	function waterUp(player, challenge)
         {
 	    challenge.disableBody(true, true);
-	    for (key in rotatingRoundedRects)
-	    {
-                let rrr = rotatingRoundedRects[key]
-                rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
-            }
-    
-            rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.1);
+            rotatingRoundedRectsContainer.y = this.game.renderer.height*(-0.1);
         }
 	
 	    
@@ -207,6 +201,7 @@ const doSubject = {
 		}
 		rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
 		rotatingRoundedRectsContainer.mask = mask
+		rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.8);
 		    
 		for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
 		{
@@ -231,7 +226,7 @@ const doSubject = {
 // 	        challengeGroupChild = challengeGroup.getChildren();
                 for(var i = 0 ; i < challengeGroupChild.length ; i++)
                 {
-		    challengeGroupChild[i].setCollideWorldBounds(true)
+// 		    challengeGroupChild[i].setCollideWorldBounds(true)
                     challengeGroupChild[i].setScale(0.2);           
                 }
 	        console.log(challengeGroupChild);
@@ -280,7 +275,7 @@ const doSubject = {
 		
 		
 		
-            // 控制水的高度
+//             // 控制水的高度
             for (key in rotatingRoundedRects)
 	    {
                 let rrr = rotatingRoundedRects[key]
