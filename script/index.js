@@ -360,6 +360,8 @@ const playerSelect = {
 var gsCounter = 0;
 var gaCounter = 0;
 
+var doClass = 1;
+
 const gameSelect = {
     key: 'gameSelect',
     preload: function(){
@@ -427,21 +429,33 @@ const gameSelect = {
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
         
-        if(keyboard.right.isDown)
+        // 課業學科
+        if(keyboard.left.isDown)
         {
-            activity.setScale(0.65);
-            activity.clearTint();
-            subject.setScale(classScale);
-            subject.setTint(0x5d5d2d);
-        }
-        else if(keyboard.left.isDown)
-        {
+            doClass = 1;
             subject.setScale(0.65);
             subject.clearTint();
             activity.setScale(classScale);
             activity.setTint(0x5d5d2d);
         }
-
+        // 課外活動
+        else if(keyboard.right.isDown)
+        {
+            doClass = 2;
+            activity.setScale(0.65);
+            activity.clearTint();
+            subject.setScale(classScale);
+            subject.setTint(0x5d5d2d);
+        }
+        
+        // 確定選擇 課業學科(doClass = 1) 或 課外活動(doClass = 2)
+        if(keyboard.space.isDown)
+        {
+            if(doClass == 1)
+                this.scene.start('gameSubject');
+            if(doClass == 2)
+                this.scene.start('gameActivity');
+        }     
     }
 }
 
