@@ -381,7 +381,7 @@ const gameSelect = {
 
         // 課業學科按鈕
         subject = this.add.sprite(cw/2 - cw/4, ch/2, 'subject');
-        subject.setScale(0.55);
+        subject.setScale(0.65);
         
         // 開啟互動
 //         subject.setInteractive({ useHandCursor: true });
@@ -401,7 +401,6 @@ const gameSelect = {
         // 課外活動按鈕
         activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
         activity.setScale(classScale);
-//         activity.alpha = 0.5;
         activity.setTint(0x5d5d2d);
 
 //         activity.setInteractive({ useHandCursor: true });
@@ -430,19 +429,17 @@ const gameSelect = {
         
         if(keyboard.right.isDown)
         {
-            activity.setScale(0.55);
-            activity.alpha = 1;
-//             subject.alpha = 0.5;
-            subject.setTint(0x5d5d2d);
+            activity.setScale(0.65);
             activity.clearTint();
+            subject.setScale(classScale);
+            subject.setTint(0x5d5d2d);
         }
         else if(keyboard.left.isDown)
         {
-            subject.setScale(0.55);
-            subject.alpha = 1;
-//             activity.alpha = 0.5;
-            activity.setTint(0x5d5d2d);
+            subject.setScale(0.65);
             subject.clearTint();
+            activity.setScale(classScale);
+            activity.setTint(0x5d5d2d);
         }
 
     }
