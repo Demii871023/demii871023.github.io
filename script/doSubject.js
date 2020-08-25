@@ -63,11 +63,22 @@ var choiseView = false;
 const doSubject = {
     key: 'doSubject',
     preload: function(){
+        // gmChatCard Setup
         document.getElementById('gmChatCard').style.display = 'block';
-        document.getElementById('gmChatCard').style.width = '80%';
+        document.getElementById('gmChatCard').style.width = '50%';
         document.getElementById('gmChatCard').style.height = '110px';
         document.getElementById('gmChatCardText').innerHTML = "今天上完" + subject_name[subject_select] + "的課程，你會如何進行課後安排呢？";
+        
+        // 載入背景圖片
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
+        
+        // 載入角色圖片
+        this.load.image('player1', 'image/Character/player1.png');
+        this.load.image('player2', 'image/Character/player2.png');
+        this.load.image('player3', 'image/Character/player3.png');
+        this.load.image('player4', 'image/Character/player4.png');
+        this.load.image('player5', 'image/Character/player5.png');
+        this.load.image('player6', 'image/Character/player6.png');
         
     },
     create: function(){
@@ -79,11 +90,14 @@ const doSubject = {
         mask = this.add.graphics()
         mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
         
-        // 載入該學科選項
+        // 新增該學科選項
         optionAText = this.add.text(cw/10, ch/2-60, subject_option[subject_select].A, {color: "#FFFFFF", fontSize:'20px'});
         optionBText = this.add.text(cw/10, ch/2-20, subject_option[subject_select].B, {color: "#FFFFFF", fontSize:'20px'});
         optionCText = this.add.text(cw/10, ch/2+20, subject_option[subject_select].C, {color: "#FFFFFF", fontSize:'20px'});
         optionDText = this.add.text(cw/10, ch/2+60, subject_option[subject_select].D, {color: "#FFFFFF", fontSize:'20px'});
+        
+        // 新增玩家
+        player = this.physics.add.sprite(cw/2, ch, player_name[player_select]);
         
         
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
