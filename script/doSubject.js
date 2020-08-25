@@ -71,6 +71,12 @@ var numRotatingRoundedRects = 35;
 var rotatingRoundedRects = [];
 var rotatingRoundedRectsContainer;
 
+// 繪製水動畫
+let g = this.game,
+    r = g.renderer,
+    w = cw/2,
+    h = ch/2
+
 
 
 const doSubject = {
@@ -117,11 +123,6 @@ const doSubject = {
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
             
     
-    
-        let g = this.game,
-	    r = g.renderer,
-	    w = r.width,
-	    h = r.height
     
     
     
