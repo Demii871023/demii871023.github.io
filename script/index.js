@@ -197,7 +197,6 @@ const playerSelect = {
                         console.log("無法再往左邊");
                     else
                     {
-                        // console.log("左邊");
                         shrinkScale = mainpScale, enlargeScale = otherpScle;
                         keydwon = true;
                         now_select = now_select - 1;
@@ -224,9 +223,6 @@ const playerSelect = {
                             loop: false,
                             repeat: 4
                         });
-
-                        // for(var i = 0 ; i < 6 ; i++)
-                        //     playerArr[i].setVelocityX(880);
                     }
                 }
             }
@@ -239,7 +235,6 @@ const playerSelect = {
                         console.log("無法再往右邊");
                     else
                     {
-                        // console.log("右邊");
                         shrinkScale = mainpScale, enlargeScale = otherpScle;
                         keydwon = true;
                         now_select = now_select + 1;
@@ -286,9 +281,9 @@ const playerSelect = {
                 // 按下空白鍵的時候，若此時沒有選取角色，即確定角色
                 if(player_select == -1)
                 {
+                    // 選擇的角色為現在左右移動時所坐落的 index 數
                     player_select = now_select;
                     player_confirm = true;
-                    // document.getElementById('confirmBtn').style.display = 'block';
 
                     // 選定人物後移動它
                     for(var i = 0 ; i < 6 ; i++)
@@ -318,9 +313,6 @@ const playerSelect = {
                         loop: false,
                         repeat: 18
                     });
-
-                    // playerConfirm();
-                    // this.scene.start('gameSelect');
                 }
             }
         }
@@ -329,21 +321,11 @@ const playerSelect = {
         {
             if(keyboard.space.isDown)
             {
-                console.log("角色能力值決定完成");
-
-                // console.log("壓力 : " + document.getElementById('pressureRange').value);
-                // console.log("體力 : " + document.getElementById('strengthRange').value);
-                // console.log("慣性 : " + document.getElementById('lazyRange').value);
-                // console.log("人際支持 : " + document.getElementById('socialRange').value);
-
                 lazyNum = parseInt(document.getElementById('lazyRange').value);
                 pressureNum = parseInt(document.getElementById('pressureRange').value);
                 strengthNum = parseInt(document.getElementById('strengthRange').value);
                 socialNum = parseInt(document.getElementById('socialRange').value);
-
-                // console.log("=========================");
-                // console.log(lazyNum + " " + pressureNum + " " + strengthNum + " " + socialNum);
-
+                
                 document.getElementById('playerRadarChart').style.visibility = 'hidden';
                 document.getElementById('playerRangeBar').style.visibility = 'hidden';
                 this.scene.start('gameSelect');
@@ -460,14 +442,6 @@ const gameSelect = {
 
 // gameSubject.js
 
-// // 玩家擁有數值 -> 目前先寫死，等待自定義參數部分完成，在讀取數值
-
-// var lazyNum = 22;      // 惰性
-// var pressureNum = 50;  // 壓力
-// var strengthNum = 35;  // 體力
-// var socialNum = 80;    // 人際
-// var time = 20;          // 時間
-
 // 門檻值
 var threshold_value = [
     {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 語文
@@ -480,7 +454,6 @@ var threshold_value = [
     {lazy: 0, pressure: 80, strength: 1.5, social: 0, time:1.5}, // 藝術
 ];
 var threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'];
-
 
 const gameSubject = {
     key: 'gameSubject',
@@ -593,12 +566,7 @@ const gameSubject = {
         {
             beansGroupChild[i].setScale(beansScale);           
         }
-
-        // beans = this.physics.add.sprite(subject_xy[0].x, subject_xy[0].y, 'beans');
-        // beans.setCollideWorldBounds(true);
-        // beans.setScale(beansScale);
         
-        // this.physics.add.overlap(player, beans, collectStar, null, this);
         this.physics.add.overlap(player, beansGroupChild, collectStar, null, this);
         this.physics.add.overlap(player, bonusedoor, inBonuse, null, this);
         
@@ -609,8 +577,6 @@ const gameSubject = {
             {
                 console.log("吃掉");
                 // 開啟 modal：你確定選擇_____(科目)?
-                // console.log(beans.texture.key);
-                // console.log(subject_nameen.indexOf(beans.texture.key));
                 subject_select = subject_nameen.indexOf(beans.texture.key);
                 modalOpen(subject_nameen.indexOf(beans.texture.key));
                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
@@ -630,8 +596,6 @@ const gameSubject = {
             console.log("進入加分關卡");
             this.scene.start('gameBonus');
         }
-        
-        //this.add.text(cw/2,ch/2, subject_name[2], {color: "#123455", fontSize:'60px'});
     },
     update: function(){
         
@@ -695,7 +659,6 @@ const gameSubject = {
     }
 }
 
-
 // gameBonus.js
 
 const percentN = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
@@ -730,17 +693,16 @@ var bonus_xy = [
     {x: 0, y: 0, gravity: 0, velocity: 0}
 ];
 
-// 為了完成指令
-// var command_name_default = ['upDefault', 'downDefault', 'leftDefault', 'rightDefault'];
-// var command_name_correct = ['up'];
+// 為了加分指令 (command_name：用於生成上下左右鍵所需 / command_command：用亂數生成多個指令鍵值 / commandInput：用於辨識是否可以開始輸入指令 / command_index：用於辨識現在正確的鍵值)
 var command_name = ['up', 'down', 'left', 'right'];
 var command_command = [];
 var commandInput = false;
 var command_index = 0;
-// 使用者輸入
+
+// 使用者輸入 (input_id：使用者輸入鍵值 / input_now：用於辨別是否正在輸入 / input_correct：用於計算正確鍵入數量)
 var input_id = -1;
 var input_now = false;
-var input_input = false;
+// var input_input = false;
 var input_correct = 0;
 
 const gameBonus = {
@@ -822,24 +784,18 @@ const gameBonus = {
         }
         bonusGroupChild = bonusGroup.getChildren();
         for(var i = 0 ; i < bonusGroupChild.length ; i++)
-        {
             bonusGroupChild[i].setScale(beansScale);
-        }
         
         for(var i = 0 ; i < 12 ; i++)
             rebounce[i] = 'false';
-        
-        // for(var i = 0 ; i < 12 ; i++)
-        //     console.log(rebounce[i]);
 
         this.physics.add.overlap(player, bonusGroup, addStatusValue, null, this);
         
         function addStatusValue(player, bonus)
         {
-            // console.log("================ 吃到 ================");
             if(abs(player.x, bonus.x) < 20 && abs(player.y, bonus.y) < 20)
             {
-                // console.log(bonus.texture.key);
+
                 if(bonus.texture.key == 'lazyB')        // 惰性
                     addKey = 0;
                 if(bonus.texture.key == 'pressureB')    // 壓力
@@ -849,15 +805,12 @@ const gameBonus = {
                 if(bonus.texture.key == 'strengthB')    // 體力
                     addKey = 3;
 
-                // 每吃到的瞬間將遊戲暫停，因此將 maskCounter 歸零
-                // maskCounter = 0;
                 bonus.disableBody(true, true);
                 bonusStart = false;
                 bonusStop = true;
             }
         }
-        
-        
+
         // 遊戲說明及倒數遮罩
         mask = this.add.graphics()
         mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
@@ -881,8 +834,6 @@ const gameBonus = {
 
         //  bonus 倒數 10 秒
         var gbonusTimer = setInterval(() => {
-            console.log("=========================");
-            console.log(lazyNum + " " + pressureNum + " " + strengthNum + " " + socialNum);
             timeInt = timeInt - 1;
             if(timeInt <= 10)
             {
@@ -898,18 +849,12 @@ const gameBonus = {
                 clearInterval(gbonusTimer);
             }
         }, 1000);
-        
-        // this.load.image('upDefault', 'image/Bonus/up-arrow.png');
-        // this.load.image('downDefault', 'image/Bonus/down-arrow.png');
-        // this.load.image('leftDefault', 'image/Bonus/left-arrow.png');
-        // this.load.image('rightDefault', 'image/Bonus/right-arrow.png');
-        
+ 
     },
     update: function(){
 
         if(bonusStart && !bonusOver)
         {
-            // console.log("遊戲起動");
             // 清除遮罩
             mask.clear();
             
