@@ -112,11 +112,14 @@ const otherpScle = 0.3;
 // 縮小放大
 var shrinkScale = otherpScle, enlargeScale = mainpScale;
 
+// 使用者選擇角色 (now_select：還沒確定時左右移動的 index 數 / player_select：使用者選定角色 id / player_confirm：布林值，用於辨別是否確認角色)
 var now_select = 0;
 var player_select = -1;
 var player_confirm = false;
 
+// 用於存放角色的陣列
 const playerArr = new Array(6);
+
 // 判斷按鍵是否按下，並判斷角色是否目前處於移動狀態
 var keydwon = false;
 var playerMove = false;
@@ -126,10 +129,11 @@ const playerSelect = {
     key: 'playerSelect',
     preload: function(){
         
-        // for 雷達圖
-        this.load.script('chartjs', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js');
-        this.load.scenePlugin('rexuiplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js', 'rexUI', 'rexUI');
+//         // for 雷達圖
+//         this.load.script('chartjs', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js');
+//         this.load.scenePlugin('rexuiplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js', 'rexUI', 'rexUI');
 
+        // 讀入角色
         this.load.image('player1', 'image/Character/player1.png');
         this.load.image('player2', 'image/Character/player2.png');
         this.load.image('player3', 'image/Character/player3.png');
@@ -138,8 +142,7 @@ const playerSelect = {
         this.load.image('player6', 'image/Character/player6.png');
         
         document.getElementById('gmChatCardText').innerHTML = "在正式進入之前，選一個喜歡的角色來開始吧！<br>每個角色之間會有不同擅長的事情，依照你自己的喜好來選擇吧！";
-        
-        
+
     },
     create: function(){
         
@@ -152,7 +155,6 @@ const playerSelect = {
         player2.setScale(otherpScle);
         player2.alpha = 0.5;
         playerArr[1] = player2;
-
 
         player3 = this.physics.add.sprite(cw/2 + 2 * cw/4, ch/2, 'player3');
         player3.setScale(otherpScle);
@@ -177,14 +179,10 @@ const playerSelect = {
         graphics = this.add.graphics()
         graphics.lineStyle(5, 0x00ffff, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
 
-
-        var chart = this.rexUI.add.chart(cw/2, ch/2 + ch/4, 200, 200, config);
+//         var chart = this.rexUI.add.chart(cw/2, ch/2 + ch/4, 200, 200, config);
 
         playerName = this.add.text(cw/2-cw/11, ch/2 + 150, "ID：" + player_namezw[0], {color: "#FFFFFF", fontSize:"30px"});
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵確定角色', {color: "#FFFFFF", fontSize:'14px'});
-
-
-
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
