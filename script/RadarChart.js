@@ -8,8 +8,9 @@ var valueTmp = 0;
 
 
 function dragInputRange(event) {
-    event.preventDefault();
-    console.log("Test");
+    return false;
+//     event.preventDefault();
+//     console.log("Test");
 //     event.preventDefault();
 }
 
