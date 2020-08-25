@@ -89,6 +89,9 @@ var rotatingRoundedRectsContainer;
 var rotatingRoundedRects2 = [];
 var rotatingRoundedRectsContainer2;
 
+var waterHigh1 = 0.4;
+var waterHigh2 = 0.2;
+
 
 
 
@@ -137,8 +140,8 @@ const doSubject = {
         player.setScale(playerScale);
 	    
 	// 新增墜落物
-        bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
-        lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
+//         bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
+//         lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
 
 	
 	challengeGroup = this.physics.add.group();
@@ -148,8 +151,8 @@ const doSubject = {
 	function waterUp(player, challenge)
         {
 	    challenge.disableBody(true, true);
-            rotatingRoundedRectsContainer.y = this.game.renderer.height*(-0.1);
-	    rotatingRoundedRectsContainer2.y = this.game.renderer.height*(-0.3);
+            rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1 - 0.1);
+	    rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2 - 0.1);
         }
 	
 	    
@@ -190,8 +193,8 @@ const doSubject = {
 
 		for (let i = 0; i<numRotatingRoundedRects; i++)
 		{
-		    rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
-
+                    rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
+		
 		    let rrr = rotatingRoundedRects[i], 
 			cr = w/9
 
@@ -205,16 +208,16 @@ const doSubject = {
 		}
 		rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
 		rotatingRoundedRectsContainer.mask = mask
-		rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.2);
+		rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1);
 		    
 		    
 		for (let i = 0; i<numRotatingRoundedRects; i++)
 		{
-		    rotatingRoundedRects2.push(this.add.graphics(w/2,h/3))
+                    rotatingRoundedRects2.push(this.add.graphics(w/2,h/3))
 
 		    let rrr = rotatingRoundedRects2[i], 
 			cr = w/9
-
+		    
 		    rrr
 			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
 			.fillStyle(0xFFFFFF, 0.5)
@@ -225,14 +228,9 @@ const doSubject = {
 		}
 		rotatingRoundedRectsContainer2 = this.add.container().add(rotatingRoundedRects2)
 		rotatingRoundedRectsContainer2.mask = mask
-		rotatingRoundedRectsContainer2.y = this.game.renderer.height*(0);
-		    
-		    
-		    
-		    
-		    
-		    
-		    
+		rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2);
+
+
 		for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
 		{
 	            // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
