@@ -69,10 +69,10 @@ const doSubject = {
         
     },
     create: function(){
-        doAText = add.text(cw/2, ch/2, subject_choice[subjectTmp].A, {color: "#FFFFFF", fontSize:'45px'});
-        doBText = add.text(cw/2, ch/2, subject_choice[subjectTmp].B, {color: "#FFFFFF", fontSize:'45px'});
-        doCText.text(cw/2, ch/2, subject_choice[subjectTmp].C, {color: "#FFFFFF", fontSize:'45px'});
-        doDText.text(cw/2, ch/2, subject_choice[subjectTmp].D, {color: "#FFFFFF", fontSize:'45px'});
+        doAText = this.add.text(cw/2, ch/2, subject_choice[subjectTmp].A, {color: "#FFFFFF", fontSize:'45px'});
+        doBText = this.add.text(cw/2, ch/2, subject_choice[subjectTmp].B, {color: "#FFFFFF", fontSize:'45px'});
+        doCText = this.add.text(cw/2, ch/2, subject_choice[subjectTmp].C, {color: "#FFFFFF", fontSize:'45px'});
+        doDText = this.add.text(cw/2, ch/2, subject_choice[subjectTmp].D, {color: "#FFFFFF", fontSize:'45px'});
             
     },
     update: function(){
