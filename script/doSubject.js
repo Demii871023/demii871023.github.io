@@ -208,7 +208,7 @@ const doSubject = {
                 rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             }
     
-            rotatingRoundedRectsContainer.y = this.game.renderer.height*(-1);
+            rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.8);
 	}
     }
 }
