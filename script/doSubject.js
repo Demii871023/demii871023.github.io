@@ -60,9 +60,23 @@ const subject_option = [
 
 var optionView = false;
 var challengeStart = false;
+var challengeTime = 20;
+var challenge_xy = [
+	// bomb
+	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
+	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
+	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
+	// lighting
+	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
+];
+
+var challenge_name = ['bomb', 'lighting'];
+
+// 掉落速度，依據級距加快
+var downSpeed = 120;
 
 
-// 新增水
+// 繪製水動畫
 var water;
 var waterStroke;
 var maskShape;
@@ -70,8 +84,6 @@ var mask;
 var numRotatingRoundedRects = 35;
 var rotatingRoundedRects = [];
 var rotatingRoundedRectsContainer;
-
-// 繪製水動畫
 
 
 
@@ -123,7 +135,51 @@ const doSubject = {
 	// 新增墜落物
 	bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
 	lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
+	    
+	    
+	
+	    
+	
+	challengeGroup = this.physics.add.group();
+	    
+	for(var i = 0 ; i < 30 ; i = i + lightingNum + bombNum)
+	{
+	    // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
+	    lightingNum = getRandom(10, 8);
+	    bombNum = getRandom(4, 2);
+	
+	    for(var j = 1 ; j < i + lightingNum ; j++)
+	    {
+		let tempX = getRandom(cw - 50, 50);
+		challenge_xy[i].x = tempX;
+		challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
+	    }
+	    for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
+	    {
+		let tempX = getRandom(cw - 50, 50);
+		challenge_xy[i].x = tempX;
+		challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
+	    }
+	}
+	
+	challengeGroupChild = challengeGroup.getChildren();
+        for(var i = 0 ; i < challengeGroupChild.length ; i++)
+        {
+            challengeGroupChild[i].setScale(0.2);           
+        }
+	
+	console.log(challengeGroupChild);
+	    
     
+	var challengeTimer = setInterval(() => {
+            challengeTime = challengeTime - 1;
+
+            // 倒數計時完畢，挑戰結束
+            if(challengeTime <= 0)
+            {
+                clearInterval(challengeTimer);
+            }
+        }, 1000);
 	
 	    
         // 新增提示字樣
@@ -157,7 +213,7 @@ const doSubject = {
 
 		water = this.add.graphics();
 		water
-		    .fillStyle(0xFFFFFF, 0.2)
+		    .fillStyle(0x1155ae, 0.2)
 		    .fillRect(0,0,w,h)
 
 		for (let i = 0; i<numRotatingRoundedRects; i++)
@@ -169,7 +225,7 @@ const doSubject = {
 
 		    rrr
 			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-			.fillStyle(0x1155ae, 0.5)
+			.fillStyle(0xFFFFFF, 0.5)
 			.fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
 
 		    rrr.rang = Math.random() * 360
