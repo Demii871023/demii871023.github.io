@@ -401,7 +401,8 @@ const gameSelect = {
         // 課外活動按鈕
         activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
         activity.setScale(classScale);
-        activity.alpha = 0.5;
+//         activity.alpha = 0.5;
+        activity.setTint(0x5d5d2d);
 
 //         activity.setInteractive({ useHandCursor: true });
 //         activity.on('pointerover', function(){
@@ -433,6 +434,7 @@ const gameSelect = {
             activity.alpha = 1;
 //             subject.alpha = 0.5;
             subject.setTint(0x5d5d2d);
+            activity.clearTint();
         }
         else if(keyboard.left.isDown)
         {
@@ -440,6 +442,7 @@ const gameSelect = {
             subject.alpha = 1;
 //             activity.alpha = 0.5;
             activity.setTint(0x5d5d2d);
+            subject.clearTint();
         }
 
     }
