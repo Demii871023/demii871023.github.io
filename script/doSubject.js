@@ -58,7 +58,7 @@ const subject_option = [
 ];
 
 
-var choiseView = false;
+var optionView = false;
 var challengeStart = false;
 
 
@@ -145,14 +145,19 @@ const doSubject = {
         let keyboard = this.input.keyboard.createCursorKeys();
         if(keyboard.space.isDown)
         {
-            if(!choiseView)
+            if(!optionView)
             {
                 mask.clear();
-                choiseView = true;
+                optionView = true;
 		    
-		    
-		// 新增水    
+		// 看完選項後，就可以移除選項的文字
+		optionAText.destroy();
+		optionBText.destroy();
+		optionCText.destroy();
+		optionDText.destroy();
+		tipsText.destroy();
 
+		// 新增水
 	        mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
 
 		water = this.add.graphics();
