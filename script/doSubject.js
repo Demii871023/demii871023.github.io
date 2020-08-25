@@ -1,6 +1,7 @@
 
 // 目前寫死，等待改進！應該要是 subject_select 的數值
 const subjectTmp = 1;
+const subject_nameTmp = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
 
 const subject_choice = [
     // 語文
@@ -67,7 +68,10 @@ const subject_choice = [
 const doSubject = {
     key: 'doSubject',
     preload: function(){
-
+        document.getElementById('gmChatCard').style.display = 'block';
+        document.getElementById('gmChatCard').style.width = '80%';
+        document.getElementById('gmChatCard').style.height = '110px';
+        document.getElementById('gmChatCardText').innerHTML = "今天上完" + subject_nameTmp[subjectTmp] + "的課程，你會如何進行課後安排呢？";
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
         
     },
