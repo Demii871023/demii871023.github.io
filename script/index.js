@@ -1103,7 +1103,7 @@ const config = {
         },
     },
     scene: [
-//         doSubject,
+        doSubject,
         playerSelect,
         gameSelect,
         gameSubject,
