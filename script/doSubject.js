@@ -214,8 +214,8 @@ const doSubject = {
 		for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
 		{
 	            // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
-	            lightingNum = getRandom(10, 8);
-	            bombNum = getRandom(4, 2);
+	            lightingNum = getRandom(5, 3);
+	            bombNum = getRandom(4, 1);
 	
 	            for(var j = 1 ; j < i + lightingNum ; j++)
 	            {
