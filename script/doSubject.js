@@ -1,3 +1,5 @@
+const subjectTmp = 1;
+
 const subject_choice = [
     // 語文
     {
@@ -67,7 +69,10 @@ const doSubject = {
         
     },
     create: function(){
-        
+        add.text(cw/2, ch/2, subject_choice[subjectTmp].A, {color: "#FFFFFF", fontSize:'45px'});
+        add.text(cw/2, ch/2, subject_choice[subjectTmp].B, {color: "#FFFFFF", fontSize:'45px'});
+        add.text(cw/2, ch/2, subject_choice[subjectTmp].C, {color: "#FFFFFF", fontSize:'45px'});
+        add.text(cw/2, ch/2, subject_choice[subjectTmp].D, {color: "#FFFFFF", fontSize:'45px'});
             
     },
     update: function(){
