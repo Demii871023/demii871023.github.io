@@ -7,6 +7,12 @@ var rangebar_now = 0;
 var valueTmp = 0;
 
 
+function dragInputRange() {
+    console.log("Test");
+    event.preventDefault();
+}
+
+
 
 var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
