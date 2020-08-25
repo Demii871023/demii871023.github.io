@@ -194,14 +194,14 @@ const doSubject = {
 		    rrr
 			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
 			.fillStyle(0xFFFFFF, 0.5)
-			.fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+			.fillRoundedRect(-w/8,-w/8,w/4,h,{tl:cr,tr:cr,bl:cr,br:cr})
 
 		    rrr.rang = Math.random() * 360
 		    rrr.rangrate = Math.random() * 10 + 10
 		}
 		rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
 		rotatingRoundedRectsContainer.mask = mask
-		rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.8);
+		rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.2);
 		    
 		for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
 		{
@@ -222,11 +222,9 @@ const doSubject = {
 		        challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
 	            }
 	        }
-	
-// 	        challengeGroupChild = challengeGroup.getChildren();
+
                 for(var i = 0 ; i < challengeGroupChild.length ; i++)
                 {
-// 		    challengeGroupChild[i].setCollideWorldBounds(true)
                     challengeGroupChild[i].setScale(0.2);           
                 }
 	        console.log(challengeGroupChild);
@@ -242,9 +240,7 @@ const doSubject = {
 	    player.setVelocityX(-160);
 	else
 	    player.setVelocityX(0);
-        
-	
-	    
+ 
 	if(challengeStart)
 	{
 		
@@ -275,17 +271,14 @@ const doSubject = {
 		
 		
 		
-//             // 控制水的高度
+            // 控制水的高度
             for (key in rotatingRoundedRects)
 	    {
                 let rrr = rotatingRoundedRects[key]
                 rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             }
     
-//             rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.8);
 	}
-	    
-	    
-	
+
     }
 }
