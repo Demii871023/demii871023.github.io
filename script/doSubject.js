@@ -158,7 +158,16 @@ const doSubject = {
                 choiseView = true;
             }
         }
+	    
+	// 角色左右移動
+	if(keyboard.right.isDown)
+	    player.setVelocityX(160);
+	else if(keyboard.left.isDown)
+	    player.setVelocityX(-160);
+	else
+	    player.setVelocityX(0);
         
+	
         // 新增水
         
         for (key in rotatingRoundedRects)
