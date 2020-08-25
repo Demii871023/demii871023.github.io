@@ -1,6 +1,7 @@
 
 // 目前寫死，等待改進！應該要是 subject_select 的數值
 const subjectTmp = 1;
+
 const subject_nameTmp = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
 
 const subject_choice = [
@@ -63,7 +64,7 @@ const subject_choice = [
 ];
 
 
-
+var choiseView = false;
 
 const doSubject = {
     key: 'doSubject',
@@ -95,6 +96,14 @@ const doSubject = {
             
     },
     update: function(){
-
+        let keyboard = this.input.keyboard.createCursorKeys();
+        if(keyboard.space.isDown)
+        {
+            if(!choiseView)
+            {
+                mask.clear();
+                choiseView = true;
+            }
+        }
     }
 }
