@@ -95,6 +95,10 @@ const doSubject = {
         this.load.image('player4', 'image/Character/player4.png');
         this.load.image('player5', 'image/Character/player5.png');
         this.load.image('player6', 'image/Character/player6.png');
+	    
+	// 載入挑戰墜落物
+	this.load.image('bomb', 'image/Challenge/bomb.png');
+	this.load.image('lighting', 'image/Challenge/lighting.png');
         
     },
     create: function(){
@@ -115,19 +119,29 @@ const doSubject = {
         // 新增玩家
         player = this.physics.add.sprite(cw/2, ch, player_name[player_select]);
         player.setScale(playerScale);
+	    
+	// 新增墜落物
+	bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
+	lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
     
+	
+	    
         // 新增提示字樣
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
             
     
-    	let g = this.game,
-   	    r = g.renderer,
-    	    w = cw/2,
-    	    h = ch/2
+//     	let g = this.game,
+//    	    r = g.renderer,
+//     	    w = r.width,
+//     	    h = r.height
     
     
     },
     update: function(){
+	let g = this.game,
+   	    r = g.renderer,
+    	    w = r.width,
+    	    h = r.height
         let keyboard = this.input.keyboard.createCursorKeys();
         if(keyboard.space.isDown)
         {
