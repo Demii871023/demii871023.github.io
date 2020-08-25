@@ -152,13 +152,13 @@ const doSubject = {
 	    {
 		let tempX = getRandom(cw - 50, 50);
 		challenge_xy[i].x = tempX;
-		challengeGroup.create(challenge_xy[i].x, 400, 'lighting'); 
+		challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
 	    }
 	    for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
 	    {
 		let tempX = getRandom(cw - 50, 50);
 		challenge_xy[i].x = tempX;
-		challengeGroup.create(challenge_xy[i].x, 400, 'bomb'); 
+		challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
 	    }
 	}
 	
@@ -170,10 +170,19 @@ const doSubject = {
 	
 	console.log(challengeGroupChild);
 	    
-    
+    	// 批次下降，總共分為四次
+	batch = 0;
+	    
 	var challengeTimer = setInterval(() => {
             challengeTime = challengeTime - 1;
-
+            if(batch == 4)
+                return;
+	    for(var i = batch * 10 ; i < batch * 10 + 10 ; i++)
+	    {
+                challengeGroupChild[i].body.gravity.y = 100;
+	    }
+	    batch = batch + 1;
+            
             // 倒數計時完畢，挑戰結束
             if(challengeTime <= 0)
             {
@@ -199,6 +208,7 @@ const doSubject = {
             if(!optionView)
             {
                 mask.clear();
+		mask.fillStyle(0xFFFFFF, 0.45).fillRect(0, 0, cw, ch);
                 optionView = true;
 		    
 		// 看完選項後，就可以移除選項的文字
