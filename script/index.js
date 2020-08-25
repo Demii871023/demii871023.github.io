@@ -430,11 +430,13 @@ const gameSelect = {
         if(keyboard.right.isDown)
         {
             subject.setScale(0.55);
+            subject.alpha = 1;
             activity.alpha = 0.5;
         }
         else if(keyboard.left.isDown)
         {
             activity.setScale(0.55);
+            activity.alpha = 1;
             subject.alpha = 0.5;
         }
 
