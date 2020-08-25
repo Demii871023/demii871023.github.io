@@ -120,22 +120,15 @@ const doSubject = {
         // 新增水
 	    
 	let g = this.game,
-	r = g.renderer,
-	w = r.width,
-	h = r.height
-
-	    // maskShape = this.add.graphics();
-	    // maskShape
-	    //     .setPosition(w/2,h/3)
-	    //     .fillStyle(0x333333, 1)
-	    //     .fillRoundedRect(0,0,w/4,w/4,{tl:0,tr:w/8,bl:w/8,br:w/8})
-	    //     .setAngle(45);
+	    r = g.renderer,
+	    w = r.width,
+	    h = r.height
 
 	    mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
 
 	    water = this.add.graphics();
 	    water
-		.fillStyle(0x1155ae)
+		.fillStyle(0x1155ae, 0.2)
 		.fillRect(0,0,w,h)
 
 	    //water.setMask(mask);
@@ -149,7 +142,7 @@ const doSubject = {
 
 		rrr
 		    .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-		    .fillStyle(0xffffff, 0.85)
+		    .fillStyle(0xffffff, 0.2)
 		    .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
 
 		rrr.rang = Math.random() * 360
