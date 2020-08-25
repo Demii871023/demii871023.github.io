@@ -181,5 +181,5 @@ const doSubject = {
         }
     
         rotatingRoundedRectsContainer.y = this.game.renderer.height*(Math.sin(Date.now()/5000)*0.15+0.18)
-
+    }
 }
