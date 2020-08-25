@@ -429,15 +429,17 @@ const gameSelect = {
         
         if(keyboard.right.isDown)
         {
-            subject.setScale(0.55);
-            subject.alpha = 1;
-            activity.alpha = 0.5;
+            activity.setScale(0.55);
+            activity.alpha = 1;
+//             subject.alpha = 0.5;
+            subject.setTint(0x5d5d2d);
         }
         else if(keyboard.left.isDown)
         {
-            activity.setScale(0.55);
-            activity.alpha = 1;
-            subject.alpha = 0.5;
+            subject.setScale(0.55);
+            subject.alpha = 1;
+//             activity.alpha = 0.5;
+            activity.setTint(0x5d5d2d);
         }
 
     }
