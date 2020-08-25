@@ -134,60 +134,25 @@ const doSubject = {
         player.setScale(playerScale);
 	    
 	// 新增墜落物
-	bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
-	lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
-	    
+        bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
+        lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
 
 	
 	challengeGroup = this.physics.add.group();
-	    
-// 	for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
-// 	{
-// 	    // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
-// 	    lightingNum = getRandom(10, 8);
-// 	    bombNum = getRandom(4, 2);
+	challengeGroupChild = challengeGroup.getChildren();
+	this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
 	
-// 	    for(var j = 1 ; j < i + lightingNum ; j++)
-// 	    {
-// 		let tempX = getRandom(cw - 50, 50);
-// 		challenge_xy[i].x = tempX;
-// 		challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
-// 	    }
-// 	    for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
-// 	    {
-// 		let tempX = getRandom(cw - 50, 50);
-// 		challenge_xy[i].x = tempX;
-// 		challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
-// 	    }
-// 	}
-	
-// 	challengeGroupChild = challengeGroup.getChildren();
-//         for(var i = 0 ; i < challengeGroupChild.length ; i++)
-//         {
-//             challengeGroupChild[i].setScale(0.2);           
-//         }
-	
-// 	console.log(challengeGroupChild);
-	    
-//     	// 批次下降，總共分為四次
-// 	batch = 0;
-	    
-// 	var challengeTimer = setInterval(() => {
-//             challengeTime = challengeTime - 1;
-//             if(batch == 4)
-//                 return;
-// 	    for(var i = batch * 10 ; i < batch * 10 + 10 ; i++)
-// 	    {
-//                 challengeGroupChild[i].body.gravity.y = 100;
-// 	    }
-// 	    batch = batch + 1;
-            
-//             // 倒數計時完畢，挑戰結束
-//             if(challengeTime <= 0)
-//             {
-//                 clearInterval(challengeTimer);
-//             }
-//         }, 1000);
+	function waterUp(player, challenge)
+        {
+	    challenge.disableBody(true, true);
+	    for (key in rotatingRoundedRects)
+	    {
+                let rrr = rotatingRoundedRects[key]
+                rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
+            }
+    
+            rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.1);
+        }
 	
 	    
         // 新增提示字樣
@@ -243,9 +208,6 @@ const doSubject = {
 		rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
 		rotatingRoundedRectsContainer.mask = mask
 		    
-		challengeStart = true;
-		    
-		    
 		for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
 		{
 	            // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
@@ -266,14 +228,15 @@ const doSubject = {
 	            }
 	        }
 	
-	        challengeGroupChild = challengeGroup.getChildren();
+// 	        challengeGroupChild = challengeGroup.getChildren();
                 for(var i = 0 ; i < challengeGroupChild.length ; i++)
                 {
+		    challengeGroupChild[i].setCollideWorldBounds(true)
                     challengeGroupChild[i].setScale(0.2);           
                 }
-	
 	        console.log(challengeGroupChild);
-
+		    
+		challengeStart = true;
             }
         }
 	    
@@ -324,7 +287,10 @@ const doSubject = {
                 rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             }
     
-            rotatingRoundedRectsContainer.y = this.game.renderer.height*(-0.1);
+//             rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.8);
 	}
+	    
+	    
+	
     }
 }
