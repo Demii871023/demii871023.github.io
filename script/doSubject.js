@@ -60,6 +60,18 @@ const subject_option = [
 
 var choiseView = false;
 
+
+// 新增水
+var water;
+var waterStroke;
+var maskShape;
+var mask;
+var numRotatingRoundedRects = 35;
+var rotatingRoundedRects = [];
+var rotatingRoundedRectsContainer;
+
+
+
 const doSubject = {
     key: 'doSubject',
     preload: function(){
@@ -103,6 +115,48 @@ const doSubject = {
         // 新增提示字樣
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
             
+    
+    
+        // 新增水
+        let g = this.game,
+        r = g.renderer,
+        w = r.width,
+        h = r.height
+
+        maskShape = this.add.graphics();
+        maskShape
+            .setPosition(w/2,h/3)
+            .fillStyle(0x333333, 1)
+            .fillRoundedRect(0,0,w/4,w/4,{tl:0,tr:w/8,bl:w/8,br:w/8})
+            .setAngle(45);
+
+        mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
+
+            // 浮動的水
+        water = this.add.graphics();
+        water
+            .fillStyle(0x000000)
+            .fillRect(0,0,w,h)
+
+        //water.setMask(mask);
+
+        for (let i = 0; i<numRotatingRoundedRects; i++)
+        {
+            rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
+
+            let rrr = rotatingRoundedRects[i], 
+                cr = w/9
+
+            rrr
+                .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+                .fillStyle(0xffffff, 0.85)
+                .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+
+            rrr.rang = Math.random() * 360
+            rrr.rangrate = Math.random() * 10 + 10
+    
+    
+    
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
@@ -114,5 +168,15 @@ const doSubject = {
                 choiseView = true;
             }
         }
-    }
+        
+        // 新增水
+        
+        for (key in rotatingRoundedRects)
+        {
+            let rrr = rotatingRoundedRects[key]
+            rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
+        }
+    
+        rotatingRoundedRectsContainer.y = this.game.renderer.height*(Math.sin(Date.now()/5000)*0.15+0.18)
+
 }
