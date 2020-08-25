@@ -1,3 +1,5 @@
+
+// 目前寫死，等待改進！應該要是 subject_select 的數值
 const subjectTmp = 1;
 
 const subject_choice = [
@@ -65,14 +67,24 @@ const subject_choice = [
 const doSubject = {
     key: 'doSubject',
     preload: function(){
-        console.log(subject_choice[0].A);
+
+        this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
         
     },
     create: function(){
-        doAText = this.add.text(cw/10, ch/2-60, subject_choice[subjectTmp].A, {color: "#FFFFFF", fontSize:'20px'});
-        doBText = this.add.text(cw/10, ch/2-20, subject_choice[subjectTmp].B, {color: "#FFFFFF", fontSize:'20px'});
-        doCText = this.add.text(cw/10, ch/2+20, subject_choice[subjectTmp].C, {color: "#FFFFFF", fontSize:'20px'});
-        doDText = this.add.text(cw/10, ch/2+60, subject_choice[subjectTmp].D, {color: "#FFFFFF", fontSize:'20px'});
+        
+        // 載入背景圖片
+        this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
+        
+        // 蓋上遮罩
+        mask = this.add.graphics()
+        mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
+        
+        // 載入該學科選項
+        optionAText = this.add.text(cw/10, ch/2-60, subject_choice[subjectTmp].A, {color: "#FFFFFF", fontSize:'20px'});
+        optionBText = this.add.text(cw/10, ch/2-20, subject_choice[subjectTmp].B, {color: "#FFFFFF", fontSize:'20px'});
+        optionCText = this.add.text(cw/10, ch/2+20, subject_choice[subjectTmp].C, {color: "#FFFFFF", fontSize:'20px'});
+        optionDText = this.add.text(cw/10, ch/2+60, subject_choice[subjectTmp].D, {color: "#FFFFFF", fontSize:'20px'});
             
     },
     update: function(){
