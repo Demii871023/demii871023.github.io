@@ -8,7 +8,10 @@ var valueTmp = 0;
 
 
 function dragInputRange(event) {
-    return false;
+    console.log(document.getElementById('pressureRange').value);
+    var tmp = document.getElementById('pressureRange').value;
+    document.getElementById('pressureRange').value = tmp;
+//     return false;
 //     event.preventDefault();
 //     console.log("Test");
 //     event.preventDefault();
