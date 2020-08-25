@@ -630,6 +630,7 @@ const gameSubject = {
                 {
                     sureModalClose();
                     spaceCounter = spaceCounter + 1;
+                    this.scene.start('doSubject');
                 }
                 console.log("空白鍵");
                 eat = true;
@@ -1103,11 +1104,11 @@ const config = {
         },
     },
     scene: [
-        doSubject,
         playerSelect,
         gameSelect,
         gameSubject,
         gameBonus,
+        doSubject,
     ]
 }
 
