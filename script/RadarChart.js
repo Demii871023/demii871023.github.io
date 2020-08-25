@@ -7,9 +7,10 @@ var rangebar_now = 0;
 var valueTmp = 0;
 
 
-function dragInputRange() {
-    console.log("Test");
+function dragInputRange(event) {
     event.preventDefault();
+    console.log("Test");
+//     event.preventDefault();
 }
 
 
