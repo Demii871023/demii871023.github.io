@@ -98,8 +98,9 @@ const doSubject = {
         
         // 新增玩家
         player = this.physics.add.sprite(cw/2, ch, player_name[player_select]);
-        
-        
+        player.setScale(playerScale);
+    
+        // 新增提示字樣
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
             
     },
