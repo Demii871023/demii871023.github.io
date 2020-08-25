@@ -130,11 +130,6 @@ const doSubject = {
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
             
     
-//     	let g = this.game,
-//    	    r = g.renderer,
-//     	    w = r.width,
-//     	    h = r.height
-    
     
     },
     update: function(){
@@ -162,7 +157,7 @@ const doSubject = {
 
 		water = this.add.graphics();
 		water
-		    .fillStyle(0x1155ae, 0.2)
+		    .fillStyle(0xFFFFFF, 0.2)
 		    .fillRect(0,0,w,h)
 
 		for (let i = 0; i<numRotatingRoundedRects; i++)
@@ -174,7 +169,7 @@ const doSubject = {
 
 		    rrr
 			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-			.fillStyle(0xffffff, 0.85)
+			.fillStyle(0x1155ae, 0.5)
 			.fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
 
 		    rrr.rang = Math.random() * 360
@@ -208,7 +203,7 @@ const doSubject = {
                 rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             }
     
-            rotatingRoundedRectsContainer.y = this.game.renderer.height*(0.8);
+            rotatingRoundedRectsContainer.y = this.game.renderer.height*(-0.1);
 	}
     }
 }
