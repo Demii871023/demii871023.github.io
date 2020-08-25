@@ -118,32 +118,38 @@ const doSubject = {
     
     
         // 新增水
+	    
+	let g = this.game,
+       	    r = g.renderer,
+            w = r.width,
+            h = r.height
+	    
         water = this.add.graphics();
-    water
+    	water
         .fillStyle(0x123456, 0.4)
         .fillRect(0,0,w,h)
 
 
-    for (let i = 0; i<numRotatingRoundedRects; i++)
-    {
-        rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
+        for (let i = 0; i<numRotatingRoundedRects; i++)
+        {
+            rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
         
-        let rrr = rotatingRoundedRects[i], 
-            cr = w/9
+            let rrr = rotatingRoundedRects[i], 
+                cr = w/9
         
-		// 水背景
-        rrr
-            .setPosition(w/numRotatingRoundedRects*i,h/6*(2*0.05+0.95))
-            .fillStyle(0xFFFFFF, 1)
-            .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+	    // 水背景
+            rrr
+                .setPosition(w/numRotatingRoundedRects*i,h/6*(2*0.05+0.95))
+                .fillStyle(0xFFFFFF, 1)
+                .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
         
-        rrr.rang = Math.random() * 360
-        rrr.rangrate = Math.random() * 10 + 10
-    }
+            rrr.rang = Math.random() * 360
+            rrr.rangrate = Math.random() * 10 + 10
+        }
 
 
-    rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
-    rotatingRoundedRectsContainer.mask = mask
+        rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
+        rotatingRoundedRectsContainer.mask = mask
     
     
     
