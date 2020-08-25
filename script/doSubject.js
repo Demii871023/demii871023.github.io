@@ -141,33 +141,33 @@ const doSubject = {
 	
 	challengeGroup = this.physics.add.group();
 	    
-	for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
-	{
-	    // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
-	    lightingNum = getRandom(10, 8);
-	    bombNum = getRandom(4, 2);
+// 	for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
+// 	{
+// 	    // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
+// 	    lightingNum = getRandom(10, 8);
+// 	    bombNum = getRandom(4, 2);
 	
-	    for(var j = 1 ; j < i + lightingNum ; j++)
-	    {
-		let tempX = getRandom(cw - 50, 50);
-		challenge_xy[i].x = tempX;
-		challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
-	    }
-	    for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
-	    {
-		let tempX = getRandom(cw - 50, 50);
-		challenge_xy[i].x = tempX;
-		challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
-	    }
-	}
+// 	    for(var j = 1 ; j < i + lightingNum ; j++)
+// 	    {
+// 		let tempX = getRandom(cw - 50, 50);
+// 		challenge_xy[i].x = tempX;
+// 		challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
+// 	    }
+// 	    for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
+// 	    {
+// 		let tempX = getRandom(cw - 50, 50);
+// 		challenge_xy[i].x = tempX;
+// 		challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
+// 	    }
+// 	}
 	
-	challengeGroupChild = challengeGroup.getChildren();
-        for(var i = 0 ; i < challengeGroupChild.length ; i++)
-        {
-            challengeGroupChild[i].setScale(0.2);           
-        }
+// 	challengeGroupChild = challengeGroup.getChildren();
+//         for(var i = 0 ; i < challengeGroupChild.length ; i++)
+//         {
+//             challengeGroupChild[i].setScale(0.2);           
+//         }
 	
-	console.log(challengeGroupChild);
+// 	console.log(challengeGroupChild);
 	    
 //     	// 批次下降，總共分為四次
 // 	batch = 0;
@@ -245,7 +245,35 @@ const doSubject = {
 		    
 		challengeStart = true;
 		    
-		
+		    
+		for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
+		{
+	            // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
+	            lightingNum = getRandom(10, 8);
+	            bombNum = getRandom(4, 2);
+	
+	            for(var j = 1 ; j < i + lightingNum ; j++)
+	            {
+		        let tempX = getRandom(cw - 50, 50);
+		        challenge_xy[i].x = tempX;
+		        challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
+	            }
+	            for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
+	            {
+		        let tempX = getRandom(cw - 50, 50);
+		        challenge_xy[i].x = tempX;
+		        challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
+	            }
+	        }
+	
+	        challengeGroupChild = challengeGroup.getChildren();
+                for(var i = 0 ; i < challengeGroupChild.length ; i++)
+                {
+                    challengeGroupChild[i].setScale(0.2);           
+                }
+	
+	        console.log(challengeGroupChild);
+
             }
         }
 	    
