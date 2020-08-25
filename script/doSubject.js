@@ -142,7 +142,7 @@ const doSubject = {
 	
 	challengeGroup = this.physics.add.group();
 	    
-	for(var i = 0 ; i < 30 ; i = i + lightingNum + bombNum)
+	for(var i = 0 ; i < 40 ; i = i + lightingNum + bombNum)
 	{
 	    // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
 	    lightingNum = getRandom(10, 8);
@@ -152,13 +152,13 @@ const doSubject = {
 	    {
 		let tempX = getRandom(cw - 50, 50);
 		challenge_xy[i].x = tempX;
-		challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
+		challengeGroup.create(challenge_xy[i].x, 400, 'lighting'); 
 	    }
 	    for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
 	    {
 		let tempX = getRandom(cw - 50, 50);
 		challenge_xy[i].x = tempX;
-		challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
+		challengeGroup.create(challenge_xy[i].x, 400, 'bomb'); 
 	    }
 	}
 	
