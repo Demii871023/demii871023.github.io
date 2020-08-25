@@ -154,6 +154,9 @@ const doSubject = {
 
             rrr.rang = Math.random() * 360
             rrr.rangrate = Math.random() * 10 + 10
+        }
+        rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
+        rotatingRoundedRectsContainer.mask = mask
     
     
     
