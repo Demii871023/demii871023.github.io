@@ -59,6 +59,7 @@ const subject_option = [
 
 
 var choiseView = false;
+var challengeStart = false;
 
 
 // 新增水
@@ -117,41 +118,10 @@ const doSubject = {
             
     
     
-        // 新增水
-	    
-	let g = this.game,
+        let g = this.game,
 	    r = g.renderer,
 	    w = r.width,
 	    h = r.height
-
-	    mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
-
-	    water = this.add.graphics();
-	    water
-		.fillStyle(0x1155ae, 0.2)
-		.fillRect(0,0,w,h)
-
-	    //water.setMask(mask);
-
-	    for (let i = 0; i<numRotatingRoundedRects; i++)
-	    {
-		rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
-
-		let rrr = rotatingRoundedRects[i], 
-		    cr = w/9
-
-		rrr
-		    .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-		    .fillStyle(0xffffff, 0.85)
-		    .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
-
-		rrr.rang = Math.random() * 360
-		rrr.rangrate = Math.random() * 10 + 10
-	    }
-
-
-	    rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
-	    rotatingRoundedRectsContainer.mask = mask
     
     
     
@@ -164,6 +134,38 @@ const doSubject = {
             {
                 mask.clear();
                 choiseView = true;
+		    
+		    
+		// 新增水    
+
+	        mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
+
+		water = this.add.graphics();
+		water
+		    .fillStyle(0x1155ae, 0.2)
+		    .fillRect(0,0,w,h)
+
+		for (let i = 0; i<numRotatingRoundedRects; i++)
+		{
+		    rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
+
+		    let rrr = rotatingRoundedRects[i], 
+			cr = w/9
+
+		    rrr
+			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+			.fillStyle(0xffffff, 0.85)
+			.fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+
+		    rrr.rang = Math.random() * 360
+		    rrr.rangrate = Math.random() * 10 + 10
+		}
+		rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
+		rotatingRoundedRectsContainer.mask = mask
+		    
+		challengeStart = true;
+		    
+		
             }
         }
 	    
@@ -176,14 +178,17 @@ const doSubject = {
 	    player.setVelocityX(0);
         
 	
-        // 新增水
-        
-        for (key in rotatingRoundedRects)
+	    
+	if(challengeStart)
 	{
-            let rrr = rotatingRoundedRects[key]
-            rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
-        }
+            // 控制水的高度
+            for (key in rotatingRoundedRects)
+	    {
+                let rrr = rotatingRoundedRects[key]
+                rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
+            }
     
-        rotatingRoundedRectsContainer.y = this.game.renderer.height*(-0.1)
+            rotatingRoundedRectsContainer.y = this.game.renderer.height*(h);
+	}
     }
 }
