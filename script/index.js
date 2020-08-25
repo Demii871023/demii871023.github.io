@@ -381,39 +381,41 @@ const gameSelect = {
 
         // 課業學科按鈕
         subject = this.add.sprite(cw/2 - cw/4, ch/2, 'subject');
-        subject.setScale(classScale);
+        subject.setScale(0.55);
+        
         // 開啟互動
-        subject.setInteractive({ useHandCursor: true });
-        subject.on('pointerover', function(){
-            subject.setScale(0.55);
-            subject.setTint(0x5d5d2d);
-        });
-        subject.on('pointerout', function(){
-            subject.setScale(classScale);
-            subject.setTint(0xffffff);
-        });
-        subject.on('pointerdown', function(){
-            gsCounter = gsCounter + 1;
-            this.scene.start('gameSubject');
-        }, this);
+//         subject.setInteractive({ useHandCursor: true });
+//         subject.on('pointerover', function(){
+//             subject.setScale(0.55);
+//             subject.setTint(0x5d5d2d);
+//         });
+//         subject.on('pointerout', function(){
+//             subject.setScale(classScale);
+//             subject.setTint(0xffffff);
+//         });
+//         subject.on('pointerdown', function(){
+//             gsCounter = gsCounter + 1;
+//             this.scene.start('gameSubject');
+//         }, this);
 
         // 課外活動按鈕
         activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
         activity.setScale(classScale);
+        activity.alpha = 0.5;
 
-        activity.setInteractive({ useHandCursor: true });
-        activity.on('pointerover', function(){
-            activity.setScale(0.55);
-            activity.setTint(0x5d5d2d);
-        });
-        activity.on('pointerout', function(){
-            activity.setScale(classScale);
-            activity.setTint(0xffffff);
-        });
-        activity.on('pointerdown', function(){
-            gaCounter = gaCounter + 1;
-            this.scene.start('gameActivity');
-        }, this);
+//         activity.setInteractive({ useHandCursor: true });
+//         activity.on('pointerover', function(){
+//             activity.setScale(0.55);
+//             activity.setTint(0x5d5d2d);
+//         });
+//         activity.on('pointerout', function(){
+//             activity.setScale(classScale);
+//             activity.setTint(0xffffff);
+//         });
+//         activity.on('pointerdown', function(){
+//             gaCounter = gaCounter + 1;
+//             this.scene.start('gameActivity');
+//         }, this);
 
         // 嘗試點擊後隱藏 phaser canvas
         // activity.on('pointerdown', function(){
@@ -423,7 +425,19 @@ const gameSelect = {
             
     },
     update: function(){
-    
+        let keyboard = this.input.keyboard.createCursorKeys();
+        
+        if(keyboard.right.isDown)
+        {
+            subject.setScale(0.55);
+            activity.alpha = 0.5;
+        }
+        else if(keyboard.left.isDown)
+        {
+            activity.setScale(0.55);
+            subject.alpha = 0.5;
+        }
+
     }
 }
 
