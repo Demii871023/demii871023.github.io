@@ -1,10 +1,4 @@
-
-// 目前寫死，等待改進！應該要是 subject_select 的數值
-const subjectTmp = 1;
-
-const subject_nameTmp = ['語文', '自然科學', '綜合活動', '數學', '科技', '健康與體育', '社會', '藝術'];
-
-const subject_choice = [
+const subject_option = [
     // 語文
     {
         A:"1. 在非課上時間看課外關於詩文、作家的讀物或國外雜誌、新聞報導，更了解一段課文之中的背景與文化脈絡。",
@@ -72,7 +66,7 @@ const doSubject = {
         document.getElementById('gmChatCard').style.display = 'block';
         document.getElementById('gmChatCard').style.width = '80%';
         document.getElementById('gmChatCard').style.height = '110px';
-        document.getElementById('gmChatCardText').innerHTML = "今天上完" + subject_nameTmp[subjectTmp] + "的課程，你會如何進行課後安排呢？";
+        document.getElementById('gmChatCardText').innerHTML = "今天上完" + subject_name[subject_select] + "的課程，你會如何進行課後安排呢？";
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
         
     },
@@ -86,10 +80,10 @@ const doSubject = {
         mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
         
         // 載入該學科選項
-        optionAText = this.add.text(cw/10, ch/2-60, subject_choice[subjectTmp].A, {color: "#FFFFFF", fontSize:'20px'});
-        optionBText = this.add.text(cw/10, ch/2-20, subject_choice[subjectTmp].B, {color: "#FFFFFF", fontSize:'20px'});
-        optionCText = this.add.text(cw/10, ch/2+20, subject_choice[subjectTmp].C, {color: "#FFFFFF", fontSize:'20px'});
-        optionDText = this.add.text(cw/10, ch/2+60, subject_choice[subjectTmp].D, {color: "#FFFFFF", fontSize:'20px'});
+        optionAText = this.add.text(cw/10, ch/2-60, subject_option[subject_select].A, {color: "#FFFFFF", fontSize:'20px'});
+        optionBText = this.add.text(cw/10, ch/2-20, subject_option[subject_select].B, {color: "#FFFFFF", fontSize:'20px'});
+        optionCText = this.add.text(cw/10, ch/2+20, subject_option[subject_select].C, {color: "#FFFFFF", fontSize:'20px'});
+        optionDText = this.add.text(cw/10, ch/2+60, subject_option[subject_select].D, {color: "#FFFFFF", fontSize:'20px'});
         
         
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
