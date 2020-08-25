@@ -85,6 +85,9 @@ const doSubject = {
         optionBText = this.add.text(cw/10, ch/2-20, subject_choice[subjectTmp].B, {color: "#FFFFFF", fontSize:'20px'});
         optionCText = this.add.text(cw/10, ch/2+20, subject_choice[subjectTmp].C, {color: "#FFFFFF", fontSize:'20px'});
         optionDText = this.add.text(cw/10, ch/2+60, subject_choice[subjectTmp].D, {color: "#FFFFFF", fontSize:'20px'});
+        
+        
+        tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
             
     },
     update: function(){
