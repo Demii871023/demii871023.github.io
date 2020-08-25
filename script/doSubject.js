@@ -71,6 +71,7 @@ var challenge_xy = [
 ];
 
 var challenge_name = ['bomb', 'lighting'];
+const challengeNum = 10;
 
 // 掉落速度，依據級距加快
 var downSpeed = 120;
@@ -136,13 +137,11 @@ const doSubject = {
 	bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
 	lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
 	    
-	    
-	
-	    
+
 	
 	challengeGroup = this.physics.add.group();
 	    
-	for(var i = 0 ; i < 40 ; i = i + lightingNum + bombNum)
+	for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
 	{
 	    // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
 	    lightingNum = getRandom(10, 8);
@@ -170,25 +169,25 @@ const doSubject = {
 	
 	console.log(challengeGroupChild);
 	    
-    	// 批次下降，總共分為四次
-	batch = 0;
+//     	// 批次下降，總共分為四次
+// 	batch = 0;
 	    
-	var challengeTimer = setInterval(() => {
-            challengeTime = challengeTime - 1;
-            if(batch == 4)
-                return;
-	    for(var i = batch * 10 ; i < batch * 10 + 10 ; i++)
-	    {
-                challengeGroupChild[i].body.gravity.y = 100;
-	    }
-	    batch = batch + 1;
+// 	var challengeTimer = setInterval(() => {
+//             challengeTime = challengeTime - 1;
+//             if(batch == 4)
+//                 return;
+// 	    for(var i = batch * 10 ; i < batch * 10 + 10 ; i++)
+// 	    {
+//                 challengeGroupChild[i].body.gravity.y = 100;
+// 	    }
+// 	    batch = batch + 1;
             
-            // 倒數計時完畢，挑戰結束
-            if(challengeTime <= 0)
-            {
-                clearInterval(challengeTimer);
-            }
-        }, 1000);
+//             // 倒數計時完畢，挑戰結束
+//             if(challengeTime <= 0)
+//             {
+//                 clearInterval(challengeTimer);
+//             }
+//         }, 1000);
 	
 	    
         // 新增提示字樣
@@ -262,6 +261,34 @@ const doSubject = {
 	    
 	if(challengeStart)
 	{
+		
+	    // 批次下降，總共分為四次
+	    batch = 0;
+	    
+	    var challengeTimer = setInterval(() => {
+                challengeTime = challengeTime - 1;
+//                 if(batch == 4)
+//                     return;
+// 	        for(var i = batch * 10 ; i < batch * 10 + 10 ; i++)
+// 	        {
+//                     challengeGroupChild[i].body.gravity.y = 100;
+// 	        }
+// 	        batch = batch + 1;
+		    
+		for(var i = 0 ; i < challengeNum ; i++)
+	        {
+                    challengeGroupChild[i].body.gravity.y = 100;
+	        }
+            
+                // 倒數計時完畢，挑戰結束
+                if(challengeTime <= 0)
+                {
+                    clearInterval(challengeTimer);
+                }
+            }, 1000);
+		
+		
+		
             // 控制水的高度
             for (key in rotatingRoundedRects)
 	    {
