@@ -194,7 +194,15 @@ const doSubject = {
 		    rrr
 			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
 			.fillStyle(0xFFFFFF, 0.5)
-			.fillRoundedRect(-w/8,-w/8,w/4,h,{tl:cr,tr:cr,bl:cr,br:cr})
+			.fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+		    rrr
+			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+			.fillStyle(0xFFFFFF, 0.5)
+			.fillRoundedRect(-w/8,-w/4,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+		    rrr
+			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+			.fillStyle(0xFFFFFF, 0.5)
+			.fillRoundedRect(-w/8,-w/2,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
 
 		    rrr.rang = Math.random() * 360
 		    rrr.rangrate = Math.random() * 10 + 10
