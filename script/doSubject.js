@@ -186,7 +186,7 @@ const doSubject = {
 
 		for (let i = 0; i<numRotatingRoundedRects; i++)
 		{
-		    rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
+		    rotatingRoundedRects.push(this.add.graphics(w/2,h/2))
 
 		    let rrr = rotatingRoundedRects[i], 
 			cr = w/9
