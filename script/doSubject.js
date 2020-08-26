@@ -61,6 +61,8 @@ const subject_option = [
 var optionView = false;
 var challengeStart = false;
 var challengeTime = 20;
+var challengeScale = 0.2;
+var timerStart = false;
 var challenge_xy = [
 	// bomb
 	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
@@ -70,11 +72,11 @@ var challenge_xy = [
 	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
 ];
 
-var challenge_name = ['bomb', 'lighting'];
+var challenge_name = ['lighting', 'bomb'];
 const challengeNum = 10;
 
 // 掉落速度，依據級距加快
-var downSpeed = 120;
+var downSpeed = 50;
 
 
 // 繪製水動畫
@@ -92,6 +94,9 @@ var rotatingRoundedRectsContainer2;
 var waterHigh1 = 0.4;
 var waterHigh2 = 0.2;
 
+// 海水高度 -> 對應到 #water css 中的 top 百分比
+var waterHigh = 98
+
 
 
 
@@ -100,7 +105,7 @@ const doSubject = {
     preload: function(){
         // gmChatCard Setup
         document.getElementById('gmChatCard').style.display = 'block';
-        document.getElementById('gmChatCard').style.width = '50%';
+        document.getElementById('gmChatCard').style.width = '35%';
         document.getElementById('gmChatCard').style.height = '110px';
         document.getElementById('gmChatCardText').innerHTML = "今天上完" + subject_name[subject_select] + "的課程，你會如何進行課後安排呢？";
         
@@ -115,9 +120,9 @@ const doSubject = {
         this.load.image('player5', 'image/Character/player5.png');
         this.load.image('player6', 'image/Character/player6.png');
 	    
-	// 載入挑戰墜落物
-	this.load.image('bomb', 'image/Challenge/bomb.png');
-	this.load.image('lighting', 'image/Challenge/lighting.png');
+	    // 載入挑戰墜落物
+	    this.load.image('bomb', 'image/Challenge/bomb.png');
+	    this.load.image('lighting', 'image/Challenge/lighting.png');
         
     },
     create: function(){
@@ -136,35 +141,70 @@ const doSubject = {
         optionDText = this.add.text(cw/10, ch/2+60, subject_option[subject_select].D, {color: "#FFFFFF", fontSize:'20px'});
         
         // 新增玩家
-        player = this.physics.add.sprite(cw/2, ch, player_name[player_select]);
+        player = this.physics.add.sprite(cw/2, ch - 50, player_name[player_select]);
         player.setScale(playerScale);
 	    
-	// 新增墜落物
-//         bomb = this.physics.add.sprite(cw/2, ch, 'bomb');
-//         lighting = this.physics.add.sprite(cw/2, ch, 'lighting');
+	    // 新增墜落物
+
 
 	
-	challengeGroup = this.physics.add.group();
-	challengeGroupChild = challengeGroup.getChildren();
-	this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
+	    challengeGroup = this.physics.add.group();
+        challengeGroupChild = challengeGroup.getChildren();
+        
+	    this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
 	
-	function waterUp(player, challenge)
+	    function waterUp(player, challenge)
         {
-	    challenge.disableBody(true, true);
-            rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1 - 0.1);
-	    rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2 - 0.1);
+	        challenge.disableBody(true, true);
+            // rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1 - 0.1);
+            // rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2 - 0.1);
+            if(challenge.texture.key == 'bomb')
+                waterHigh = waterHigh + 5;
+            if(challenge.texture.key == 'lighting')
+                waterHigh = waterHigh - 5;
+            document.getElementById('water').style.top = waterHigh.toString() + "%";
+            downSpeed = downSpeed + 50;
+            for(var i = 0 ; i < challengeGroupChild.length ; i++)
+                challengeGroupChild[i].body.gravity.y = downSpeed;
         }
-	
 	    
         // 新增提示字樣
-        tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵繼續', {color: "#FFFFFF", fontSize:'14px'});
+        tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵進入遊戲', {color: "#FFFFFF", fontSize:'14px'});
             
+        document.getElementById('challengeTimer').style.visibility = "visible";
+        document.getElementById('challengeBar').innerHTML = " 20 秒";
+        document.getElementById('challengeBar').style.width = '100%';
+
+
+        var challengeTimer = setInterval(() => {
+            if(timerStart)
+            {
+                challengeTime = challengeTime - 1;
+                document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
+                document.getElementById('challengeBar').style.width = (challengeTime / 20 * 100).toString() + "%";
+                if(challengeTime <= 0)
+                    clearInterval(challengeTimer);
+            }
+        }, 1000);
+
+
+        var generateTimer = setInterval(() => {
+            if(timerStart)
+            {   
+                // console.log("產生一個");
+                challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
+                challengeOJ.body.gravity.y = downSpeed;
+                // console.log(challengeOJ.body.gravity.y);
+                challengeOJ.setScale(challengeScale);
+
+            }
+        }, 500);
     
     
     },
     update: function(){
-	let g = this.game,
-   	    r = g.renderer,
+	    let g = this.game,
+   	        r = g.renderer,
     	    w = r.width,
     	    h = r.height
         let keyboard = this.input.keyboard.createCursorKeys();
@@ -173,145 +213,109 @@ const doSubject = {
             if(!optionView)
             {
                 mask.clear();
-		mask.fillStyle(0xFFFFFF, 0.45).fillRect(0, 0, cw, ch);
+		        mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
                 optionView = true;
+
+                // GM 對話框關閉
+                document.getElementById('gmChatCard').style.display = 'none';
 		    
-		// 看完選項後，就可以移除選項的文字
-		optionAText.destroy();
-		optionBText.destroy();
-		optionCText.destroy();
-		optionDText.destroy();
-		tipsText.destroy();
+                // 看完選項後，就可以移除選項的文字
+                optionAText.destroy();
+                optionBText.destroy();
+                optionCText.destroy();
+                optionDText.destroy();
+                tipsText.destroy();
 
-		// 新增水
-	        mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
+                document.getElementById('water').style.visibility = "visible";
+                document.getElementById('optionBadges').style.visibility = "visible";
+                document.getElementById('optionA').innerHTML = "　　　　　" + subject_option[subject_select].A;
+                document.getElementById('optionB').innerHTML = "　　　　　" + subject_option[subject_select].B;
+                document.getElementById('optionC').innerHTML = "　　　　　" + subject_option[subject_select].C;
+                document.getElementById('optionD').innerHTML = "　　　　　" + subject_option[subject_select].D;
 
-		water = this.add.graphics();
-		water
-		    .fillStyle(0x1155ae, 0.2)
-		    .fillRect(0,0,w,h)
+		        // 新增水
+	            // mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
 
-		for (let i = 0; i<numRotatingRoundedRects; i++)
-		{
-                    rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
-		
-		    let rrr = rotatingRoundedRects[i], 
-			cr = w/9
+                // water = this.add.graphics();
+                // water
+                //     .fillStyle(0x1155ae, 0.2)
+                //     .fillRect(0,0,w,h)
 
-		    rrr
-			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-			.fillStyle(0xFFFFFF, 0.5)
-			.fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+                // for (let i = 0; i<numRotatingRoundedRects; i++)
+                // {
+                //             rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
+                
+                //     let rrr = rotatingRoundedRects[i], 
+                //     cr = w/9
 
-		    rrr.rang = Math.random() * 360
-		    rrr.rangrate = Math.random() * 10 + 10
-		}
-		rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
-		rotatingRoundedRectsContainer.mask = mask
-		rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1);
+                //     rrr
+                //     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+                //     .fillStyle(0xFFFFFF, 0.5)
+                //     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+
+                //     rrr.rang = Math.random() * 360
+                //     rrr.rangrate = Math.random() * 10 + 10
+                // }
+
+                // rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
+                // rotatingRoundedRectsContainer.mask = mask
+                // rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1);
+                    
 		    
-		    
-		for (let i = 0; i<numRotatingRoundedRects; i++)
-		{
-                    rotatingRoundedRects2.push(this.add.graphics(w/2,h/3))
+                // for (let i = 0; i<numRotatingRoundedRects; i++)
+                // {
+                //     rotatingRoundedRects2.push(this.add.graphics(w/2,h/3))
 
-		    let rrr = rotatingRoundedRects2[i], 
-			cr = w/9
-		    
-		    rrr
-			.setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-			.fillStyle(0xFFFFFF, 0.5)
-			.fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+                //     let rrr = rotatingRoundedRects2[i], 
+                //     cr = w/9
+                    
+                //     rrr
+                //     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+                //     .fillStyle(0xFFFFFF, 0.5)
+                //     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
 
-		    rrr.rang = Math.random() * 360
-		    rrr.rangrate = Math.random() * 10 + 10
-		}
-		rotatingRoundedRectsContainer2 = this.add.container().add(rotatingRoundedRects2)
-		rotatingRoundedRectsContainer2.mask = mask
-		rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2);
+                //     rrr.rang = Math.random() * 360
+                //     rrr.rangrate = Math.random() * 10 + 10
+                // }
 
+                // rotatingRoundedRectsContainer2 = this.add.container().add(rotatingRoundedRects2)
+                // rotatingRoundedRectsContainer2.mask = mask
+                // rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2);
 
-		for(var i = 0 ; i < challengeNum ; i = i + lightingNum + bombNum)
-		{
-	            // 取亂數先掉下幾個 lighting 再亂數掉下幾個 bomb -> 使得無法得知接下來掉下來的為誰
-	            lightingNum = getRandom(5, 3);
-	            bombNum = getRandom(4, 1);
-	
-	            for(var j = 1 ; j < i + lightingNum ; j++)
-	            {
-		        let tempX = getRandom(cw - 50, 50);
-		        challenge_xy[i].x = tempX;
-		        challengeGroup.create(challenge_xy[i].x, 0, 'lighting'); 
-	            }
-	            for(var j = i + lightingNum ; j < i + lightingNum + bombNum ; j++)
-	            {
-		        let tempX = getRandom(cw - 50, 50);
-		        challenge_xy[i].x = tempX;
-		        challengeGroup.create(challenge_xy[i].x, 0, 'bomb'); 
-	            }
-	        }
-
-                for(var i = 0 ; i < challengeGroupChild.length ; i++)
-                {
-                    challengeGroupChild[i].setScale(0.2);           
-                }
-	        console.log(challengeGroupChild);
-		    
-		challengeStart = true;
+                // console.log(challengeGroupChild);
+                    
+                challengeStart = true;
             }
         }
 	    
-	// 角色左右移動
-	if(keyboard.right.isDown)
-	    player.setVelocityX(160);
-	else if(keyboard.left.isDown)
-	    player.setVelocityX(-160);
-	else
-	    player.setVelocityX(0);
- 
-	if(challengeStart)
-	{
-		
-	    // 批次下降，總共分為四次
-	    batch = 0;
-	    
-	    var challengeTimer = setInterval(() => {
-                challengeTime = challengeTime - 1;
-//                 if(batch == 4)
-//                     return;
-// 	        for(var i = batch * 10 ; i < batch * 10 + 10 ; i++)
-// 	        {
-//                     challengeGroupChild[i].body.gravity.y = 100;
-// 	        }
-// 	        batch = batch + 1;
-		    
-		for(var i = 0 ; i < challengeNum ; i++)
-	        {
-                    challengeGroupChild[i].body.gravity.y = 100;
-	        }
+        // 角色左右移動
+        if(keyboard.right.isDown)
+            player.setVelocityX(300);
+        else if(keyboard.left.isDown)
+            player.setVelocityX(-300);
+        else
+            player.setVelocityX(0);
+    
+        if(challengeStart)
+        {
             
-                // 倒數計時完畢，挑戰結束
-                if(challengeTime <= 0)
-                {
-                    clearInterval(challengeTimer);
-                }
-            }, 1000);
-		
-		
+
+
+            // 計時器開始倒數
+            timerStart = true;
 		
             // 控制水的高度
-            for (key in rotatingRoundedRects)
-	    {
-                let rrr = rotatingRoundedRects[key]
-                rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
-            }
-	    for (key in rotatingRoundedRects2)
-	    {
-                let rrr = rotatingRoundedRects2[key]
-                rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
-            }
+            // for (key in rotatingRoundedRects)
+	        // {
+            //     let rrr = rotatingRoundedRects[key]
+            //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
+            // }
+	        // for (key in rotatingRoundedRects2)
+	        // {
+            //     let rrr = rotatingRoundedRects2[key]
+            //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
+            // }
     
-	}
-
+	    }
     }
 }

@@ -626,7 +626,7 @@ const gameSubject = {
             if(!eat)
             {
                 // 已經按過一次了又再按一次，代表他確定要選擇
-                if(spaceCounter == 1 && subject_select != -1)
+                if(spaceCounter >= 1 && subject_select != -1)
                 {
                     sureModalClose();
                     spaceCounter = spaceCounter + 1;
