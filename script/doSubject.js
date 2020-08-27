@@ -127,14 +127,6 @@ const doSubject = {
         this.load.image('lighting', 'image/Challenge/lighting.png');
 	
 	    
-	// 每次進入此場景就初始化數值
-	challengeTime = 50;		// 計時器時間
-        downSpeed = 50;			// 物品降落速度
-	optionView = false;		// 是否先看過選項
-	challengeStart = false;		// 跳戰是否開始
-	timerStart = false;		// 計時器是否開始
-	waterHigh = 98;			// 海水高度
-	optionLevel = 1;		// 選項等級
     },
     create: function(){
         
@@ -194,8 +186,20 @@ const doSubject = {
                 document.getElementById('challengeBar').style.width = (challengeTime / 50 * 100).toString() + "%";
                 if(challengeTime <= 0)
 		{
-                    clearInterval(challengeTimer);
+                    
 		    challengeGroup.clear();
+			
+		    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
+		    challengeTime = 50;		// 計時器時間
+        	    downSpeed = 50;		// 物品降落速度
+		    optionView = false;		// 是否先看過選項
+		    challengeStart = false;	// 跳戰是否開始
+		    timerStart = false;		// 計時器是否開始
+		    waterHigh = 98;		// 海水高度
+		    optionLevel = 1;		// 選項等級
+			
+			
+	            clearInterval(challengeTimer);
 		    this.scene.start('gameSelect');
 		    
                 }
