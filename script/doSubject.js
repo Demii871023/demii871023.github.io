@@ -60,7 +60,7 @@ const subject_option = [
 
 var optionView = false;
 var challengeStart = false;
-var challengeTime = 20;
+var challengeTime = 50;
 var challengeScale = 0.2;
 var timerStart = false;
 var challenge_xy = [
@@ -186,7 +186,11 @@ const doSubject = {
                 document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
                 document.getElementById('challengeBar').style.width = (challengeTime / 20 * 100).toString() + "%";
                 if(challengeTime <= 0)
+		{
                     clearInterval(challengeTimer);
+		    this.scene.start('gameSelect');
+                }
+		    
             }
         }, 1000);
 
@@ -326,14 +330,14 @@ const doSubject = {
 	    // 完成最低階：D 選項
             if(document.getElementById('wave').y > optionDHigh)
 	    {
-		document.getElementById('optionD').classList.remove("badge-success");
-		document.getElementById('optionD').classList.add("badge-light");
-		document.getElementById('optionC').classList.remove("badge-success");
-		document.getElementById('optionC').classList.add("badge-light");
-		document.getElementById('optionB').classList.remove("badge-success");
-		document.getElementById('optionB').classList.add("badge-light");
-		document.getElementById('optionA').classList.remove("badge-success");
-		document.getElementById('optionA').classList.add("badge-lights");
+	        document.getElementById('optionD').classList.remove("badge-success");
+	        document.getElementById('optionD').classList.add("badge-light");
+	        document.getElementById('optionC').classList.remove("badge-success");
+	        document.getElementById('optionC').classList.add("badge-light");
+	        document.getElementById('optionB').classList.remove("badge-success");
+	        document.getElementById('optionB').classList.add("badge-light");
+	        document.getElementById('optionA').classList.remove("badge-success");
+	        document.getElementById('optionA').classList.add("badge-lights");
 	    }
 		    
 	    if(document.getElementById('wave').y < optionDHigh)
@@ -352,15 +356,15 @@ const doSubject = {
 	    // 完成最低階：C 選項
 	    if(document.getElementById('wave').y < optionCHigh)
 	    {
-		optionLevel = 8;
-		document.getElementById('optionD').classList.remove("badge-light");
-		document.getElementById('optionD').classList.add("badge-success");
-		document.getElementById('optionC').classList.remove("badge-light");
-		document.getElementById('optionC').classList.add("badge-success");
-		document.getElementById('optionB').classList.remove("badge-success");
-		document.getElementById('optionB').classList.add("badge-light");
-		document.getElementById('optionA').classList.remove("badge-success");
-		document.getElementById('optionA').classList.add("badge-lights");
+	        optionLevel = 8;
+	        document.getElementById('optionD').classList.remove("badge-light");
+	        document.getElementById('optionD').classList.add("badge-success");
+	        document.getElementById('optionC').classList.remove("badge-light");
+	        document.getElementById('optionC').classList.add("badge-success");
+	        document.getElementById('optionB').classList.remove("badge-success");
+	        document.getElementById('optionB').classList.add("badge-light");
+	        document.getElementById('optionA').classList.remove("badge-success");
+	        document.getElementById('optionA').classList.add("badge-lights");
 	    }
 		
 	    // 完成最低階：B 選項
