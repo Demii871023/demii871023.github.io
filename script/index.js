@@ -430,6 +430,13 @@ var threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'];
 const gameSubject = {
     key: 'gameSubject',
     preload: function(){
+        
+        
+        gsCounter = gsCounter + 1;
+        console.log(gsCounter);
+        
+        if(gsCounter == 3)
+            console.log('觸發隨機事件');
 
         // 每次進入都要初始所選科目
         subject_select = -1;
@@ -509,7 +516,7 @@ const gameSubject = {
         
 //         console.log(gamebg.width * gamebgScale, gamebg.height * gamebgScale, cw/2 - gamebg.width * gamebgScale / 2, 0 - ch/2 - gamebg.height * gamebgScale / 2);
         
-        console.log(gsCounter);
+//         console.log(gsCounter);
         
         beansGroup = this.physics.add.group();
         for(var i = 0 ; i < subjectN ; i++)
