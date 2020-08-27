@@ -326,7 +326,7 @@ const doSubject = {
 	    // 完成最低階：D 選項
             if(document.getElementById('wave').y < optionDHigh)
 	    {
-		optionLevel = optionLevel + 1;
+		optionLevel = 1;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-success");
@@ -340,7 +340,7 @@ const doSubject = {
 	    // 完成最低階：C 選項
 	    if(document.getElementById('wave').y < optionCHigh)
 	    {
-		optionLevel = optionLevel + 1;
+		optionLevel = 2;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
@@ -354,7 +354,7 @@ const doSubject = {
 	    // 完成最低階：B 選項
 	    if(document.getElementById('wave').y < optionBHigh)
 	    {
-		optionLevel = optionLevel + 1;
+		optionLevel = 3;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
@@ -368,7 +368,7 @@ const doSubject = {
             // 完成最低階：A 選項
 	    if(document.getElementById('wave').y < optionAHigh)
 	    {
-		optionLevel = optionLevel + 1;
+		optionLevel = 4;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
