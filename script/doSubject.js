@@ -237,10 +237,7 @@ const doSubject = {
                 document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
                 document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
 		    
-		optionAHigh = document.getElementById('optionA').offsetTop;
-		optionBHigh = document.getElementById('optionB').offsetTop;
-		optionCHigh = document.getElementById('optionC').offsetTop;
-		optionDHigh = document.getElementById('optionD').offsetTop;
+		
 		    
 		    
                 // 新增水
@@ -322,6 +319,11 @@ const doSubject = {
             //     let rrr = rotatingRoundedRects2[key]
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
+		
+            optionAHigh = document.getElementById('optionA').offsetTop;
+            optionBHigh = document.getElementById('optionB').offsetTop;
+            optionCHigh = document.getElementById('optionC').offsetTop;
+            optionDHigh = document.getElementById('optionD').offsetTop;
 		
             // optionAHigh, optionBHigh, optionCHigh, optionDHigh;
 	    if(document.getElementById('wave').y > optionAHigh)
