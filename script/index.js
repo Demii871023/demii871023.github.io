@@ -129,10 +129,6 @@ const playerSelect = {
     key: 'playerSelect',
     preload: function(){
         
-//         // for 雷達圖
-//         this.load.script('chartjs', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js');
-//         this.load.scenePlugin('rexuiplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js', 'rexUI', 'rexUI');
-
         // 讀入角色
         this.load.image('player1', 'image/Character/player1.png');
         this.load.image('player2', 'image/Character/player2.png');
@@ -179,7 +175,6 @@ const playerSelect = {
         graphics = this.add.graphics()
         graphics.lineStyle(5, 0x00ffff, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
 
-//         var chart = this.rexUI.add.chart(cw/2, ch/2 + ch/4, 200, 200, config);
 
         playerName = this.add.text(cw/2-cw/11, ch/2 + 150, "ID：" + player_namezw[0], {color: "#FFFFFF", fontSize:"30px"});
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵確定角色', {color: "#FFFFFF", fontSize:'14px'});
@@ -356,7 +351,6 @@ const gameSelect = {
     create: function(){
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(bg1Scale);
-        // bg1.setTint(0x2d2d2d);
 
         mask = this.add.graphics(0, 0);
         mask.fillStyle(0xffffff);
@@ -364,40 +358,11 @@ const gameSelect = {
         // 課業學科按鈕
         subject = this.add.sprite(cw/2 - cw/4, ch/2, 'subject');
         subject.setScale(0.65);
-        
-        // 開啟互動
-//         subject.setInteractive({ useHandCursor: true });
-//         subject.on('pointerover', function(){
-//             subject.setScale(0.55);
-//             subject.setTint(0x5d5d2d);
-//         });
-//         subject.on('pointerout', function(){
-//             subject.setScale(classScale);
-//             subject.setTint(0xffffff);
-//         });
-//         subject.on('pointerdown', function(){
-//             gsCounter = gsCounter + 1;
-//             this.scene.start('gameSubject');
-//         }, this);
 
         // 課外活動按鈕
         activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
         activity.setScale(classScale);
         activity.setTint(0x5d5d2d);
-
-//         activity.setInteractive({ useHandCursor: true });
-//         activity.on('pointerover', function(){
-//             activity.setScale(0.55);
-//             activity.setTint(0x5d5d2d);
-//         });
-//         activity.on('pointerout', function(){
-//             activity.setScale(classScale);
-//             activity.setTint(0xffffff);
-//         });
-//         activity.on('pointerdown', function(){
-//             gaCounter = gaCounter + 1;
-//             this.scene.start('gameActivity');
-//         }, this);
 
         // 嘗試點擊後隱藏 phaser canvas
         // activity.on('pointerdown', function(){
@@ -522,7 +487,6 @@ const gameSubject = {
         bonusedoor = this.physics.add.sprite(cw/2 - gamebg.width * 0.8 / 2, ch/2, 'bonusedoor');
         bonusedoor.setScale(0.3);
 
-        //this.player = this.add.sprite(150, 150, 'player');
         player = this.physics.add.sprite(150, 150, player_name[player_select]);
         
         // 開啟角色邊界限制，並自訂矩形邊界（以矩形左上角頂點為主）
