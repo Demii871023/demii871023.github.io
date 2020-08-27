@@ -231,88 +231,91 @@ const doSubject = {
     	    w = r.width,
     	    h = r.height
         let keyboard = this.input.keyboard.createCursorKeys();
-        if(keyboard.space.isDown)
-        {
-            if(!optionView)
-            {
-                mask.clear();
-		        mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
-                optionView = true;
+	if(!challengeStart)
+	{
+		if(keyboard.space.isDown)
+		{
+		    if(!optionView)
+		    {
+			mask.clear();
+				mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
+			optionView = true;
 
-                // GM 對話框關閉
-                document.getElementById('gmChatCard').style.display = 'none';
-		    
-                // 看完選項後，就可以移除選項的文字
-                optionAText.destroy();
-                optionBText.destroy();
-                optionCText.destroy();
-                optionDText.destroy();
-                tipsText.destroy();
+			// GM 對話框關閉
+			document.getElementById('gmChatCard').style.display = 'none';
 
-                document.getElementById('water').style.visibility = "visible";
-                document.getElementById('optionBadges').style.visibility = "visible";
-                document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
-                document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
-                document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
-                document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
-		    
-		
-		    
-		    
-                // 新增水
-	        // mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
+			// 看完選項後，就可以移除選項的文字
+			optionAText.destroy();
+			optionBText.destroy();
+			optionCText.destroy();
+			optionDText.destroy();
+			tipsText.destroy();
 
-                // water = this.add.graphics();
-                // water
-                //     .fillStyle(0x1155ae, 0.2)
-                //     .fillRect(0,0,w,h)
+			document.getElementById('water').style.visibility = "visible";
+			document.getElementById('optionBadges').style.visibility = "visible";
+			document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
+			document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
+			document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
+			document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
 
-                // for (let i = 0; i<numRotatingRoundedRects; i++)
-                // {
-                //             rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
-                
-                //     let rrr = rotatingRoundedRects[i], 
-                //     cr = w/9
 
-                //     rrr
-                //     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-                //     .fillStyle(0xFFFFFF, 0.5)
-                //     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
 
-                //     rrr.rang = Math.random() * 360
-                //     rrr.rangrate = Math.random() * 10 + 10
-                // }
 
-                // rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
-                // rotatingRoundedRectsContainer.mask = mask
-                // rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1);
-                    
-		    
-                // for (let i = 0; i<numRotatingRoundedRects; i++)
-                // {
-                //     rotatingRoundedRects2.push(this.add.graphics(w/2,h/3))
+			// 新增水
+			// mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
 
-                //     let rrr = rotatingRoundedRects2[i], 
-                //     cr = w/9
-                    
-                //     rrr
-                //     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-                //     .fillStyle(0xFFFFFF, 0.5)
-                //     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+			// water = this.add.graphics();
+			// water
+			//     .fillStyle(0x1155ae, 0.2)
+			//     .fillRect(0,0,w,h)
 
-                //     rrr.rang = Math.random() * 360
-                //     rrr.rangrate = Math.random() * 10 + 10
-                // }
+			// for (let i = 0; i<numRotatingRoundedRects; i++)
+			// {
+			//             rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
 
-                // rotatingRoundedRectsContainer2 = this.add.container().add(rotatingRoundedRects2)
-                // rotatingRoundedRectsContainer2.mask = mask
-                // rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2);
+			//     let rrr = rotatingRoundedRects[i], 
+			//     cr = w/9
 
-                // console.log(challengeGroupChild);
-                    
-                challengeStart = true;
-            }
-        }
+			//     rrr
+			//     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+			//     .fillStyle(0xFFFFFF, 0.5)
+			//     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+
+			//     rrr.rang = Math.random() * 360
+			//     rrr.rangrate = Math.random() * 10 + 10
+			// }
+
+			// rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
+			// rotatingRoundedRectsContainer.mask = mask
+			// rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1);
+
+
+			// for (let i = 0; i<numRotatingRoundedRects; i++)
+			// {
+			//     rotatingRoundedRects2.push(this.add.graphics(w/2,h/3))
+
+			//     let rrr = rotatingRoundedRects2[i], 
+			//     cr = w/9
+
+			//     rrr
+			//     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
+			//     .fillStyle(0xFFFFFF, 0.5)
+			//     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
+
+			//     rrr.rang = Math.random() * 360
+			//     rrr.rangrate = Math.random() * 10 + 10
+			// }
+
+			// rotatingRoundedRectsContainer2 = this.add.container().add(rotatingRoundedRects2)
+			// rotatingRoundedRectsContainer2.mask = mask
+			// rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2);
+
+			// console.log(challengeGroupChild);
+
+			challengeStart = true;
+		    }
+        	}
+	}
 	    
         // 角色左右移動
         if(keyboard.right.isDown)
@@ -326,6 +329,29 @@ const doSubject = {
         {
             // 計時器開始倒數
             timerStart = true;
+		
+		
+	    if(keyboard.space.isDown)
+	    {
+		    challengeGroup.clear();
+			
+		    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
+		    challengeTime = 50;		// 計時器時間
+        	    downSpeed = 50;		// 物品降落速度
+		    optionView = false;		// 是否先看過選項
+		    challengeStart = false;	// 跳戰是否開始
+		    timerStart = false;		// 計時器是否開始
+		    waterHigh = 98;		// 海水高度
+		    optionLevel = 1;		// 選項等級
+		
+		    // 重置海水高度
+		    document.getElementById('water').style.top = waterHigh.toString() + "%";
+			
+			
+	            clearInterval(challengeTimer);
+		    clearInterval(generateTimer);
+		    this.scene.start('gameSelect');
+	    }
 		
             // 控制水的高度
             // for (key in rotatingRoundedRects)
