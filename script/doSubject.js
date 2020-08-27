@@ -331,27 +331,7 @@ const doSubject = {
             timerStart = true;
 		
 		
-	    if(keyboard.space.isDown)
-	    {
-		    challengeGroup.clear();
-			
-		    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
-		    challengeTime = 50;		// 計時器時間
-        	    downSpeed = 50;		// 物品降落速度
-		    optionView = false;		// 是否先看過選項
-		    challengeStart = false;	// 跳戰是否開始
-		    timerStart = false;		// 計時器是否開始
-		    waterHigh = 98;		// 海水高度
-		    optionLevel = 1;		// 選項等級
-		
-		    // 重置海水高度
-		    document.getElementById('water').style.top = waterHigh.toString() + "%";
-			
-			
-	            clearInterval(challengeTimer);
-		    clearInterval(generateTimer);
-		    this.scene.start('gameSelect');
-	    }
+	    
 		
             // 控制水的高度
             // for (key in rotatingRoundedRects)
