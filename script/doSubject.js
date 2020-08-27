@@ -175,7 +175,7 @@ const doSubject = {
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵進入遊戲', {color: "#FFFFFF", fontSize:'14px'});
             
         document.getElementById('challengeTimer').style.visibility = "visible";
-        document.getElementById('challengeBar').innerHTML = " 20 秒";
+        document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
         document.getElementById('challengeBar').style.width = '100%';
 
 
@@ -184,7 +184,7 @@ const doSubject = {
             {
                 challengeTime = challengeTime - 1;
                 document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
-                document.getElementById('challengeBar').style.width = (challengeTime / 20 * 100).toString() + "%";
+                document.getElementById('challengeBar').style.width = (challengeTime / 50 * 100).toString() + "%";
                 if(challengeTime <= 0)
 		{
                     clearInterval(challengeTimer);
