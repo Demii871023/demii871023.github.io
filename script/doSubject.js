@@ -320,10 +320,10 @@ const doSubject = {
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
 		
-//             optionAHigh = document.getElementById('optionA').offsetTop;
-//             optionBHigh = document.getElementById('optionB').offsetTop;
-//             optionCHigh = document.getElementById('optionC').offsetTop;
-//             optionDHigh = document.getElementById('optionD').offsetTop;
+            optionAHigh = document.getElementById('optionA').offsetTop;
+            optionBHigh = document.getElementById('optionB').offsetTop;
+            optionCHigh = document.getElementById('optionC').offsetTop;
+            optionDHigh = document.getElementById('optionD').offsetTop;
 		
             // optionAHigh, optionBHigh, optionCHigh, optionDHigh;
 	    if(document.getElementById('wave').y < optionAHigh)
