@@ -89,6 +89,13 @@ canvas{
     left: 0%;
 }
 
+#experienceTimeLine{
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+}
+
 
 #water{
     width: 200px;
