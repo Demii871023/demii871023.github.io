@@ -76,7 +76,7 @@ var challenge_name = ['lighting', 'bomb'];
 const challengeNum = 10;
 
 // 掉落速度，依據級距加快
-var downSpeed = 50;
+var downSpeed = 30;
 
 
 // 繪製水動畫
@@ -183,7 +183,7 @@ const doSubject = {
             {
                 challengeTime = challengeTime - 1;
                 document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
-                document.getElementById('challengeBar').style.width = (challengeTime / 50 * 100).toString() + "%";
+                document.getElementById('challengeBar').style.width = (challengeTime / 30 * 100).toString() + "%";
                 if(challengeTime <= 0)
 		{
                     
@@ -395,7 +395,7 @@ const doSubject = {
 		document.getElementById('optionB').classList.remove("badge-light");
 		document.getElementById('optionB').classList.add("badge-success");
 		document.getElementById('optionA').classList.remove("badge-success");
-		document.getElementById('optionA').classList.add("badge-lights");
+		document.getElementById('optionA').classList.add("badge-light");
 	    }
 		
             // 完成最低階：A 選項
