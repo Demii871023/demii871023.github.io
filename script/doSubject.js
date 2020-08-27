@@ -95,8 +95,8 @@ var waterHigh1 = 0.4;
 var waterHigh2 = 0.2;
 
 // 海水高度 -> 對應到 #water css 中的 top 百分比
-var waterHigh = 98
-
+var waterHigh = 98;
+var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
 
 
 
@@ -236,7 +236,13 @@ const doSubject = {
                 document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
                 document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
                 document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
-
+		    
+		optionAHigh = document.getElementById('optionA').offsetTop;
+		optionBHigh = document.getElementById('optionB').offsetTop;
+		optionCHigh = document.getElementById('optionC').offsetTop;
+		optionDHigh = document.getElementById('optionD').offsetTop;
+		    
+		    
                 // 新增水
 	        // mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
 
@@ -316,14 +322,38 @@ const doSubject = {
             //     let rrr = rotatingRoundedRects2[key]
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
-            console.log("==================");
-            console.log("A選項" + document.getElementById('optionA').offsetTop);
-            console.log("B選項" + document.getElementById('optionB').offsetTop);
-            console.log("C選項" + document.getElementById('optionC').offsetTop);
-            console.log("D選項" + document.getElementById('optionD').offsetTop);
-	    console.log(document.getElementById('wave').offsetTop);
-            console.log(document.getElementById('wave').y);
-	    console.log("==================");
+		
+            // optionAHigh, optionBHigh, optionCHigh, optionDHigh;
+	    if(document.getElementById('wave').y > optionAHigh)
+	    {
+		document.getElementById('optionA').classList.remove("badge-light");
+		document.getElementById('optionA').classList.add("badge-success");
+	        console.log("完成 A 選項");
+	    }
+	    if(document.getElementById('wave').y > optionBHigh)
+	    {
+		document.getElementById('optionB').classList.remove("badge-light");
+		document.getElementById('optionB').classList.add("badge-success");
+	        console.log("完成 B 選項");
+	    }
+	    if(document.getElementById('wave').y > optionCHigh)
+	    {
+		document.getElementById('optionC').classList.remove("badge-light");
+		document.getElementById('optionC').classList.add("badge-success");
+	        console.log("完成 C 選項");
+	    }
+            if(document.getElementById('wave').y > optionDHigh)
+	    {
+		document.getElementById('optionD').classList.remove("badge-light");
+		document.getElementById('optionD').classList.add("badge-success");
+	        console.log("完成 D 選項");
+	    }
+	
+//             console.log("==================");
+            
+// 	    console.log(document.getElementById('wave').offsetTop);
+//             console.log(document.getElementById('wave').y);
+// 	    console.log("==================");
     
         }
     }
