@@ -324,7 +324,19 @@ const doSubject = {
             optionDHigh = document.getElementById('optionD').offsetTop;
 		
 	    // 完成最低階：D 選項
-            if(document.getElementById('wave').y < optionDHigh)
+            if(document.getElementById('wave').y > optionDHigh)
+	    {
+		document.getElementById('optionD').classList.remove("badge-success");
+		document.getElementById('optionD').classList.add("badge-light");
+		document.getElementById('optionC').classList.remove("badge-success");
+		document.getElementById('optionC').classList.add("badge-light");
+		document.getElementById('optionB').classList.remove("badge-success");
+		document.getElementById('optionB').classList.add("badge-light");
+		document.getElementById('optionA').classList.remove("badge-success");
+		document.getElementById('optionA').classList.add("badge-lights");
+	    }
+		    
+	    if(document.getElementById('wave').y < optionDHigh)
 	    {
 		optionLevel = 2;
 		document.getElementById('optionD').classList.remove("badge-light");
