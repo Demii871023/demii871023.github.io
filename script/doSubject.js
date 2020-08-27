@@ -313,7 +313,7 @@ const doSubject = {
             //     let rrr = rotatingRoundedRects2[key]
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
-            console.log(document.getElementById('optionA').y);
+            console.log(document.getElementById('optionA').offsetTop);
             console.log(document.getElementById('wave').y);
     
         }
