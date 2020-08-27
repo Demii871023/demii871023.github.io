@@ -344,9 +344,16 @@ const gameSelect = {
         this.load.image('subject', 'image/Background/zoo.png');
         this.load.image('activity', 'image/Background/sloth.png');
         
+        document.getElementById('gmChatCard').style.display = 'none';
         document.getElementById('gmChatCard').style.width = '50%';
         document.getElementById('gmChatCard').style.height = '110px';
         document.getElementById('gmChatCardText').innerHTML = "接下來，就讓我們進入正題吧！總共分為課業學科及課外活動兩個部分，每一次的選擇一定會消耗時間，壓力、體力、惰性及人際支持則會隨著你選擇的選項而有所增減。";
+        
+        
+        // 從 doSubject.js 完成後，跳至 gameSelect.js
+        document.getElementById('water').style.visibility = 'hidden';
+        document.getElementById('optionBadges').style.visibility = 'hidden';
+
     },
     create: function(){
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
