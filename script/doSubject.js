@@ -228,13 +228,13 @@ const doSubject = {
 
                 document.getElementById('water').style.visibility = "visible";
                 document.getElementById('optionBadges').style.visibility = "visible";
-                document.getElementById('optionA').innerHTML = "　　　　　" + subject_option[subject_select].A;
-                document.getElementById('optionB').innerHTML = "　　　　　" + subject_option[subject_select].B;
-                document.getElementById('optionC').innerHTML = "　　　　　" + subject_option[subject_select].C;
-                document.getElementById('optionD').innerHTML = "　　　　　" + subject_option[subject_select].D;
+                document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
+                document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
+                document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
+                document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
 
-		        // 新增水
-	            // mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
+                // 新增水
+	        // mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
 
                 // water = this.add.graphics();
                 // water
