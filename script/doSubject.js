@@ -202,10 +202,6 @@ const doSubject = {
         }, 500);
 	    
 	    
-	console.log("A選項" + document.getElementById('optionA').offsetTop);
-	console.log("B選項" + document.getElementById('optionB').offsetTop);
-	console.log("C選項" + document.getElementById('optionC').offsetTop);
-	console.log("D選項" + document.getElementById('optionD').offsetTop);
 	
     
     
@@ -321,6 +317,10 @@ const doSubject = {
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
             console.log("==================");
+            console.log("A選項" + document.getElementById('optionA').offsetTop);
+            console.log("B選項" + document.getElementById('optionB').offsetTop);
+            console.log("C選項" + document.getElementById('optionC').offsetTop);
+            console.log("D選項" + document.getElementById('optionD').offsetTop);
 	    console.log(document.getElementById('wave').offsetTop);
             console.log(document.getElementById('wave').y);
 	    console.log("==================");
