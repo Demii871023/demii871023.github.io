@@ -314,6 +314,10 @@ const doSubject = {
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
             console.log(document.getElementById('optionA').offsetTop);
+	    console.log(document.getElementById('optionB').offsetTop);
+	    console.log(document.getElementById('optionC').offsetTop);
+	    console.log(document.getElementById('optionD').offsetTop);
+	    console.log(document.getElementById('wave').offsetTop);
             console.log(document.getElementById('wave').y);
     
         }
