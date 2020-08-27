@@ -197,9 +197,13 @@ const doSubject = {
 		    timerStart = false;		// 計時器是否開始
 		    waterHigh = 98;		// 海水高度
 		    optionLevel = 1;		// 選項等級
+		
+		    // 重置海水高度
+		    document.getElementById('water').style.top = waterHigh.toString() + "%";
 			
 			
 	            clearInterval(challengeTimer);
+		    clearInterval(generateTimer);
 		    this.scene.start('gameSelect');
 		    
                 }
