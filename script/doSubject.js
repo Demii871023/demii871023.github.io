@@ -235,8 +235,7 @@ const doSubject = {
         let keyboard = this.input.keyboard.createCursorKeys();
 	if(!challengeStart)
 	{
-		if(keyboard.space.isDown)
-		{
+		
 		    if(!optionView)
 		    {
 			mask.clear();
@@ -262,15 +261,7 @@ const doSubject = {
 			  
 			challengeStart = true;
 		    }
-        	}
-		else
-		{
-			if(challengeStart)
-			{
-				console.log("空白建盤放開");
-				canExit = true;
-			}
-		}
+        	
 	}
 	    
         // 角色左右移動
@@ -281,7 +272,7 @@ const doSubject = {
         else
             player.setVelocityX(0);
     
-        if(challengeStart && canExit)
+        if(challengeStart)
         {
             // 計時器開始倒數
             timerStart = true;
