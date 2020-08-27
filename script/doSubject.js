@@ -61,7 +61,7 @@ const subject_option = [
 var optionView = false;
 var challengeStart = false;
 var challengeTime = 50;
-var challengeScale = 0.2;
+const challengeScale = 0.2;
 var timerStart = false;
 var challenge_xy = [
 	// bomb
@@ -122,10 +122,19 @@ const doSubject = {
         this.load.image('player5', 'image/Character/player5.png');
         this.load.image('player6', 'image/Character/player6.png');
 	    
-	    // 載入挑戰墜落物
-	    this.load.image('bomb', 'image/Challenge/bomb.png');
-	    this.load.image('lighting', 'image/Challenge/lighting.png');
-        
+        // 載入挑戰墜落物
+        this.load.image('bomb', 'image/Challenge/bomb.png');
+        this.load.image('lighting', 'image/Challenge/lighting.png');
+	
+	    
+	// 每次進入此場景就初始化數值
+	challengeTime = 50;		// 計時器時間
+        downSpeed = 50;			// 物品降落速度
+	optionView = false;		// 是否先看過選項
+	challengeStart = false;		// 跳戰是否開始
+	timerStart = false;		// 計時器是否開始
+	waterHigh = 98;			// 海水高度
+	optionLevel = 1;		// 選項等級
     },
     create: function(){
         
@@ -149,8 +158,6 @@ const doSubject = {
 	
         // 新增墜落物
 
-
-	
 	challengeGroup = this.physics.add.group();
         challengeGroupChild = challengeGroup.getChildren();
         
@@ -189,6 +196,7 @@ const doSubject = {
 		{
                     clearInterval(challengeTimer);
 		    this.scene.start('gameSelect');
+		    challengeGroup.clear();
                 }
 		    
             }
