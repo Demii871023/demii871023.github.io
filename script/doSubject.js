@@ -201,10 +201,6 @@ const doSubject = {
             }
         }, 500);
 	    
-	    
-	
-    
-    
     },
     update: function(){
 	    let g = this.game,
@@ -351,11 +347,14 @@ const doSubject = {
 	        console.log("完成 D 選項");
 	    }
 	
-//             console.log("==================");
-            
+            console.log("==================");
+            console.log(optionAHigh);
+            console.log(optionBHigh);
+            console.log(optionCHigh);
+            console.log(optionDHigh);
 // 	    console.log(document.getElementById('wave').offsetTop);
-//             console.log(document.getElementById('wave').y);
-// 	    console.log("==================");
+            console.log(document.getElementById('wave').y);
+	    console.log("==================");
     
         }
     }
