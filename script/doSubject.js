@@ -320,31 +320,31 @@ const doSubject = {
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
 		
-            optionAHigh = document.getElementById('optionA').offsetTop;
-            optionBHigh = document.getElementById('optionB').offsetTop;
-            optionCHigh = document.getElementById('optionC').offsetTop;
-            optionDHigh = document.getElementById('optionD').offsetTop;
+//             optionAHigh = document.getElementById('optionA').offsetTop;
+//             optionBHigh = document.getElementById('optionB').offsetTop;
+//             optionCHigh = document.getElementById('optionC').offsetTop;
+//             optionDHigh = document.getElementById('optionD').offsetTop;
 		
             // optionAHigh, optionBHigh, optionCHigh, optionDHigh;
-	    if(document.getElementById('wave').y > optionAHigh)
+	    if(document.getElementById('wave').y < optionAHigh)
 	    {
 		document.getElementById('optionA').classList.remove("badge-light");
 		document.getElementById('optionA').classList.add("badge-success");
 	        console.log("完成 A 選項");
 	    }
-	    if(document.getElementById('wave').y > optionBHigh)
+	    if(document.getElementById('wave').y < optionBHigh)
 	    {
 		document.getElementById('optionB').classList.remove("badge-light");
 		document.getElementById('optionB').classList.add("badge-success");
 	        console.log("完成 B 選項");
 	    }
-	    if(document.getElementById('wave').y > optionCHigh)
+	    if(document.getElementById('wave').y < optionCHigh)
 	    {
 		document.getElementById('optionC').classList.remove("badge-light");
 		document.getElementById('optionC').classList.add("badge-success");
 	        console.log("完成 C 選項");
 	    }
-            if(document.getElementById('wave').y > optionDHigh)
+            if(document.getElementById('wave').y < optionDHigh)
 	    {
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
