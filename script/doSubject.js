@@ -74,6 +74,8 @@ var challenge_xy = [
 
 var challenge_name = ['lighting', 'bomb'];
 const challengeNum = 10;
+var canExit = false;
+var gameExit = false;
 
 // 掉落速度，依據級距加快
 var downSpeed = 30;
@@ -212,7 +214,7 @@ const doSubject = {
         }, 1000);
 
 
-        var generateTimer = setInterval(() => {
+        generateTimer = setInterval(() => {
             if(timerStart)
             {   
                 // console.log("產生一個");
@@ -257,64 +259,18 @@ const doSubject = {
 			document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
 			document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
 			document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
-
-
-
-
-			// 新增水
-			// mask = new Phaser.Display.Masks.BitmapMask(this, maskShape)
-
-			// water = this.add.graphics();
-			// water
-			//     .fillStyle(0x1155ae, 0.2)
-			//     .fillRect(0,0,w,h)
-
-			// for (let i = 0; i<numRotatingRoundedRects; i++)
-			// {
-			//             rotatingRoundedRects.push(this.add.graphics(w/2,h/3))
-
-			//     let rrr = rotatingRoundedRects[i], 
-			//     cr = w/9
-
-			//     rrr
-			//     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-			//     .fillStyle(0xFFFFFF, 0.5)
-			//     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
-
-			//     rrr.rang = Math.random() * 360
-			//     rrr.rangrate = Math.random() * 10 + 10
-			// }
-
-			// rotatingRoundedRectsContainer = this.add.container().add(rotatingRoundedRects)
-			// rotatingRoundedRectsContainer.mask = mask
-			// rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1);
-
-
-			// for (let i = 0; i<numRotatingRoundedRects; i++)
-			// {
-			//     rotatingRoundedRects2.push(this.add.graphics(w/2,h/3))
-
-			//     let rrr = rotatingRoundedRects2[i], 
-			//     cr = w/9
-
-			//     rrr
-			//     .setPosition(w/numRotatingRoundedRects*i,h/6*(Math.random()*0.05+0.95))
-			//     .fillStyle(0xFFFFFF, 0.5)
-			//     .fillRoundedRect(-w/8,-w/8,w/4,w/4,{tl:cr,tr:cr,bl:cr,br:cr})
-
-			//     rrr.rang = Math.random() * 360
-			//     rrr.rangrate = Math.random() * 10 + 10
-			// }
-
-			// rotatingRoundedRectsContainer2 = this.add.container().add(rotatingRoundedRects2)
-			// rotatingRoundedRectsContainer2.mask = mask
-			// rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2);
-
-			// console.log(challengeGroupChild);
-
+			  
 			challengeStart = true;
 		    }
         	}
+		else
+		{
+			if(challengeStart)
+			{
+				console.log("空白建盤放開");
+				canExit = true;
+			}
+		}
 	}
 	    
         // 角色左右移動
@@ -325,13 +281,41 @@ const doSubject = {
         else
             player.setVelocityX(0);
     
-        if(challengeStart)
+        if(challengeStart && canExit)
         {
             // 計時器開始倒數
             timerStart = true;
 		
 		
-	    
+	    if(keyboard.space.isDown)
+	    {
+		    if(!gameExit)
+		    {
+			    gameExit = true;
+			    challengeGroup.clear();
+			
+			    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
+			    challengeTime = 30;		// 計時器時間
+			    downSpeed = 50;		// 物品降落速度
+			    optionView = false;		// 是否先看過選項
+			    challengeStart = false;	// 跳戰是否開始
+			    timerStart = false;		// 計時器是否開始
+			    waterHigh = 98;		// 海水高度
+			    optionLevel = 1;		// 選項等級
+
+			    // 重置海水高度
+			    document.getElementById('water').style.top = waterHigh.toString() + "%";
+
+
+			    clearInterval(challengeTimer);
+			    clearInterval(generateTimer);
+			    this.scene.start('gameSelect');
+		    }
+	    }
+	    else
+	    {
+		    gameExit = false;
+	    }
 		
             // 控制水的高度
             // for (key in rotatingRoundedRects)
