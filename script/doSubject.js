@@ -143,19 +143,20 @@ const doSubject = {
         // 新增玩家
         player = this.physics.add.sprite(cw/2, ch - 50, player_name[player_select]);
         player.setScale(playerScale);
-	    
-	    // 新增墜落物
+        
+	
+        // 新增墜落物
 
 
 	
-	    challengeGroup = this.physics.add.group();
+	challengeGroup = this.physics.add.group();
         challengeGroupChild = challengeGroup.getChildren();
         
-	    this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
+	this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
 	
-	    function waterUp(player, challenge)
+	function waterUp(player, challenge)
         {
-	        challenge.disableBody(true, true);
+	    challenge.disableBody(true, true);
             // rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1 - 0.1);
             // rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2 - 0.1);
             if(challenge.texture.key == 'bomb')
