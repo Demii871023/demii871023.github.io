@@ -60,7 +60,7 @@ const subject_option = [
 
 var optionView = false;
 var challengeStart = false;
-var challengeTime = 50;
+var challengeTime = 30;
 const challengeScale = 0.2;
 var timerStart = false;
 var challenge_xy = [
@@ -190,7 +190,7 @@ const doSubject = {
 		    challengeGroup.clear();
 			
 		    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
-		    challengeTime = 50;		// 計時器時間
+		    challengeTime = 30;		// 計時器時間
         	    downSpeed = 50;		// 物品降落速度
 		    optionView = false;		// 是否先看過選項
 		    challengeStart = false;	// 跳戰是否開始
