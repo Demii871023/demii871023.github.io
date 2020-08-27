@@ -195,8 +195,9 @@ const doSubject = {
                 if(challengeTime <= 0)
 		{
                     clearInterval(challengeTimer);
-		    this.scene.start('gameSelect');
 		    challengeGroup.clear();
+		    this.scene.start('gameSelect');
+		    
                 }
 		    
             }
