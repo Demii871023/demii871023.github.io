@@ -180,7 +180,7 @@ const doSubject = {
         document.getElementById('challengeBar').style.width = '100%';
 
 
-        var challengeTimer = setInterval(() => {
+        challengeTimer = setInterval(() => {
             if(timerStart)
             {
                 challengeTime = challengeTime - 1;
