@@ -322,32 +322,8 @@ const doSubject = {
             optionDHigh = document.getElementById('optionD').offsetTop;
 		
             // optionAHigh, optionBHigh, optionCHigh, optionDHigh;
-            // 完成最低階：A 選項
-	    if(document.getElementById('wave').y < optionAHigh)
-	    {
-		document.getElementById('optionA').classList.remove("badge-light");
-		document.getElementById('optionA').classList.add("badge-success");
-
-// 	        console.log("完成 A 選項");
-	    }
-            // 完成最低階：B 選項
-	    if(document.getElementById('wave').y < optionBHigh)
-	    {
 		
-		document.getElementById('optionB').classList.remove("badge-light");
-		document.getElementById('optionB').classList.add("badge-success");
-
-// 	        console.log("完成 B 選項");
-	    }
-            // 完成最低階：C 選項
-	    if(document.getElementById('wave').y < optionCHigh)
-	    {
-
-		document.getElementById('optionC').classList.remove("badge-light");
-		document.getElementById('optionC').classList.add("badge-success");
-
-// 	        console.log("完成 C 選項");
-	    }
+		
 		
 	    // 完成最低階：D 選項
             if(document.getElementById('wave').y < optionDHigh)
@@ -355,17 +331,64 @@ const doSubject = {
 		
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
+		document.getElementById('optionC').classList.remove("badge-success");
+		document.getElementById('optionC').classList.add("badge-light");
+		document.getElementById('optionB').classList.remove("badge-success");
+		document.getElementById('optionB').classList.add("badge-light");
+		document.getElementById('optionA').classList.remove("badge-success");
+		document.getElementById('optionA').classList.add("badge-lights");
 // 	        console.log("完成 D 選項");
 	    }
-	
-//             console.log("==================");
-//             console.log(optionAHigh);
-//             console.log(optionBHigh);
-//             console.log(optionCHigh);
-//             console.log(optionDHigh);
-//             console.log(document.getElementById('wave').y);
-// 	    console.log("==================");
-    
+		
+	    // 完成最低階：C 選項
+	    if(document.getElementById('wave').y < optionCHigh)
+	    {
+
+		document.getElementById('optionD').classList.remove("badge-light");
+		document.getElementById('optionD').classList.add("badge-success");
+		document.getElementById('optionC').classList.remove("badge-light");
+		document.getElementById('optionC').classList.add("badge-success");
+		document.getElementById('optionB').classList.remove("badge-success");
+		document.getElementById('optionB').classList.add("badge-light");
+		document.getElementById('optionA').classList.remove("badge-success");
+		document.getElementById('optionA').classList.add("badge-lights");
+
+// 	        console.log("完成 C 選項");
+	    }
+		
+		
+	    // 完成最低階：B 選項
+	    if(document.getElementById('wave').y < optionBHigh)
+	    {
+		document.getElementById('optionD').classList.remove("badge-light");
+		document.getElementById('optionD').classList.add("badge-success");
+		document.getElementById('optionC').classList.remove("badge-light");
+		document.getElementById('optionC').classList.add("badge-success");
+		document.getElementById('optionB').classList.remove("badge-light");
+		document.getElementById('optionB').classList.add("badge-success");
+		document.getElementById('optionA').classList.remove("badge-success");
+		document.getElementById('optionA').classList.add("badge-lights");
+
+// 	        console.log("完成 B 選項");
+	    }
+		
+            // 完成最低階：A 選項
+	    if(document.getElementById('wave').y < optionAHigh)
+	    {
+		document.getElementById('optionD').classList.remove("badge-light");
+		document.getElementById('optionD').classList.add("badge-success");
+		document.getElementById('optionC').classList.remove("badge-light");
+		document.getElementById('optionC').classList.add("badge-success");
+		document.getElementById('optionB').classList.remove("badge-light");
+		document.getElementById('optionB').classList.add("badge-success");
+		document.getElementById('optionA').classList.remove("badge-light");
+		document.getElementById('optionA').classList.add("badge-success");
+
+// 	        console.log("完成 A 選項");
+	    }
+            
+            
+
         }
     }
 }
