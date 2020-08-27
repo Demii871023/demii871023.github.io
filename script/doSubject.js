@@ -96,7 +96,9 @@ var waterHigh2 = 0.2;
 
 // 海水高度 -> 對應到 #water css 中的 top 百分比
 var waterHigh = 98;
+// 選項高度 -> 用來與海水高度比較，若海水高度超過選項高度就完成
 var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
+var optionLevel = 1;
 
 
 
@@ -164,7 +166,7 @@ const doSubject = {
             if(challenge.texture.key == 'lighting')
                 waterHigh = waterHigh - 5;
             document.getElementById('water').style.top = waterHigh.toString() + "%";
-            downSpeed = downSpeed + 50;
+            downSpeed = optionLevel * 100;
             for(var i = 0 ; i < challengeGroupChild.length ; i++)
                 challengeGroupChild[i].body.gravity.y = downSpeed;
         }
@@ -321,14 +323,10 @@ const doSubject = {
             optionCHigh = document.getElementById('optionC').offsetTop;
             optionDHigh = document.getElementById('optionD').offsetTop;
 		
-            // optionAHigh, optionBHigh, optionCHigh, optionDHigh;
-		
-		
-		
 	    // 完成最低階：D 選項
             if(document.getElementById('wave').y < optionDHigh)
 	    {
-		
+		optionLevel = optionLevel + 1;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-success");
@@ -337,13 +335,12 @@ const doSubject = {
 		document.getElementById('optionB').classList.add("badge-light");
 		document.getElementById('optionA').classList.remove("badge-success");
 		document.getElementById('optionA').classList.add("badge-lights");
-// 	        console.log("完成 D 選項");
 	    }
 		
 	    // 完成最低階：C 選項
 	    if(document.getElementById('wave').y < optionCHigh)
 	    {
-
+		optionLevel = optionLevel + 1;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
@@ -352,14 +349,12 @@ const doSubject = {
 		document.getElementById('optionB').classList.add("badge-light");
 		document.getElementById('optionA').classList.remove("badge-success");
 		document.getElementById('optionA').classList.add("badge-lights");
-
-// 	        console.log("完成 C 選項");
 	    }
-		
 		
 	    // 完成最低階：B 選項
 	    if(document.getElementById('wave').y < optionBHigh)
 	    {
+		optionLevel = optionLevel + 1;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
@@ -368,13 +363,12 @@ const doSubject = {
 		document.getElementById('optionB').classList.add("badge-success");
 		document.getElementById('optionA').classList.remove("badge-success");
 		document.getElementById('optionA').classList.add("badge-lights");
-
-// 	        console.log("完成 B 選項");
 	    }
 		
             // 完成最低階：A 選項
 	    if(document.getElementById('wave').y < optionAHigh)
 	    {
+		optionLevel = optionLevel + 1;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
@@ -383,12 +377,7 @@ const doSubject = {
 		document.getElementById('optionB').classList.add("badge-success");
 		document.getElementById('optionA').classList.remove("badge-light");
 		document.getElementById('optionA').classList.add("badge-success");
-
-// 	        console.log("完成 A 選項");
 	    }
-            
-            
-
         }
     }
 }
