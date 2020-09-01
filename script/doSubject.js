@@ -102,6 +102,10 @@ var waterHigh = 98;
 var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
 var optionLevel = 1;
 
+// 玩家選擇的選項
+var option_select = 0;
+var optionID = ['optionAGroup', 'optionBGroup', 'optionCGroup', 'optionDGroup'];
+
 
 
 const doSubject = {
@@ -242,6 +246,34 @@ const doSubject = {
         let keyboard = this.input.keyboard.createCursorKeys();
 	if(!challengeStart)
 	{
+	    if(keyboard.up.isDown)
+	    {
+		if(option_select == 0)
+		    return;
+		document.getElementById(optionID[option_select]).classList.remove("border");
+		document.getElementById(optionID[option_select]).classList.remove("border-light");
+		document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
+		option_select = option_select - 1;
+		document.getElementById(optionID[option_select]).classList.add("border");
+		document.getElementById(optionID[option_select]).classList.add("border-light");
+		document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+		console.log("上");
+	    }
+	    if(keyboard.down.isDown)
+	    {
+		if(option_select == 3)
+		    return;
+
+		document.getElementById(optionID[option_select]).classList.remove("border");
+            	document.getElementById(optionID[option_select]).classList.remove("border-light");
+            	document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
+		option_select = option_select + 1;
+		document.getElementById(optionID[option_select]).classList.add("border");
+            	document.getElementById(optionID[option_select]).classList.add("border-light");
+            	document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+		
+		console.log("下");
+	    }
 	    if(keyboard.space.isDown)
 	    {
 		    if(!optionView)
