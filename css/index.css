@@ -98,12 +98,13 @@ canvas{
 
 
 #challengeText{
-    width: 30%;
+    width: auto;
     height: auto;
     z-index: 100;
     position: absolute;
     top: 25%;
-    right: 20%;
+    right: 10%;
+    left: 10%;
     background-color: rgba(255, 255, 255, 0);
 }
 
