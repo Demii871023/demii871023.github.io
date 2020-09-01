@@ -78,7 +78,7 @@ var canExit = false;
 var gameExit = false;
 
 // 掉落速度，依據級距加快
-var downSpeed = 30;
+// var downSpeed = 30;
 
 
 // 繪製水動畫
@@ -100,7 +100,8 @@ var waterHigh2 = 0.2;
 var waterHigh = 98;
 // 選項高度 -> 用來與海水高度比較，若海水高度超過選項高度就完成
 var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
-var optionLevel = 1;
+// 依據 option_select 控制物品掉落速度
+var downSpeed = [200, 500, 700, 1000];
 
 // 玩家選擇的選項
 var option_select = 0;
@@ -178,9 +179,9 @@ const doSubject = {
             if(challenge.texture.key == 'lighting')
                 waterHigh = waterHigh - 5;
             document.getElementById('water').style.top = waterHigh.toString() + "%";
-            downSpeed = optionLevel * 100;
+//             downSpeed = optionLevel * 100;
             for(var i = 0 ; i < challengeGroupChild.length ; i++)
-                challengeGroupChild[i].body.gravity.y = downSpeed;
+//                 challengeGroupChild[i].body.gravity.y = downSpeed;
         }
 	    
         // 新增提示字樣
@@ -204,12 +205,12 @@ const doSubject = {
 			
 		    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
 		    challengeTime = 30;		// 計時器時間
-        	    downSpeed = 50;		// 物品降落速度
+//         	    downSpeed = 50;		// 物品降落速度
 		    optionView = false;		// 是否先看過選項
 		    challengeStart = false;	// 跳戰是否開始
 		    timerStart = false;		// 計時器是否開始
 		    waterHigh = 98;		// 海水高度
-		    optionLevel = 1;		// 選項等級
+// 		    optionLevel = 1;		// 選項等級
 		
 		    // 重置海水高度
 		    document.getElementById('water').style.top = waterHigh.toString() + "%";
@@ -230,7 +231,7 @@ const doSubject = {
             {   
                 // console.log("產生一個");
                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
-                challengeOJ.body.gravity.y = downSpeed;
+                challengeOJ.body.gravity.y = downSpeed[option_select];
                 // console.log(challengeOJ.body.gravity.y);=
                 challengeOJ.setScale(challengeScale);
 
@@ -391,7 +392,7 @@ const doSubject = {
 		    
 	    if(document.getElementById('wave').y < optionDHigh)
 	    {
-		optionLevel = 2;
+// 		optionLevel = 2;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-success");
@@ -405,7 +406,7 @@ const doSubject = {
 	    // 完成最低階：C 選項
 	    if(document.getElementById('wave').y < optionCHigh)
 	    {
-	        optionLevel = 8;
+// 	        optionLevel = 8;
 	        document.getElementById('optionD').classList.remove("badge-light");
 	        document.getElementById('optionD').classList.add("badge-success");
 	        document.getElementById('optionC').classList.remove("badge-light");
@@ -419,7 +420,7 @@ const doSubject = {
 	    // 完成最低階：B 選項
 	    if(document.getElementById('wave').y < optionBHigh)
 	    {
-		optionLevel = 18;
+// 		optionLevel = 18;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
@@ -433,7 +434,7 @@ const doSubject = {
             // 完成最低階：A 選項
 	    if(document.getElementById('wave').y < optionAHigh)
 	    {
-		optionLevel = 30;
+// 		optionLevel = 30;
 		document.getElementById('optionD').classList.remove("badge-light");
 		document.getElementById('optionD').classList.add("badge-success");
 		document.getElementById('optionC').classList.remove("badge-light");
