@@ -36,7 +36,8 @@ const recordUpload = {
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
 	    
-	player = this.physics.add.sprite(cw/2, ch - 50, player_name[player_select]);
+	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
+	player.setScale(playerScale);
 	
 	recordGroup = this.physics.add.group();
 	recordGroupChild = recordGroup.getChildren();
@@ -48,8 +49,8 @@ const recordUpload = {
 	// 生成 課業學科紀錄豆
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
-	    recordGroup.create(cw/4, ch/4 - 20*i, player_record[i].subject);
-            recordGroupChild[i].setScale(0.2);
+	    recordGroup.create(cw/4, ch/4 - 200*i, player_record[i].subject);
+            recordGroupChild[i].setScale(0.5);
 	}
 	
 	
