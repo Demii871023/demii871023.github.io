@@ -74,11 +74,11 @@ const recordUpload = {
 		doText.x = record.x + 20;
 		doText.y = record.y;
                 
-                subject_select = subject_nameen.indexOf(beans.texture.key);
-                modalOpen(subject_nameen.indexOf(beans.texture.key));
-                // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
-                beansTmp = beans;
-                beans.setVisible(false);
+//                 subject_select = subject_nameen.indexOf(beans.texture.key);
+//                 modalOpen(subject_nameen.indexOf(beans.texture.key));
+//                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
+//                 beansTmp = beans;
+//                 beans.setVisible(false);
             }
 	    else
             {
