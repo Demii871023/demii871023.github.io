@@ -344,6 +344,13 @@ var doClass = 1;
 const gameSelect = {
     key: 'gameSelect',
     preload: function(){
+        
+        
+        if(stageTime <= 0)
+        {
+            this.scene.start('recordUpload');
+        }
+
         this.load.image('bg1', 'image/Background/jungle-clipart-background-6.jpg');
         this.load.image('subject', 'image/Background/zoo.png');
         this.load.image('activity', 'image/Background/sloth.png');
