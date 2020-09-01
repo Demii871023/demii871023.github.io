@@ -14,10 +14,10 @@ const recordUpload = {
         bg1.setScale(4);
 	    
 	maskSubject = this.add.graphics()
-        maskSubject.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+        maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
 	
 	maskActivity = this.add.graphics()
-        maskActivity.fillStyle(0x000000, 0.5).fillRect(300, 0, 100, 500);
+        maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 
 
     },
