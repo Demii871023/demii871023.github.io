@@ -140,10 +140,12 @@ const doSubject = {
         mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
         
         // 新增該學科選項
-        optionAText = this.add.text(cw/10, ch/2-60, subject_option[subject_select].A, {color: "#FFFFFF", fontSize:'20px'});
-        optionBText = this.add.text(cw/10, ch/2-20, subject_option[subject_select].B, {color: "#FFFFFF", fontSize:'20px'});
-        optionCText = this.add.text(cw/10, ch/2+20, subject_option[subject_select].C, {color: "#FFFFFF", fontSize:'20px'});
-        optionDText = this.add.text(cw/10, ch/2+60, subject_option[subject_select].D, {color: "#FFFFFF", fontSize:'20px'});
+	document.getElementById('challengeText').style.visibility = "visible";
+	    
+//         optionAText = this.add.text(cw/10, ch/2-60, subject_option[subject_select].A, {color: "#FFFFFF", fontSize:'20px'});
+//         optionBText = this.add.text(cw/10, ch/2-20, subject_option[subject_select].B, {color: "#FFFFFF", fontSize:'20px'});
+//         optionCText = this.add.text(cw/10, ch/2+20, subject_option[subject_select].C, {color: "#FFFFFF", fontSize:'20px'});
+//         optionDText = this.add.text(cw/10, ch/2+60, subject_option[subject_select].D, {color: "#FFFFFF", fontSize:'20px'});
         
         // 新增玩家
         player = this.physics.add.sprite(cw/2, ch - 50, player_name[player_select]);
@@ -246,10 +248,11 @@ const doSubject = {
 			document.getElementById('gmChatCard').style.display = 'none';
 
 			// 看完選項後，就可以移除選項的文字
-			optionAText.destroy();
-			optionBText.destroy();
-			optionCText.destroy();
-			optionDText.destroy();
+			document.getElementById('challengeText').style.visibility = "hidden";
+// 			optionAText.destroy();
+// 			optionBText.destroy();
+// 			optionCText.destroy();
+// 			optionDText.destroy();
 			tipsText.destroy();
 
 			document.getElementById('water').style.visibility = "visible";
