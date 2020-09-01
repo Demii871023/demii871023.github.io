@@ -303,13 +303,13 @@ const doSubject = {
 			
 			// A 選項
 			if(option_select == 0)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].A;
+				document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
 			else if(option_select == 1)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].B;
+				document.getElementById('optionA').innerHTML = subject_option[subject_select].B;
 			else if(option_select == 2)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].C;
+				document.getElementById('optionA').innerHTML = subject_option[subject_select].C;
 			else if(option_select == 3)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
+				document.getElementById('optionA').innerHTML = subject_option[subject_select].D;
 			  
 			console.log(document.getElementById('playerOption').innerHTML);
 			challengeStart = true;
