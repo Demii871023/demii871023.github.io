@@ -379,7 +379,7 @@ const doSubject = {
             // }
 		
 	    // 成功做到選擇
-	    if(document.getElementById('wave').y < document.getElementById('playerOption').offsetTop)
+	    if(document.getElementById('wave').y < 600)
 	    {
 		document.getElementById('playerOption').classList.remove("badge-light");
 	        document.getElementById('playerOption').classList.add("badge-success");
@@ -391,11 +391,28 @@ const doSubject = {
 		console.log(player_record[0].subject);
 		console.log(player_record[0].do);
 	    }
-            else if(document.getElementById('wave').y > document.getElementById('playerOption').offsetTop)
+            else if(document.getElementById('wave').y > 600)
 	    {
 		document.getElementById('playerOption').classList.remove("badge-success");
 	        document.getElementById('playerOption').classList.add("badge-light");
 	    }
+// 	    if(document.getElementById('wave').y < document.getElementById('playerOption').offsetTop)
+// 	    {
+// 		document.getElementById('playerOption').classList.remove("badge-light");
+// 	        document.getElementById('playerOption').classList.add("badge-success");
+// 		player_record.push({
+//             		subject: subject_name[subject_select],
+//             		do:optionStr,
+//         	});
+		    
+// 		console.log(player_record[0].subject);
+// 		console.log(player_record[0].do);
+// 	    }
+//             else if(document.getElementById('wave').y > document.getElementById('playerOption').offsetTop)
+// 	    {
+// 		document.getElementById('playerOption').classList.remove("badge-success");
+// 	        document.getElementById('playerOption').classList.add("badge-light");
+// 	    }
 		
 //             optionAHigh = document.getElementById('optionA').offsetTop;
 //             optionBHigh = document.getElementById('optionB').offsetTop;
