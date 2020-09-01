@@ -38,7 +38,7 @@ const recordUpload = {
 	// 生成 課業學科紀錄豆
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
-	    recordGroup.create(cw/4, ch/4, player_record[i].subject);
+	    recordGroup.create(cw/4, ch/4 - 20*i, player_record[i].subject);
 	}
 	
 	
