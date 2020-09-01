@@ -172,15 +172,13 @@ const doSubject = {
 	function waterUp(player, challenge)
         {
 	    challenge.disableBody(true, true);
-            // rotatingRoundedRectsContainer.y = this.game.renderer.height*(waterHigh1 - 0.1);
-            // rotatingRoundedRectsContainer2.y = this.game.renderer.height*(waterHigh2 - 0.1);
             if(challenge.texture.key == 'bomb')
                 waterHigh = waterHigh + 5;
             if(challenge.texture.key == 'lighting')
                 waterHigh = waterHigh - 5;
             document.getElementById('water').style.top = waterHigh.toString() + "%";
 //             downSpeed = optionLevel * 100;
-            for(var i = 0 ; i < challengeGroupChild.length ; i++)
+//             for(var i = 0 ; i < challengeGroupChild.length ; i++)
 //                 challengeGroupChild[i].body.gravity.y = downSpeed;
         }
 	    
@@ -295,7 +293,7 @@ const doSubject = {
 			tipsText.destroy();
 
 			document.getElementById('water').style.visibility = "visible";
-// 			document.getElementById('optionBadges').style.visibility = "visible";
+			document.getElementById('optionBadges').style.visibility = "visible";
 // 			document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
 // 			document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
 // 			document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
@@ -303,13 +301,13 @@ const doSubject = {
 			
 			// A 選項
 			if(option_select == 0)
-				document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].A;
 			else if(option_select == 1)
-				document.getElementById('optionA').innerHTML = subject_option[subject_select].B;
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].B;
 			else if(option_select == 2)
-				document.getElementById('optionA').innerHTML = subject_option[subject_select].C;
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].C;
 			else if(option_select == 3)
-				document.getElementById('optionA').innerHTML = subject_option[subject_select].D;
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
 			  
 			console.log(document.getElementById('playerOption').innerHTML);
 			challengeStart = true;
