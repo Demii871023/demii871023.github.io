@@ -2,11 +2,6 @@ var player_record = [
 ]
 
 
-const cw = $(window).width();
-const ch = $(window).height();
-
-
-
 const recordUpload = {
     key: 'recordUpload',
     preload: function(){
@@ -22,14 +17,12 @@ const recordUpload = {
 	    
 	
 	
-// 	maskSubject = this.add.graphics()
-//         maskSubject.fillStyle(0x000000, 0.5).fillRect(0, 0, 100, 500);
+	maskSubject = this.add.graphics()
+        maskSubject.fillStyle(0x000000, 0.5).fillRect(0, 0, 100, 500);
 	
-// 	maskActivity = this.add.graphics()
-//         maskActivity.fillStyle(0x000000, 0.5).fillRect(300, 0, 100, 500);
-	
-	mask = this.add.graphics()
-        mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+	maskActivity = this.add.graphics()
+        maskActivity.fillStyle(0x000000, 0.5).fillRect(300, 0, 100, 500);
+
 	
         
 	    
