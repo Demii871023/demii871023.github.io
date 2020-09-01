@@ -98,6 +98,8 @@ canvas{
 
 
 #challengeText{
+    width: 30%;
+    height: auto;
     z-index: 100;
     position: absolute;
     top: 25%;
