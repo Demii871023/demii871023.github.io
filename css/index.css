@@ -170,3 +170,9 @@ canvas{
     top: 80%;
     left: 40%;
 }
+
+#playerOption{
+    position: absolute;
+    top: 5%;
+    left: 40%;
+}
