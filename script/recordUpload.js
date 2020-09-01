@@ -6,16 +6,12 @@ var player_record = [
 const recordUpload = {
     key: 'recordUpload',
     preload: function(){
-        player_record.push({
-            subject:"語文",
-            do:"選項一",
-        });
+        this.load.image('bg1', 'image/Background/jungle-clipart-background-6.jpg');
         
     },
     create: function(){
-        
-        console.log(player_record[0].subject);
-        console.log(player_record[0].do);
+        bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
+        bg1.setScale(4);
         
 	    
     },
