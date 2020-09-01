@@ -384,13 +384,13 @@ const doSubject = {
 	    {
 		document.getElementById('playerOption').classList.remove("badge-light");
 	        document.getElementById('playerOption').classList.add("badge-success");
-		player_record.push({
-            		subject: subject_nameen[subject_select],
-            		do:optionStr,
-        	});
+// 		player_record.push({
+//             		subject: subject_nameen[subject_select],
+//             		do:optionStr,
+//         	});
 		    
-		console.log(player_record[0].subject);
-		console.log(player_record[0].do);
+// 		console.log(player_record[0].subject);
+// 		console.log(player_record[0].do);
 	    }
             else if(document.getElementById('wave').y > 600)
 	    {
