@@ -1087,6 +1087,7 @@ const config = {
         gameSubject,
         gameBonus,
         doSubject,
+        recordUpload,
     ]
 }
 
