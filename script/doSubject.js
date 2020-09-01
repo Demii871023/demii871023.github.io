@@ -101,7 +101,7 @@ var waterHigh = 98;
 // 選項高度 -> 用來與海水高度比較，若海水高度超過選項高度就完成
 var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
 // 依據 option_select 控制物品掉落速度
-var downSpeed = [200, 500, 700, 1000];
+var downSpeed = [2000, 1000, 400, 50];
 
 // 玩家選擇的選項
 var option_select = 0;
