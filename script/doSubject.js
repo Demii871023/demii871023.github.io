@@ -222,7 +222,8 @@ const doSubject = {
 			
 	            clearInterval(challengeTimer);
 		    clearInterval(generateTimer);
-		    this.scene.start('recordUpload');
+		    stageTime = stageTime - 10;
+		    this.scene.start('gameSelect');
 		    
                 }
 		    
