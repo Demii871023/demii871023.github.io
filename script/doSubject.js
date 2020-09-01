@@ -110,8 +110,8 @@ var optionStr = "";
 
 
 
-var player_record = [
-]
+// var player_record = [
+// ]
 
 
 
