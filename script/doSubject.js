@@ -103,9 +103,15 @@ var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
 // 依據 option_select 控制物品掉落速度
 var downSpeed = [2000, 1000, 400, 50];
 
-// 玩家選擇的選項
+// 玩家選擇的選項 ( option_select：使用者所選擇 / optionStr：使用者的選擇句子 / optionID：修改 HTML 所使用 )
 var option_select = 0;
 var optionID = ['optionAGroup', 'optionBGroup', 'optionCGroup', 'optionDGroup'];
+var optionStr = "";
+
+
+
+var player_record = [
+]
 
 
 
@@ -309,6 +315,8 @@ const doSubject = {
 			else if(option_select == 3)
 				document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
 			  
+			    
+			optionStr = document.getElementById('playerOption').innerHTML;
 			console.log(document.getElementById('playerOption').innerHTML);
 			challengeStart = true;
 		    }
@@ -370,78 +378,97 @@ const doSubject = {
             //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
             // }
 		
-            optionAHigh = document.getElementById('optionA').offsetTop;
-            optionBHigh = document.getElementById('optionB').offsetTop;
-            optionCHigh = document.getElementById('optionC').offsetTop;
-            optionDHigh = document.getElementById('optionD').offsetTop;
-		
-	    // 完成最低階：D 選項
-            if(document.getElementById('wave').y > optionDHigh)
+	    // 成功做到選擇
+	    if(document.getElementById('wave').y < document.getElementById('playerOption').offsetTop)
 	    {
-	        document.getElementById('optionD').classList.remove("badge-success");
-	        document.getElementById('optionD').classList.add("badge-light");
-	        document.getElementById('optionC').classList.remove("badge-success");
-	        document.getElementById('optionC').classList.add("badge-light");
-	        document.getElementById('optionB').classList.remove("badge-success");
-	        document.getElementById('optionB').classList.add("badge-light");
-	        document.getElementById('optionA').classList.remove("badge-success");
-	        document.getElementById('optionA').classList.add("badge-lights");
-	    }
+		document.getElementById('playerOption').classList.remove("badge-light");
+	        document.getElementById('playerOption').classList.add("badge-success");
+		player_record.push({
+            		subject: subject_name[subject_select],
+            		do:optionStr,
+        	});
 		    
-	    if(document.getElementById('wave').y < optionDHigh)
+		console.log(player_record[0].subject);
+		console.log(player_record[0].do);
+	    }
+            else if(document.getElementById('wave').y > document.getElementById('playerOption').offsetTop)
 	    {
-// 		optionLevel = 2;
-		document.getElementById('optionD').classList.remove("badge-light");
-		document.getElementById('optionD').classList.add("badge-success");
-		document.getElementById('optionC').classList.remove("badge-success");
-		document.getElementById('optionC').classList.add("badge-light");
-		document.getElementById('optionB').classList.remove("badge-success");
-		document.getElementById('optionB').classList.add("badge-light");
-		document.getElementById('optionA').classList.remove("badge-success");
-		document.getElementById('optionA').classList.add("badge-lights");
+		document.getElementById('playerOption').classList.remove("badge-success");
+	        document.getElementById('playerOption').classList.add("badge-light");
 	    }
 		
-	    // 完成最低階：C 選項
-	    if(document.getElementById('wave').y < optionCHigh)
-	    {
-// 	        optionLevel = 8;
-	        document.getElementById('optionD').classList.remove("badge-light");
-	        document.getElementById('optionD').classList.add("badge-success");
-	        document.getElementById('optionC').classList.remove("badge-light");
-	        document.getElementById('optionC').classList.add("badge-success");
-	        document.getElementById('optionB').classList.remove("badge-success");
-	        document.getElementById('optionB').classList.add("badge-light");
-	        document.getElementById('optionA').classList.remove("badge-success");
-	        document.getElementById('optionA').classList.add("badge-lights");
-	    }
+//             optionAHigh = document.getElementById('optionA').offsetTop;
+//             optionBHigh = document.getElementById('optionB').offsetTop;
+//             optionCHigh = document.getElementById('optionC').offsetTop;
+//             optionDHigh = document.getElementById('optionD').offsetTop;
 		
-	    // 完成最低階：B 選項
-	    if(document.getElementById('wave').y < optionBHigh)
-	    {
-// 		optionLevel = 18;
-		document.getElementById('optionD').classList.remove("badge-light");
-		document.getElementById('optionD').classList.add("badge-success");
-		document.getElementById('optionC').classList.remove("badge-light");
-		document.getElementById('optionC').classList.add("badge-success");
-		document.getElementById('optionB').classList.remove("badge-light");
-		document.getElementById('optionB').classList.add("badge-success");
-		document.getElementById('optionA').classList.remove("badge-success");
-		document.getElementById('optionA').classList.add("badge-light");
-	    }
+// 	    // 完成最低階：D 選項
+//             if(document.getElementById('wave').y > optionDHigh)
+// 	    {
+// 	        document.getElementById('optionD').classList.remove("badge-success");
+// 	        document.getElementById('optionD').classList.add("badge-light");
+// 	        document.getElementById('optionC').classList.remove("badge-success");
+// 	        document.getElementById('optionC').classList.add("badge-light");
+// 	        document.getElementById('optionB').classList.remove("badge-success");
+// 	        document.getElementById('optionB').classList.add("badge-light");
+// 	        document.getElementById('optionA').classList.remove("badge-success");
+// 	        document.getElementById('optionA').classList.add("badge-lights");
+// 	    }
+		    
+// 	    if(document.getElementById('wave').y < optionDHigh)
+// 	    {
+// // 		optionLevel = 2;
+// 		document.getElementById('optionD').classList.remove("badge-light");
+// 		document.getElementById('optionD').classList.add("badge-success");
+// 		document.getElementById('optionC').classList.remove("badge-success");
+// 		document.getElementById('optionC').classList.add("badge-light");
+// 		document.getElementById('optionB').classList.remove("badge-success");
+// 		document.getElementById('optionB').classList.add("badge-light");
+// 		document.getElementById('optionA').classList.remove("badge-success");
+// 		document.getElementById('optionA').classList.add("badge-lights");
+// 	    }
 		
-            // 完成最低階：A 選項
-	    if(document.getElementById('wave').y < optionAHigh)
-	    {
-// 		optionLevel = 30;
-		document.getElementById('optionD').classList.remove("badge-light");
-		document.getElementById('optionD').classList.add("badge-success");
-		document.getElementById('optionC').classList.remove("badge-light");
-		document.getElementById('optionC').classList.add("badge-success");
-		document.getElementById('optionB').classList.remove("badge-light");
-		document.getElementById('optionB').classList.add("badge-success");
-		document.getElementById('optionA').classList.remove("badge-light");
-		document.getElementById('optionA').classList.add("badge-success");
-	    }
+// 	    // 完成最低階：C 選項
+// 	    if(document.getElementById('wave').y < optionCHigh)
+// 	    {
+// // 	        optionLevel = 8;
+// 	        document.getElementById('optionD').classList.remove("badge-light");
+// 	        document.getElementById('optionD').classList.add("badge-success");
+// 	        document.getElementById('optionC').classList.remove("badge-light");
+// 	        document.getElementById('optionC').classList.add("badge-success");
+// 	        document.getElementById('optionB').classList.remove("badge-success");
+// 	        document.getElementById('optionB').classList.add("badge-light");
+// 	        document.getElementById('optionA').classList.remove("badge-success");
+// 	        document.getElementById('optionA').classList.add("badge-lights");
+// 	    }
+		
+// 	    // 完成最低階：B 選項
+// 	    if(document.getElementById('wave').y < optionBHigh)
+// 	    {
+// // 		optionLevel = 18;
+// 		document.getElementById('optionD').classList.remove("badge-light");
+// 		document.getElementById('optionD').classList.add("badge-success");
+// 		document.getElementById('optionC').classList.remove("badge-light");
+// 		document.getElementById('optionC').classList.add("badge-success");
+// 		document.getElementById('optionB').classList.remove("badge-light");
+// 		document.getElementById('optionB').classList.add("badge-success");
+// 		document.getElementById('optionA').classList.remove("badge-success");
+// 		document.getElementById('optionA').classList.add("badge-light");
+// 	    }
+		
+//             // 完成最低階：A 選項
+// 	    if(document.getElementById('wave').y < optionAHigh)
+// 	    {
+// // 		optionLevel = 30;
+// 		document.getElementById('optionD').classList.remove("badge-light");
+// 		document.getElementById('optionD').classList.add("badge-success");
+// 		document.getElementById('optionC').classList.remove("badge-light");
+// 		document.getElementById('optionC').classList.add("badge-success");
+// 		document.getElementById('optionB').classList.remove("badge-light");
+// 		document.getElementById('optionB').classList.add("badge-success");
+// 		document.getElementById('optionA').classList.remove("badge-light");
+// 		document.getElementById('optionA').classList.add("badge-success");
+// 	    }
         }
     }
 }
