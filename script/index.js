@@ -9,6 +9,10 @@ const classScale = 0.5;
 const scale = 0.6;
 const monsterScale = 0.7;
 
+// 用來階段計時器 -> 每選擇一件事情，就扣除掉特定時間
+var stageTime = 10;
+
+
 // 其他參數的最大值
 const lazyMAX = 100;      // 惰性
 const pressureMAX = 100;  // 壓力
