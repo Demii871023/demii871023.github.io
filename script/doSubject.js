@@ -222,7 +222,7 @@ const doSubject = {
 			
 	            clearInterval(challengeTimer);
 		    clearInterval(generateTimer);
-		    this.scene.start('gameSelect');
+		    this.scene.start('recordUpload');
 		    
                 }
 		    
