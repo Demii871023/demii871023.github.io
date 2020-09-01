@@ -93,6 +93,15 @@ const recordUpload = {
 	{
 	    doText.alpha = 0;
 	}
+	    
+	let keyboard = this.input.keyboard.createCursorKeys();
+	// 角色左右移動
+        if(keyboard.right.isDown)
+            player.setVelocityX(300);
+        else if(keyboard.left.isDown)
+            player.setVelocityX(-300);
+        else
+            player.setVelocityX(0);
 
     }
 }
