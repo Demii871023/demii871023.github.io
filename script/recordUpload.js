@@ -5,11 +5,20 @@ var player_record = [
 ]
 
 
+var recordHover = false;
+
 const recordUpload = {
     key: 'recordUpload',
     preload: function(){
         this.load.image('bg1', 'image/Background/jungle-clipart-background-6.jpg');
 	    
+	// 載入玩家圖片
+        this.load.image('player1', 'image/Character/player1');
+        this.load.image('player2', 'image/Character/player2');
+        this.load.image('player3', 'image/Character/player3');
+        this.load.image('player4', 'image/Character/player4');
+        this.load.image('player5', 'image/Character/player5');
+        this.load.image('player6', 'image/Character/player6');
 	    
 	// 8 個課業學科
         this.load.image('Langugage', 'image/18College/13.png');
@@ -27,6 +36,7 @@ const recordUpload = {
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
 	    
+	player = this.physics.add.sprite(cw/2, ch - 50, player_name[player_select]);
 	
 	recordGroup = this.physics.add.group();
 	recordGroupChild = recordGroup.getChildren();
@@ -39,6 +49,7 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    recordGroup.create(cw/4, ch/4 - 20*i, player_record[i].subject);
+            recordGroupChild[i].setScale(0.2);
 	}
 	
 	
@@ -46,11 +57,42 @@ const recordUpload = {
 	maskActivity = this.add.graphics()
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	// 生成 課外活動紀錄豆 
+	    
+	doText = this.add.text(0, 0, '', {color: "#FFFFFF", fontSize:'20px'});
+	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
+	    
+	function showDoText(player, record)
+	{
+            if(abs(player.x, record.x) < 10 && abs(player.y, record.y) < 10)
+            {
+		recordHover = true;
+                console.log("hover");
+		
+		doText.setText('Test');
+		doText.alpha = 1;
+		doText.x = record.x + 20;
+		doText.y = record.y;
+                
+                subject_select = subject_nameen.indexOf(beans.texture.key);
+                modalOpen(subject_nameen.indexOf(beans.texture.key));
+                // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
+                beansTmp = beans;
+                beans.setVisible(false);
+            }
+	    else
+            {
+		 recordHover = false;
+            }
+	}
 
 
     },
     update: function(){
-	    
+	// 沒有在 hover 的時候，該字透明
+	if(!recordHover)
+	{
+	    doText.alpha = 0;
+	}
 
     }
 }
