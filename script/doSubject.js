@@ -294,16 +294,26 @@ const doSubject = {
 			tipsText.destroy();
 
 			document.getElementById('water').style.visibility = "visible";
-			document.getElementById('optionBadges').style.visibility = "visible";
+// 			document.getElementById('optionBadges').style.visibility = "visible";
 			document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
 			document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
 			document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
 			document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
+			
+			// A 選項
+			if(option_select == 0)
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].A;
+			else if(option_select == 1)
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].B;
+                        else if(option_select == 2)
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].C;
+			else if(option_select == 3)
+				document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
 			  
+			console.log(document.getElementById('playerOption').innerHTML);
 			challengeStart = true;
 		    }
 	    }
-        	
 	}
 	    
         // 角色左右移動
@@ -318,8 +328,7 @@ const doSubject = {
         {
             // 計時器開始倒數
             timerStart = true;
-		
-		
+
 // 	    if(keyboard.space.isDown)
 // 	    {
 // 		    if(!gameExit)
