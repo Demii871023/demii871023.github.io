@@ -1082,12 +1082,13 @@ const config = {
         },
     },
     scene: [
-        recordUpload,
+        
         playerSelect,
         gameSelect,
         gameSubject,
         gameBonus,
         doSubject,
+        recordUpload,
         
     ]
 }
