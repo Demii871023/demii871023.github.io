@@ -10,13 +10,9 @@ const recordUpload = {
     },
     create: function(){
 	    
-	mask = this.add.graphics()
-        mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
 	    
-	
-	
 	maskSubject = this.add.graphics()
         maskSubject.fillStyle(0x000000, 0.5).fillRect(0, 0, 100, 500);
 	
