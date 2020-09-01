@@ -59,7 +59,7 @@ const recordUpload = {
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	// 生成 課外活動紀錄豆 
 	    
-	doText = this.add.text(0, 0, '', {color: "#FFFFFF", fontSize:'20px'});
+	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
 	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
 	    
 	function showDoText(player, record)
@@ -74,6 +74,8 @@ const recordUpload = {
 		doText.x = record.x + 20;
 		doText.y = record.y;
                 
+		console.log(doText.x);
+		console.log(doText.y);
 //                 subject_select = subject_nameen.indexOf(beans.texture.key);
 //                 modalOpen(subject_nameen.indexOf(beans.texture.key));
 //                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
