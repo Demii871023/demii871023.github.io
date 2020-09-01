@@ -305,7 +305,7 @@ const doSubject = {
 				document.getElementById('playerOption').innerHTML = subject_option[subject_select].A;
 			else if(option_select == 1)
 				document.getElementById('playerOption').innerHTML = subject_option[subject_select].B;
-                        else if(option_select == 2)
+			else if(option_select == 2)
 				document.getElementById('playerOption').innerHTML = subject_option[subject_select].C;
 			else if(option_select == 3)
 				document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
