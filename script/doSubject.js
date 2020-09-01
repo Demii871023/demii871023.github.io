@@ -227,7 +227,7 @@ const doSubject = {
                 // console.log("產生一個");
                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
                 challengeOJ.body.gravity.y = downSpeed;
-                // console.log(challengeOJ.body.gravity.y);
+                // console.log(challengeOJ.body.gravity.y);=
                 challengeOJ.setScale(challengeScale);
 
             }
@@ -242,7 +242,8 @@ const doSubject = {
         let keyboard = this.input.keyboard.createCursorKeys();
 	if(!challengeStart)
 	{
-		
+	    if(keyboard.space.isDown)
+	    {
 		    if(!optionView)
 		    {
 			mask.clear();
@@ -269,6 +270,7 @@ const doSubject = {
 			  
 			challengeStart = true;
 		    }
+	    }
         	
 	}
 	    
