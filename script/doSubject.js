@@ -384,7 +384,7 @@ const doSubject = {
 		document.getElementById('playerOption').classList.remove("badge-light");
 	        document.getElementById('playerOption').classList.add("badge-success");
 		player_record.push({
-            		subject: subject_name[subject_select],
+            		subject: subject_nameen[subject_select],
             		do:optionStr,
         	});
 		    
