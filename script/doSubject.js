@@ -141,6 +141,11 @@ const doSubject = {
         
         // 新增該學科選項
 	document.getElementById('challengeText').style.visibility = "visible";
+	document.getElementById('optionAText').innerHTML = subject_option[subject_select].A;
+	document.getElementById('optionBText').innerHTML = subject_option[subject_select].B;
+	document.getElementById('optionCText').innerHTML = subject_option[subject_select].C;
+	document.getElementById('optionDText').innerHTML = subject_option[subject_select].D;
+	    
 	    
 //         optionAText = this.add.text(cw/10, ch/2-60, subject_option[subject_select].A, {color: "#FFFFFF", fontSize:'20px'});
 //         optionBText = this.add.text(cw/10, ch/2-20, subject_option[subject_select].B, {color: "#FFFFFF", fontSize:'20px'});
