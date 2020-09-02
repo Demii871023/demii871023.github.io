@@ -1,14 +1,14 @@
 
 // 存放使用者所選擇過的紀錄
 var player_record = [
-    {subject: 'Langugage' , do: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
-    {subject: 'Math' , do: "解題課本例題與習題題目，達成學校最低程度的理解。"},
-    {subject: 'Social' , do: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
+    {class:'subject', get:'', subject: 'Langugage' , option: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
+    {class:'subject', get:'', subject: 'Math' , option: "解題課本例題與習題題目，達成學校最低程度的理解。"},
+    {class:'subject', get:'', subject: 'Social' , option: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
 
-// 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_subject：用於存放產生紀錄的 subject name / recordGroup_doOB：用於存放紀錄的文字物件 )
+// 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_subject：用於存放產生紀錄的 subject name / recordGroup_optionOB：用於存放紀錄的文字物件 )
 var recordGroup_subject = new Array(40);
-var recordGroup_doOB = new Array(40);
+var recordGroup_optionOB = new Array(40);
 var recordNum = 0;
 
 // recordIndex：用來搜尋 array 使用的 index 數，-1 代表清空 hover 事件 / recordHover：用於判斷是否有觸發 hover 事件
@@ -99,10 +99,10 @@ const recordUpload = {
             recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
-	    tempText = this.add.text(recordGroupChild[i].x + 35, recordGroupChild[i].y + 5, player_record[i].do, {color: "#f7f7f7", fontSize:'12px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].do, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    
-	    recordGroup_doOB[i] = tempText;
-	    recordGroup_doOB[i].alpha = 0;
+	    recordGroup_optionOB[i] = tempText;
+	    recordGroup_optionOB[i].alpha = 0;
 		
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
 	    recordGroup_subject[i] = player_record[i].subject;
@@ -124,9 +124,9 @@ const recordUpload = {
 	    
 	    
 	    
-	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
+	this.physics.add.overlap(player, recordGroupChild, showOptionText, null, this);
 	    
-	function showDoText(player, record)
+	function showOptionText(player, record)
 	{
             if(abs(player.x, record.x) < 15 && abs(player.y, record.y) < 20)
             {
@@ -134,20 +134,20 @@ const recordUpload = {
                 console.log("hover");
 		
                 recordIndex = recordGroup_subject.indexOf(record.texture.key);
-		recordGroup_doOB[recordIndex].alpha = 1;
+		recordGroup_optionOB[recordIndex].alpha = 1;
 		    
 		if(choose)
 		{
 // 		    record.setTint(0x5d5d2d);
-		    recordGroup_doOB[recordIndex].setColor('#5cb85c');
+// 		    recordGroup_optionOB[recordIndex].setColor('#5cb85c');
 		    shadowGroupChild[recordIndex].setVisible(true);
-// 	            recordGroup_doOB[recordIndex].addColor('#5cb85c', 0);
+// 	            recordGroup_optionOB[recordIndex].addColor('#5cb85c', 0);
 		}
 		if(cancel)
 		{
 // 		    record.clearTint();
 		    shadowGroupChild[recordIndex].setVisible(false);
-// 		    recordGroup_doOB[recordIndex].addColor('#f7f7f7', 0);
+// 		    recordGroup_optionOB[recordIndex].addColor('#f7f7f7', 0);
 		}
             }
 	    else
@@ -161,7 +161,7 @@ const recordUpload = {
 	if(!recordHover && recordIndex != -1)
 	{
             for(var i = 0 ; i < recordNum ; i++)
-                recordGroup_doOB[i].alpha = 0;
+                recordGroup_optionOB[i].alpha = 0;
 	}
 	
 	
