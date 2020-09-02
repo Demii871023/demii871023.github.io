@@ -74,6 +74,17 @@ const recordUpload = {
 	 
     },
     create: function(){
+	    
+	    
+	this.input.keyboard.on('keydown_W', this.yourFunction, this);
+	function yourFunction(event)
+	{
+		if (event.keyCode === Phaser.Input.Keyboard.KeyCodes.S) {
+        		console.log('S was pressed');
+    		} else if (event.keyCode === Phaser.Input.Keyboard.KeyCodes.W) {
+        		console.log('W was pressed');
+    		}
+	}
 	
 	// 生成畫面背景
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
