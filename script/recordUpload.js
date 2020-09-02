@@ -138,13 +138,13 @@ const recordUpload = {
 	    // 生成豆子的邊框
 
 	    shadowGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/4 + 20 + 180*(Math.floor(i%3)), player_record[i].do);
-            shadowGroupChild[i].setScale(0.3);
+            shadowGroupChild[i].setScale(beansScale);
 	    if(player_record[i].class == 'activity')
 	    {
 		  shadowGroupChild[i].setScale(0.15);
 	    }
     	    shadowGroupChild[i].tint = "0x00ff00";
-    	    shadowGroupChild[i].alpha = 0.3;
+    	    shadowGroupChild[i].alpha = 0.5;
 	    shadowGroupChild[i].setVisible(false);
 	}
 
