@@ -78,7 +78,7 @@ const recordUpload = {
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	// 生成 課外活動紀錄豆 
 	    
-	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
+// 	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
 	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
 	    
 	function showDoText(player, record)
@@ -88,8 +88,8 @@ const recordUpload = {
 		recordHover = true;
                 console.log("hover");
 		
-		doText.setText('Test');
-		doText.alpha = 1;
+// 		doText.setText('Test');
+// 		doText.alpha = 1;
                 recordIndex = recordGroup_subject.indexOf(record.texture.key);
 		recordGroup_doOB[recordIndex].alpha = 1;
             }
@@ -105,7 +105,7 @@ const recordUpload = {
 	// 沒有在 hover 的時候，該字透明
 	if(!recordHover && recordIndex != -1)
 	{
-	    doText.alpha = 0;
+// 	    doText.alpha = 0;
 // 	    recordGroup_doOB[recordIndex].alpha = 0;
 //             recordIndex = -1;
 	    
@@ -123,9 +123,9 @@ const recordUpload = {
         else
             player.setVelocityX(0);
 	
-	if(keyboard.up.isDown)
+	if(keyboard.down.isDown)
             player.setVelocityY(300);
-        else if(keyboard.down.isDown)
+        else if(keyboard.up.isDown)
             player.setVelocityY(-300);
         else
             player.setVelocityY(0);
