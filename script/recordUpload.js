@@ -15,6 +15,11 @@ var recordNum = 0;
 var recordIndex = -1;
 var recordHover = false;
 
+// 用於選取上傳科目 ( recordChosen：便是此紀錄使否被選取 / choose：是否執行存取動作 / cancel：是否執行取消動作)
+var recordChosen = new Array(40);
+var choose = false;
+var cancel = false;
+
 function strNEWLINE()
 {
     for(var i = 0 ; i < player_record.length ; i++)
@@ -70,18 +75,21 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成紀錄豆子
-	    recordGroup.create(cw/4 - 40, ch/4 + 100*i, player_record[i].subject);
+	    recordGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].subject);
             recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
-	    tempText = this.add.text(recordGroupChild[i].x + 35, recordGroupChild[i].y + 5, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempText = this.add.text(recordGroupChild[i].x + 35, recordGroupChild[i].y + 5, player_record[i].do, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    
 	    recordGroup_doOB[i] = tempText;
 	    recordGroup_doOB[i].alpha = 0;
-//             recordGroup_doOB[i].lineSpacing = 20;
 		
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
 	    recordGroup_subject[i] = player_record[i].subject;
 	    recordNum = recordNum + 1;
+		
+	    // 將所有紀錄設置為還未被選取
+            recordChosen[i] = false;
 	}
 	
 	
@@ -108,6 +116,17 @@ const recordUpload = {
 		
                 recordIndex = recordGroup_subject.indexOf(record.texture.key);
 		recordGroup_doOB[recordIndex].alpha = 1;
+		    
+		if(choose)
+		{
+		    record.setTint(0x5d5d2d);
+	            recordGroup_doOB[recordIndex].addColor('#5cb85c', 0);
+		}
+		if(cancel)
+		{
+		    record.clearTint();
+		    recordGroup_doOB[recordIndex].addColor('#f7f7f7', 0);
+		}
             }
 	    else
 		 recordHover = false;
@@ -139,6 +158,27 @@ const recordUpload = {
             player.setVelocityY(-300);
         else
             player.setVelocityY(0);
+	    
+	    
+	// 選擇上傳
+	if(keyboard.space.isDown)
+	{
+	    choose = true;
+	}
+	else
+	{
+	    choose = false;
+	}
+	    
+	if(keyboard.shift.isDown)
+	{
+            cancel = true;
+	}
+	else
+	{
+            cancel = false;
+	}
+		
 
     }
 }
