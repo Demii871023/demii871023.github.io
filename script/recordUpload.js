@@ -77,7 +77,7 @@ const recordUpload = {
     },
     create: function(){
 	    
-	uploadEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+	uploadEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 	
 	
 	// 生成畫面背景
@@ -242,7 +242,6 @@ const recordUpload = {
 	if(uploadEnter.isDown) {
    		console.log('A key pressed');
 	}
-}
 
     }
 }
