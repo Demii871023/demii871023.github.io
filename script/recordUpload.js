@@ -69,13 +69,12 @@ const recordUpload = {
 	shadowGroupChild = shadowGroup.getChildren();
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
-	    // 生成豆子的影子
+	    // 生成豆子的邊框
 	    shadowGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].subject);
-            shadowGroupChild[i].setScale(0.4);
-
-// 	    shadowGroupChild[i].anchor.y = shadowGroupChild[i].anchor.y - 0.5;
-    	    shadowGroupChild[i].tint = 0x000000;
-    	    shadowGroupChild[i].alpha = 0.6;
+            shadowGroupChild[i].setScale(0.3);
+    	    shadowGroupChild[i].tint = #5cb85c;
+    	    shadowGroupChild[i].alpha = 1;
+	    shadowGroupChild[i].setVisible(false);
 	}
 	    
 	// 生成 課業學科遮罩
@@ -136,13 +135,15 @@ const recordUpload = {
 		    
 		if(choose)
 		{
-		    record.setTint(0x5d5d2d);
+// 		    record.setTint(0x5d5d2d);
 		    recordGroup_doOB[recordIndex].color = '#5cb85c';
+		    shadowGroupChild[recordIndex].setVisible(true);
 // 	            recordGroup_doOB[recordIndex].addColor('#5cb85c', 0);
 		}
 		if(cancel)
 		{
-		    record.clearTint();
+// 		    record.clearTint();
+		    shadowGroupChild[recordIndex].setVisible(false);
 // 		    recordGroup_doOB[recordIndex].addColor('#f7f7f7', 0);
 		}
             }
