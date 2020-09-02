@@ -94,7 +94,7 @@ const recordUpload = {
 	// 沒有在 hover 的時候，該字透明
 	if(!recordHover)
 	{
-	    doText.alpha = 0;
+// 	    doText.alpha = 0;
 	}
 	    
 	let keyboard = this.input.keyboard.createCursorKeys();
