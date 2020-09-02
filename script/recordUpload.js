@@ -120,12 +120,13 @@ const recordUpload = {
 		if(choose)
 		{
 		    record.setTint(0x5d5d2d);
-	            recordGroup_doOB[recordIndex].addColor('#5cb85c', 0);
+		    recordGroup_doOB[recordIndex].fill = '#5cb85c';
+// 	            recordGroup_doOB[recordIndex].addColor('#5cb85c', 0);
 		}
 		if(cancel)
 		{
 		    record.clearTint();
-		    recordGroup_doOB[recordIndex].addColor('#f7f7f7', 0);
+// 		    recordGroup_doOB[recordIndex].addColor('#f7f7f7', 0);
 		}
             }
 	    else
