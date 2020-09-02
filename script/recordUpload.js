@@ -129,11 +129,11 @@ const recordUpload = {
 	    }
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
-	    tempOptionText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].option, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempOptionText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].option, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 6, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    recordGroup_optionOB[i] = tempOptionText;
 	    recordGroup_optionOB[i].alpha = 0;
 		
-	    tempClassText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 12, class_name[class_nameen.indexOf(player_record[i].class)], {color: "#FFFF93", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempClassText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 20, class_name[class_nameen.indexOf(player_record[i].class)], {color: "#FFFF93", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    recordGroup_classOB[i] = tempClassText;
 	    recordGroup_classOB[i].alpha = 0;
 		
