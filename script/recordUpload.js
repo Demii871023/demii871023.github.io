@@ -58,6 +58,14 @@ const recordUpload = {
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
 	    
+	// 生成 課業學科遮罩
+	maskSubject = this.add.graphics()
+        maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
+	    
+	// 生成 課外活動遮罩
+	maskActivity = this.add.graphics()
+        maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
+	    
 	    
 	// 生成玩家
 	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
@@ -77,9 +85,7 @@ const recordUpload = {
 	    shadowGroupChild[i].setVisible(false);
 	}
 	    
-	// 生成 課業學科遮罩
-	maskSubject = this.add.graphics()
-        maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
+	
 	
 	    
 	    
@@ -108,10 +114,7 @@ const recordUpload = {
 	    
 	
 	
-	
-	// 生成 課外活動遮罩
-	maskActivity = this.add.graphics()
-        maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
+
 	// 生成 課外活動紀錄豆
 	    
 	    
