@@ -34,6 +34,10 @@ const player_name = ['player1', 'player2', 'player3', 'player4', 'player5', 'pla
 const player_namezw = ['四神湯', '卍煞氣卍', '乂都都乂', '跑跑當家', '葡萄醣吳', '乂龘燚龘燚乂'];
 
 
+const activity_name = ['社團', '校隊', '科展'];
+const activity_nameen = ['Club', 'SchoolTeam', 'ScienceFair'];
+
+
 var eat = false;    // 偵測是否執行動作：吃
 var spaceCounter = 0;
 
