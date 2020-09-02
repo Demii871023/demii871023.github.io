@@ -1,9 +1,12 @@
 
-// 存放使用者所選擇過的紀錄
+// 存放使用者所選擇過的紀錄 (class：類別-> 課業學科 or 課外活動 / get：獲得一份... / do：類別下的子類別 / option：針對子類別做的選擇)
 var player_record = [
     {class:'subject', get:'', do: 'Langugage' , option: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
     {class:'subject', get:'', do: 'Math' , option: "解題課本例題與習題題目，達成學校最低程度的理解。"},
     {class:'subject', get:'', do: 'Social' , option: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
+    {class:'activity', get:'', do: 'Club' , option: "在社團時間，認真投入且遇到困難或錯誤時會自我修正和積極改善。"},
+    {class:'activity', get:'', do: 'SchoolTeam' , option: "對此項目充分理解(如:觀看職業比賽影片、學長姐經驗)、抱有高度熱忱與決心，與隊友們彼此討論、合作，並在固定訓練時間外，在基礎訓練上進行改良或創新。"},
+    {class:'activity', get:'', do: 'ScienceFair' , option: "跟隨科展的要求，遵循指導老師和同組員的指示執行實作工作。"},
 ]
 
 // 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_do：用於存放產生紀錄的 do name / recordGroup_optionOB：用於存放紀錄的文字物件 )
@@ -50,7 +53,12 @@ const recordUpload = {
         this.load.image('Health', 'image/18College/4.png');
         this.load.image('Social', 'image/18College/12.png');
         this.load.image('Art', 'image/18College/9.png');
-        
+	    
+	// 3 個課外活動
+	this.load.image('Club', 'image/Activity/Club.png');
+	this.load.image('SchoolTeam', 'image/Activity/SchoolTem.png');
+	this.load.image('ScienceFair', 'image/Activity/ScienceFair.png');
+	 
     },
     create: function(){
 	
