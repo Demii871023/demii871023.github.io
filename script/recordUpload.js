@@ -86,8 +86,14 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成豆子的邊框
+	    console.log(i/4);
+	    console.log(i%4);
 	    shadowGroup.create(cw/4 - 100 + 450*(i/4), ch/3 + 100*(i%4), player_record[i].do);
             shadowGroupChild[i].setScale(0.3);
+	    if(player_record[i].class == 'activity')
+	    {
+		  shadowGroupChild[i].setScale(0.25);
+	    }
     	    shadowGroupChild[i].tint = "0x00ff00";
     	    shadowGroupChild[i].alpha = 1;
 	    shadowGroupChild[i].setVisible(false);
