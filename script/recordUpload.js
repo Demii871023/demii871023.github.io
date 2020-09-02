@@ -11,6 +11,8 @@ var player_record = [
 
 // 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_do：用於存放產生紀錄的 do name / recordGroup_optionOB：用於存放紀錄的文字物件 )
 var recordGroup_do = new Array(40);
+var recordGroup_classOB = new Array(40);
+var recordGroup_getOB = new Array(40);
 var recordGroup_optionOB = new Array(40);
 var recordNum = 0;
 
@@ -123,10 +125,13 @@ const recordUpload = {
 	    }
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
-	    tempText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].option, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
-	    
-	    recordGroup_optionOB[i] = tempText;
+	    tempOptionText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].option, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    recordGroup_optionOB[i] = tempOptionText;
 	    recordGroup_optionOB[i].alpha = 0;
+		
+	    tempClassText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 5, player_record[i].class, {color: "#f0ad4e", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    recordGroup_classOB[i] = tempClassText;
+	    recordGroup_classOB[i].alpha = 0;
 		
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
 	    recordGroup_do[i] = player_record[i].do;
@@ -153,7 +158,6 @@ const recordUpload = {
 	    shadowGroupChild[i].setVisible(false);
 	}
 
-	// 生成 課外活動紀錄豆
 	    
 	    
 	// 類別標題
@@ -169,15 +173,13 @@ const recordUpload = {
             if(abs(player.x, record.x) < 15 && abs(player.y, record.y) < 20)
             {
 		recordHover = true;
-                console.log("hover");
 		
                 recordIndex = recordGroup_do.indexOf(record.texture.key);
 		recordGroup_optionOB[recordIndex].alpha = 1;
+		recordGroup_classOB[recordIndex].alpha = 1;
 		    
 		if(choose)
 		{
-// 		    record.setTint(0x5d5d2d);
-// 		    recordGroup_optionOB[recordIndex].setColor('#5cb85c');
 		    shadowGroupChild[recordIndex].setVisible(true);
 // 	            recordGroup_optionOB[recordIndex].addColor('#5cb85c', 0);
 		}
@@ -222,25 +224,19 @@ const recordUpload = {
 	    
 	// 選擇上傳
 	if(keyboard.space.isDown)
-	{
 	    choose = true;
-	}
 	else
-	{
 	    choose = false;
-	}
 	    
+	// 取消上傳
 	if(keyboard.shift.isDown)
-	{
             cancel = true;
-	}
 	else
-	{
             cancel = false;
-	}
 
+	// 若按下 Enter 鍵，就代表上傳完畢
 	if(uploadEnter.isDown) {
-   		console.log('A key pressed');
+   		console.log('上傳完畢');
 	}
 
     }
