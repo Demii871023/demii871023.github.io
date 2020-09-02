@@ -189,7 +189,7 @@ const doSubject = {
         }
 	    
         // 新增提示字樣
-        tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵進入遊戲', {color: "#FFFFFF", fontSize:'14px'});
+        tipsText = this.add.text(cw - 200, ch - 50, '請使用上下鍵選擇你想要的選項，\n並按下空白鍵進入遊戲。', {color: "#FFFFFF", fontSize:'14px'});
             
         document.getElementById('challengeTimer').style.visibility = "visible";
         document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
