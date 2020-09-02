@@ -90,9 +90,9 @@ const recordUpload = {
 	// 生成 課外活動紀錄豆
 	    
 	    
-	    
+	// 類別標題
 	subjectTitle = this.add.text(cw/2 - cw/4, 20, '課業學科', {color: "#FFEE48", fontSize:'35px'});
-	activityTitle = this.add.text(cw/2 - cw/4, 20, '課外活動', {color: "#FFEE48", fontSize:'35px'});
+	activityTitle = this.add.text(cw/2 + cw/4, 20, '課外活動', {color: "#FFEE48", fontSize:'35px'});
 	    
 	    
 	    
@@ -100,7 +100,7 @@ const recordUpload = {
 	    
 	function showDoText(player, record)
 	{
-            if(abs(player.x, record.x) < 10 && abs(player.y, record.y) < 10)
+            if(abs(player.x, record.x) < 15 && abs(player.y, record.y) < 15)
             {
 		recordHover = true;
                 console.log("hover");
