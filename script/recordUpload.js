@@ -70,9 +70,9 @@ const recordUpload = {
                 console.log("hover");
 		
 		doText.setText('Test');
-		doText.alpha = 0.2;
-		doText.x = record.x + 20;
-		doText.y = record.y;
+		doText.alpha = 1;
+// 		doText.x = record.x + 20;
+// 		doText.y = record.y;
                 console.log("==========");
 		console.log(record.x);
 		console.log(record.y);
@@ -98,7 +98,7 @@ const recordUpload = {
 	// 沒有在 hover 的時候，該字透明
 	if(!recordHover)
 	{
-// 	    doText.alpha = 0;
+	    doText.alpha = 0;
 	}
 	    
 	let keyboard = this.input.keyboard.createCursorKeys();
