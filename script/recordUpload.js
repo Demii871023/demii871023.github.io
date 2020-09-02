@@ -70,8 +70,8 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成紀錄豆子
-	    recordGroup.create(cw/4, ch/4 + 200*i, player_record[i].subject);
-            recordGroupChild[i].setScale(0.5);
+	    recordGroup.create(cw/4, ch/4 + 100*i, player_record[i].subject);
+            recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字
 	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 50, useAdvancedWrap: true }});
@@ -88,6 +88,13 @@ const recordUpload = {
 	maskActivity = this.add.graphics()
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	// 生成 課外活動紀錄豆
+	    
+	    
+	    
+	subjectTitle = this.add.text(cw/2 - cw/4, 20, '課業學科', {color: "#FFEE48", fontSize:'35px'});
+	activityTitle = this.add.text(cw/2 - cw/4, 20, '課外活動', {color: "#FFEE48", fontSize:'35px'});
+	    
+	    
 	    
 	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
 	    
