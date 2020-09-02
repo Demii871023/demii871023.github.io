@@ -34,6 +34,17 @@ function strNEWLINE()
 const recordUpload = {
     key: 'recordUpload',
     preload: function(){
+	
+	// 隱藏玩家能力數值卡
+	document.getElementById('playerStatusCard').style.visibility = 'hidden';
+	    
+	// 顯示 gm 聊天卡
+	document.getElementById('gmChatCard').style.display = 'block';
+	document.getElementById('gmChatCard').style.left = '10%';
+	document.getElementById('gmChatCard').style.width = '35%';
+	document.getElementById('gmChatCardText').innerHTML = "請按下空白鍵來選擇一些項目上傳做為學習歷程檔案的作品";
+	
+	    
         this.load.image('bg1', 'image/Background/jungle-clipart-background-6.jpg');
 	    
 	// 載入玩家圖片
