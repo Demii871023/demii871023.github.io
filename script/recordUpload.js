@@ -1,15 +1,17 @@
+
+// 存放使用者所選擇過的紀錄
 var player_record = [
     {subject: 'Langugage' , do: "將課文內容吸收後，用自己的語\n言寫下筆記，\n並複習完成後的作業，對課文有更深刻\n的理解與記憶。"},
     {subject: 'Math' , do: "解題課本例題與習題題目，達成學校最低程度的理解。"},
     {subject: 'Social' , do: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
 
-// 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_subject：用於存放產生紀錄的 subject name / recordGroup_doOB：用於存放紀錄的文字物件 / recordIndex：用來搜尋 array 使用的 index 數 )
+// 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_subject：用於存放產生紀錄的 subject name / recordGroup_doOB：用於存放紀錄的文字物件 )
 var recordGroup_subject = new Array(40);
 var recordGroup_doOB = new Array(40);
-var recordIndex;
 
-
+// recordIndex：用來搜尋 array 使用的 index 數，-1 代表清空 hover 事件 / recordHover：用於判斷是否有觸發 hover 事件
+var recordIndex = -1;
 var recordHover = false;
 
 const recordUpload = {
@@ -99,10 +101,11 @@ const recordUpload = {
     },
     update: function(){
 	// 沒有在 hover 的時候，該字透明
-	if(!recordHover)
+	if(!recordHover && recordIndex != -1)
 	{
 	    doText.alpha = 0;
 	    recordGroup_doOB[recordIndex].alpha = 0;
+            recordIndex = -1;
 	}
 	    
 	let keyboard = this.input.keyboard.createCursorKeys();
