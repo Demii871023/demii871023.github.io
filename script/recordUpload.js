@@ -1,5 +1,5 @@
 var player_record = [
-    {subject: 'Langugage' , do: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
+    {subject: 'Langugage' , do: "將課文內容吸收後，用自己的語\n言寫下筆記，\n並複習完成後的作業，對課文有更深刻\n的理解與記憶。"},
     {subject: 'Math' , do: "解題課本例題與習題題目，達成學校最低程度的理解。"},
     {subject: 'Social' , do: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
@@ -100,6 +100,7 @@ const recordUpload = {
 	if(!recordHover)
 	{
 	    doText.alpha = 0;
+	    recordGroup_doOB[recordIndex].alpha = 0;
 	}
 	    
 	let keyboard = this.input.keyboard.createCursorKeys();
@@ -108,6 +109,13 @@ const recordUpload = {
             player.setVelocityX(300);
         else if(keyboard.left.isDown)
             player.setVelocityX(-300);
+        else
+            player.setVelocityX(0);
+	
+	if(keyboard.up.isDown)
+            player.setVelocityY(300);
+        else if(keyboard.down.isDown)
+            player.setVelocityY(-300);
         else
             player.setVelocityX(0);
 
