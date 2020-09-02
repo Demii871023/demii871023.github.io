@@ -9,6 +9,10 @@ var player_record = [
     {class:'activity', get:'', do: 'ScienceFair' , option: "跟隨科展的要求，遵循指導老師和同組員的指示執行實作工作。"},
 ]
 
+
+const class_name = ['課業學科', '課外活動'];
+const class_nameen = ['subject', 'activity'];
+
 // 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_do：用於存放產生紀錄的 do name / recordGroup_optionOB：用於存放紀錄的文字物件 )
 var recordGroup_do = new Array(40);
 var recordGroup_classOB = new Array(40);
@@ -129,7 +133,7 @@ const recordUpload = {
 	    recordGroup_optionOB[i] = tempOptionText;
 	    recordGroup_optionOB[i].alpha = 0;
 		
-	    tempClassText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 5, player_record[i].class, {color: "#f0ad4e", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempClassText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 12, class_name[class_nameen.indexOf(player_record[i].class)], {color: "#FFFF93", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    recordGroup_classOB[i] = tempClassText;
 	    recordGroup_classOB[i].alpha = 0;
 		
@@ -202,6 +206,8 @@ const recordUpload = {
 	{
             for(var i = 0 ; i < recordNum ; i++)
                 recordGroup_optionOB[i].alpha = 0;
+            for(var i = 0 ; i < recordNum ; i++)
+		recordGroup_classOB[i].alpha = 0;
 	}
 	
 	
