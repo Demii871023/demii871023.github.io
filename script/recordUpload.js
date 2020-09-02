@@ -69,7 +69,7 @@ const recordUpload = {
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	// 生成 課外活動紀錄豆 
 	    
-// 	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
+	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
 	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
 	    
 	function showDoText(player, record)
