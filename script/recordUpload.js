@@ -9,6 +9,7 @@ var player_record = [
 // 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_subject：用於存放產生紀錄的 subject name / recordGroup_doOB：用於存放紀錄的文字物件 )
 var recordGroup_subject = new Array(40);
 var recordGroup_doOB = new Array(40);
+var recordNum = 0;
 
 // recordIndex：用來搜尋 array 使用的 index 數，-1 代表清空 hover 事件 / recordHover：用於判斷是否有觸發 hover 事件
 var recordIndex = -1;
@@ -67,7 +68,8 @@ const recordUpload = {
 		
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
 	    recordGroup_subject[i] = player_record[i].subject;
-		
+	    recordNum = recordNum + 1;
+
 	}
 	
 	
@@ -101,12 +103,15 @@ const recordUpload = {
     },
     update: function(){
 	// 沒有在 hover 的時候，該字透明
-	if(!recordHover)
+	if(!recordHover && recordIndex != -1)
 	{
 	    doText.alpha = 0;
 // 	    recordGroup_doOB[recordIndex].alpha = 0;
 //             recordIndex = -1;
-            
+	    
+            for(var i = 0 ; i < recordNum ; i++)
+                recordGroup_doOB[i].alpha = 0;
+ 
 	}
 	    
 	let keyboard = this.input.keyboard.createCursorKeys();
