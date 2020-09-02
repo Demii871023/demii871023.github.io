@@ -41,10 +41,10 @@ const recordUpload = {
 	// 顯示 gm 聊天卡
 	document.getElementById('gmChatCard').style.display = 'block';
 	document.getElementById('gmChatCard').style.top = '5%';
-	document.getElementById('gmChatCard').style.left = '10%';
+	document.getElementById('gmChatCard').style.left = '5%';
 	document.getElementById('gmChatCard').style.width = '35%';
 	document.getElementById('gmChatCard').style.height = '10%';
-	document.getElementById('gmChatCardText').innerHTML = "請按下空白鍵來選擇一些項目上傳做為學習歷程檔案的作品";
+	document.getElementById('gmChatCardText').innerHTML = "可按下空白鍵來選擇多個項目上傳做為學習歷程檔案的作品。\n若選擇完畢請按下 Enter 鍵上傳。";
 	
 	    
         this.load.image('bg1', 'image/Background/jungle-clipart-background-6.jpg');
