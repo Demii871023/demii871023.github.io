@@ -23,6 +23,8 @@ var recordChosen = new Array(40);
 var choose = false;
 var cancel = false;
 
+var uploadEnter;
+
 function strNEWLINE()
 {
     for(var i = 0 ; i < player_record.length ; i++)
@@ -75,16 +77,8 @@ const recordUpload = {
     },
     create: function(){
 	    
-	    
-	this.input.keyboard.on('keydown_W', this.yourFunction, this);
-	function yourFunction(event)
-	{
-		if (event.keyCode === Phaser.Input.Keyboard.KeyCodes.S) {
-        		console.log('S was pressed');
-    		} else if (event.keyCode === Phaser.Input.Keyboard.KeyCodes.W) {
-        		console.log('W was pressed');
-    		}
-	}
+	uploadEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+	
 	
 	// 生成畫面背景
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
@@ -244,7 +238,11 @@ const recordUpload = {
 	{
             cancel = false;
 	}
-		
+
+	if(uploadEnter.isDown) {
+   		console.log('A key pressed');
+	}
+}
 
     }
 }
