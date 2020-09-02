@@ -4,8 +4,8 @@ var player_record = [
     {subject: 'Social' , do: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
 
-var recordTextOBGroup = [];
-var recordTextOBGroup2 = new Array(40);
+var recordGroup_subject = new Array(40);
+var recordGroup_doOB = new Array(40);
 
 
 var recordHover = false;
@@ -54,12 +54,15 @@ const recordUpload = {
 	// 生成 課業學科紀錄豆
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
-	    recordGroup.create(cw/4, ch/4 - 200*i, player_record[i].subject);
+	    recordGroup.create(cw/4, ch/4 + 200*i, player_record[i].subject);
             recordGroupChild[i].setScale(0.5);
-	    // 加入記錄說明文字物件，並將其存放進入陣列裡面
+	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字
 	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px'});
-// 	    recordTextGroup.push(tempText);
-	    recordTextOBGroup2[i] = tempText;
+	    recordGroup_doOB[i] = tempText;
+	    recordGroup_doOB[i].alpha = 0;
+		
+	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
+	    recordGroup_subject[i] = player_record[i].subject;
 		
 	}
 	
@@ -81,11 +84,8 @@ const recordUpload = {
 		
 		doText.setText('Test');
 		doText.alpha = 1;
-                console.log(player_record.indexOf(record.texture.key));
-//                 modalOpen(subject_nameen.indexOf(beans.texture.key));
-//                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
-//                 beansTmp = beans;
-//                 beans.setVisible(false);
+                recordIndex = recordGroup_subject.indexOf(record.texture.key);
+		recordGroup_doOB[recordIndex].alpha = 1;
             }
 	    else
             {
