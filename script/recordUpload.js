@@ -86,7 +86,7 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成豆子的邊框
-	    shadowGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].do);
+	    shadowGroup.create(cw/4 - 100 + 450*(i/4), ch/3 + 100*(i%4), player_record[i].do);
             shadowGroupChild[i].setScale(0.3);
     	    shadowGroupChild[i].tint = "0x00ff00";
     	    shadowGroupChild[i].alpha = 1;
@@ -103,8 +103,12 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成紀錄豆子
-	    recordGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].do);
+	    recordGroup.create(cw/4 - 100 + 450*(i/4), ch/3 + 100*(i%4), player_record[i].do);
             recordGroupChild[i].setScale(beansScale);
+	    if(player_record[i].class == 'activity')
+	    {
+		  recordGroupChild[i].setScale(0.15);
+	    }
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
 	    tempText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].option, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
