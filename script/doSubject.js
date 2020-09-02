@@ -269,7 +269,7 @@ const doSubject = {
 		    console.log("上");
 		}
 	    }
-	    if(keyboard.down.isDown)
+	    else if(keyboard.down.isDown)
 	    {
 		if(!optionInput)
 		{
@@ -292,6 +292,8 @@ const doSubject = {
 	    {
 		optionInput = false;
 	    }
+		
+
 	    if(keyboard.space.isDown)
 	    {
 		    if(!optionView)
