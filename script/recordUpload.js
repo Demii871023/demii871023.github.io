@@ -4,8 +4,10 @@ var player_record = [
     {subject: 'Social' , do: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
 
+// 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_subject：用於存放產生紀錄的 subject name / recordGroup_doOB：用於存放紀錄的文字物件 / recordIndex：用來搜尋 array 使用的 index 數 )
 var recordGroup_subject = new Array(40);
 var recordGroup_doOB = new Array(40);
+var recordIndex;
 
 
 var recordHover = false;
