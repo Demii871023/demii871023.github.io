@@ -72,7 +72,8 @@ const recordUpload = {
 	    // 生成豆子的影子
 	    shadowGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].subject);
             shadowGroupChild[i].setScale(0.4);
-	    shadowGroupChild[i].setAnchor(0.5);
+	    shadowGroupChild[i].anchor.x = shadowGroupChild[i].anchor.x - 0.5;
+	    shadowGroupChild[i].anchor.y = shadowGroupChild[i].anchor.y - 0.5;
     	    shadowGroupChild[i].tint = 0x000000;
     	    shadowGroupChild[i].alpha = 0.6;
 	}
