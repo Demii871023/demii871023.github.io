@@ -40,8 +40,10 @@ const recordUpload = {
 	    
 	// 顯示 gm 聊天卡
 	document.getElementById('gmChatCard').style.display = 'block';
+	document.getElementById('gmChatCard').style.top = '5%';
 	document.getElementById('gmChatCard').style.left = '10%';
 	document.getElementById('gmChatCard').style.width = '35%';
+	document.getElementById('gmChatCard').style.height = '10%';
 	document.getElementById('gmChatCardText').innerHTML = "請按下空白鍵來選擇一些項目上傳做為學習歷程檔案的作品";
 	
 	    
@@ -108,7 +110,7 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成紀錄豆子
-	    recordGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/3 + 20 + 170*(Math.floor(i%3)), player_record[i].do);
+	    recordGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/4 + 20 + 180*(Math.floor(i%3)), player_record[i].do);
             recordGroupChild[i].setScale(beansScale);
 	    if(player_record[i].class == 'activity')
 	    {
@@ -135,7 +137,7 @@ const recordUpload = {
 	{
 	    // 生成豆子的邊框
 
-	    shadowGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/3 + 20 + 170*(Math.floor(i%3)), player_record[i].do);
+	    shadowGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/4 + 20 + 180*(Math.floor(i%3)), player_record[i].do);
             shadowGroupChild[i].setScale(0.3);
 	    if(player_record[i].class == 'activity')
 	    {
