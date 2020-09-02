@@ -101,11 +101,12 @@ const recordUpload = {
     },
     update: function(){
 	// 沒有在 hover 的時候，該字透明
-	if(!recordHover && recordIndex != -1)
+	if(!recordHover)
 	{
 	    doText.alpha = 0;
-	    recordGroup_doOB[recordIndex].alpha = 0;
-            recordIndex = -1;
+// 	    recordGroup_doOB[recordIndex].alpha = 0;
+//             recordIndex = -1;
+            
 	}
 	    
 	let keyboard = this.input.keyboard.createCursorKeys();
