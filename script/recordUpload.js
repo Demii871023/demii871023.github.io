@@ -41,6 +41,8 @@ const recordUpload = {
 	
 	recordGroup = this.physics.add.group();
 	recordGroupChild = recordGroup.getChildren();
+	// 用來存放紀錄說明文字物件的陣列
+	recordTextOBGroup = [];
 	    
 	    
 	// 生成 課業學科遮罩
@@ -51,6 +53,10 @@ const recordUpload = {
 	{
 	    recordGroup.create(cw/4, ch/4 - 200*i, player_record[i].subject);
             recordGroupChild[i].setScale(0.5);
+	    // 加入記錄說明文字物件，並將其存放進入陣列裡面
+	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px'});
+	    recordTextGroup.push(tempText);
+		
 	}
 	
 	
@@ -59,7 +65,7 @@ const recordUpload = {
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	// 生成 課外活動紀錄豆 
 	    
-	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
+// 	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
 	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
 	    
 	function showDoText(player, record)
@@ -71,16 +77,7 @@ const recordUpload = {
 		
 		doText.setText('Test');
 		doText.alpha = 1;
-// 		doText.x = record.x + 20;
-// 		doText.y = record.y;
-                console.log("==========");
-		console.log(record.x);
-		console.log(record.y);
-		console.log("==========");
-		console.log(doText.x);
-		console.log(doText.y);
-		console.log("==========");
-//                 subject_select = subject_nameen.indexOf(beans.texture.key);
+                console.log(player_record.indexOf(record.texture.key));
 //                 modalOpen(subject_nameen.indexOf(beans.texture.key));
 //                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
 //                 beansTmp = beans;
