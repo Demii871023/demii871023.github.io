@@ -86,9 +86,8 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成豆子的邊框
-	    console.log(Math.floor(i/4));
-	    console.log(Math.floor(i%4));
-	    shadowGroup.create(cw/5 - 200 + 500*(Math.floor(i/4)), ch/3 + 20 + 110*(Math.floor(i%4)), player_record[i].do);
+
+	    shadowGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/3 + 20 + 170*(Math.floor(i%3)), player_record[i].do);
             shadowGroupChild[i].setScale(0.3);
 	    if(player_record[i].class == 'activity')
 	    {
@@ -109,7 +108,7 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成紀錄豆子
-	    recordGroup.create(cw/5 - 200 + 500*(Math.floor(i/4)), ch/3 + 20 + 110*(Math.floor(i%4)), player_record[i].do);
+	    recordGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/3 + 20 + 170*(Math.floor(i%3)), player_record[i].do);
             recordGroupChild[i].setScale(beansScale);
 	    if(player_record[i].class == 'activity')
 	    {
