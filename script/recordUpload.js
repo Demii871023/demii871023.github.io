@@ -114,11 +114,16 @@ const recordUpload = {
 	{
 	    // 生成紀錄豆子
 	    recordGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/4 + 20 + 180*(Math.floor(i%3)), player_record[i].do);
+            
             recordGroupChild[i].setScale(beansScale);
 	    if(player_record[i].class == 'activity')
 	    {
 		  recordGroupChild[i].setScale(0.15);
 	    }
+
+	    // 開啟 data 設置權限，並為每個 sprite 設置唯一的 id
+	    recordGroupChild[i].setDataEnabled();
+            recordGroupChild[i].setData('id', player_record[i].id);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
 	    tempOptionText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].option, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 6, wordWrap: { width: 400, useAdvancedWrap: true }});
@@ -172,6 +177,7 @@ const recordUpload = {
             if(abs(player.x, record.x) < 15 && abs(player.y, record.y) < 20)
             {
 		recordHover = true;
+		console.log(record.getData('id'));
 		
                 recordIndex = recordGroup_do.indexOf(record.texture.key);
 		recordGroup_optionOB[recordIndex].alpha = 1;
