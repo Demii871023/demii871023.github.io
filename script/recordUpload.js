@@ -115,12 +115,24 @@ const recordUpload = {
 	    // 生成紀錄豆子
 	    recordGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/4 + 20 + 180*(Math.floor(i%3)), player_record[i].do);
             
-            recordGroupChild[i].setScale(beansScale);
+            if(player_record[i].class == 'subject')
+	    {
+		recordGroupChild[i].setScale(beansScale);
+		tempDoText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 25, subject_name[subject_nameen.indexOf(player_record[i].do)], {color: "#FFFF93", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+
+	    }
+            
 	    if(player_record[i].class == 'activity')
 	    {
-		  recordGroupChild[i].setScale(0.15);
+		recordGroupChild[i].setScale(0.15);
+		tempDoText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 25, activity_name[activity_nameen.indexOf(player_record[i].do)], {color: "#FFFF93", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+
 	    }
 
+	    recordGroup_doOB[i] = tempDoText;
+	    recordGroup_doOB[i].alpha = 0;
+		
+		
 	    // 開啟 data 設置權限，並為每個 sprite 設置唯一的 id
 	    recordGroupChild[i].setDataEnabled();
             recordGroupChild[i].setData('id', player_record[i].id);
@@ -130,7 +142,7 @@ const recordUpload = {
 	    recordGroup_optionOB[i] = tempOptionText;
 	    recordGroup_optionOB[i].alpha = 0;
 		
-	    tempClassText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 20, class_name[class_nameen.indexOf(player_record[i].class)], {color: "#FFFF93", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempClassText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y - 45, class_name[class_nameen.indexOf(player_record[i].class)], {color: "#FFFF93", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    recordGroup_classOB[i] = tempClassText;
 	    recordGroup_classOB[i].alpha = 0;
 		
@@ -183,6 +195,7 @@ const recordUpload = {
 		recordIndex = record.getData('id');
 		recordGroup_optionOB[recordIndex].alpha = 1;
 		recordGroup_classOB[recordIndex].alpha = 1;
+		recordGroup_doOB[recordIndex].alpha = 1;
 		    
 		if(choose)
 		{
@@ -204,9 +217,12 @@ const recordUpload = {
 	if(!recordHover && recordIndex != -1)
 	{
             for(var i = 0 ; i < recordNum ; i++)
+	    {
                 recordGroup_optionOB[i].alpha = 0;
-            for(var i = 0 ; i < recordNum ; i++)
 		recordGroup_classOB[i].alpha = 0;
+		recordGroup_doOB[i].alpha = 0;
+	    }
+		
 	}
 	
 	
