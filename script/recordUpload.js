@@ -70,11 +70,11 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成紀錄豆子
-	    recordGroup.create(cw/4, ch/4 + 100*i, player_record[i].subject);
+	    recordGroup.create(cw/4 - 40, ch/4 + 100*i, player_record[i].subject);
             recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字
-	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempText = this.add.text(recordGroupChild[i].x + 20, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 400, useAdvancedWrap: true }});
 	    recordGroup_doOB[i] = tempText;
 	    recordGroup_doOB[i].alpha = 0;
 		
