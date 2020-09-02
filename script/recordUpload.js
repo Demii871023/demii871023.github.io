@@ -122,7 +122,7 @@ const recordUpload = {
         else if(keyboard.down.isDown)
             player.setVelocityY(-300);
         else
-            player.setVelocityX(0);
+            player.setVelocityY(0);
 
     }
 }
