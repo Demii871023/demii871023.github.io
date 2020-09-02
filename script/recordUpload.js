@@ -4,6 +4,9 @@ var player_record = [
     {subject: 'Social' , do: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
 
+var recordTextOBGroup = [];
+var recordTextOBGroup2 = new Array(40);
+
 
 var recordHover = false;
 
@@ -42,7 +45,7 @@ const recordUpload = {
 	recordGroup = this.physics.add.group();
 	recordGroupChild = recordGroup.getChildren();
 	// 用來存放紀錄說明文字物件的陣列
-	recordTextOBGroup = [];
+	
 	    
 	    
 	// 生成 課業學科遮罩
@@ -56,6 +59,7 @@ const recordUpload = {
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面
 	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px'});
 	    recordTextGroup.push(tempText);
+	    recordTextOBGroup2[i] = tempText;
 		
 	}
 	
