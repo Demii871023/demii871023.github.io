@@ -136,7 +136,7 @@ const recordUpload = {
 		if(choose)
 		{
 // 		    record.setTint(0x5d5d2d);
-		    recordGroup_doOB[recordIndex].color = '#5cb85c';
+		    recordGroup_doOB[recordIndex].setColor('#5cb85c');
 		    shadowGroupChild[recordIndex].setVisible(true);
 // 	            recordGroup_doOB[recordIndex].addColor('#5cb85c', 0);
 		}
