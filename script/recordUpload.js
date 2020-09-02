@@ -40,27 +40,26 @@ const recordUpload = {
         
     },
     create: function(){
-	    
+	
+	// 生成畫面背景
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
-	    
-	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
-	player.setScale(playerScale);
-	
+
 	recordGroup = this.physics.add.group();
 	recordGroupChild = recordGroup.getChildren();
-	// 用來存放紀錄說明文字物件的陣列
-	
-	    
+
 	    
 	// 生成 課業學科遮罩
 	maskSubject = this.add.graphics()
         maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
+	
 	// 生成 課業學科紀錄豆
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
+	    // 生成紀錄豆子
 	    recordGroup.create(cw/4, ch/4 + 200*i, player_record[i].subject);
             recordGroupChild[i].setScale(0.5);
+	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字
 	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px'});
 	    recordGroup_doOB[i] = tempText;
@@ -69,16 +68,20 @@ const recordUpload = {
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
 	    recordGroup_subject[i] = player_record[i].subject;
 	    recordNum = recordNum + 1;
-
 	}
 	
 	
 	// 生成 課外活動遮罩
 	maskActivity = this.add.graphics()
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
-	// 生成 課外活動紀錄豆 
+	// 生成 課外活動紀錄豆
 	    
-// 	doText = this.add.text(20, 20, 'TTTTTT', {color: "#FFFFFF", fontSize:'20px'});
+
+	    
+	// 生成玩家
+	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
+	player.setScale(playerScale);
+	    
 	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
 	    
 	function showDoText(player, record)
@@ -88,32 +91,24 @@ const recordUpload = {
 		recordHover = true;
                 console.log("hover");
 		
-// 		doText.setText('Test');
-// 		doText.alpha = 1;
                 recordIndex = recordGroup_subject.indexOf(record.texture.key);
 		recordGroup_doOB[recordIndex].alpha = 1;
             }
 	    else
-            {
 		 recordHover = false;
-            }
 	}
 
 
     },
     update: function(){
-	// 沒有在 hover 的時候，該字透明
+	// 沒有在 hover 的時候，所有文字設置為透明
 	if(!recordHover && recordIndex != -1)
 	{
-// 	    doText.alpha = 0;
-// 	    recordGroup_doOB[recordIndex].alpha = 0;
-//             recordIndex = -1;
-	    
             for(var i = 0 ; i < recordNum ; i++)
                 recordGroup_doOB[i].alpha = 0;
- 
 	}
-	    
+	
+	
 	let keyboard = this.input.keyboard.createCursorKeys();
 	// 角色左右移動
         if(keyboard.right.isDown)
@@ -122,7 +117,7 @@ const recordUpload = {
             player.setVelocityX(-300);
         else
             player.setVelocityX(0);
-	
+	// 角色上下移動
 	if(keyboard.down.isDown)
             player.setVelocityY(300);
         else if(keyboard.up.isDown)
