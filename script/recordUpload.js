@@ -63,14 +63,28 @@ const recordUpload = {
 	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
 	player.setScale(playerScale);
 
-	recordGroup = this.physics.add.group();
-	recordGroupChild = recordGroup.getChildren();
-
+	
+	    
+	shadowGroup = this.physics.add.group();
+	shadowGroupChild = shadowGroup.getChildren();
+	for(var i = 0 ; i < player_record.length ; i++)
+	{
+	    // 生成豆子的影子
+	    shadowGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].subject);
+            shadowGroupChild[i].setScale(0.4);
+	    shadowGroupChild[i].anchor.set(0.5);
+    	    shadowGroupChild[i].tint = 0x000000;
+    	    shadowGroupChild[i].alpha = 0.6;
+	}
 	    
 	// 生成 課業學科遮罩
 	maskSubject = this.add.graphics()
         maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
 	
+	    
+	    
+	recordGroup = this.physics.add.group();
+	recordGroupChild = recordGroup.getChildren();
 	// 生成 課業學科紀錄豆
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
@@ -79,7 +93,7 @@ const recordUpload = {
             recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
-	    tempText = this.add.text(recordGroupChild[i].x + 35, recordGroupChild[i].y + 5, player_record[i].do, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempText = this.add.text(recordGroupChild[i].x + 35, recordGroupChild[i].y + 5, player_record[i].do, {color: "#f7f7f7", fontSize:'12px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    
 	    recordGroup_doOB[i] = tempText;
 	    recordGroup_doOB[i].alpha = 0;
@@ -91,6 +105,8 @@ const recordUpload = {
 	    // 將所有紀錄設置為還未被選取
             recordChosen[i] = false;
 	}
+	    
+	
 	
 	
 	// 生成 課外活動遮罩
