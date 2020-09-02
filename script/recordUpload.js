@@ -72,7 +72,7 @@ const recordUpload = {
 	    // 生成豆子的邊框
 	    shadowGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].subject);
             shadowGroupChild[i].setScale(0.3);
-    	    shadowGroupChild[i].tint = #5cb85c;
+    	    shadowGroupChild[i].tint = "#5cb85c";
     	    shadowGroupChild[i].alpha = 1;
 	    shadowGroupChild[i].setVisible(false);
 	}
