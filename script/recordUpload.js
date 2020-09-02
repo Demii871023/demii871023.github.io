@@ -1,12 +1,12 @@
 
 // 存放使用者所選擇過的紀錄 (class：類別-> 課業學科 or 課外活動 / get：獲得一份... / do：類別下的子類別 / option：針對子類別做的選擇)
 var player_record = [
-    {class:'subject', get:'', do: 'Langugage' , option: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
-    {class:'subject', get:'', do: 'Math' , option: "解題課本例題與習題題目，達成學校最低程度的理解。"},
-    {class:'subject', get:'', do: 'Social' , option: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
-    {class:'activity', get:'', do: 'Club' , option: "在社團時間，認真投入且遇到困難或錯誤時會自我修正和積極改善。"},
-    {class:'activity', get:'', do: 'SchoolTeam' , option: "對此項目充分理解(如:觀看職業比賽影片、學長姐經驗)、抱有高度熱忱與決心，與隊友們彼此討論、合作，並在固定訓練時間外，在基礎訓練上進行改良或創新。"},
-    {class:'activity', get:'', do: 'ScienceFair' , option: "跟隨科展的要求，遵循指導老師和同組員的指示執行實作工作。"},
+    {id:0, class:'subject', get:'', do: 'Langugage' , option: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
+    {id:1, class:'subject', get:'', do: 'Math' , option: "解題課本例題與習題題目，達成學校最低程度的理解。"},
+    {id:2, class:'subject', get:'', do: 'Social' , option: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
+    {id:3, class:'activity', get:'', do: 'Club' , option: "在社團時間，認真投入且遇到困難或錯誤時會自我修正和積極改善。"},
+    {id:4, class:'activity', get:'', do: 'SchoolTeam' , option: "對此項目充分理解(如:觀看職業比賽影片、學長姐經驗)、抱有高度熱忱與決心，與隊友們彼此討論、合作，並在固定訓練時間外，在基礎訓練上進行改良或創新。"},
+    {id:5, class:'activity', get:'', do: 'ScienceFair' , option: "跟隨科展的要求，遵循指導老師和同組員的指示執行實作工作。"},
 ]
 
 
@@ -17,6 +17,7 @@ const class_nameen = ['subject', 'activity'];
 var recordGroup_do = new Array(40);
 var recordGroup_classOB = new Array(40);
 var recordGroup_getOB = new Array(40);
+var recordGroup_doOB = new Array(40);
 var recordGroup_optionOB = new Array(40);
 var recordNum = 0;
 
@@ -85,20 +86,18 @@ const recordUpload = {
 	    
 	uploadEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 	
-	
 	// 生成畫面背景
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
-	
-	    
+
 	mask = this.add.graphics()
         mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
-// 	// 生成 課業學科遮罩
-// 	maskSubject = this.add.graphics()
+	// 生成 課業學科遮罩
+//         maskSubject = this.add.graphics()
 //         maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
 	    
-// 	// 生成 課外活動遮罩
-// 	maskActivity = this.add.graphics()
+	// 生成 課外活動遮罩
+//         maskActivity = this.add.graphics()
 //         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	    
 	    
@@ -106,15 +105,8 @@ const recordUpload = {
 	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
 	player.setScale(playerScale);
 
-	
-	    
 	shadowGroup = this.physics.add.group();
-	
-	    
-	
-	
-	    
-	    
+
 	recordGroup = this.physics.add.group();
 	recordGroupChild = recordGroup.getChildren();
 	// 生成 課業學科紀錄豆
@@ -144,6 +136,9 @@ const recordUpload = {
 	    // 將所有紀錄設置為還未被選取
             recordChosen[i] = false;
 	}
+	
+	console.log(recordGroupChild);
+	
 	    
 	
 	shadowGroupChild = shadowGroup.getChildren();
@@ -185,13 +180,10 @@ const recordUpload = {
 		if(choose)
 		{
 		    shadowGroupChild[recordIndex].setVisible(true);
-// 	            recordGroup_optionOB[recordIndex].addColor('#5cb85c', 0);
 		}
 		if(cancel)
 		{
-// 		    record.clearTint();
 		    shadowGroupChild[recordIndex].setVisible(false);
-// 		    recordGroup_optionOB[recordIndex].addColor('#f7f7f7', 0);
 		}
             }
 	    else
