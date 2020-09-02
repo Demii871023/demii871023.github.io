@@ -70,12 +70,16 @@ const recordUpload = {
                 console.log("hover");
 		
 		doText.setText('Test');
-		doText.alpha = 1;
+		doText.alpha = 0.2;
 		doText.x = record.x + 20;
 		doText.y = record.y;
-                
+                console.log("==========");
+		console.log(record.x);
+		console.log(record.y);
+		console.log("==========");
 		console.log(doText.x);
 		console.log(doText.y);
+		console.log("==========");
 //                 subject_select = subject_nameen.indexOf(beans.texture.key);
 //                 modalOpen(subject_nameen.indexOf(beans.texture.key));
 //                 // 該科目豆消失 -> 等待改進，要 modal 按了確定才能消失
