@@ -58,7 +58,7 @@ const recordUpload = {
             recordGroupChild[i].setScale(0.5);
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面
 	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px'});
-	    recordTextGroup.push(tempText);
+// 	    recordTextGroup.push(tempText);
 	    recordTextOBGroup2[i] = tempText;
 		
 	}
