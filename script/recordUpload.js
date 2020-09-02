@@ -65,14 +65,17 @@ const recordUpload = {
 	// 生成畫面背景
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
+	
 	    
-	// 生成 課業學科遮罩
-	maskSubject = this.add.graphics()
-        maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
+	mask = this.add.graphics()
+        mask.fillStyle(0x000000, 0.5).fillRect(0, 0, cw, ch);
+// 	// 生成 課業學科遮罩
+// 	maskSubject = this.add.graphics()
+//         maskSubject.fillStyle(0x000000, 0.5).fillRect(5, 0, cw/2-10, ch);
 	    
-	// 生成 課外活動遮罩
-	maskActivity = this.add.graphics()
-        maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
+// 	// 生成 課外活動遮罩
+// 	maskActivity = this.add.graphics()
+//         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	    
 	    
 	// 生成玩家
@@ -82,21 +85,7 @@ const recordUpload = {
 	
 	    
 	shadowGroup = this.physics.add.group();
-	shadowGroupChild = shadowGroup.getChildren();
-	for(var i = 0 ; i < player_record.length ; i++)
-	{
-	    // 生成豆子的邊框
-
-	    shadowGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/3 + 20 + 170*(Math.floor(i%3)), player_record[i].do);
-            shadowGroupChild[i].setScale(0.3);
-	    if(player_record[i].class == 'activity')
-	    {
-		  shadowGroupChild[i].setScale(0.17);
-	    }
-    	    shadowGroupChild[i].tint = "0x00ff00";
-    	    shadowGroupChild[i].alpha = 1;
-	    shadowGroupChild[i].setVisible(false);
-	}
+	
 	    
 	
 	
@@ -130,14 +119,28 @@ const recordUpload = {
 	}
 	    
 	
-	
+	shadowGroupChild = shadowGroup.getChildren();
+	for(var i = 0 ; i < player_record.length ; i++)
+	{
+	    // 生成豆子的邊框
+
+	    shadowGroup.create(cw/5 - 200 + 520*(Math.floor(i/3)), ch/3 + 20 + 170*(Math.floor(i%3)), player_record[i].do);
+            shadowGroupChild[i].setScale(0.3);
+	    if(player_record[i].class == 'activity')
+	    {
+		  shadowGroupChild[i].setScale(0.15);
+	    }
+    	    shadowGroupChild[i].tint = "0x00ff00";
+    	    shadowGroupChild[i].alpha = 0.3;
+	    shadowGroupChild[i].setVisible(false);
+	}
 
 	// 生成 課外活動紀錄豆
 	    
 	    
 	// 類別標題
-	subjectTitle = this.add.text(cw/2 - cw/4, 20, '課業學科', {color: "#FFEE48", fontSize:'35px'});
-	activityTitle = this.add.text(cw/2 + cw/4, 20, '課外活動', {color: "#FFEE48", fontSize:'35px'});
+// 	subjectTitle = this.add.text(cw/2 - cw/4, 20, '課業學科', {color: "#FFEE48", fontSize:'35px'});
+// 	activityTitle = this.add.text(cw/2 + cw/4, 20, '課外活動', {color: "#FFEE48", fontSize:'35px'});
 	    
 	    
 	    
