@@ -74,10 +74,10 @@ const recordUpload = {
             recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
-	    tempText = this.add.text(recordGroupChild[i].x + 35, recordGroupChild[i].y + 5, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempText = this.add.text(recordGroupChild[i].x + 35, recordGroupChild[i].y + 5, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    recordGroup_doOB[i] = tempText;
 	    recordGroup_doOB[i].alpha = 0;
-            recordGroup_doOB[i].lineSpacing = 20;
+//             recordGroup_doOB[i].lineSpacing = 20;
 		
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
 	    recordGroup_subject[i] = player_record[i].subject;
