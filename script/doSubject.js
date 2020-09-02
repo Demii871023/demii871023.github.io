@@ -103,11 +103,11 @@ var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
 // 依據 option_select 控制物品掉落速度
 var downSpeed = [2000, 1000, 400, 50];
 
-// 玩家選擇的選項 ( option_select：使用者所選擇 / optionStr：使用者的選擇句子 / optionID：修改 HTML 所使用 )
+// 玩家選擇的選項 ( option_select：使用者所選擇 / optionStr：使用者的選擇句子 / optionID：修改 HTML 所使用 / optionInput：用於辨識現在是否在挑選選項)
 var option_select = 0;
 var optionID = ['optionAGroup', 'optionBGroup', 'optionCGroup', 'optionDGroup'];
 var optionStr = "";
-
+var optionInput = false;
 
 
 // var player_record = [
@@ -254,31 +254,43 @@ const doSubject = {
 	{
 	    if(keyboard.up.isDown)
 	    {
-		if(option_select == 0)
-		    return;
-		document.getElementById(optionID[option_select]).classList.remove("border");
-		document.getElementById(optionID[option_select]).classList.remove("border-light");
-		document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
-		option_select = option_select - 1;
-		document.getElementById(optionID[option_select]).classList.add("border");
-		document.getElementById(optionID[option_select]).classList.add("border-light");
-		document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-		console.log("上");
+		if(!optionInput)
+		{
+		    optionInput = true;
+		    if(option_select == 0)
+			return;
+		    document.getElementById(optionID[option_select]).classList.remove("border");
+		    document.getElementById(optionID[option_select]).classList.remove("border-light");
+		    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
+		    option_select = option_select - 1;
+		    document.getElementById(optionID[option_select]).classList.add("border");
+		    document.getElementById(optionID[option_select]).classList.add("border-light");
+		    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+		    console.log("上");
+		}
 	    }
 	    if(keyboard.down.isDown)
 	    {
-		if(option_select == 3)
-		    return;
+		if(!optionInput)
+		{
+		    optionInput = true;
+		    if(option_select == 3)
+		        return;
 
-		document.getElementById(optionID[option_select]).classList.remove("border");
-            	document.getElementById(optionID[option_select]).classList.remove("border-light");
-            	document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
-		option_select = option_select + 1;
-		document.getElementById(optionID[option_select]).classList.add("border");
-            	document.getElementById(optionID[option_select]).classList.add("border-light");
-            	document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+		    document.getElementById(optionID[option_select]).classList.remove("border");
+            	    document.getElementById(optionID[option_select]).classList.remove("border-light");
+            	    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
+		    option_select = option_select + 1;
+		    document.getElementById(optionID[option_select]).classList.add("border");
+            	    document.getElementById(optionID[option_select]).classList.add("border-light");
+            	    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
 		
-		console.log("下");
+		    console.log("下");
+		}
+	    }
+            else
+	    {
+		optionInput = false;
 	    }
 	    if(keyboard.space.isDown)
 	    {
