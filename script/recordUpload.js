@@ -1,13 +1,13 @@
 
 // 存放使用者所選擇過的紀錄
 var player_record = [
-    {class:'subject', get:'', subject: 'Langugage' , option: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
-    {class:'subject', get:'', subject: 'Math' , option: "解題課本例題與習題題目，達成學校最低程度的理解。"},
-    {class:'subject', get:'', subject: 'Social' , option: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
+    {class:'subject', get:'', do: 'Langugage' , option: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
+    {class:'subject', get:'', do: 'Math' , option: "解題課本例題與習題題目，達成學校最低程度的理解。"},
+    {class:'subject', get:'', do: 'Social' , option: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
 
-// 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_subject：用於存放產生紀錄的 subject name / recordGroup_optionOB：用於存放紀錄的文字物件 )
-var recordGroup_subject = new Array(40);
+// 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_do：用於存放產生紀錄的 do name / recordGroup_optionOB：用於存放紀錄的文字物件 )
+var recordGroup_do = new Array(40);
 var recordGroup_optionOB = new Array(40);
 var recordNum = 0;
 
@@ -78,7 +78,7 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成豆子的邊框
-	    shadowGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].subject);
+	    shadowGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].do);
             shadowGroupChild[i].setScale(0.3);
     	    shadowGroupChild[i].tint = "0x00ff00";
     	    shadowGroupChild[i].alpha = 1;
@@ -95,17 +95,17 @@ const recordUpload = {
 	for(var i = 0 ; i < player_record.length ; i++)
 	{
 	    // 生成紀錄豆子
-	    recordGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].subject);
+	    recordGroup.create(cw/4 - 100, ch/4 + 100*i, player_record[i].do);
             recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字。linespacing 為行距
-	    tempText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].do, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
+	    tempText = this.add.text(recordGroupChild[i].x + 50, recordGroupChild[i].y + 5, player_record[i].option, {color: "#f7f7f7", fontSize:'20px', lineSpacing: 10, wordWrap: { width: 400, useAdvancedWrap: true }});
 	    
 	    recordGroup_optionOB[i] = tempText;
 	    recordGroup_optionOB[i].alpha = 0;
 		
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
-	    recordGroup_subject[i] = player_record[i].subject;
+	    recordGroup_do[i] = player_record[i].do;
 	    recordNum = recordNum + 1;
 		
 	    // 將所有紀錄設置為還未被選取
@@ -133,7 +133,7 @@ const recordUpload = {
 		recordHover = true;
                 console.log("hover");
 		
-                recordIndex = recordGroup_subject.indexOf(record.texture.key);
+                recordIndex = recordGroup_do.indexOf(record.texture.key);
 		recordGroup_optionOB[recordIndex].alpha = 1;
 		    
 		if(choose)
