@@ -14,7 +14,7 @@ const class_name = ['課業學科', '課外活動'];
 const class_nameen = ['subject', 'activity'];
 
 // 用來針對 player 和 record 產生 hover 時所使用 ( recordGroup_do：用於存放產生紀錄的 do name / recordGroup_optionOB：用於存放紀錄的文字物件 )
-var recordGroup_do = new Array(40);
+// var recordGroup_do = new Array(40);
 var recordGroup_classOB = new Array(40);
 var recordGroup_getOB = new Array(40);
 var recordGroup_doOB = new Array(40);
@@ -135,7 +135,7 @@ const recordUpload = {
 	    recordGroup_classOB[i].alpha = 0;
 		
 	    // 將所有 record 中的 subject 加入進入陣列，以便搜尋 index 使用
-	    recordGroup_do[i] = player_record[i].do;
+// 	    recordGroup_do[i] = player_record[i].do;
 	    recordNum = recordNum + 1;
 		
 	    // 將所有紀錄設置為還未被選取
@@ -179,7 +179,8 @@ const recordUpload = {
 		recordHover = true;
 		console.log(record.getData('id'));
 		
-                recordIndex = recordGroup_do.indexOf(record.texture.key);
+//                 recordIndex = recordGroup_do.indexOf(record.texture.key);
+		recordIndex = record.getData('id');
 		recordGroup_optionOB[recordIndex].alpha = 1;
 		recordGroup_classOB[recordIndex].alpha = 1;
 		    
