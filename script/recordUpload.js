@@ -52,6 +52,11 @@ const recordUpload = {
 	// 生成畫面背景
         bg1 = this.add.sprite(cw/2, ch/2, 'bg1');
         bg1.setScale(4);
+	    
+	    
+	// 生成玩家
+	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
+	player.setScale(playerScale);
 
 	recordGroup = this.physics.add.group();
 	recordGroupChild = recordGroup.getChildren();
@@ -69,7 +74,7 @@ const recordUpload = {
             recordGroupChild[i].setScale(0.5);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字
-	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 50 }});
+	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 50, useAdvancedWrap: true }});
 	    recordGroup_doOB[i] = tempText;
 	    recordGroup_doOB[i].alpha = 0;
 		
@@ -83,12 +88,6 @@ const recordUpload = {
 	maskActivity = this.add.graphics()
         maskActivity.fillStyle(0x000000, 0.5).fillRect(cw/2+5, 0, cw/2-10, ch);
 	// 生成 課外活動紀錄豆
-	    
-
-	    
-	// 生成玩家
-	player = this.physics.add.sprite(cw/2, ch/4, player_name[player_select]);
-	player.setScale(playerScale);
 	    
 	this.physics.add.overlap(player, recordGroupChild, showDoText, null, this);
 	    
