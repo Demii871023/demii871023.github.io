@@ -69,7 +69,7 @@ const recordUpload = {
             recordGroupChild[i].setScale(0.5);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字
-	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', align: 'left', wordWrap: true, wordWrapWidth: 100});
+	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 50 }});
 	    recordGroup_doOB[i] = tempText;
 	    recordGroup_doOB[i].alpha = 0;
 		
