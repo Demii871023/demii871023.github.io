@@ -1,7 +1,7 @@
 
 // 存放使用者所選擇過的紀錄
 var player_record = [
-    {subject: 'Langugage' , do: "將課文內容吸收後，用自己的語\n言寫下筆記，\n並複習完成後的作業，對課文有更深刻\n的理解與記憶。"},
+    {subject: 'Langugage' , do: "將課文內容吸收後，用自己的語言寫下筆記，並複習完成後的作業，對課文有更深刻的理解與記憶。"},
     {subject: 'Math' , do: "解題課本例題與習題題目，達成學校最低程度的理解。"},
     {subject: 'Social' , do: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
 ]
@@ -74,7 +74,7 @@ const recordUpload = {
             recordGroupChild[i].setScale(beansScale);
 	
 	    // 加入記錄說明文字物件，並將其存放進入陣列裡面且文字 alpha 參數設為零，成為透明文字
-	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 50, useAdvancedWrap: true }});
+	    tempText = this.add.text(recordGroupChild[i].x, recordGroupChild[i].y, player_record[i].do, {color: "#FFFFFF", fontSize:'20px', wordWrap: { width: 400, useAdvancedWrap: true }});
 	    recordGroup_doOB[i] = tempText;
 	    recordGroup_doOB[i].alpha = 0;
 		
