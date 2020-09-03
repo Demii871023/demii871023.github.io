@@ -97,12 +97,12 @@ canvas{
 }
 
 .slidecontainer {
-    width: 100%;
+    width: 90%;
 }
 
 .slider {
     webkit-appearance: none;
-    width: 100%;
+    width: auto;
     height: 10px;
     border-radius: 5px;
     background: #d3d3d3;
@@ -122,7 +122,7 @@ canvas{
     width: 25px;
     height: 25px;
     background: #4CAF50;
-    background: url('http://iconizer.net/files/Duesseldorf/orig/heart.png') no-repeat;
+    background: url('/image/Character/player1.png') no-repeat;
     cursor: pointer;
 }
 
