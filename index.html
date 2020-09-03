@@ -326,7 +326,9 @@
 
                         </div>
 			<div class="progress align-items-center" style="height: 30px; width: 80%;">
-  			    <div id="TimeLineProgress" class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+  			    <div id="TimeLineProgress" class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+			    </div>
+			    <div id="doThing1" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 1%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" title="Tooltip on bottom">
 			    </div>
 			    <img id="timeline_player1IMG" src="../image/Character/player1.png" style="height:30px; display:none"></img>
 			    <img id="timeline_player2IMG" src="../image/Character/player2.png" style="height:30px; display:none"></img>
@@ -374,6 +376,11 @@
     <script src="./script/gameActivity.js"></script>
     <script src="./script/index.js"></script>
     <script src="./script/RadarChart.js"></script>
+
+
+    <script>
+        $('[data-toggle="tooltip"]').tooltip(); 
+    </script>
 
     
     
