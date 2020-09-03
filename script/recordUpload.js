@@ -208,10 +208,15 @@ const recordUpload = {
 		// 選擇上傳 recordIndex 的該項紀錄
 		if(choose && !recordChosen[recordIndex])
 		{
+		    // 對應記錄度選擇為 true，即它被選取。並將選取遮罩開啟
 		    recordChosen[recordIndex] = true;
+		    shadowGroupChild[recordIndex].setVisible(true);
+			
+                    // 將記錄選擇的總數增加一個，並且將其的該項 id 塞入陣列做排序，以便刪除時可以找到並上移 
 		    recordselectNum = recordselectNum + 1;
 		    recordselectId.push(recordIndex);
-		    shadowGroupChild[recordIndex].setVisible(true);
+			
+		    // 將紀錄的詳細內容填入 list 中
 		    document.getElementById('uploadList' + recordselectNum.toString()).style.visibility = 'visible';
                     document.getElementById('record_class' + recordselectNum.toString()).innerHTML = class_name[class_nameen.indexOf(player_record[recordIndex].class)];
 		    if(player_record[recordIndex].class == 'subject')
@@ -220,35 +225,33 @@ const recordUpload = {
 			document.getElementById('record_do' + recordselectNum.toString()).innerHTML = activity_name[activity_nameen.indexOf(player_record[recordIndex].do)];
 		    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = player_record[recordIndex].option;
 		}
+		
 		// 取消一個後，後面的遞補上來
 		if(cancel && recordChosen[recordIndex])
 		{
-		    
+		    // 對應記錄度選擇為 false，即它並未被選取。並將選取遮罩取消
 	            recordChosen[recordIndex] = false;
-		    
 		    shadowGroupChild[recordIndex].setVisible(false);
-		    // 找到現在要刪除的目前是第幾個
+		
+		    // 找到現在要刪除的目前是第幾個，並將其從陣列中刪除
 		    tmpIndex = recordselectId.indexOf(recordIndex);
 		    recordselectId.splice(tmpIndex, 1);
-// 		    console.log("刪除代號 " + recordIndex);
-// 		    console.log("起始位置 " + (tmpIndex+1).toString());
-// 		    console.log(recordselectId);
-// 		    console.log(recordselectNum);
 	
-		    console.log("往上移");
+                    // 從要刪除的該項開始，每一項目都往上移動一格
 		    for(var i = tmpIndex+1 ; i < recordselectNum ; i++)
 		    {
-// 			console.log(i);
-// 			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
 		        document.getElementById('record_class' + i.toString()).innerHTML = document.getElementById('record_class' + (i+1).toString()).innerHTML;
 		        document.getElementById('record_do' + i.toString()).innerHTML = document.getElementById('record_do' + (i+1).toString()).innerHTML;
            		document.getElementById('record_option' + i.toString()).innerHTML = document.getElementById('record_option' + (i+1).toString()).innerHTML;
 		    }
                    
+                    // 最後一格設為空
 		    document.getElementById('record_class' + recordselectNum.toString()).innerHTML = "";
 		    document.getElementById('record_do' + recordselectNum.toString()).innerHTML = "";
            	    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = "";
 		    document.getElementById('uploadList' + recordselectNum.toString()).style.visibility = 'hidden';
+			
+                    // 將記錄選擇的總數扣除一個
 		    recordselectNum = recordselectNum - 1;
 		}
             }
