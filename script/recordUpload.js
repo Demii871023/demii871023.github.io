@@ -230,15 +230,15 @@ const recordUpload = {
 		    // 找到現在要刪除的目前是第幾個
 		    tmpIndex = recordselectId.indexOf(recordIndex);
 		    recordselectId.splice(tmpIndex, 1);
-		    console.log("刪除代號 " + recordIndex);
-		    console.log("起始位置 " + (tmpIndex+1).toString());
-		    console.log(recordselectId);
-		    console.log(recordselectNum);
+// 		    console.log("刪除代號 " + recordIndex);
+// 		    console.log("起始位置 " + (tmpIndex+1).toString());
+// 		    console.log(recordselectId);
+// 		    console.log(recordselectNum);
 	
 		    console.log("往上移");
 		    for(var i = tmpIndex+1 ; i < recordselectNum ; i++)
 		    {
-			console.log(i);
+// 			console.log(i);
 // 			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
 		        document.getElementById('record_class' + i.toString()).innerHTML = document.getElementById('record_class' + (i+1).toString()).innerHTML;
 		        document.getElementById('record_do' + i.toString()).innerHTML = document.getElementById('record_do' + (i+1).toString()).innerHTML;
