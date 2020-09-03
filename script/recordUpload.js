@@ -52,7 +52,7 @@ const recordUpload = {
 	document.getElementById('gmChatCard').style.top = '5%';
 	document.getElementById('gmChatCard').style.left = '5%';
 	document.getElementById('gmChatCard').style.width = '35%';
-	document.getElementById('gmChatCard').style.height = '10%';
+	document.getElementById('gmChatCard').style.height = '15%';
 	document.getElementById('gmChatCardText').innerHTML = "可按下空白鍵來選擇多個項目上傳做為學習歷程檔案的作品。<br> 若選擇完畢請按下 Enter 鍵上傳。";
 	
 	    
