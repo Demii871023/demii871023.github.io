@@ -96,7 +96,9 @@ canvas{
     right: 5%;
 }
 
-
+#TimeLineProgress{
+    height: 20px;
+}
 
 /* .slider {
     webkit-appearance: none;
