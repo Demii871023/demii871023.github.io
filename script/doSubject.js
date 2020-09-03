@@ -123,6 +123,9 @@ const doSubject = {
         document.getElementById('gmChatCard').style.width = '35%';
         document.getElementById('gmChatCard').style.height = '110px';
         document.getElementById('gmChatCardText').innerHTML = "今天上完" + subject_name[subject_select] + "的課程，你會如何進行課後安排呢？";
+	    
+	    
+	document.getElementById('experienceTimeline').style.visibility = 'hidden';
         
         // 載入背景圖片
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
