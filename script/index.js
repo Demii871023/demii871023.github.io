@@ -447,6 +447,7 @@ const gameSubject = {
     preload: function(){
         
         
+        
         gsCounter = gsCounter + 1;
         console.log(gsCounter);
         
@@ -474,6 +475,10 @@ const gameSubject = {
 
         // 倒數計時器隱藏
         document.getElementById('bonusTimer').style.display = 'none';
+        
+        
+        // 顯示玩家紀錄時間軸
+        document.getElementById('experienceTimeline').style.visibility = 'visible';
         
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
