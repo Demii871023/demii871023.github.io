@@ -120,6 +120,14 @@
 * [display:none和visibility:hidden的差別](https://dotblogs.com.tw/kirkchen/2009/12/22/12603)
 
 
+#### 在時間軸上設置節點
+==想法：使用 tooltip==
+* [jsfiddle Example](https://jsfiddle.net/w9qf9wo8/1/)
+
+==想法：使用 popovers==
+* [jsfiddle Example](http://jsfiddle.net/elogicmedia/pGr2M/)
+
+
 ### Chartjs
 #### basic radar chart
 * [Demo](https://www.chartjs.org/samples/latest/charts/radar.html)
