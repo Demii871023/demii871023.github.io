@@ -31,9 +31,10 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+	$('[data-toggle="tooltip"]').tooltip();  
 	$(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+            $('[data-toggle="tooltip"]').tooltip();
+        });
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();   
         });
@@ -339,7 +340,7 @@
 <!-- 				<button type="button" id="seniorONE" class="btn btn-warning" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="border-color: #f0ad4e; opacity: 1;">
 				    高一
 				</button> -->
-				<button type="button" id="seniorONE" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+				<button type="button" id="seniorONE" class="btn btn-warning" data-placement="bottom" data-toggle="tooltip" title="Tooltip on bottom">
                                     高一
 				</button>
                             </div>
