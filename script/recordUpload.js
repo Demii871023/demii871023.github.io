@@ -210,6 +210,7 @@ const recordUpload = {
 		    recordChosen[recordIndex] = true;
 		    recordselectNum = recordselectNum + 1;
 		    shadowGroupChild[recordIndex].setVisible(true);
+		    document.getElementById('uploadList' + recordselectNum.toString()).style.visibility = 'visible';
                     document.getElementById('record_class' + recordselectNum.toString()).innerHTML = class_name[class_nameen.indexOf(player_record[recordIndex].class)];
 		    if(player_record[i].class == 'subject')
 		        document.getElementById('record_do' + recordselectNum.toString()).innerHTML = subject_name[subject_nameen.indexOf(player_record[recordIndex].do)];
