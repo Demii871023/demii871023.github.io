@@ -162,7 +162,7 @@ const recordUpload = {
             recordChosen[i] = false;
 	}
 	
-	console.log(recordGroupChild);
+// 	console.log(recordGroupChild);
 	
 	    
 	
@@ -197,7 +197,7 @@ const recordUpload = {
             if(abs(player.x, record.x) < 15 && abs(player.y, record.y) < 20)
             {
 		recordHover = true;
-		console.log(record.getData('id'));
+// 		console.log(record.getData('id'));
 		
 //                 recordIndex = recordGroup_do.indexOf(record.texture.key);
 		recordIndex = record.getData('id');
