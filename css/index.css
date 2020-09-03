@@ -121,8 +121,8 @@ canvas{
     appearance: none;
     width: 25px;
     height: 25px;
-    background: #4CAF50;
-    background: url('../../image/Character/player1.png') no-repeat;
+/*     background: #4CAF50; */
+    background-image: url('../../image/Character/player1.png') no-repeat;
     cursor: pointer;
 }
 
