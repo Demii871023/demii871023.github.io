@@ -233,7 +233,7 @@ const recordUpload = {
 		    console.log("起始位置 " + (tmpIndex+1).toString());
 	
 		    console.log("往上移");
-		    for(var i = tmpIndex+1 ; i < recordselectNum-1 ; i++)
+		    for(var i = tmpIndex ; i < recordselectNum-1 ; i++)
 		    {
 			console.log(i);
 			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
