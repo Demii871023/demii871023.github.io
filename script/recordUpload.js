@@ -212,9 +212,9 @@ const recordUpload = {
 		    shadowGroupChild[recordIndex].setVisible(true);
 		    document.getElementById('uploadList' + recordselectNum.toString()).style.visibility = 'visible';
                     document.getElementById('record_class' + recordselectNum.toString()).innerHTML = class_name[class_nameen.indexOf(player_record[recordIndex].class)];
-		    if(player_record[i].class == 'subject')
+		    if(player_record[recordIndex].class == 'subject')
 		        document.getElementById('record_do' + recordselectNum.toString()).innerHTML = subject_name[subject_nameen.indexOf(player_record[recordIndex].do)];
-                    if(player_record[i].class == 'activity')
+                    if(player_record[recordIndex].class == 'activity')
 			document.getElementById('record_do' + recordselectNum.toString()).innerHTML = activity_name[activity_nameen.indexOf(player_record[recordIndex].do)];
 		    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = player_record[recordIndex].option;
 		}
