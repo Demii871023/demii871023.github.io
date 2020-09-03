@@ -229,7 +229,7 @@ const recordUpload = {
 		    // 找到現在要刪除的目前是第幾個
 		    tmpIndex = recordselectId.indexOf(recordIndex);
 			
-		    for(var i = tmpIndex ; i < recordselectNum ; i++)
+		    for(var i = tmpIndex ; i < recordselectNum-1 ; i++)
 		    {
 			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
 		        document.getElementById('record_class' + i.toString()).innerHTML = document.getElementById('record_class' + (i+1).toString()).innerHTML;
