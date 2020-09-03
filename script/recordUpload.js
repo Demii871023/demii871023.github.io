@@ -205,16 +205,21 @@ const recordUpload = {
 		recordGroup_doOB[recordIndex].alpha = 1;
 		    
 		// 選擇上傳 recordIndex 的該項紀錄
-		if(choose)
+		if(choose && !recordChosen[recordIndex])
 		{
+		    recordChosen[recordIndex] = true;
 		    recordselectNum = recordselectNum + 1;
 		    shadowGroupChild[recordIndex].setVisible(true);
-                    document.getElementById('record_class' + recordselectNum.toString()).innerHTML = player_record[recordIndex].class;
-		    document.getElementById('record_do' + recordselectNum.toString()).innerHTML = player_record[recordIndex].do;
+                    document.getElementById('record_class' + recordselectNum.toString()).innerHTML = class_name[class_nameen.indexOf(player_record[i].class)];
+		    if(player_record[i].class == 'subject')
+		        document.getElementById('record_do' + recordselectNum.toString()).innerHTML = subject_name[subject_nameen.indexOf(player_record[i].do)];
+                    if(player_record[i].class == 'activity')
+			document.getElementById('record_do' + recordselectNum.toString()).innerHTML = activity_name[activity_nameen.indexOf(player_record[i].do)];
 		    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = player_record[recordIndex].option;
 		}
-		if(cancel)
+		if(cancel && recordChosen[recordIndex])
 		{
+	            recordChosen[recordIndex] = false;
 		    shadowGroupChild[recordIndex].setVisible(false);
 		}
             }
