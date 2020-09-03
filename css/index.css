@@ -177,3 +177,12 @@ canvas{
     right: 10%;
     left: 10%;
 }
+
+#uploadDetailCard{
+    z-index: 100;
+    position: absolute;
+    top: 0%;
+    right: 10%;
+    width: 20%;
+    height: auto;
+}
