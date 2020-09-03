@@ -126,7 +126,11 @@
 
 ==想法：使用 popovers==
 * [jsfiddle Example](http://jsfiddle.net/elogicmedia/pGr2M/)
+* [](https://stackoverflow.com/questions/54122143/how-can-i-put-bootstrap-badge-on-the-bootstrap-tooltip)
 
+
+#### tooltip
+* [Example](https://jsfiddle.net/rm0uade9/34/)
 
 ### Chartjs
 #### basic radar chart
