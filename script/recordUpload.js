@@ -236,7 +236,7 @@ const recordUpload = {
 		    console.log(recordselectNum);
 	
 		    console.log("往上移");
-		    for(var i = tmpIndex+1 ; i < recordselectNum-1 ; i++)
+		    for(var i = tmpIndex+1 ; i < recordselectNum ; i++)
 		    {
 			console.log(i);
 // 			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
