@@ -240,7 +240,7 @@ const recordUpload = {
 		    document.getElementById('record_class' + recordselectNum.toString()).innerHTML = "";
 		    document.getElementById('record_do' + recordselectNum.toString()).innerHTML = "";
            	    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = "";
-		    document.getElementById('uploadList' + (recordselectNum+1).toString()).style.visibility = 'hidden';
+		    document.getElementById('uploadList' + recordselectNum.toString()).style.visibility = 'hidden';
 		    recordselectNum = recordselectNum - 1;
 		}
             }
