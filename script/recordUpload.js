@@ -54,7 +54,7 @@ const recordUpload = {
 	document.getElementById('gmChatCard').style.top = '5%';
 	document.getElementById('gmChatCard').style.left = '5%';
 	document.getElementById('gmChatCard').style.width = '35%';
-	document.getElementById('gmChatCard').style.height = '15%';
+	document.getElementById('gmChatCard').style.height = '12%';
 	document.getElementById('gmChatCardText').innerHTML = "可按下空白鍵來選擇多個項目上傳做為學習歷程檔案的作品。<br> 若選擇完畢請按下 Enter 鍵上傳。";
 	
 	// 顯示 使用者選擇的紀錄豆詳細記錄
