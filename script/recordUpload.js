@@ -223,7 +223,7 @@ const recordUpload = {
 		// 取消一個後，後面的遞補上來
 		if(cancel && recordChosen[recordIndex])
 		{
-		    console.log(recordselectId);
+		    
 	            recordChosen[recordIndex] = false;
 		    
 		    shadowGroupChild[recordIndex].setVisible(false);
@@ -232,10 +232,11 @@ const recordUpload = {
 		    recordselectId.splice(tmpIndex, 1);
 		    console.log("刪除代號 " + recordIndex);
 		    console.log("起始位置 " + (tmpIndex+1).toString());
+		    console.log(recordselectId);
 		    console.log(recordselectNum);
 	
 		    console.log("往上移");
-		    for(var i = tmpIndex ; i < recordselectNum-1 ; i++)
+		    for(var i = tmpIndex+1 ; i < recordselectNum-1 ; i++)
 		    {
 			console.log(i);
 // 			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
