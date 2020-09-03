@@ -231,7 +231,8 @@ const recordUpload = {
 			
 		    for(var i = tmpIndex ; i < recordselectNum ; i++)
 		    {
-		        document.getElementById('record_class' + i.toString()).innerHTML = document.getElementById('record_class' + (i+1).toString()).innerHTML
+			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
+		        document.getElementById('record_class' + i.toString()).innerHTML = document.getElementById('record_class' + (i+1).toString()).innerHTML;
 		        document.getElementById('record_do' + i.toString()).innerHTML = document.getElementById('record_do' + (i+1).toString()).innerHTML;
            		document.getElementById('record_option' + i.toString()).innerHTML = document.getElementById('record_option' + (i+1).toString()).innerHTML;
 		    }
