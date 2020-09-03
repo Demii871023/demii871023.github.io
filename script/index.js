@@ -480,7 +480,7 @@ const gameSubject = {
         // 顯示玩家紀錄時間軸
         document.getElementById('experienceTimeline').style.visibility = 'visible';
         var tmpID = 'timeline_player'+ (player_select + 1).toString() + 'IMG';
-        document.getElementById(tmpID).style.visibility = 'visible';
+        document.getElementById(tmpID).style.display = 'block';
         
         // 預先載入需要資源
         this.load.image('gamebg', 'image/Background/gamebg.jpg');
