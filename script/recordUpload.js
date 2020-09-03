@@ -231,12 +231,13 @@ const recordUpload = {
 		    recordselectId.splice(tmpIndex, 1);
 		    console.log("刪除代號 " + recordIndex);
 		    console.log("起始位置 " + (tmpIndex+1).toString());
+		    console.log(recordselectNum);
 	
 		    console.log("往上移");
 		    for(var i = tmpIndex ; i < recordselectNum-1 ; i++)
 		    {
 			console.log(i);
-			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
+// 			console.log(document.getElementById('record_class' + (i+1).toString()).innerHTML);
 		        document.getElementById('record_class' + i.toString()).innerHTML = document.getElementById('record_class' + (i+1).toString()).innerHTML;
 		        document.getElementById('record_do' + i.toString()).innerHTML = document.getElementById('record_do' + (i+1).toString()).innerHTML;
            		document.getElementById('record_option' + i.toString()).innerHTML = document.getElementById('record_option' + (i+1).toString()).innerHTML;
