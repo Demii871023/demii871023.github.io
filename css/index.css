@@ -182,7 +182,7 @@ canvas{
     z-index: 100;
     position: absolute;
     top: 0%;
-    right: 0%;
-    width: 350px;
+    right: 1%;
+    width: 500px;
     height: auto;
 }
