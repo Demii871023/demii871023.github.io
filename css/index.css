@@ -222,3 +222,7 @@ canvas{
     width: 25%;
     height: auto;
 }
+
+.wrapper {
+  margin: 100px;
+}
