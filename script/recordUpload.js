@@ -29,6 +29,7 @@ var recordHover = false;
 var recordChosen = new Array(40);
 var choose = false;
 var cancel = false;
+var recordselectNum = 0;
 
 var uploadEnter;
 
@@ -55,7 +56,11 @@ const recordUpload = {
 	document.getElementById('gmChatCard').style.height = '15%';
 	document.getElementById('gmChatCardText').innerHTML = "可按下空白鍵來選擇多個項目上傳做為學習歷程檔案的作品。<br> 若選擇完畢請按下 Enter 鍵上傳。";
 	
+	// 顯示 使用者選擇的紀錄豆詳細記錄
+	document.getElementById('uploadDetailCard').style.visibility = 'visible';
 	    
+	    
+	// 載入背景圖片
         this.load.image('bg1', 'image/Background/jungle-clipart-background-6.jpg');
 	    
 	// 載入玩家圖片
@@ -80,6 +85,8 @@ const recordUpload = {
 	this.load.image('Club', 'image/Activity/Club.png');
 	this.load.image('SchoolTeam', 'image/Activity/SchoolTem.png');
 	this.load.image('ScienceFair', 'image/Activity/ScienceFair.png');
+	    
+	
 	 
     },
     create: function(){
@@ -197,9 +204,14 @@ const recordUpload = {
 		recordGroup_classOB[recordIndex].alpha = 1;
 		recordGroup_doOB[recordIndex].alpha = 1;
 		    
+		// 選擇上傳 recordIndex 的該項紀錄
 		if(choose)
 		{
+		    recordselectNum = recordselectNum + 1;
 		    shadowGroupChild[recordIndex].setVisible(true);
+                    document.getElementById('record_class' + recordselectNum.toString()).innerHTML = player_record[recordIndex].class;
+		    document.getElementById('record_do' + recordselectNum.toString()).innerHTML = player_record[recordIndex].do;
+		    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = player_record[recordIndex].option;
 		}
 		if(cancel)
 		{
@@ -222,7 +234,6 @@ const recordUpload = {
 		recordGroup_classOB[i].alpha = 0;
 		recordGroup_doOB[i].alpha = 0;
 	    }
-		
 	}
 	
 	
