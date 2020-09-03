@@ -92,6 +92,8 @@ canvas{
 #experienceTimeline{
     position: absolute;
     top:70%;
+    left: 5%;
+    right: 5%;
 }
 
 .slidecontainer {
