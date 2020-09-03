@@ -223,6 +223,7 @@ const recordUpload = {
 		// 取消一個後，後面的遞補上來
 		if(cancel && recordChosen[recordIndex])
 		{
+		    console.log(recordselectId);
 	            recordChosen[recordIndex] = false;
 		    
 		    shadowGroupChild[recordIndex].setVisible(false);
