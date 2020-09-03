@@ -30,6 +30,7 @@ var recordChosen = new Array(40);
 var choose = false;
 var cancel = false;
 var recordselectNum = 0;
+var recordselectId = [];
 
 var uploadEnter;
 
@@ -209,6 +210,7 @@ const recordUpload = {
 		{
 		    recordChosen[recordIndex] = true;
 		    recordselectNum = recordselectNum + 1;
+		    recordselectId.push(recordIndex);
 		    shadowGroupChild[recordIndex].setVisible(true);
 		    document.getElementById('uploadList' + recordselectNum.toString()).style.visibility = 'visible';
                     document.getElementById('record_class' + recordselectNum.toString()).innerHTML = class_name[class_nameen.indexOf(player_record[recordIndex].class)];
@@ -218,10 +220,27 @@ const recordUpload = {
 			document.getElementById('record_do' + recordselectNum.toString()).innerHTML = activity_name[activity_nameen.indexOf(player_record[recordIndex].do)];
 		    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = player_record[recordIndex].option;
 		}
+		// 取消一個後，後面的遞補上來
 		if(cancel && recordChosen[recordIndex])
 		{
 	            recordChosen[recordIndex] = false;
+		    
 		    shadowGroupChild[recordIndex].setVisible(false);
+		    // 找到現在要刪除的目前是第幾個
+		    tmpIndex = recordselectId.indexOf(recordIndex);
+			
+		    for(var i = tmpIndex ; i < recordselectNum ; i++)
+		    {
+		        document.getElementById('record_class' + i.toString()).innerHTML = document.getElementById('record_class' + (i+1).toString()).innerHTML
+		        document.getElementById('record_do' + i.toString()).innerHTML = document.getElementById('record_do' + (i+1).toString()).innerHTML;
+           		document.getElementById('record_option' + i.toString()).innerHTML = document.getElementById('record_option' + (i+1).toString()).innerHTML;
+		    }
+                   
+		    document.getElementById('record_class' + recordselectNum.toString()).innerHTML = "";
+		    document.getElementById('record_do' + recordselectNum.toString()).innerHTML = "";
+           	    document.getElementById('record_option' + recordselectNum.toString()).innerHTML = "";
+		    document.getElementById('uploadList' + (recordselectNum+1).toString()).style.visibility = 'hidden';
+		    recordselectNum = recordselectNum - 1;
 		}
             }
 	    else
