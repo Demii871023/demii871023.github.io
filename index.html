@@ -31,19 +31,20 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script> 
-	$(function () {
+	$('[data-toggle="popover"]').popover();
+	$(function ().ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();   
         });
 	    
-	$(document).ready(function() {
-            $('[data-toggle="popover"]').popover({
-                placement: 'top',
-                trigger: 'hover'
-            });
-        });
+// 	$(document).ready(function() {
+//             $('[data-toggle="popover"]').popover({
+//                 placement: 'top',
+//                 trigger: 'hover'
+//             });
+//         });
     </script>
 	
 
@@ -396,7 +397,15 @@
                 </div>
             </div>
         </div>
-							
+        
+        <div id="demo" class="component container">
+            <button class="btn btn-primary" 
+                data-toggle="popover" 
+                title="標題" 
+                data-content="內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容" data-placement="top" data-trigger="hover">
+                Pop
+            </button>
+         </div>
     </div>
 
   
