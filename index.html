@@ -42,27 +42,15 @@
         });
 	    
 	    
-	$("#demo").popover({
-                html: true,
-                placement: "right",
-                trigger: "hover",
-                title: function () {
-                    return $(".pop-title").html();
-                },
-                content: function () {
-                    return $(".pop-content").html();
-                }
-            });
-	    
 	    
 	
 	    
-// 	$(document).ready(function() {
-//             $('[data-toggle="popover"]').popover({
-//                 placement: 'top',
-//                 trigger: 'hover'
-//             });
-//         });
+	$(document).ready(function() {
+            $('[data-toggle="popover"]').popover({
+                placement: 'top',
+                trigger: 'hover'
+            });
+        });
     </script>
 	
 
@@ -459,20 +447,6 @@
     <script src="./script/index.js"></script>
     <script src="./script/RadarChart.js"></script>
     <script src="./script/const.js"></script>
-
-    <script>
-	   $("#demo").popover({
-                html: true,
-                placement: "right",
-                trigger: "hover",
-                title: function () {
-                    return $(".pop-title").html();
-                },
-                content: function () {
-                    return $(".pop-content").html();
-                }
-            }); 
-    </script>
     
 </body>
 </html>
