@@ -39,6 +39,9 @@
             $('[data-toggle="popover"]').popover();   
         });
 	    
+	    
+	
+	    
 // 	$(document).ready(function() {
 //             $('[data-toggle="popover"]').popover({
 //                 placement: 'top',
@@ -442,6 +445,20 @@
     <script src="./script/index.js"></script>
     <script src="./script/RadarChart.js"></script>
     <script src="./script/const.js"></script>
+
+    <script>
+	    $("#demo").popover({
+                html: true,
+                placement: "right",
+                trigger: "hover",
+                title: function () {
+                    return $(".pop-title").html();
+                },
+                content: function () {
+                    return $(".pop-content").html();
+                }
+            });
+    </script>
     
 </body>
 </html>
