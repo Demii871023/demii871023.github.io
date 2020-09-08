@@ -34,17 +34,92 @@ const action_par = [
             time: -4                    // 時間
         }                                                        
     },
-    {class:'subject', do:'Langugage', option:'B', KnowledgeType: {SocialLanguage: 15, Mathematical: 0, InfoKnowledge: 0, Art: 0, ExploreCampus: 0, ExploreOutside: 0, PhysicalEdu: 0}, 
-                                                  TechnologyType: {BasicSkill: 6, ComplexProblem: 0, ResourceManagement: 0, SocialSkill: 0, SystemsSkill:0 , TechnicalSkill: 0}, 
-                                                  OtherType: {lazy: 0, pressure: 2.5, strength: -3, social: 0, time: -3},
+    {
+        class:'subject', 
+        do:'Langugage', 
+        option:'B', 
+        KnowledgeType: {
+            SocialLanguage: 15, 
+            Mathematical: 0, 
+            InfoKnowledge: 0, 
+            Art: 0, 
+            ExploreCampus: 0, 
+            ExploreOutside: 0, 
+            PhysicalEdu: 0
+        }, 
+        TechnologyType: {
+            BasicSkill: 6, 
+            ComplexProblem: 0, 
+            ResourceManagement: 0, 
+            SocialSkill: 0, 
+            SystemsSkill:0 , 
+            TechnicalSkill: 0
+        }, 
+        OtherType: {
+            lazy: 0, 
+            pressure: 2.5, 
+            strength: -3, 
+            social: 0, 
+            time: -3
+        },
     },
-    {class:'subject', do:'Langugage', option:'C', KnowledgeType: {SocialLanguage: 10, Mathematical: 0, InfoKnowledge: 0, Art: 0, ExploreCampus: 0, ExploreOutside: 0, PhysicalEdu: 0}, 
-                                                  TechnologyType: {BasicSkill: 4, ComplexProblem: 0, ResourceManagement: 0, SocialSkill: 0, SystemsSkill:0 , TechnicalSkill: 0}, 
-                                                  OtherType: {lazy: 0, pressure: 1.5, strength: -2, social: 0, time: -2},
+    {
+        class:'subject', 
+        do:'Langugage', 
+        option:'C', 
+        KnowledgeType: {
+            SocialLanguage: 10, 
+            Mathematical: 0, 
+            InfoKnowledge: 0, 
+            Art: 0, 
+            ExploreCampus: 0, 
+            ExploreOutside: 0, 
+            PhysicalEdu: 0
+        }, 
+        TechnologyType: {
+            BasicSkill: 4, 
+            ComplexProblem: 0, 
+            ResourceManagement: 0, 
+            SocialSkill: 0, 
+            SystemsSkill:0 , 
+            TechnicalSkill: 0
+        }, 
+        OtherType: {
+            lazy: 0, 
+            pressure: 1.5, 
+            strength: -2, 
+            social: 0, 
+            time: -2
+        },
     },
-    {class:'subject', do:'Langugage', option:'D', KnowledgeType: {SocialLanguage: 5, Mathematical: 0, InfoKnowledge: 0, Art: 0, ExploreCampus: 0, ExploreOutside: 0, PhysicalEdu: 0}, 
-                                                  TechnologyType: {BasicSkill: 2, ComplexProblem: 0, ResourceManagement: 0, SocialSkill: 0, SystemsSkill:0 , TechnicalSkill: 0}, 
-                                                  OtherType: {lazy: 0, pressure: 0.5, strength: -1, social: 0, time: -1},
+    {
+        class:'subject', 
+        do:'Langugage', 
+        option:'D', 
+        KnowledgeType: {
+            SocialLanguage: 5, 
+            Mathematical: 0, 
+            InfoKnowledge: 0, 
+            Art: 0, 
+            ExploreCampus: 0, 
+            ExploreOutside: 0, 
+            PhysicalEdu: 0
+        }, 
+        TechnologyType: {
+            BasicSkill: 2, 
+            ComplexProblem: 0, 
+            ResourceManagement: 0, 
+            SocialSkill: 0, 
+            SystemsSkill:0 , 
+            TechnicalSkill: 0
+        }, 
+        OtherType: {
+            lazy: 0, 
+            pressure: 0.5, 
+            strength: -1, 
+            social: 0, 
+            time: -1
+        },
     },
     
     // 社會
