@@ -7,7 +7,7 @@ var stageTime = 50;
 const action_par = [
     {class:'subject', do:'Langugage', option:'A', KnowledgeType: {SocialLanguage: 20, Mathematical: 0, InfoKnowledge: 0, Art: 0, ExploreCampus: 0, ExploreOutside: 0, PhysicalEdu: 0}, 
                                                   TechnologyType: {BasicSkill: 8, ComplexProblem: 0, ResourceManagement: 0, SocialSkill: 0, SystemsSkill:0 , TechnicalSkill: 0}, 
-                                                  OtherType: {lazy: 0, pressure: 3.5, strength: -4, social: , time: -4}
+                                                  OtherType: {lazy: 0, pressure: 3.5, strength: -4, social: 0, time: -4}
                                                   
                                                                 
     }
