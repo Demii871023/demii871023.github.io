@@ -22,4 +22,4 @@ function timeVar(have, number)
 
 
 
-console.log(action_par[0].TechnologyType.BasicSkill;
+console.log(action_par[0].TechnologyType.BasicSkill);
