@@ -369,6 +369,11 @@
             </div>
         </div>
        
+
+
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Top">
+        	Top popover
+        </button>
     </div>
 
   
@@ -405,6 +410,24 @@
     <script src="./script/index.js"></script>
     <script src="./script/RadarChart.js"></script>
     <script src="./script/const.js"></script>
+
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./script/Bootstrap/popover.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+    <script>
+    	$( function( )
+    	{
+    		$( "[data-toggle='popover'" ).popover( );
+    	} );
+
+    	$( ".popover-dismiss" ).popover(
+    	{
+    		trigger: "focus"
+    	} );
+    </script>
 
     
 </body>
