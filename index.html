@@ -31,13 +31,29 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script> 
-	$('[data-toggle="popover"]').popover();
+	
+	 
+	    
+	    
 	$(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();   
         });
+	    
+	    
+	$("#demo").popover({
+                html: true,
+                placement: "right",
+                trigger: "hover",
+                title: function () {
+                    return $(".pop-title").html();
+                },
+                content: function () {
+                    return $(".pop-content").html();
+                }
+            });
 	    
 	    
 	
@@ -447,7 +463,7 @@
     <script src="./script/const.js"></script>
 
     <script>
-	    $("#demo").popover({
+	   $("#demo").popover({
                 html: true,
                 placement: "right",
                 trigger: "hover",
@@ -457,7 +473,7 @@
                 content: function () {
                     return $(".pop-content").html();
                 }
-            });
+            }); 
     </script>
     
 </body>
