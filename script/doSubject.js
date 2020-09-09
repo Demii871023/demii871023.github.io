@@ -72,7 +72,7 @@ var challenge_xy = [
 	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
 ];
 
-var challenge_name = ['lighting', 'bomb'];
+const challenge_name = ['lighting', 'bomb'];
 const challengeNum = 10;
 var canExit = false;
 var gameExit = false;
@@ -102,7 +102,7 @@ var waterHigh = 98;
 // 選項高度 -> 用來與海水高度比較，若海水高度超過選項高度就完成
 var optionAHigh, optionBHigh, optionCHigh, optionDHigh, playerOptionHight;
 // 依據 option_select 控制物品掉落速度
-var downSpeed = [2000, 1000, 400, 50];
+const downSpeed = [2000, 1000, 400, 50];
 
 // 玩家選擇的選項 ( option_select：使用者所選擇 / optionStr：使用者的選擇句子 / optionID：修改 HTML 所使用 / optionInput：用於辨識現在是否在挑選選項)
 var option_select = 0;
