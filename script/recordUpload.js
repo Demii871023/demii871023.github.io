@@ -6,7 +6,7 @@ var player_record = [
     {id:2, class:'subject', get:'', do: 'Social' , option: "閱讀課外考古文學、詳細戰爭歷史、世界地圖、經濟學書，可以應用與解釋到現實生活與課文內容。"},
     {id:3, class:'activity', get:'', do: 'Club' , option: "在社團時間，認真投入且遇到困難或錯誤時會自我修正和積極改善。"},
     {id:4, class:'activity', get:'', do: 'SchoolTeam' , option: "對此項目充分理解(如:觀看職業比賽影片、學長姐經驗)、抱有高度熱忱與決心，與隊友們彼此討論、合作，並在固定訓練時間外，在基礎訓練上進行改良或創新。"},
-    {id:5, class:'activity', get:'', do: 'ScienceFair' , option: "跟隨科展的要求，遵循指導老師和同組員的指示執行實作工作。"},
+//     {id:5, class:'activity', get:'', do: 'ScienceFair' , option: "跟隨科展的要求，遵循指導老師和同組員的指示執行實作工作。"},
 ]
 
 
