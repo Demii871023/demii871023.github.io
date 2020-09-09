@@ -110,6 +110,13 @@
 * 限制進入次數，以年級為限
 
 
+### doSubject
+<img src="https://i.imgur.com/i4UHP7b.png" style="width:300px;">
+> 進行課業學科的遊戲挑戰
+
+#### 變數
+* subject_option：存放讓玩家選擇的四個選項內容
+
 ## Resource
 
 ### Phaser
