@@ -141,6 +141,9 @@ const doSubject = {
         // 載入挑戰墜落物
         this.load.image('bomb', 'image/Challenge/bomb.png');
         this.load.image('lighting', 'image/Challenge/lighting.png');
+	    
+	// 初始化判斷參數
+	gameExit = false;
 	
 	    
     },
@@ -302,7 +305,7 @@ const doSubject = {
 		    if(!optionView)
 		    {
 			mask.clear();
-				mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
+			mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
 			optionView = true;
 
 			// GM 對話框關閉
@@ -376,16 +379,38 @@ const doSubject = {
 // 	    }
 		
 		
-//             optionAHigh = document.getElementById('optionA').offsetTop;
-//             optionBHigh = document.getElementById('optionB').offsetTop;
-//             optionCHigh = document.getElementById('optionC').offsetTop;
-//             optionDHigh = document.getElementById('optionD').offsetTop;
 	       playerOptionHight = document.getElementById('playerOption').offsetTop;
 	       // 成功做到選擇
 	       if(document.getElementById('wave').y < playerOptionHight)
 	       {
 	           document.getElementById('playerOption').classList.remove("badge-light");
 	           document.getElementById('playerOption').classList.add("badge-success");
+		       
+		       
+		   if(!gameExit)
+                   {
+				   
+		       gameExit = true;
+	               challengeGroup.clear();
+			
+		       // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
+		       challengeTime = 30;	// 計時器時間
+		       downSpeed = 50;		// 物品降落速度
+		       optionView = false;	// 是否先看過選項
+		       challengeStart = false;	// 跳戰是否開始
+		       timerStart = false;	// 計時器是否開始
+		       waterHigh = 98;		// 海水高度
+		       optionLevel = 1;		// 選項等級
+
+		       // 重置海水高度
+		       document.getElementById('water').style.top = waterHigh.toString() + "%";
+
+
+		       clearInterval(challengeTimer);
+		       clearInterval(generateTimer);
+		       this.scene.start('gameSelect');
+                    }
+		       
 // 		player_record.push({
 //             		subject: subject_nameen[subject_select],
 //             		do:optionStr,
@@ -398,75 +423,9 @@ const doSubject = {
 	       {
 	           document.getElementById('playerOption').classList.remove("badge-success");
 	           document.getElementById('playerOption').classList.add("badge-light");
+		   challengeStart = false;
+		   optionView = false;
 	       }
-		
-// 	    // 完成最低階：D 選項
-//             if(document.getElementById('wave').y > optionDHigh)
-// 	    {
-// 	        document.getElementById('optionD').classList.remove("badge-success");
-// 	        document.getElementById('optionD').classList.add("badge-light");
-// 	        document.getElementById('optionC').classList.remove("badge-success");
-// 	        document.getElementById('optionC').classList.add("badge-light");
-// 	        document.getElementById('optionB').classList.remove("badge-success");
-// 	        document.getElementById('optionB').classList.add("badge-light");
-// 	        document.getElementById('optionA').classList.remove("badge-success");
-// 	        document.getElementById('optionA').classList.add("badge-lights");
-// 	    }
-		    
-// 	    if(document.getElementById('wave').y < optionDHigh)
-// 	    {
-// // 		optionLevel = 2;
-// 		document.getElementById('optionD').classList.remove("badge-light");
-// 		document.getElementById('optionD').classList.add("badge-success");
-// 		document.getElementById('optionC').classList.remove("badge-success");
-// 		document.getElementById('optionC').classList.add("badge-light");
-// 		document.getElementById('optionB').classList.remove("badge-success");
-// 		document.getElementById('optionB').classList.add("badge-light");
-// 		document.getElementById('optionA').classList.remove("badge-success");
-// 		document.getElementById('optionA').classList.add("badge-lights");
-// 	    }
-		
-// 	    // 完成最低階：C 選項
-// 	    if(document.getElementById('wave').y < optionCHigh)
-// 	    {
-// // 	        optionLevel = 8;
-// 	        document.getElementById('optionD').classList.remove("badge-light");
-// 	        document.getElementById('optionD').classList.add("badge-success");
-// 	        document.getElementById('optionC').classList.remove("badge-light");
-// 	        document.getElementById('optionC').classList.add("badge-success");
-// 	        document.getElementById('optionB').classList.remove("badge-success");
-// 	        document.getElementById('optionB').classList.add("badge-light");
-// 	        document.getElementById('optionA').classList.remove("badge-success");
-// 	        document.getElementById('optionA').classList.add("badge-lights");
-// 	    }
-		
-// 	    // 完成最低階：B 選項
-// 	    if(document.getElementById('wave').y < optionBHigh)
-// 	    {
-// // 		optionLevel = 18;
-// 		document.getElementById('optionD').classList.remove("badge-light");
-// 		document.getElementById('optionD').classList.add("badge-success");
-// 		document.getElementById('optionC').classList.remove("badge-light");
-// 		document.getElementById('optionC').classList.add("badge-success");
-// 		document.getElementById('optionB').classList.remove("badge-light");
-// 		document.getElementById('optionB').classList.add("badge-success");
-// 		document.getElementById('optionA').classList.remove("badge-success");
-// 		document.getElementById('optionA').classList.add("badge-light");
-// 	    }
-		
-//             // 完成最低階：A 選項
-// 	    if(document.getElementById('wave').y < optionAHigh)
-// 	    {
-// // 		optionLevel = 30;
-// 		document.getElementById('optionD').classList.remove("badge-light");
-// 		document.getElementById('optionD').classList.add("badge-success");
-// 		document.getElementById('optionC').classList.remove("badge-light");
-// 		document.getElementById('optionC').classList.add("badge-success");
-// 		document.getElementById('optionB').classList.remove("badge-light");
-// 		document.getElementById('optionB').classList.add("badge-success");
-// 		document.getElementById('optionA').classList.remove("badge-light");
-// 		document.getElementById('optionA').classList.add("badge-success");
-// 	    }
         }
     }
 }
