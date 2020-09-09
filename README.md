@@ -113,7 +113,9 @@
 ### doSubject
 <img src="https://i.imgur.com/i4UHP7b.png">
 > 進行課業學科的遊戲挑戰
+
 #### HTML
+
 - challengeText 用於放置四個選項的 card，label 為選項代號，Text 為選項內容
   - optionAGroup
     - optionALabel
