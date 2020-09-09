@@ -131,10 +131,32 @@
     - optionDText 
 ---
 
-- jjj
+- optionBadges 顯示玩家選取的選項內容
+  - playerOption
 
 #### JS
-* subject_option：存放讓玩家選擇的四個選項內容
+> const 變數
+> * subject_option：存放讓玩家選擇的四個選項內容
+> 
+
+---
+
+> var 可變變數
+> * challengeTime：挑戰的倒數計時時間
+
+---
+
+> Bool 變數
+> * optionView：玩家是否看見選項，並且按空白鍵做出選擇
+> * challengeStart：接掉落物的挑戰是否開始
+
+---
+
+> 挑戰整體時間：
+
+
+> 用於生成掉落物：
+> * challenge_name 
 
 
 
