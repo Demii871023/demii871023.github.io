@@ -57,7 +57,6 @@ const subject_option = [
     },
 ];
 
-
 var optionView = false;
 var challengeStart = false;
 var challengeTime = 30;
@@ -72,30 +71,21 @@ var challenge_xy = [
 	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
 ];
 
+// 生成掉落物所使用名稱 ( lighting : 閃電，吃了海水漲高 / bomb：炸彈，吃了海水退去 )
 const challenge_name = ['lighting', 'bomb'];
-const challengeNum = 10;
+
+
+// 用來辨別遊戲階段的參數 ( gameExit：在時間內達成海水門檻，可退出遊戲 / restart：時間到但未達到海水門檻，因此重新遊戲 )
 var canExit = false;
 var gameExit = false;
 var restart = false;
 
-
-
-// 繪製水動畫
-// var water;
-// var waterStroke;
-// var maskShape;
 var mask;
-// var numRotatingRoundedRects = 35;
-// var rotatingRoundedRects = [];
-// var rotatingRoundedRectsContainer;
-
-// var rotatingRoundedRects2 = [];
-// var rotatingRoundedRectsContainer2;
 
 // 海水高度 -> 對應到 #water css 中的 top 百分比
 var waterHigh = 98;
 // 選項高度 -> 用來與海水高度比較，若海水高度超過選項高度就完成
-var optionAHigh, optionBHigh, optionCHigh, optionDHigh, playerOptionHight;
+var playerOptionHight;
 // 依據 option_select 控制物品掉落速度
 const downSpeed = [2000, 1000, 400, 50];
 
@@ -108,8 +98,6 @@ var optionInput = false;
 
 // var player_record = [
 // ]
-
-
 
 const doSubject = {
     key: 'doSubject',
@@ -166,7 +154,7 @@ const doSubject = {
 
         this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
 
-	function waterUp(player, challenge)
+        function waterUp(player, challenge)
         {
             challenge.disableBody(true, true);
             if(challenge.texture.key == 'bomb')
