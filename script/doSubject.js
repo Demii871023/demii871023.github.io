@@ -244,11 +244,10 @@ const doSubject = {
             {   
 //                 console.log("產生一個");
                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
-		console.log(challengeGroupChild.length + challengeOJ);
 // 		console.log(challengeGroupChild.length);
+		console.log(option_select);
+		console.log(downSpeed[option_select]);
                 challengeOJ.body.gravity.y = downSpeed[option_select];
-		console.log(option_select + downSpeed[option_select]);
-                // console.log(challengeOJ.body.gravity.y);=
                 challengeOJ.setScale(challengeScale);
 
             }
@@ -439,6 +438,7 @@ const doSubject = {
 		   if(restart)
                    {
                        console.log("重新遊戲");
+		       console.log(option_select
                        restart = false;
                        
 			   
