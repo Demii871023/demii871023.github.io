@@ -348,7 +348,7 @@ const doSubject = {
     
         if(challengeStart)
         {
-	    console.log(遊戲開始);
+	    console.log("遊戲開始");
             // 計時器開始倒數
             timerStart = true;
 
