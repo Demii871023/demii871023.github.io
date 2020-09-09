@@ -227,59 +227,54 @@ const doSubject = {
 	    
     },
     update: function(){
-        let g = this.game,
-            r = g.renderer,
-    	    w = r.width,
-    	    h = r.height
+//         let g = this.game,
+//             r = g.renderer,
+//     	    w = r.width,
+//     	    h = r.height
         let keyboard = this.input.keyboard.createCursorKeys();
-	if(!challengeStart)
-	{
-	    if(keyboard.up.isDown)
-	    {
-		if(!optionInput)
-		{
-		    optionInput = true;
-		    if(option_select == 0)
-			return;
-		    document.getElementById(optionID[option_select]).classList.remove("border");
-		    document.getElementById(optionID[option_select]).classList.remove("border-light");
-		    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
-		    option_select = option_select - 1;
-		    document.getElementById(optionID[option_select]).classList.add("border");
-		    document.getElementById(optionID[option_select]).classList.add("border-light");
-		    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-		    console.log("上");
-		}
-	    }
-	    else if(keyboard.down.isDown)
-	    {
-		if(!optionInput)
-		{
-		    optionInput = true;
-		    if(option_select == 3)
-		        return;
+        if(!challengeStart)
+        {
+            if(keyboard.up.isDown)
+            {
+                if(!optionInput)
+                {
+                    optionInput = true;
+                    if(option_select == 0)
+                        return;
+                    document.getElementById(optionID[option_select]).classList.remove("border");
+                    document.getElementById(optionID[option_select]).classList.remove("border-light");
+                    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                    option_select = option_select - 1;
+                    document.getElementById(optionID[option_select]).classList.add("border");
+                    document.getElementById(optionID[option_select]).classList.add("border-light");
+                    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+                }
+            }
 
-		    document.getElementById(optionID[option_select]).classList.remove("border");
-            	    document.getElementById(optionID[option_select]).classList.remove("border-light");
-            	    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
-		    option_select = option_select + 1;
-		    document.getElementById(optionID[option_select]).classList.add("border");
-            	    document.getElementById(optionID[option_select]).classList.add("border-light");
-            	    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-		
-		    console.log("下");
-		}
-	    }
+            else if(keyboard.down.isDown)
+            {
+                if(!optionInput)
+                {
+                    optionInput = true;
+                    if(option_select == 3)
+                        return;
+
+                    document.getElementById(optionID[option_select]).classList.remove("border");
+                    document.getElementById(optionID[option_select]).classList.remove("border-light");
+                    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                    option_select = option_select + 1;
+                    document.getElementById(optionID[option_select]).classList.add("border");
+                    document.getElementById(optionID[option_select]).classList.add("border-light");
+                    document.getElementById(optionID[option_select]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+                }
+            }
             else
-	    {
-		optionInput = false;
-	    }
-		
+                optionInput = false;
 
             if(keyboard.space.isDown)
-	    {
+            {
                 if(!optionView)
-		{
+                {
                     mask.clear();
                     mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
                     optionView = true;
@@ -293,8 +288,8 @@ const doSubject = {
 
                     document.getElementById('water').style.visibility = "visible";
                     document.getElementById('optionBadges').style.visibility = "visible";
-			
-                    // A 選項
+
+                    // 依據玩家選擇的 option_select 來控制 playerOption 要顯示出哪個選項
                     if(option_select == 0)
                         document.getElementById('playerOption').innerHTML = subject_option[subject_select].A;
                     else if(option_select == 1)
@@ -303,14 +298,13 @@ const doSubject = {
                         document.getElementById('playerOption').innerHTML = subject_option[subject_select].C;
                     else if(option_select == 3)
                         document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
-			  
-			    
+			
                     optionStr = document.getElementById('playerOption').innerHTML;
                     challengeStart = true;
                     console.log(challengeStart);
                 }
-	    }
-	}
+            }
+        }
 	    
         // 角色左右移動
         if(keyboard.right.isDown)
@@ -324,7 +318,6 @@ const doSubject = {
         {
             // 計時器開始倒數
             timerStart = true;
-
 
             playerOptionHight = document.getElementById('playerOption').offsetTop;
             // 成功做到選擇
