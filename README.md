@@ -111,11 +111,26 @@
 
 
 ### doSubject
-<img src="https://i.imgur.com/i4UHP7b.png" style="width:300px;">
+<img src="https://i.imgur.com/i4UHP7b.png">
 > 進行課業學科的遊戲挑戰
-
-#### 變數
+#### HTML
+- challengeText 用於放置四個選項的 card，label 為選項代號，Text 為選項內容
+  - optionAGroup
+    - optionALabel
+    - optionAText
+  - optionBGroup
+    - optionBLabel
+    - optionBText
+  - optionCGroup
+    - optionCLabel
+    - optionCText
+  - optionDGroup
+    - optionDLabel
+    - optionDText 
+#### JS
 * subject_option：存放讓玩家選擇的四個選項內容
+
+
 
 ## Resource
 
