@@ -353,7 +353,17 @@ const doSubject = {
 
                     clearInterval(challengeTimer);
                     clearInterval(generateTimer);
-                    this.scene.start('gameSelect');
+			
+                    player_record.push({
+			    id: 5,
+			    class: 'subject',
+			    get: '',
+			    do: subject_nameen[subject_select],
+			    option: optionStr,
+		    });
+			
+		       this.scene.start('recordUpload');
+//                     this.scene.start('gameSelect');
                 }
 		       
 // 		player_record.push({
@@ -390,12 +400,12 @@ const doSubject = {
                     document.getElementById('optionBadges').style.visibility = "hidden";
 
                     // 變數再次初始，以便繼續挑戰直到成功為止
-                    challengeTime = 30;	        // 計時器時間
-                    optionView = false;	        // 是否先看過選項
-                    challengeStart = false;	// 跳戰是否開始
-                    timerStart = false;	        // 計時器是否開始
-                    waterHigh = 98;		// 海水高度
-                    optionLevel = 1;		// 選項等級
+                    challengeTime = 30;         // 計時器時間
+                    optionView = false;         // 是否先看過選項
+                    challengeStart = false;     // 跳戰是否開始
+                    timerStart = false;         // 計時器是否開始
+                    waterHigh = 98;             // 海水高度
+                    optionLevel = 1;            // 選項等級
 			   
                     document.getElementById('water').style.top = waterHigh.toString() + "%";
                 }
