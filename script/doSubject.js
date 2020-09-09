@@ -438,7 +438,7 @@ const doSubject = {
 		   if(restart)
                    {
                        console.log("重新遊戲");
-		       console.log(option_select
+		       console.log(option_select);
                        restart = false;
                        
 			   
