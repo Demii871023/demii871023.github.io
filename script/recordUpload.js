@@ -164,10 +164,10 @@ const recordUpload = {
             {
                 recordHover = true;
 
-		recordIndex = record.getData('id');
-		recordGroup_optionOB[recordIndex].alpha = 1;
-		recordGroup_classOB[recordIndex].alpha = 1;
-		recordGroup_doOB[recordIndex].alpha = 1;
+                recordIndex = record.getData('id');
+                recordGroup_optionOB[recordIndex].alpha = 1;
+                recordGroup_classOB[recordIndex].alpha = 1;
+                recordGroup_doOB[recordIndex].alpha = 1;
 		    
                 // 選擇上傳 recordIndex 的該項紀錄
                 if(choose && !recordChosen[recordIndex])
@@ -188,7 +188,7 @@ const recordUpload = {
                     if(player_record[recordIndex].class == 'activity')
                         document.getElementById('record_do' + recordselectNum.toString()).innerHTML = activity_name[activity_nameen.indexOf(player_record[recordIndex].do)];
                     document.getElementById('record_option' + recordselectNum.toString()).innerHTML = player_record[recordIndex].option;
-		}
+                }
 		
                 // 取消一個後，後面的遞補上來
                 if(cancel && recordChosen[recordIndex])
@@ -235,39 +235,36 @@ const recordUpload = {
             }
         }
 
-	let keyboard = this.input.keyboard.createCursorKeys();
-	// 角色左右移動
+        let keyboard = this.input.keyboard.createCursorKeys();
+        // 角色左右移動
         if(keyboard.right.isDown)
             player.setVelocityX(300);
         else if(keyboard.left.isDown)
             player.setVelocityX(-300);
         else
             player.setVelocityX(0);
-	// 角色上下移動
-	if(keyboard.down.isDown)
+        // 角色上下移動
+        if(keyboard.down.isDown)
             player.setVelocityY(300);
         else if(keyboard.up.isDown)
             player.setVelocityY(-300);
         else
             player.setVelocityY(0);
-	    
-	    
+
 	// 選擇上傳
-	if(keyboard.space.isDown)
-	    choose = true;
-	else
-	    choose = false;
-	    
-	// 取消上傳
-	if(keyboard.shift.isDown)
+        if(keyboard.space.isDown)
+            choose = true;
+        else
+            choose = false;
+
+        // 取消上傳
+        if(keyboard.shift.isDown)
             cancel = true;
-	else
+        else
             cancel = false;
 
 	// 若按下 Enter 鍵，就代表上傳完畢
-	if(uploadEnter.isDown) {
-   		console.log('上傳完畢');
-	}
-
+        if(uploadEnter.isDown)
+            console.log('上傳完畢');
     }
 }
