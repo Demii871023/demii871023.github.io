@@ -423,8 +423,19 @@ const doSubject = {
 	       {
 	           document.getElementById('playerOption').classList.remove("badge-success");
 	           document.getElementById('playerOption').classList.add("badge-light");
-		   challengeStart = false;
-		   optionView = false;
+		   // 如果計時器倒數截止，但仍然沒有超過標準高度，就從來
+		   if(challengeTime == 0)
+                   {
+	   
+                       // 變數再次初始，以便繼續挑戰直到成功為止
+		       challengeTime = 30;	// 計時器時間
+		       downSpeed = 50;		// 物品降落速度
+		       optionView = false;	// 是否先看過選項
+		       challengeStart = false;	// 跳戰是否開始
+		       timerStart = false;	// 計時器是否開始
+		       waterHigh = 98;		// 海水高度
+		       optionLevel = 1;		// 選項等級
+                   }
 	       }
         }
     }
