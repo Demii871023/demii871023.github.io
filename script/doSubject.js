@@ -226,10 +226,10 @@ const doSubject = {
 		    document.getElementById('water').style.top = waterHigh.toString() + "%";
 			
 			
-	            clearInterval(challengeTimer);
-		    clearInterval(generateTimer);
+// 	            clearInterval(challengeTimer);
+// 		    clearInterval(generateTimer);
 		    stageTime = stageTime - 10;
-		    this.scene.start('gameSelect');
+// 		    this.scene.start('gameSelect');
 		    
                 }
 		    
