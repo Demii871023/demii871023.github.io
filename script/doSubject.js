@@ -208,30 +208,30 @@ const doSubject = {
                 challengeTime = challengeTime - 1;
                 document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
                 document.getElementById('challengeBar').style.width = (challengeTime / 30 * 100).toString() + "%";
-                if(challengeTime <= 0)
-		{
+//                 if(challengeTime <= 0)
+// 		{
                     
-		    challengeGroup.clear();
+// 		    challengeGroup.clear();
 			
 		    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
 		    challengeTime = 30;		// 計時器時間
 //         	    downSpeed = 50;		// 物品降落速度
-		    optionView = false;		// 是否先看過選項
-		    challengeStart = false;	// 跳戰是否開始
-		    timerStart = false;		// 計時器是否開始
-		    waterHigh = 98;		// 海水高度
+// 		    optionView = false;		// 是否先看過選項
+// 		    challengeStart = false;	// 跳戰是否開始
+// 		    timerStart = false;		// 計時器是否開始
+// 		    waterHigh = 98;		// 海水高度
 // 		    optionLevel = 1;		// 選項等級
 		
 		    // 重置海水高度
-		    document.getElementById('water').style.top = waterHigh.toString() + "%";
+// 		    document.getElementById('water').style.top = waterHigh.toString() + "%";
 			
 			
 // 	            clearInterval(challengeTimer);
 // 		    clearInterval(generateTimer);
-		    stageTime = stageTime - 10;
+// 		    stageTime = stageTime - 10;
 // 		    this.scene.start('gameSelect');
 		    
-                }
+//                 }
 		    
             }
         }, 1000);
