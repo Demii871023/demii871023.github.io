@@ -99,7 +99,7 @@ var waterHigh2 = 0.2;
 // 海水高度 -> 對應到 #water css 中的 top 百分比
 var waterHigh = 98;
 // 選項高度 -> 用來與海水高度比較，若海水高度超過選項高度就完成
-var optionAHigh, optionBHigh, optionCHigh, optionDHigh;
+var optionAHigh, optionBHigh, optionCHigh, optionDHigh, playerOptionHight;
 // 依據 option_select 控制物品掉落速度
 var downSpeed = [2000, 1000, 400, 50];
 
@@ -310,18 +310,10 @@ const doSubject = {
 
 			// 看完選項後，就可以移除選項的文字
 			document.getElementById('challengeText').style.visibility = "hidden";
-// 			optionAText.destroy();
-// 			optionBText.destroy();
-// 			optionCText.destroy();
-// 			optionDText.destroy();
 			tipsText.destroy();
 
 			document.getElementById('water').style.visibility = "visible";
 			document.getElementById('optionBadges').style.visibility = "visible";
-// 			document.getElementById('optionA').innerHTML = subject_option[subject_select].A;
-// 			document.getElementById('optionB').innerHTML = subject_option[subject_select].B;
-// 			document.getElementById('optionC').innerHTML = subject_option[subject_select].C;
-// 			document.getElementById('optionD').innerHTML = subject_option[subject_select].D;
 			
 			// A 選項
 			if(option_select == 0)
@@ -335,7 +327,6 @@ const doSubject = {
 			  
 			    
 			optionStr = document.getElementById('playerOption').innerHTML;
-			console.log(document.getElementById('playerOption').innerHTML);
 			challengeStart = true;
 		    }
 	    }
@@ -384,23 +375,17 @@ const doSubject = {
 // 		    gameExit = false;
 // 	    }
 		
-            // 控制水的高度
-            // for (key in rotatingRoundedRects)
-	        // {
-            //     let rrr = rotatingRoundedRects[key]
-            //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
-            // }
-	        // for (key in rotatingRoundedRects2)
-	        // {
-            //     let rrr = rotatingRoundedRects2[key]
-            //     rrr.setAngle(rrr.rang + ((Date.now()/rrr.rangrate)%360))
-            // }
 		
-	    // 成功做到選擇
-	    if(document.getElementById('wave').y < 600)
-	    {
-		document.getElementById('playerOption').classList.remove("badge-light");
-	        document.getElementById('playerOption').classList.add("badge-success");
+//             optionAHigh = document.getElementById('optionA').offsetTop;
+//             optionBHigh = document.getElementById('optionB').offsetTop;
+//             optionCHigh = document.getElementById('optionC').offsetTop;
+//             optionDHigh = document.getElementById('optionD').offsetTop;
+	       playerOptionHight = document.getElementById('playerOption').offsetTop;
+	       // 成功做到選擇
+	       if(document.getElementById('wave').y < playerOptionHight)
+	       {
+	           document.getElementById('playerOption').classList.remove("badge-light");
+	           document.getElementById('playerOption').classList.add("badge-success");
 // 		player_record.push({
 //             		subject: subject_nameen[subject_select],
 //             		do:optionStr,
@@ -408,34 +393,12 @@ const doSubject = {
 		    
 // 		console.log(player_record[0].subject);
 // 		console.log(player_record[0].do);
-	    }
-            else if(document.getElementById('wave').y > 600)
-	    {
-		document.getElementById('playerOption').classList.remove("badge-success");
-	        document.getElementById('playerOption').classList.add("badge-light");
-	    }
-// 	    if(document.getElementById('wave').y < document.getElementById('playerOption').offsetTop)
-// 	    {
-// 		document.getElementById('playerOption').classList.remove("badge-light");
-// 	        document.getElementById('playerOption').classList.add("badge-success");
-// 		player_record.push({
-//             		subject: subject_name[subject_select],
-//             		do:optionStr,
-//         	});
-		    
-// 		console.log(player_record[0].subject);
-// 		console.log(player_record[0].do);
-// 	    }
-//             else if(document.getElementById('wave').y > document.getElementById('playerOption').offsetTop)
-// 	    {
-// 		document.getElementById('playerOption').classList.remove("badge-success");
-// 	        document.getElementById('playerOption').classList.add("badge-light");
-// 	    }
-		
-//             optionAHigh = document.getElementById('optionA').offsetTop;
-//             optionBHigh = document.getElementById('optionB').offsetTop;
-//             optionCHigh = document.getElementById('optionC').offsetTop;
-//             optionDHigh = document.getElementById('optionD').offsetTop;
+	       }
+               else if(document.getElementById('wave').y > playerOptionHight)
+	       {
+	           document.getElementById('playerOption').classList.remove("badge-success");
+	           document.getElementById('playerOption').classList.add("badge-light");
+	       }
 		
 // 	    // 完成最低階：D 選項
 //             if(document.getElementById('wave').y > optionDHigh)
