@@ -116,7 +116,7 @@
 
 #### HTML
 
-- challengeText 用於放置四個選項的 card，label 為選項代號，Text 為選項內容
+- challengeText 用於放置四個選項的 card，Label 為選項代號 (用badge做實作)，Text 為選項內容
   - optionAGroup
     - optionALabel
     - optionAText
@@ -129,6 +129,10 @@
   - optionDGroup
     - optionDLabel
     - optionDText 
+---
+
+- jjj
+
 #### JS
 * subject_option：存放讓玩家選擇的四個選項內容
 
