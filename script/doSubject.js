@@ -76,6 +76,7 @@ var challenge_name = ['lighting', 'bomb'];
 const challengeNum = 10;
 var canExit = false;
 var gameExit = false;
+var restart = false;
 
 // 掉落速度，依據級距加快
 // var downSpeed = 30;
@@ -208,8 +209,11 @@ const doSubject = {
                 challengeTime = challengeTime - 1;
                 document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
                 document.getElementById('challengeBar').style.width = (challengeTime / 30 * 100).toString() + "%";
-//                 if(challengeTime <= 0)
-// 		{
+		// 計時器到，重新遊戲
+                if(challengeTime <= 0)
+		{
+			restart = true;
+		}
                     
 // 		    challengeGroup.clear();
 			
@@ -240,7 +244,7 @@ const doSubject = {
         generateTimer = setInterval(() => {
             if(timerStart)
             {   
-                // console.log("產生一個");
+                console.log("產生一個");
                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
                 challengeOJ.body.gravity.y = downSpeed[option_select];
                 // console.log(challengeOJ.body.gravity.y);=
@@ -424,9 +428,10 @@ const doSubject = {
 	           document.getElementById('playerOption').classList.remove("badge-success");
 	           document.getElementById('playerOption').classList.add("badge-light");
 		   // 如果計時器倒數截止，但仍然沒有超過標準高度，就從來
-		   if(challengeTime == 0)
+		   if(restart)
                    {
                        console.log("重新遊戲");
+                       restart = false;
                        challengeGroup.clear();
 		       // 重新蓋上遮罩
 		       mask.clear();
@@ -439,6 +444,9 @@ const doSubject = {
 	               document.getElementById('optionBText').innerHTML = subject_option[subject_select].B;
 	               document.getElementById('optionCText').innerHTML = subject_option[subject_select].C;
 	               document.getElementById('optionDText').innerHTML = subject_option[subject_select].D;
+			   
+		       document.getElementById('water').style.visibility = "hidden";
+		       document.getElementById('optionBadges').style.visibility = "hidden";
 			   
                        // 變數再次初始，以便繼續挑戰直到成功為止
 		       challengeTime = 30;	// 計時器時間
