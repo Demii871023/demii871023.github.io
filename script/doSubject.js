@@ -426,9 +426,10 @@ const doSubject = {
 		   // 如果計時器倒數截止，但仍然沒有超過標準高度，就從來
 		   if(challengeTime == 0)
                    {
-	
+                       console.log("重新遊戲");
                        challengeGroup.clear();
-		       // 蓋上遮罩
+		       // 重新蓋上遮罩
+		       mask.clear();
                        mask = this.add.graphics()
                        mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
         
