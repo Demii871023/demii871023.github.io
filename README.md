@@ -149,6 +149,8 @@
 > Bool 變數
 > * optionView：玩家是否看見選項，並且按空白鍵做出選擇
 > * challengeStart：接掉落物的挑戰是否開始
+> * gameExit：是否完成挑戰可以離開遊戲
+> * restart：是否未完成遊戲重新遊戲
 
 ---
 
