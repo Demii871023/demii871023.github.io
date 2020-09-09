@@ -333,6 +333,7 @@ const doSubject = {
 			    
 			optionStr = document.getElementById('playerOption').innerHTML;
 			challengeStart = true;
+			console.log(challengeStart);
 		    }
 	    }
 	}
@@ -347,6 +348,7 @@ const doSubject = {
     
         if(challengeStart)
         {
+	    console.log(遊戲開始);
             // 計時器開始倒數
             timerStart = true;
 
@@ -430,7 +432,7 @@ const doSubject = {
                    {
                        console.log("重新遊戲");
                        restart = false;
-                       challengeGroup.clear();
+//                        challengeGroup.clear();
 		       // 重新蓋上遮罩
 		       mask.clear();
                        mask = this.add.graphics()
