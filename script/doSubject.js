@@ -406,7 +406,7 @@ const doSubject = {
 			
 		       // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
 		       challengeTime = 30;	// 計時器時間
-		       downSpeed = 50;		// 物品降落速度
+// 		       downSpeed = 50;		// 物品降落速度
 		       optionView = false;	// 是否先看過選項
 		       challengeStart = false;	// 跳戰是否開始
 		       timerStart = false;	// 計時器是否開始
@@ -459,7 +459,7 @@ const doSubject = {
 			   
                        // 變數再次初始，以便繼續挑戰直到成功為止
 		       challengeTime = 30;	// 計時器時間
-		       downSpeed = 50;		// 物品降落速度
+// 		       downSpeed = 50;		// 物品降落速度
 		       optionView = false;	// 是否先看過選項
 		       challengeStart = false;	// 跳戰是否開始
 		       timerStart = false;	// 計時器是否開始
