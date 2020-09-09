@@ -332,47 +332,37 @@ const doSubject = {
             {
                 document.getElementById('playerOption').classList.remove("badge-light");
                 document.getElementById('playerOption').classList.add("badge-success");
-		       
-		       
+
                 if(!gameExit)
-                {
-				   
+                {	   
                     gameExit = true;
                     challengeGroup.clear();
-			
+
                     // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
-                    challengeTime = 30;	        // 計時器時間
-                    optionView = false;	        // 是否先看過選項
-                    challengeStart = false;	// 跳戰是否開始
-                    timerStart = false;	        // 計時器是否開始
-                    waterHigh = 98;		// 海水高度
-                    optionLevel = 1;		// 選項等級
+                    challengeTime = 30;         // 計時器時間
+                    optionView = false;         // 是否先看過選項
+                    challengeStart = false;     // 跳戰是否開始
+                    timerStart = false;         // 計時器是否開始
+                    waterHigh = 98;             // 海水高度
+                    optionLevel = 1;            // 選項等級
 
                     // 重置海水高度
                     document.getElementById('water').style.top = waterHigh.toString() + "%";
 
                     clearInterval(challengeTimer);
                     clearInterval(generateTimer);
-			
+
                     player_record.push({
-			    id: 5,
-			    class: 'subject',
-			    get: '',
-			    do: subject_nameen[subject_select],
-			    option: optionStr,
-		    });
+                        id: 5,
+                        class: 'subject',
+                        get: '',
+                        do: subject_nameen[subject_select],
+                        option: optionStr,
+                    });
 			
-		       this.scene.start('recordUpload');
+                    this.scene.start('recordUpload');
 //                     this.scene.start('gameSelect');
-                }
-		       
-// 		player_record.push({
-//             		subject: subject_nameen[subject_select],
-//             		do:optionStr,
-//         	});
-		    
-// 		console.log(player_record[0].subject);
-// 		console.log(player_record[0].do);
+                }       
             }
             else if(document.getElementById('wave').y > playerOptionHight)
             {
