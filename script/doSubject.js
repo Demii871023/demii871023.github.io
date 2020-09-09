@@ -164,11 +164,6 @@ const doSubject = {
 	document.getElementById('optionCText').innerHTML = subject_option[subject_select].C;
 	document.getElementById('optionDText').innerHTML = subject_option[subject_select].D;
 	    
-	    
-//         optionAText = this.add.text(cw/10, ch/2-60, subject_option[subject_select].A, {color: "#FFFFFF", fontSize:'20px'});
-//         optionBText = this.add.text(cw/10, ch/2-20, subject_option[subject_select].B, {color: "#FFFFFF", fontSize:'20px'});
-//         optionCText = this.add.text(cw/10, ch/2+20, subject_option[subject_select].C, {color: "#FFFFFF", fontSize:'20px'});
-//         optionDText = this.add.text(cw/10, ch/2+60, subject_option[subject_select].D, {color: "#FFFFFF", fontSize:'20px'});
         
         // 新增玩家
         player = this.physics.add.sprite(cw/2, ch - 50, player_name[player_select]);
@@ -190,9 +185,6 @@ const doSubject = {
             if(challenge.texture.key == 'lighting')
                 waterHigh = waterHigh - 5;
             document.getElementById('water').style.top = waterHigh.toString() + "%";
-//             downSpeed = optionLevel * 100;
-//             for(var i = 0 ; i < challengeGroupChild.length ; i++)
-//                 challengeGroupChild[i].body.gravity.y = downSpeed;
         }
 	    
         // 新增提示字樣
@@ -209,31 +201,10 @@ const doSubject = {
                 challengeTime = challengeTime - 1;
                 document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
                 document.getElementById('challengeBar').style.width = (challengeTime / 30 * 100).toString() + "%";
+		    
 		// 計時器到，重新遊戲
                 if(challengeTime <= 0)
 		    restart = true;
-                    
-// 		    challengeGroup.clear();
-			
-		    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
-// 		    challengeTime = 30;		// 計時器時間
-//         	    downSpeed = 50;		// 物品降落速度
-// 		    optionView = false;		// 是否先看過選項
-// 		    challengeStart = false;	// 跳戰是否開始
-// 		    timerStart = false;		// 計時器是否開始
-// 		    waterHigh = 98;		// 海水高度
-// 		    optionLevel = 1;		// 選項等級
-		
-		    // 重置海水高度
-// 		    document.getElementById('water').style.top = waterHigh.toString() + "%";
-			
-			
-// 	            clearInterval(challengeTimer);
-// 		    clearInterval(generateTimer);
-// 		    stageTime = stageTime - 10;
-// 		    this.scene.start('gameSelect');
-		    
-//                 }
 		    
             }
         }, 1000);
@@ -242,11 +213,7 @@ const doSubject = {
         generateTimer = setInterval(() => {
             if(timerStart)
             {   
-//                 console.log("產生一個");
                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
-// 		console.log(challengeGroupChild.length);
-		console.log(option_select);
-		console.log(downSpeed[option_select]);
                 challengeOJ.body.gravity.y = downSpeed[option_select];
                 challengeOJ.setScale(challengeScale);
 
@@ -309,39 +276,39 @@ const doSubject = {
 	    }
 		
 
-	    if(keyboard.space.isDown)
+            if(keyboard.space.isDown)
 	    {
-		    if(!optionView)
-		    {
-			mask.clear();
-			mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
-			optionView = true;
+                if(!optionView)
+		{
+                    mask.clear();
+                    mask.fillStyle(0xFFFFFF, 0.6).fillRect(0, 0, cw, ch);
+                    optionView = true;
 
-			// GM 對話框關閉
-			document.getElementById('gmChatCard').style.display = 'none';
+                    // GM 對話框關閉
+                    document.getElementById('gmChatCard').style.display = 'none';
 
-			// 看完選項後，就可以移除選項的文字
-			document.getElementById('challengeText').style.visibility = "hidden";
-			tipsText.destroy();
+                    // 看完選項後，就可以移除選項的文字
+                    document.getElementById('challengeText').style.visibility = "hidden";
+                    tipsText.destroy();
 
-			document.getElementById('water').style.visibility = "visible";
-			document.getElementById('optionBadges').style.visibility = "visible";
+                    document.getElementById('water').style.visibility = "visible";
+                    document.getElementById('optionBadges').style.visibility = "visible";
 			
-			// A 選項
-			if(option_select == 0)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].A;
-			else if(option_select == 1)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].B;
-			else if(option_select == 2)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].C;
-			else if(option_select == 3)
-				document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
+                    // A 選項
+                    if(option_select == 0)
+                        document.getElementById('playerOption').innerHTML = subject_option[subject_select].A;
+                    else if(option_select == 1)
+                        document.getElementById('playerOption').innerHTML = subject_option[subject_select].B;
+                    else if(option_select == 2)
+                        document.getElementById('playerOption').innerHTML = subject_option[subject_select].C;
+                    else if(option_select == 3)
+                        document.getElementById('playerOption').innerHTML = subject_option[subject_select].D;
 			  
 			    
-			optionStr = document.getElementById('playerOption').innerHTML;
-			challengeStart = true;
-			console.log(challengeStart);
-		    }
+                    optionStr = document.getElementById('playerOption').innerHTML;
+                    challengeStart = true;
+                    console.log(challengeStart);
+                }
 	    }
 	}
 	    
@@ -355,72 +322,39 @@ const doSubject = {
     
         if(challengeStart)
         {
-	    console.log("遊戲開始");
             // 計時器開始倒數
             timerStart = true;
 
-// 	    if(keyboard.space.isDown)
-// 	    {
-// 		    if(!gameExit)
-// 		    {
-// 			    gameExit = true;
-// 			    challengeGroup.clear();
-			
-// 			    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
-// 			    challengeTime = 30;		// 計時器時間
-// 			    downSpeed = 50;		// 物品降落速度
-// 			    optionView = false;		// 是否先看過選項
-// 			    challengeStart = false;	// 跳戰是否開始
-// 			    timerStart = false;		// 計時器是否開始
-// 			    waterHigh = 98;		// 海水高度
-// 			    optionLevel = 1;		// 選項等級
 
-// 			    // 重置海水高度
-// 			    document.getElementById('water').style.top = waterHigh.toString() + "%";
-
-
-// 			    clearInterval(challengeTimer);
-// 			    clearInterval(generateTimer);
-// 			    this.scene.start('gameSelect');
-// 		    }
-// 	    }
-// 	    else
-// 	    {
-// 		    gameExit = false;
-// 	    }
-		
-		
-	       playerOptionHight = document.getElementById('playerOption').offsetTop;
-	       // 成功做到選擇
-	       if(document.getElementById('wave').y < playerOptionHight)
-	       {
-	           document.getElementById('playerOption').classList.remove("badge-light");
-	           document.getElementById('playerOption').classList.add("badge-success");
+            playerOptionHight = document.getElementById('playerOption').offsetTop;
+            // 成功做到選擇
+            if(document.getElementById('wave').y < playerOptionHight)
+            {
+                document.getElementById('playerOption').classList.remove("badge-light");
+                document.getElementById('playerOption').classList.add("badge-success");
 		       
 		       
-		   if(!gameExit)
-                   {
+                if(!gameExit)
+                {
 				   
-		       gameExit = true;
-	               challengeGroup.clear();
+                    gameExit = true;
+                    challengeGroup.clear();
 			
-		       // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
-		       challengeTime = 30;	// 計時器時間
-// 		       downSpeed = 50;		// 物品降落速度
-		       optionView = false;	// 是否先看過選項
-		       challengeStart = false;	// 跳戰是否開始
-		       timerStart = false;	// 計時器是否開始
-		       waterHigh = 98;		// 海水高度
-		       optionLevel = 1;		// 選項等級
+                    // 每次離開此場景就再次初始化數值，以便於下次再進入此場景
+                    challengeTime = 30;	        // 計時器時間
+                    optionView = false;	        // 是否先看過選項
+                    challengeStart = false;	// 跳戰是否開始
+                    timerStart = false;	        // 計時器是否開始
+                    waterHigh = 98;		// 海水高度
+                    optionLevel = 1;		// 選項等級
 
-		       // 重置海水高度
-		       document.getElementById('water').style.top = waterHigh.toString() + "%";
+                    // 重置海水高度
+                    document.getElementById('water').style.top = waterHigh.toString() + "%";
 
-
-		       clearInterval(challengeTimer);
-		       clearInterval(generateTimer);
-		       this.scene.start('gameSelect');
-                    }
+                    clearInterval(challengeTimer);
+                    clearInterval(generateTimer);
+                    this.scene.start('gameSelect');
+                }
 		       
 // 		player_record.push({
 //             		subject: subject_nameen[subject_select],
@@ -429,46 +363,43 @@ const doSubject = {
 		    
 // 		console.log(player_record[0].subject);
 // 		console.log(player_record[0].do);
-	       }
-               else if(document.getElementById('wave').y > playerOptionHight)
-	       {
-	           document.getElementById('playerOption').classList.remove("badge-success");
-	           document.getElementById('playerOption').classList.add("badge-light");
-		   // 如果計時器倒數截止，但仍然沒有超過標準高度，就從來
-		   if(restart)
-                   {
-                       console.log("重新遊戲");
-		       console.log(option_select);
-                       restart = false;
-                       
+            }
+            else if(document.getElementById('wave').y > playerOptionHight)
+            {
+                document.getElementById('playerOption').classList.remove("badge-success");
+                document.getElementById('playerOption').classList.add("badge-light");
+		   
+                // 如果計時器倒數截止，但仍然沒有超過標準高度，就重來
+                if(restart)
+                {
+                    restart = false;
 			   
-		       // 重新蓋上遮罩
-		       mask.clear();
-                       mask = this.add.graphics()
-                       mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
+                    // 重新蓋上遮罩
+                    mask.clear();
+                    mask = this.add.graphics()
+                    mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
         
-                       // 新增該學科選項
-	               document.getElementById('challengeText').style.visibility = "visible";
-	               document.getElementById('optionAText').innerHTML = subject_option[subject_select].A;
-	               document.getElementById('optionBText').innerHTML = subject_option[subject_select].B;
-	               document.getElementById('optionCText').innerHTML = subject_option[subject_select].C;
-	               document.getElementById('optionDText').innerHTML = subject_option[subject_select].D;
+                    // 新增該學科選項
+                    document.getElementById('challengeText').style.visibility = "visible";
+                    document.getElementById('optionAText').innerHTML = subject_option[subject_select].A;
+                    document.getElementById('optionBText').innerHTML = subject_option[subject_select].B;
+                    document.getElementById('optionCText').innerHTML = subject_option[subject_select].C;
+                    document.getElementById('optionDText').innerHTML = subject_option[subject_select].D;
 			   
-		       document.getElementById('water').style.visibility = "hidden";
-		       document.getElementById('optionBadges').style.visibility = "hidden";
+                    document.getElementById('water').style.visibility = "hidden";
+                    document.getElementById('optionBadges').style.visibility = "hidden";
+
+                    // 變數再次初始，以便繼續挑戰直到成功為止
+                    challengeTime = 30;	        // 計時器時間
+                    optionView = false;	        // 是否先看過選項
+                    challengeStart = false;	// 跳戰是否開始
+                    timerStart = false;	        // 計時器是否開始
+                    waterHigh = 98;		// 海水高度
+                    optionLevel = 1;		// 選項等級
 			   
-                       // 變數再次初始，以便繼續挑戰直到成功為止
-		       challengeTime = 30;	// 計時器時間
-// 		       downSpeed = 50;		// 物品降落速度
-		       optionView = false;	// 是否先看過選項
-		       challengeStart = false;	// 跳戰是否開始
-		       timerStart = false;	// 計時器是否開始
-		       waterHigh = 98;		// 海水高度
-		       optionLevel = 1;		// 選項等級
-			   
-                       document.getElementById('water').style.top = waterHigh.toString() + "%";
-                   }
-	       }
+                    document.getElementById('water').style.top = waterHigh.toString() + "%";
+                }
+            }
         }
     }
 }
