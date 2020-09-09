@@ -78,24 +78,19 @@ var canExit = false;
 var gameExit = false;
 var restart = false;
 
-// 掉落速度，依據級距加快
-// var downSpeed = 30;
 
 
 // 繪製水動畫
-var water;
-var waterStroke;
-var maskShape;
+// var water;
+// var waterStroke;
+// var maskShape;
 var mask;
-var numRotatingRoundedRects = 35;
-var rotatingRoundedRects = [];
-var rotatingRoundedRectsContainer;
+// var numRotatingRoundedRects = 35;
+// var rotatingRoundedRects = [];
+// var rotatingRoundedRectsContainer;
 
-var rotatingRoundedRects2 = [];
-var rotatingRoundedRectsContainer2;
-
-var waterHigh1 = 0.4;
-var waterHigh2 = 0.2;
+// var rotatingRoundedRects2 = [];
+// var rotatingRoundedRectsContainer2;
 
 // 海水高度 -> 對應到 #water css 中的 top 百分比
 var waterHigh = 98;
@@ -124,13 +119,12 @@ const doSubject = {
         document.getElementById('gmChatCard').style.width = '35%';
         document.getElementById('gmChatCard').style.height = '110px';
         document.getElementById('gmChatCardText').innerHTML = "今天上完" + subject_name[subject_select] + "的課程，你會如何進行課後安排呢？";
-	    
-	    
-	document.getElementById('experienceTimeline').style.visibility = 'hidden';
-        
+
+        document.getElementById('experienceTimeline').style.visibility = 'hidden';
+
         // 載入背景圖片
         this.load.image('bg2', 'image/Background/jungle-background-clipart.jpg');
-        
+
         // 載入角色圖片
         this.load.image('player1', 'image/Character/player1.png');
         this.load.image('player2', 'image/Character/player2.png');
@@ -138,48 +132,43 @@ const doSubject = {
         this.load.image('player4', 'image/Character/player4.png');
         this.load.image('player5', 'image/Character/player5.png');
         this.load.image('player6', 'image/Character/player6.png');
-	    
+
         // 載入挑戰墜落物
         this.load.image('bomb', 'image/Challenge/bomb.png');
         this.load.image('lighting', 'image/Challenge/lighting.png');
-	    
-	// 初始化判斷參數
-	gameExit = false;
-	
-	    
+
+        // 初始化判斷參數
+        gameExit = false;
+
     },
     create: function(){
-        
         // 載入背景圖片
         this.bg2 = this.add.sprite(cw/2,ch/2, 'bg2');
-        
+
         // 蓋上遮罩
         mask = this.add.graphics()
         mask.fillStyle(0x000000, 0.7).fillRect(0, 0, cw, ch);
-        
+
         // 新增該學科選項
-	document.getElementById('challengeText').style.visibility = "visible";
-	document.getElementById('optionAText').innerHTML = subject_option[subject_select].A;
-	document.getElementById('optionBText').innerHTML = subject_option[subject_select].B;
-	document.getElementById('optionCText').innerHTML = subject_option[subject_select].C;
-	document.getElementById('optionDText').innerHTML = subject_option[subject_select].D;
-	    
-        
+        document.getElementById('challengeText').style.visibility = "visible";
+        document.getElementById('optionAText').innerHTML = subject_option[subject_select].A;
+        document.getElementById('optionBText').innerHTML = subject_option[subject_select].B;
+        document.getElementById('optionCText').innerHTML = subject_option[subject_select].C;
+        document.getElementById('optionDText').innerHTML = subject_option[subject_select].D;
+
         // 新增玩家
         player = this.physics.add.sprite(cw/2, ch - 50, player_name[player_select]);
         player.setScale(playerScale);
-        
-	
-        // 新增墜落物
 
-	challengeGroup = this.physics.add.group();
+        // 新增墜落物
+        challengeGroup = this.physics.add.group();
         challengeGroupChild = challengeGroup.getChildren();
-        
-	this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
-	
+
+        this.physics.add.overlap(player, challengeGroupChild, waterUp, null, this);
+
 	function waterUp(player, challenge)
         {
-	    challenge.disableBody(true, true);
+            challenge.disableBody(true, true);
             if(challenge.texture.key == 'bomb')
                 waterHigh = waterHigh + 5;
             if(challenge.texture.key == 'lighting')
@@ -189,11 +178,10 @@ const doSubject = {
 	    
         // 新增提示字樣
         tipsText = this.add.text(cw - 200, ch - 50, '請使用上下鍵選擇你想要的選項，\n並按下空白鍵進入遊戲。', {color: "#FFFFFF", fontSize:'14px'});
-            
+
         document.getElementById('challengeTimer').style.visibility = "visible";
         document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
         document.getElementById('challengeBar').style.width = '100%';
-
 
         challengeTimer = setInterval(() => {
             if(timerStart)
@@ -202,35 +190,29 @@ const doSubject = {
                 document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
                 document.getElementById('challengeBar').style.width = (challengeTime / 30 * 100).toString() + "%";
 		    
-		// 計時器到，重新遊戲
+                // 計時器到，重新遊戲
                 if(challengeTime <= 0)
-		    restart = true;
-		    
+                    restart = true;
+    
             }
         }, 1000);
-
 
         generateTimer = setInterval(() => {
             if(timerStart)
             {   
-                challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
+                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
                 challengeOJ.body.gravity.y = downSpeed[option_select];
                 challengeOJ.setScale(challengeScale);
-
             }
             else
-	    {
-		    challengeGroup.clear();
-		    challengeGroupChild = challengeGroup.getChildren();
-	    }
-        }, 500);
-	    
+            {
+                challengeGroup.clear();
+                challengeGroupChild = challengeGroup.getChildren();
+            }
+        }, 500); 
     },
     update: function(){
-//         let g = this.game,
-//             r = g.renderer,
-//     	    w = r.width,
-//     	    h = r.height
+
         let keyboard = this.input.keyboard.createCursorKeys();
         if(!challengeStart)
         {
