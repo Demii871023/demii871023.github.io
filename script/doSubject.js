@@ -433,7 +433,8 @@ const doSubject = {
                    {
                        console.log("重新遊戲");
                        restart = false;
-//                        challengeGroup.clear();
+                       challengeGroup.clear();
+		       challengeGroupChild.clear();
 		       // 重新蓋上遮罩
 		       mask.clear();
                        mask = this.add.graphics()
