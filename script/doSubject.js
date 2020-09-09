@@ -242,8 +242,9 @@ const doSubject = {
         generateTimer = setInterval(() => {
             if(timerStart)
             {   
-                console.log("產生一個");
+//                 console.log("產生一個");
                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
+		console.log(challengeGroupChild.length);
                 challengeOJ.body.gravity.y = downSpeed[option_select];
                 // console.log(challengeOJ.body.gravity.y);=
                 challengeOJ.setScale(challengeScale);
