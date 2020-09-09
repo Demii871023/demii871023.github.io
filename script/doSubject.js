@@ -211,9 +211,7 @@ const doSubject = {
                 document.getElementById('challengeBar').style.width = (challengeTime / 30 * 100).toString() + "%";
 		// 計時器到，重新遊戲
                 if(challengeTime <= 0)
-		{
-			restart = true;
-		}
+		    restart = true;
                     
 // 		    challengeGroup.clear();
 			
@@ -255,8 +253,8 @@ const doSubject = {
 	    
     },
     update: function(){
-	    let g = this.game,
-   	        r = g.renderer,
+        let g = this.game,
+            r = g.renderer,
     	    w = r.width,
     	    h = r.height
         let keyboard = this.input.keyboard.createCursorKeys();
