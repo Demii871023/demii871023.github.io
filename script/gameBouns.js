@@ -3,9 +3,6 @@ scene：gameBouns.js
 decribe：當玩家進入 bouns 門時，進入獎勵頁面
 */
 
-
-
-
 const percentN = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
 const bonus_name = ['lazyB', 'pressureB', 'socialB', 'strengthB'];
 var rebounce = ['false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false'];
