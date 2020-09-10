@@ -430,7 +430,7 @@ const gameSelect = {
 // gameSubject.js
 
 // 門檻值
-var threshold_value = [
+const threshold_value = [
     {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 語文
     {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 自然科學
     {lazy: 0, pressure: 80, strength: 2.5, social: 0, time:1.5}, // 綜合活動
@@ -440,7 +440,7 @@ var threshold_value = [
     {lazy: 0, pressure: 70, strength: 2.5, social: 0, time:1.5}, // 社會
     {lazy: 0, pressure: 80, strength: 1.5, social: 0, time:1.5}, // 藝術
 ];
-var threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'];
+const threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'];
 
 const gameSubject = {
     key: 'gameSubject',
