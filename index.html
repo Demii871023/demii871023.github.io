@@ -42,50 +42,43 @@
     </script>  
 </head>
 <body>
-	
-	
-	
-<!--     <div id="header">
-	<a href="#" data-toggle="popover" title="Introduction" data-content="My name is Farhan Ahmed. I am full-stack developer." >What is your name?</a>
-    </div> -->
-    
-    <!--<div id="header">-->
-	
-        <button id="btn_modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_subjectSelect" hidden="true">
-            Launch demo modal
-        </button>
+
+    <button id="btn_modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_subjectSelect" hidden="true">
+        Launch demo modal
+    </button>
       
-        <!-- BootStrap Modal：你確定要選擇_____（科目 subject）？-->
-        <div id="modal_subjectSelect" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+    <!-- BootStrap Modal：你確定要選擇_____（科目 subject）？-->
+    <div id="modal_subjectSelect" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body text-center h3">
-                        你確定要選擇 <span id="subject_name" class="h2"> </span>？
-                    </div>
-      
-                    <div class="modal-footer">
-                        <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Shift</button>
-                        <button id="sure" type="button" class="btn btn-primary">Space</button>
-                    </div>
-
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+
+                <div class="modal-body text-center h3">
+                    你確定要選擇 <span id="subject_name" class="h2"> </span>？
+                </div>
+      
+                <div class="modal-footer">
+                    <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Shift</button>
+                    <button id="sure" type="button" class="btn btn-primary">Space</button>
+                </div>
+
             </div>
         </div>
+    </div>
 
+
+    <!--<div id="header">-->
     <!--</div>-->
 
 
     <div id="app" style="display: block;">
-        <button id="playerConfirmBtn" type="button" class="btn btn-light" style="visibility: hidden;">編輯角色能力值</button>
-        
+
         <!-- 玩家能力值雷達圖 -->
         <div id="playerRadarChart" class="card" style="background-color: rgba(255, 255, 255, 0); display: block;">
             <div class="card-body">
@@ -187,9 +180,7 @@
                 </div>
             </div>
         </div>
-	
 
-	
         <!-- GM 對話框 -->
         <div id="gmChatCard" class="card" style="">
             <div id="gmChatCardText" class="card-body">
@@ -263,9 +254,7 @@
                 </h6>
             </div>
         </div>
-	
-	
-	
+
 	<!-- recordUpload.js 使用者選擇上傳的紀錄豆詳細記錄 -->
 	<div id="uploadDetailCard" class="card" style="visibility: hidden;">
             <div class="card-header">
