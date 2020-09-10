@@ -13,17 +13,17 @@ function dragInputRange_Pressure(event) {
 }
 
 function dragInputRange_Strength(event) {
-    document.getElementById('pressureRange').value = (playerValue[1]).toString();
+    document.getElementById('strengthRange').value = (playerValue[1]).toString();
     event.preventDefault();
 }
 
 function dragInputRange_Lazy(event) {
-    document.getElementById('pressureRange').value = (playerValue[2]).toString();
+    document.getElementById('lazyRange').value = (playerValue[2]).toString();
     event.preventDefault();
 }
 
 function dragInputRange_Social(event) {
-    document.getElementById('pressureRange').value = (playerValue[3]).toString();
+    document.getElementById('socialRange').value = (playerValue[3]).toString();
     event.preventDefault();
 }
 
