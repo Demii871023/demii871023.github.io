@@ -161,7 +161,7 @@ const gameSubject = {
         }
         
         function inBonuse(player, bonuse)
-            this.scene.start('gameBonus');
+            scene.start('gameBonus');
     },
     update: function(){
         
