@@ -22,7 +22,7 @@ var color = Chart.helpers.color;
 var chartconfig = {
     type: 'radar',
     data: {
-        labels: ["壓力", "體力", "慣性", "人際支持"],
+        labels: ["壓力", "體力", "惰性", "人際支持"],
         datasets: [{
             label: '角色能力值',
             backgroundColor: color('#FFFFFF').alpha(0.5).rgbString(),
