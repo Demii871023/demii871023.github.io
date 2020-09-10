@@ -91,7 +91,7 @@ const downSpeed = [2000, 1000, 400, 50];
 
 // 玩家選擇的選項 ( option_select：使用者所選擇 / optionStr：使用者的選擇句子 / optionID：修改 HTML 所使用 / optionInput：用於辨識現在是否在挑選選項)
 var option_select = 0;
-var optionID = ['optionAGroup', 'optionBGroup', 'optionCGroup', 'optionDGroup'];
+const optionID = ['optionAGroup', 'optionBGroup', 'optionCGroup', 'optionDGroup'];
 var optionStr = "";
 var optionInput = false;
 
