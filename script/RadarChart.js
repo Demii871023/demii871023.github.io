@@ -1,12 +1,9 @@
-
-var playerValue = [0,0,0,0];
-
 const rangebar_name = ['pressureBar', 'strengthBar', 'lazyBar', 'socialBar'];
 const rangerange_name = ['pressureRange', 'strengthRange', 'lazyRange', 'socialRange'];
+var playerValue = [0,0,0,0];
 var rangebar_now = 0;
-var valueTmp = 0;
 
-
+// 防止用滑鼠控制角色能力拉霸
 function dragInputRange_Pressure(event) {
     document.getElementById('pressureRange').value = (playerValue[0]).toString();
     event.preventDefault();
@@ -28,11 +25,7 @@ function dragInputRange_Social(event) {
 }
 
 
-
-var randomScalingFactor = function() {
-    return Math.round(Math.random() * 100);
-};
-
+// 設置雷達圖基本參數
 var color = Chart.helpers.color;
 var chartconfig = {
     type: 'radar',
@@ -93,29 +86,19 @@ var chartconfig = {
     }
 };
 
-
+// 繪製雷達圖
 function playerConfirm(){
     myRadar = new Chart(document.getElementById('RaderChartCanvas'), chartconfig);
 }
 
-// document.getElementById('playerConfirmBtn').addEventListener('click', function() {
-//     chartconfig.data.datasets.forEach(function(dataset) {
-//         dataset.data = dataset.data.map(function() {
-//             return randomScalingFactor();
-//         });
-//     });
-
-//     window.myRadar.update();
-// });
-
-// 角色能力值控制
+// 角色能力值控制，設置鍵盤輸入事件
 document.onkeydown = playerValueControl;
 
 function playerValueControl(e) {
     e = e || window.event;
     if(playervalueMove)
     {
-        // up arrow
+        // up arrow -> 上一個 range bar
         if (e.keyCode == '38'){
             if(rangebar_now == 0)
                 return;
@@ -139,12 +122,19 @@ function playerValueControl(e) {
             document.getElementById(rangebar_name[rangebar_now]).classList.add("border-light");
             document.getElementById(rangebar_name[rangebar_now]).style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
         }
-        // left arrow
+        
+        // left arrow -> rangebar_now 的那個 bar 增加數值
         else if (e.keyCode == '39'){
+            
+            // 已達數值最大限制
             if(playerValue[rangebar_now] == 100)
                 return;
+            
+            // 遞增該 bar 的數值
             playerValue[rangebar_now] = playerValue[rangebar_now] + 1;
             document.getElementById(rangerange_name[rangebar_now]).value = (playerValue[rangebar_now]).toString();
+            
+            // 將數值每一個放回 datasets 中
             i = -1;
             chartconfig.data.datasets.forEach(function(dataset) {
                 dataset.data = dataset.data.map(function() {
@@ -153,14 +143,22 @@ function playerValueControl(e) {
                 });
             });
         
+            // 更新雷達圖上的數值
             window.myRadar.update();
         }
-        // right arrow
+        
+        // right arrow -> -> rangebar_now 的那個 bar 減少數值
         else if (e.keyCode == '37'){
+            
+            // 已達數值最小限制
             if(playerValue[rangebar_now] == 0)
                 return;
+            
+            // 遞減該 bar 的數值
             playerValue[rangebar_now] = playerValue[rangebar_now] - 1;
             document.getElementById(rangerange_name[rangebar_now]).value = (playerValue[rangebar_now]).toString();
+            
+            // 將數值每一個放回 datasets 中
             i = -1;
             chartconfig.data.datasets.forEach(function(dataset) {
                 dataset.data = dataset.data.map(function() {
@@ -168,7 +166,8 @@ function playerValueControl(e) {
                     return playerValue[i];
                 });
             });
-
+            
+            // 更新雷達圖上的數值
             window.myRadar.update();
         }
     }
