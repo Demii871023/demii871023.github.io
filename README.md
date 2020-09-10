@@ -114,54 +114,6 @@
 <img src="https://i.imgur.com/i4UHP7b.png">
 > 進行課業學科的遊戲挑戰
 
-#### HTML
-
-- challengeText 用於放置四個選項的 card，Label 為選項代號 (用badge做實作)，Text 為選項內容
-  - optionAGroup
-    - optionALabel
-    - optionAText
-  - optionBGroup
-    - optionBLabel
-    - optionBText
-  - optionCGroup
-    - optionCLabel
-    - optionCText
-  - optionDGroup
-    - optionDLabel
-    - optionDText 
----
-
-- optionBadges 顯示玩家選取的選項內容
-  - playerOption
-
-#### JS
-> const 變數
-> * subject_option：存放讓玩家選擇的四個選項內容
-> 
-
----
-
-> var 可變變數
-> * challengeTime：挑戰的倒數計時時間
-
----
-
-> Bool 變數
-> * optionView：玩家是否看見選項，並且按空白鍵做出選擇
-> * challengeStart：接掉落物的挑戰是否開始
-> * gameExit：是否完成挑戰可以離開遊戲
-> * restart：是否未完成遊戲重新遊戲
-
----
-
-> 挑戰整體時間：
-
-
-> 用於生成掉落物：
-> * challenge_name 
-
-
-
 ## Resource
 
 ### Phaser
