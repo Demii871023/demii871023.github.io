@@ -1,7 +1,7 @@
 // 偵測是否執行動作：吃 eat / 不吃 donteat
 var eat = false;    
 var donteat = false;
-
+ㄋ
 // 防呆機制：如果 modal 視窗打開，則角色不能再移動
 var dontMove = false;
 
@@ -161,7 +161,7 @@ const gameSubject = {
         }
         
         function inBonuse(player, bonuse)
-            scene.start('gameBonus');
+            this.scene.start('gameBonus');
     },
     update: function(){
         
