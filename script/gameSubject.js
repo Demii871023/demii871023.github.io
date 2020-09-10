@@ -1,16 +1,16 @@
-
-var eat = false;    // 偵測是否執行動作：吃
-var spaceCounter = 0;
-
+// 偵測是否執行動作：吃 eat / 不吃 donteat
+var eat = false;    
 var donteat = false;
 
 // 防呆機制：如果 modal 視窗打開，則角色不能再移動
 var dontMove = false;
 
+var spaceCounter = 0;
 var beansTmp;
 
 // 使用者選擇科目
 var subject_select = -1;
+
 // 科目亂數座標
 var subject_xy = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 
@@ -18,18 +18,14 @@ var subject_xy = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0,
 const gameSubject = {
     key: 'gameSubject',
     preload: function(){
-        
-        
-        
+
         gsCounter = gsCounter + 1;
-        console.log(gsCounter);
         
         if(gsCounter == 3)
             console.log('觸發隨機事件');
 
         // 每次進入都要初始所選科目
         subject_select = -1;
-        console.log("進入選擇科目");
         
         // 依照選取的角色顯現出角色圖片於角色狀態
         document.getElementById('playerStatusCard').style.visibility = 'visible';
@@ -165,10 +161,7 @@ const gameSubject = {
         }
         
         function inBonuse(player, bonuse)
-        {
-            console.log("進入加分關卡");
             this.scene.start('gameBonus');
-        }
     },
     update: function(){
         
