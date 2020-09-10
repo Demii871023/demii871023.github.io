@@ -38,20 +38,6 @@ const activity_name = ['社團', '校隊', '科展'];
 const activity_nameen = ['Club', 'SchoolTeam', 'ScienceFair'];
 
 
-// var eat = false;    // 偵測是否執行動作：吃
-// var spaceCounter = 0;
-
-// var donteat = false;
-
-// // 防呆機制：如果 modal 視窗打開，則角色不能再移動
-// var dontMove = false;
-
-// var beansTmp;
-
-// // 使用者選擇科目
-// var subject_select = -1;
-// // 科目亂數座標
-// var subject_xy = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 
 // 取得亂數函式
 const getRandom = (range, start) =>{
