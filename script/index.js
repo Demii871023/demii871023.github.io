@@ -664,7 +664,6 @@ const gameSubject = {
 
 const percentN = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
 const bonus_name = ['lazyB', 'pressureB', 'socialB', 'strengthB'];
-const progressHTMLID = ['lazyProgress', 'pressureProgress', 'socialProgress', 'strengthProgress'];
 var rebounce = ['false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false'];
 
 // 加分遊戲進度控制 bonusStart：開始 / bonusStop：暫停 / bonuseOver：結束
