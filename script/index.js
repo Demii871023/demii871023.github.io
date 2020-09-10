@@ -1,23 +1,4 @@
-index.js
-未共用
-類型
-JavaScript
-大小
-42 KB (42,988 個位元組)
-儲存空間使用量
-42 KB (42,988 個位元組)
-位置
-script
-擁有者
-我
-上次修改時間
-我在下午4:06修改過
-上次開啟時間
-我在下午4:47開啟過
-建立日期
-下午4:06 (使用「ZIP Extractor」建立)
-新增說明
-檢視者可以下載
+
 // const.js
 const cw = $(window).width();
 const ch = $(window).height();
