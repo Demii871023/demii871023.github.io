@@ -83,15 +83,15 @@ function playerConfirm(){
     myRadar = new Chart(document.getElementById('RaderChartCanvas'), chartconfig);
 }
 
-document.getElementById('playerConfirmBtn').addEventListener('click', function() {
-    chartconfig.data.datasets.forEach(function(dataset) {
-        dataset.data = dataset.data.map(function() {
-            return randomScalingFactor();
-        });
-    });
+// document.getElementById('playerConfirmBtn').addEventListener('click', function() {
+//     chartconfig.data.datasets.forEach(function(dataset) {
+//         dataset.data = dataset.data.map(function() {
+//             return randomScalingFactor();
+//         });
+//     });
 
-    window.myRadar.update();
-});
+//     window.myRadar.update();
+// });
 
 // 角色能力值控制
 document.onkeydown = playerValueControl;
