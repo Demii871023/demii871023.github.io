@@ -694,7 +694,7 @@ var bonus_xy = [
 ];
 
 // 為了加分指令 (command_name：用於生成上下左右鍵所需 / command_command：用亂數生成多個指令鍵值 / commandInput：用於辨識是否可以開始輸入指令 / command_index：用於辨識現在正確的鍵值)
-var command_name = ['up', 'down', 'left', 'right'];
+const command_name = ['up', 'down', 'left', 'right'];
 var command_command = [];
 var commandInput = false;
 var command_index = 0;
