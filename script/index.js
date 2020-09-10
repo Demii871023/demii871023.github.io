@@ -447,9 +447,10 @@ const config = {
     },
     scene: [ 
         playerSelect,
+        gameBonus,
         gameSelect,
         gameSubject,
-        gameBonus,
+        
         doSubject,
         recordUpload,
     ]
