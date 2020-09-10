@@ -7,8 +7,23 @@ var rangebar_now = 0;
 var valueTmp = 0;
 
 
-function dragInputRange(event) {
+function dragInputRange_Pressure(event) {
     document.getElementById('pressureRange').value = (playerValue[0]).toString();
+    event.preventDefault();
+}
+
+function dragInputRange_Strength(event) {
+    document.getElementById('pressureRange').value = (playerValue[1]).toString();
+    event.preventDefault();
+}
+
+function dragInputRange_Lazy(event) {
+    document.getElementById('pressureRange').value = (playerValue[2]).toString();
+    event.preventDefault();
+}
+
+function dragInputRange_Social(event) {
+    document.getElementById('pressureRange').value = (playerValue[3]).toString();
     event.preventDefault();
 }
 
