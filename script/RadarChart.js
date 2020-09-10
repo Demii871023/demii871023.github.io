@@ -1,8 +1,8 @@
 
 var playerValue = [0,0,0,0];
 
-var rangebar_name = ['pressureBar', 'strengthBar', 'lazyBar', 'socialBar'];
-var rangerange_name = ['pressureRange', 'strengthRange', 'lazyRange', 'socialRange'];
+const rangebar_name = ['pressureBar', 'strengthBar', 'lazyBar', 'socialBar'];
+const rangerange_name = ['pressureRange', 'strengthRange', 'lazyRange', 'socialRange'];
 var rangebar_now = 0;
 var valueTmp = 0;
 
