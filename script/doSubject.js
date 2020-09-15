@@ -171,7 +171,9 @@ const doSubject = {
         document.getElementById('challengeBar').innerHTML = " " + challengeTime.toString() + " 秒";
         document.getElementById('challengeBar').style.width = '100%';
 
+	// 挑戰接掉落物的計時器
         challengeTimer = setInterval(() => {
+	    // 如果接掉落物挑戰開始，每秒執行一次此計時器 callback function，challengeTime 就減少一秒。
             if(timerStart)
             {
                 challengeTime = challengeTime - 1;
@@ -185,13 +187,16 @@ const doSubject = {
             }
         }, 1000);
 
+        // 產生掉落物的計時器
         generateTimer = setInterval(() => {
+	    // 如果開始接掉落物挑戰，就生成掉落物並且設置其 gravity 使其會往下掉。
             if(timerStart)
             {   
-                 challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
+                challengeOJ = challengeGroup.create(getRandom(cw - 100, 100), 0 - getRandom(200, 0), challenge_name[getRandom(2,0)]);
                 challengeOJ.body.gravity.y = downSpeed[option_select];
                 challengeOJ.setScale(challengeScale);
             }
+            // 否則，就將存放掉落物的 group 清空
             else
             {
                 challengeGroup.clear();
