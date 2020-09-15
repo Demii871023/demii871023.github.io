@@ -57,11 +57,14 @@ const subject_option = [
     },
 ];
 
+const challengeScale = 0.2;
+
+// 用於辨識遊戲狀態的布林值（optionView：用來辨識選項是否已經做出選擇 / challengeStart：辨識接掉落物挑戰是否開始 / timerStart：辨識接掉落物挑戰的計時器是否開始）
 var optionView = false;
 var challengeStart = false;
-var challengeTime = 30;
-const challengeScale = 0.2;
 var timerStart = false;
+
+var challengeTime = 30;
 var challenge_xy = [
 	// bomb
 	{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0},
