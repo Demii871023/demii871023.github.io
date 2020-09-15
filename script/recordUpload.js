@@ -157,13 +157,15 @@ const recordUpload = {
         }
 
         this.physics.add.overlap(player, recordGroupChild, showOptionText, null, this);
-	    
+	
+	// 用來顯示 player 和特定 record 產生 hover 時的對應紀錄詳細資料的文字的 callback function
         function showOptionText(player, record)
         {
             if(abs(player.x, record.x) < 15 && abs(player.y, record.y) < 20)
             {
+		// 現在產生 hover
                 recordHover = true;
-
+		// 依照產生 hover 的特定 record 取得 key id 後，作為 index，將對應 index 的文字透明度設置為 1
                 recordIndex = record.getData('id');
                 recordGroup_optionOB[recordIndex].alpha = 1;
                 recordGroup_classOB[recordIndex].alpha = 1;
