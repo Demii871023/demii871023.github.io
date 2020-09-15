@@ -350,7 +350,7 @@ const gameSelect = {
     key: 'gameSelect',
     preload: function(){
         
-        
+        // 若階段性的倒數計時結束，就跳至上傳紀錄 -> 未來要改成這樣
         if(stageTime <= 0)
         {
             this.scene.start('recordUpload');
@@ -446,9 +446,7 @@ const threshold_namezw = ['惰性', '壓力', '體力', '人際支持', '時間'
 const gameSubject = {
     key: 'gameSubject',
     preload: function(){
-        
-        
-        
+
         gsCounter = gsCounter + 1;
         console.log(gsCounter);
         
@@ -508,7 +506,6 @@ const gameSubject = {
         this.load.image('Social', 'image/18College/12.png');
         this.load.image('Art', 'image/18College/9.png');
         
-        
         document.getElementById('gmChatCard').style.width = '50%';
         document.getElementById('gmChatCard').style.height = '90px';
         document.getElementById('gmChatCardText').innerHTML = "高中三年，有好多的事情想嘗試，可能想要加強課業，也可能想參加許多活動。挑選一個有興趣的事件嘗試看看吧！";
@@ -529,17 +526,12 @@ const gameSubject = {
         // 開啟角色邊界限制，並自訂矩形邊界（以矩形左上角頂點為主）
         player.setCollideWorldBounds(true);
         player.body.setBoundsRectangle(new Phaser.Geom.Rectangle(gamebg.x - (gamebg.width * 0.7 /2), gamebg.y - (gamebg.height * 0.7 / 2), gamebg.width * 0.7, gamebg.height * 0.7 ));
-        
-        //this.player.setBounce(1); //設定彈跳值
 
         player.setScale(playerScale);
       
+        // 準備生成科目豆豆（e.g. 語文、數學、健康活動...）
         beansGroup = this.add.group();
         beansGroup.enableBody = true;
-        
-//         console.log(gamebg.width * gamebgScale, gamebg.height * gamebgScale, cw/2 - gamebg.width * gamebgScale / 2, 0 - ch/2 - gamebg.height * gamebgScale / 2);
-        
-//         console.log(gsCounter);
         
         beansGroup = this.physics.add.group();
         for(var i = 0 ; i < subjectN ; i++)
@@ -549,9 +541,6 @@ const gameSubject = {
 
             subject_xy[i].x = tempX;
             subject_xy[i].y = tempY;
-            
-            
-            console.log(subject_name[i], subject_xy[i].x, subject_xy[i].y);
             
             beansGroup.create(subject_xy[i].x, subject_xy[i].y, subject_nameen[i]); 
 
@@ -568,6 +557,7 @@ const gameSubject = {
             beansGroupChild[i].setScale(beansScale);           
         }
         
+        // 設置重疊時會呼叫的 callback function
         this.physics.add.overlap(player, beansGroupChild, collectStar, null, this);
         this.physics.add.overlap(player, bonusedoor, inBonuse, null, this);
         
