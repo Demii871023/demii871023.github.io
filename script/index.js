@@ -183,48 +183,56 @@ const playerSelect = {
         graphics = this.add.graphics()
         graphics.lineStyle(5, 0x00ffff, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(cw/2-cw/11, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
 
-
         playerName = this.add.text(cw/2-cw/11, ch/2 + 150, "ID：" + player_namezw[0], {color: "#FFFFFF", fontSize:"30px"});
         tipsText = this.add.text(cw - 200, ch - 50, '請按下空白鍵確定角色', {color: "#FFFFFF", fontSize:'14px'});
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
     
+        // 階段：選取角色
         if(!player_confirm)
         {
             if(keyboard.left.isDown)
             {
+                // 用來防止使用者按著鍵盤不放，人物還沒移動完就被迫換下一個
                 if(!keydwon)
                 {
+                    // 例外預防，已經最右無法再移動
                     if(now_select == 0)
-                        console.log("無法再往左邊");
+                        console.log("左側已經無人物可以再成為中心人物，因此無法再往右邊");
                     else
                     {
+                        // 設置用來 縮小的 shrinkScale 和 放大的 enlargeScale
                         shrinkScale = mainpScale, enlargeScale = otherpScle;
                         keydwon = true;
+                        // 中心人物為現在的左邊那個，因此 now_select 減 1
                         now_select = now_select - 1;
                         for(var i = 0 ; i < 6 ; i++)
                         {
+                            // 中心人物的透明度設為 1
                             if(i == now_select)
                                 playerArr[i].alpha = 1;
+                            // 邊緣人物的透明度設為 0.5
                             else
                                 playerArr[i].alpha = 0.5;
                         }
+                        // 中心人物的底下姓名也要跟著變動
                         playerName.setText("ID：" + player_namezw[now_select]);
+                        // 利用計時器的方式來調整每次改變人物大小的參數
                         timer = this.time.addEvent({
-                            delay: 100,           
+                            delay: 100, // 每 0.1 秒執行一次此 callback function
                             callback: () => {
+                                // 縮小使用的 shrink 遞減，放大使用的 enlarge 遞增
                                 shrinkScale = shrinkScale - 0.04;
                                 enlargeScale = enlargeScale + 0.04;
+                                // 人物的水平位置往右側移動 -> 按左鍵的概念為我要選取左邊那個成為中心人物，因此所有人物要往右側移動
                                 for(var i = 0 ; i < 6 ; i++)
-                                {
                                     playerArr[i].x = playerArr[i].x + 70;
-                                }
                                 playerArr[now_select].setScale(enlargeScale);
                                 playerArr[now_select + 1].setScale(shrinkScale);
                             },
-                            loop: false,
-                            repeat: 4
+                            loop: false, // 結束後不重複
+                            repeat: 4 // 總共執行四次
                         });
                     }
                 }
@@ -232,32 +240,40 @@ const playerSelect = {
 
             if(keyboard.right.isDown)
             {
+                // 用來防止使用者按著鍵盤不放，人物還沒移動完就被迫換下一個
                 if(!keydwon)
                 {
+                    // 例外預防，已經最右無法再移動
                     if(now_select == 5)
-                        console.log("無法再往右邊");
+                        console.log("右側已經無人物可以再成為中心人物，因此無法再往左邊");
                     else
                     {
+                        // 設置用來 縮小的 shrinkScale 和 放大的 enlargeScale
                         shrinkScale = mainpScale, enlargeScale = otherpScle;
                         keydwon = true;
+                         // 中心人物為現在的右邊那個，因此 now_select 加 1
                         now_select = now_select + 1;
                         for(var i = 0 ; i < 6 ; i++)
                         {
+                            // 中心人物的透明度設為 1
                             if(i == now_select)
                                 playerArr[i].alpha = 1;
+                            // 邊緣人物的透明度設為 0.5
                             else
                                 playerArr[i].alpha = 0.5;
                         }
+                        // 中心人物的底下姓名也要跟著變動
                         playerName.setText("ID：" + player_namezw[now_select]);
+                        // 利用計時器的方式來調整每次改變人物大小的參數
                         timer = this.time.addEvent({
-                            delay: 100,           
+                            delay: 100, // 每 0.1 秒執行一次此 callback function
                             callback: () => {
+                                // 縮小使用的 shrink 遞減，放大使用的 enlarge 遞增
                                 shrinkScale = shrinkScale - 0.04;
                                 enlargeScale = enlargeScale + 0.04;
+                                // 人物的水平位置往右側移動 -> 按左鍵的概念為我要選取左邊那個成為中心人物，因此所有人物要往右側移動
                                 for(var i = 0 ; i < 6 ; i++)
-                                {
                                     playerArr[i].x = playerArr[i].x - 70;
-                                }
                                 playerArr[now_select].setScale(enlargeScale);
                                 playerArr[now_select - 1].setScale(shrinkScale);
                             },
@@ -267,17 +283,18 @@ const playerSelect = {
                     }
                 }
             }
-
-  
         }
+        
+        // 階段：完成人物移動，繪製雷達圖 -> 當 縮小使用的 shrinkScale 改變成為邊緣人物的大小 otherScale 的時候，即動畫可結束。
         if(shrinkScale.toFixed(1) == otherpScle)
         {
+            // keydwon 與 playerMove 設質為 false
             keydwon = false;
             playerMove = false
+            
+            // 移動動畫結束，所有人物靜止不動
             for(var i = 0 ; i < 6 ; i++)
-            {
                 playerArr[i].setVelocityX(0);
-            }
 
             if(keyboard.space.isDown)
             {
@@ -293,28 +310,33 @@ const playerSelect = {
                         if(i != player_select)
                             playerArr[i].alpha = 0;
 
-                    // 繪製出雷達圖
-                    tmpx = cw/2-cw/11;
-                    player_move_value = 36;
+                    // 人物選定後，先進行人物向左移的動畫，完成移動後再繪製出雷達圖。
+                    tmpx = cw/2-cw/11;                                                                      // 暫存中心人物的外框，還未執行動畫前的 x 座標
+                    player_move_value = 36;                                                                 // 設置每次人物移動的移動量，該數值會隨著計時器遞減，達到人物移動漸緩的效果
                     timer = this.time.addEvent({
-                        delay: 70,           
+                        delay: 70,  // 每 0.07 秒執行一次 callback function
                         callback: () => {
-                            graphics.clear();
-                            playerArr[player_select].x = playerArr[player_select].x - player_move_value;
-                            playerName.x = playerName.x - player_move_value;
-                            tmpx = tmpx - player_move_value;
-                            player_move_value = player_move_value - 2;
+                            graphics.clear();                                                               // 將中心人物的外框清除掉
+                            // 該選定的人物、角色姓名 透過扣除 x 量 達到往左側移動的效果
+                            playerArr[player_select].x = playerArr[player_select].x - player_move_value;    // 人物左移 player_move_value
+                            playerName.x = playerName.x - player_move_value;                                // 玩家姓名左移 player_move_value
+                            tmpx = tmpx - player_move_value;                                                // 螢光藍外框左移 player_move_value
+                            player_move_value = player_move_value - 2;                                      // 遞減移動的量，達到人物移動漸緩的效果
                             graphics.lineStyle(5, 0x00ff00, 0.5).strokeRectShape(new Phaser.Geom.Rectangle(tmpx, ch/2 - 140,  player1.width * mainpScale, player1.height * mainpScale));
+                            
+                            // 當人物移動量變為 0 時，完成移動
                             if(player_move_value == 0)
                             {
+                                // 繪製出雷達圖
                                 playerConfirm();
                                 document.getElementById('playerRangeBar').style.visibility = "visible";
+                                // 角色能力值可以開始變更
                                 playervalueMove = true;
                                 tipsText.setText('請按下空白鍵確定角色能力值');
                             }
                         },
                         loop: false,
-                        repeat: 18
+                        repeat: 18  // 重複 18 次的執行
                     });
                 }
             }
@@ -385,13 +407,7 @@ const gameSelect = {
         activity = this.add.sprite(cw/2 + cw/4, ch/2, 'activity');
         activity.setScale(classScale);
         activity.setTint(0x5d5d2d);
-
-        // 嘗試點擊後隱藏 phaser canvas
-        // activity.on('pointerdown', function(){
-        //     var app = document.getElementById('app');
-        //     app.style.display = 'none';
-        // });
-            
+  
     },
     update: function(){
         let keyboard = this.input.keyboard.createCursorKeys();
